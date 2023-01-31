@@ -1,0 +1,1 @@
+"F:\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-6g94u1qn210fa109 --n quickstartFunctions --r --project "D:\wulala-luckydraw-xcx" --report_first --report
