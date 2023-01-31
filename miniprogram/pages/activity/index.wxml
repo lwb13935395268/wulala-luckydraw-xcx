@@ -1,2 +1,47 @@
-<!--pages/activity/index.wxml-->
-<text>pages/activity/index.wxml</text>
+<view class="main">
+    <!-- title -->
+    <view class="title">活动中心</view>
+    <view>
+        <!-- Tab布局 -->
+        <view class='navBox'>
+            <view class='titleBox' bindtap='titleClick' data-idx='0'>
+                <text class="{{0 == currentIndex ? 'fontColorBox' : ''}}">全部</text>
+                <hr class="{{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+            </view>
+            <view class='titleBox' bindtap='titleClick' data-idx='1'>
+                <text class="{{1 == currentIndex ? 'fontColorBox1' : ''}}">推荐</text>
+                <hr class="{{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+            </view>
+            <view class='titleBox' bindtap='titleClick' data-idx='2'>
+                <text class="{{2 == currentIndex ? 'fontColorBox2' : ''}}">最新</text>
+                <hr class="{{2 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+            </view>
+            <view class='titleBox' bindtap='titleClick' data-idx='3'>
+                <text class="{{3 == currentIndex ? 'fontColorBox3' : ''}}">已参与</text>
+                <hr class="{{3 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+            </view>
+            <view class='titleBox' bindtap='titleClick' data-idx='4'>
+                <text class="{{4 == currentIndex ? 'fontColorBox4' : ''}}">未参与</text>
+                <hr class="{{4 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+            </view>
+        </view>
+        <!-- 内容布局 -->
+        <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
+            <swiper-item class='swiperTtemBox'>
+                <view>0</view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view>1</view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view>2</view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view>3</view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view>4</view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>
