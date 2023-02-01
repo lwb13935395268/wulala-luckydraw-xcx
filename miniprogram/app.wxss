@@ -81,3 +81,14 @@ page {
 .text-center {
     text-align: center;
 }
+
+/* 
+  周永峰的公共样式
+*/
+.pt-15 {
+    padding-top: 15rpx;
+}
+
+.opct {
+    opacity: .5;
+}
