@@ -19,7 +19,7 @@
                 },
                 {
                     "name": "活动详情",
-                    "pathName": "pages/activityDetail/index",
+                    "pathName": "pages/activity/activityDetail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
