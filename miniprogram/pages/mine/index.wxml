@@ -22,25 +22,25 @@
     <view>
         <view class="goods wrap">
             <view class="item back-yellow">
-                <view class="fs-24 fc-gray">
+                <view class="fs-24 fc-white">
                     积分
                 </view>
-                <view class="fs-36 fw-700 num mt-4">
+                <view class="num mt-4">
                     666
                 </view>
-                <view class="fs-20 fc-yellow mt-4">
-                    积分可用来兑换商品
+                <view class="fs-20 mt-4 fc-gray2">
+                    兑换商品>
                 </view>
             </view>
             <view class="item back-orange">
-                <view class="fs-24 fc-gray">
+                <view class="fs-24 fc-white">
                     我的活动
                 </view>
-                <view class="fs-36 fw-700 mt-4">
+                <view class="num mt-4">
                     12
                 </view>
-                <view class="fs-20 mt-4">
-                    查看参加和创建的活动
+                <view class="fs-20 mt-4 fc-gray2">
+                    查看活动>
                 </view>
             </view>
         </view>
