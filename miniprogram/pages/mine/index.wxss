@@ -1,16 +1,84 @@
 /* pages/mine/index.wxss */
-.nav image{
-    width: 48rpx;
-    height: 48rpx;
+.mine{
+    min-height: 100vh;
+    background-color: #f6f6f600;
+}
+.fc-gray2{
+    color: #f6f6f6ab;
 }
 .nav{
     display: flex;
     justify-content:flex-end;
+    padding: 15rpx 0;
 }
-.wrap{
-    width: 700rpx;
-    margin: 0 auto;
+.top{
+    background: linear-gradient(to bottom, #f8e8c4, #f6f6f6) ;
 }
-.mr-10{
-    margin-right: 20rpx;
+.nav image{
+    width: 48rpx;
+    height: 48rpx;
+}
+.header{
+    padding: 20rpx 0;
+}
+.header image{
+    width: 140rpx;
+    height: 140rpx;
+}
+.goods{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20rpx;
+    /* justify-content: spac; */
+}
+.goods .item{
+    /* background-color: #f9d689; */
+    padding: 20rpx 26rpx;
+    border-radius: 10rpx;
+}
+.goods .num{
+    /* color:  w; */
+}
+.list .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20rpx 10rpx;
+    font-weight: bold;
+    font-size: 28rpx;
+}
+.list .item image{
+    width: 40rpx;
+    height: 40rpx;
+}
+.list .item .entry{
+    width: 30rpx;
+    height: 30rpx;
+}
+.fc-gray{
+    color: gray;
+    font-weight: bold;
+}
+.fc-white{
+    color: white;
+}
+.back-yellow{
+    background-color: #ff6050;
+    background-image:url('https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-back_integral.png?sign=c9c4914d8a86c8e63daac88b4939f700&t=1675239110');
+    background-repeat: no-repeat;
+    background-size: 140rpx 100%;
+    background-position: right;
+    /* background-color: linear-gradient(to right, #ff6050, #fc7050) ; */
+}
+.back-orange{
+    background-color: #fc8f20;
+    background-image: url('https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-back_activity.png?sign=35eb1ac4048ff96ebab8de625726e3ec&t=1675239215');
+    background-repeat: no-repeat;
+    background-size: 140rpx 100%;
+    background-position: right;
+    /* background: linear-gradient(to right, #fc8f20, #f9b22d) ; */
+}
+.fc-yellow{
+    /* color: #cac8630a; */
 }
