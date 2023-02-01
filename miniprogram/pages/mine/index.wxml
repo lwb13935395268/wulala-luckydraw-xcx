@@ -1,37 +1,78 @@
 <!--pages/mine/index.wxml-->
 <!-- <text>pages/mine/index.wxml</text> -->
 <view class="mine">
-    <view class="wrap">
-        <view class="nav">
-        <view>
-            <image class="mr-10" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-news.png?sign=513b96661ee3415728bc05586157e911&t=1675215973" mode=""/>
-            <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-set.png?sign=f7a617c028caeadb9b34174bc92ecfd2&t=1675215982" mode=""/>
-        </view>
-        </view>
-        <view class="header">
+    <view class="">
+        <view class="nav wrap">
             <view>
-                <image  src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240" mode=""/>
-            </view>
-            <view>
-                <view>Hi, Dream</view>
-                <view>查看个人信息</view>
+                <image class="mr-20" src="../../images/icon-news.png" mode="" />
+                <image src="../../images/icon-set.png" mode="" />
             </view>
         </view>
-        <view class="goods">
-            <view class="item">
-                <view>
+        <view class="header wrap flex">
+            <view>
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240" mode="" />
+            </view>
+            <view class="ml-20">
+                <view class="fs-36 fw-700">Hi, Dream</view>
+                <view class="fs-24 fc-gray">查看个人信息</view>
+            </view>
+        </view>
+        <view class="goods wrap">
+            <view class="item back-yellow">
+                <view class="fs-24 fc-gray">
                     积分
                 </view>
-                <view>
+                <view class="fs-36 fw-700 num mt-4">
                     666
+                </view>
+                <view class="fs-20 fc-yellow mt-4">
+                    积分可用来兑换商品
+                </view>
+            </view>
+            <view class="item back-orange">
+                <view class="fs-24 fc-gray">
+                    我的活动
+                </view>
+                <view class="fs-36 fw-700 mt-4">
+                    12
+                </view>
+                <view class="fs-20 mt-4">
+                    查看参加和创建的活动
+                </view>
+            </view>
+        </view>
+        <view class="wrap list mt-10">
+            <view class="item">
+                <view class="flex-center">
+                    <image src="../../images/icon-business.png" mode="" />
+                    <view class="ml-20">
+                    商家入驻
+                    </view>
+                </view>
+                <view>
+                    <image class="entry" src="../../images/icon-entry.png" mode="" />
                 </view>
             </view>
             <view class="item">
-                <view>
-                    我的活动
+                <view class="flex-center">
+                    <image src="../../images/icon-examine.png" mode="" />
+                    <view class="ml-20">
+                    审核列表
+                    </view>
                 </view>
                 <view>
-                    12
+                    <image  class="entry" src="../../images/icon-entry.png" mode="" />
+                </view>
+            </view>
+            <view class="item">
+                <view class="flex-center">
+                    <image src="../../images/icon-address.png" mode="" />
+                    <view class="ml-20">
+                        收货地址
+                    </view>
+                </view>
+                <view>
+                    <image  class="entry" src="../../images/icon-entry.png" mode="" />
                 </view>
             </view>
         </view>
