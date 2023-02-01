@@ -1,0 +1,93 @@
+/* pages/mine/audit/index.wxss */
+.wraps{
+
+}
+.fontColorBox,
+.fontColorBox1 {
+    /* 文字默认颜色 */
+    color: black;
+}
+.navBox {
+    /* 顶部tab盒子样式 */
+    width: 100%;
+    height: 108rpx;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.titleBox {
+    /* 未选中文字的样式 */
+    color: rgb(168, 170, 175);
+    font-size: 25rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.notLineBox {
+    /* 未选中底线样式 */
+    background: transparent;
+}
+.swiperTtemBox {
+    /* 底部内容样式 */
+    height: 100vh;
+    overflow: scroll;
+    margin: 12rpx 0rpx;
+    /* font-size: 28rpx; */
+    /* position: relative; */
+}
+
+.detail{
+    background: #fff;
+    padding: 20rpx 0;
+}
+.detail-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx;
+    border-bottom: 3rpx #c4c1c1 dashed;
+}
+.username{
+    font-weight: 600;
+}
+.audit{
+    display: flex;
+    align-items: center;
+}
+.audit image{
+    width: 50rpx;
+    height: 50rpx;
+}
+.detail-main{
+    display: flex;
+    justify-content: space-between;
+}
+.detail-main_left{
+    display: flex;
+    padding: 20rpx;
+    flex-direction: column;
+}
+.detail-main_left text{
+    padding: 10rpx 0;
+    color: #6b6d75;
+}
+.detail-main_right{
+    display: flex;
+    padding: 20rpx;
+    align-items: flex-end;
+    flex-direction: column;
+}
+.detail-main_right text{
+    padding: 10rpx 0;
+}
+.btn{
+    background-color: #cfdef8;
+    width: 80vw;
+    margin: 20rpx auto;
+    text-align: center;
+    color: #2754fd;
+    font-size: 32rpx;
+    font-weight: 600;
+    padding: 20rpx;
+    border-radius: 10rpx;
+}
