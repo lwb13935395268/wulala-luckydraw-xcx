@@ -1,0 +1,102 @@
+<!--pages/mine/audit/index.wxml-->
+<view class="wraps">
+    <view class="header">
+        <view class="navBox">
+            <view class="titleBox" bindtap="titleClick" data-idx='0'>
+                <text class="{{0 == currentIndex ? 'fontColorBox' : ''}}">待审核</text>
+                <hr class="{{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+            </view>
+            <view class="titleBox" bindtap="titleClick" data-idx='1'>
+                <text class="{{1 == currentIndex ? 'fontColorBox2' : ''}}">审核成功</text>
+                <hr class="{{1 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+            </view>
+            <view class="titleBox" bindtap="titleClick" data-idx='2'>
+                <text class="{{2 == currentIndex ? 'fontColorBox2' : ''}}">审核失败</text>
+                <hr class="{{2 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+            </view>
+        </view>
+    </view>
+    <view class="main">
+        <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
+            <swiper-item class='swiperTtemBox'>
+                <view class="detail wrap">
+                    <view class="detail-header">
+                        <view class="username">易烊千玺</view>
+                        <view class="audit">
+                            <image src="../../../images/icon-yellow.png"></image>
+                            <text>待审核</text>
+                            <image src="../../../images/icon-right.png"></image>
+                        </view>
+                    </view>
+                    <view class="detail-main">
+                        <view class="detail-main_left">
+                            <text>姓名</text>
+                            <text>联系方式</text>
+                            <text>店铺名称</text>
+                            <text>申请时间</text>
+                        </view>
+                        <view class="detail-main_right">
+                            <text>刘伟博</text>
+                            <text>13935395268</text>
+                            <text>REX休闲娱乐场所</text>
+                            <text>2023-02-01 20:17:52</text>
+                        </view>
+                    </view>
+                        <view class="btn">审核</view>
+                </view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view class="detail wrap">
+                    <view class="detail-header">
+                        <view class="username">易烊千玺</view>
+                        <view class="audit">
+                            <image src="../../../images/icon-green.png"></image>
+                            <text>审核成功</text>
+                            <image src="../../../images/icon-right.png"></image>
+                        </view>
+                    </view>
+                    <view class="detail-main">
+                        <view class="detail-main_left">
+                            <text>姓名</text>
+                            <text>联系方式</text>
+                            <text>店铺名称</text>
+                            <text>申请时间</text>
+                        </view>
+                        <view class="detail-main_right">
+                            <text>刘伟博</text>
+                            <text>13935395268</text>
+                            <text>REX休闲娱乐场所</text>
+                            <text>2023-02-01 20:17:52</text>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view class="detail wrap">
+                    <view class="detail-header">
+                        <view class="username">易烊千玺</view>
+                        <view class="audit">
+                            <image src="../../../images/icon-red.png"></image>
+                            <text>审核失败</text>
+                            <image src="../../../images/icon-right.png"></image>
+                        </view>
+                    </view>
+                    <view class="detail-main">
+                        <view class="detail-main_left">
+                            <text>姓名</text>
+                            <text>联系方式</text>
+                            <text>店铺名称</text>
+                            <text>申请时间</text>
+                        </view>
+                        <view class="detail-main_right">
+                            <text>刘伟博</text>
+                            <text>13935395268</text>
+                            <text>REX休闲娱乐场所</text>
+                            <text>2023-02-01 20:17:52</text>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

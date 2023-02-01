@@ -25,9 +25,10 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/selectRecord/index",
-                    "pathName": "pages/selectRecord/index",
+                    "name": "审核列表",
+                    "pathName": "pages/mine/audit/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
