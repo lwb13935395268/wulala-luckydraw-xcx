@@ -15,5 +15,11 @@ App({
     }
 
     this.globalData = {};
-  }
+},
+// 返回上一级   
+    back:function(){
+        wx.navigateBack({
+            delta:1
+        })
+    }
 });
