@@ -1,18 +1,4 @@
 /* pages/home/index.wxss */
-.justify-between{
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-}
-.flex-center{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.wrap{
-    width: 680rpx;
-    margin: 0 auto;
-}
 .img-4{
     width: 140rpx;
     height: 140rpx;
@@ -23,21 +9,6 @@
     background-color: #ea4329;
     color: white;
     padding: 40rpx;
-}
-.ml-10{
-    margin-left: 20rpx;
-}
-.fs-18{
-    font-size: 36rpx;
-}
-.fs-14{
-    font-size: 28rpx;
-}
-.fs-12{
-    font-size: 24rpx;
-}
-.text-center{
-    text-align: center;
 }
 .home{
     height: 100vh;
@@ -51,7 +22,6 @@
 .shop-title{
     background-color: #ff8013;
     border-radius: 20rpx;
-    /* font-weight: bold; */
     font-size: 36rpx;
     padding: 12rpx 0;
     color: white;
@@ -75,6 +45,13 @@
     font-weight: bold;
     padding: 0 10rpx;  
     font-size: 30rpx;
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;				
+	text-overflow: ellipsis;		
+	display: -webkit-box;			
+	-webkit-line-clamp: 2;			
+	line-clamp: 2;					
+	-webkit-box-orient: vertical;	
 }
 .item image{
     width: 100%;
@@ -118,4 +95,34 @@
 }
 .pt-10{
     padding-top: 20rpx;
+}
+.justify-between{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrap{
+    width: 680rpx;
+    margin: 0 auto;
+}
+
+.ml-10{
+    margin-left: 20rpx;
+}
+.fs-18{
+    font-size: 36rpx;
+}
+.fs-14{
+    font-size: 28rpx;
+}
+.fs-12{
+    font-size: 24rpx;
+}
+.text-center{
+    text-align: center;
 }
