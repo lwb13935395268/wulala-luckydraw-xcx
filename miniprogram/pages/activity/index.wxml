@@ -1,2 +1,67 @@
-<!--pages/activity/index.wxml-->
-<text>pages/activity/index.wxml</text>
+<view class="main">
+    <!-- title -->
+    <view class="title">活动中心</view>
+    <view>
+        <!-- Tab布局 -->
+        <view class='navBox'>
+            <view class='titleBox' bindtap='titleClick' data-idx='0'>
+                <text class="{{0 == currentIndex ? 'fontColorBox' : ''}}">全部</text>
+                <hr class="{{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+            </view>
+            <view class='titleBox' bindtap='titleClick' data-idx='1'>
+                <text class="{{1 == currentIndex ? 'fontColorBox1' : ''}}">推荐</text>
+                <hr class="{{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+            </view>
+            <view class='titleBox' bindtap='titleClick' data-idx='2'>
+                <text class="{{2 == currentIndex ? 'fontColorBox2' : ''}}">最新</text>
+                <hr class="{{2 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+            </view>
+            <view class='titleBox' bindtap='titleClick' data-idx='3'>
+                <text class="{{3 == currentIndex ? 'fontColorBox3' : ''}}">已参与</text>
+                <hr class="{{3 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+            </view>
+            <view class='titleBox' bindtap='titleClick' data-idx='4'>
+                <text class="{{4 == currentIndex ? 'fontColorBox4' : ''}}">未参与</text>
+                <hr class="{{4 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+            </view>
+        </view>
+        <!-- 内容布局 -->
+        <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
+            <swiper-item class='swiperTtemBox'>
+                <view class="activity">
+                    <image src="../../images/icon-activity_1.png" mode=""/>
+                    <view class="activity-content">
+                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
+                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view>1</view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view>2</view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view class="activity">
+                    <image src="../../images/icon-activity_1.png" mode=""/>
+                    <view class="activity-content">
+                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
+                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
+                    </view>
+                    <image class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-participated.png?sign=2b91147819789efd6f82d12ebcc8889e&t=1675173206" mode=""/>
+                </view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view class="activity opct">
+                    <image src="../../images/icon-activity_1.png" mode=""/>
+                    <view class="activity-content">
+                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
+                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
+                    </view>
+                    <image class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-closed.png?sign=514c42b3d0ff28fbed5360053fafe8be&t=1675173275" mode=""/>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>
