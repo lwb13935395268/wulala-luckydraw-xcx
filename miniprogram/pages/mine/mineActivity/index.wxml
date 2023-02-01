@@ -1,0 +1,12 @@
+<!--pages/mine/mineActivity/index.wxml-->
+<tabItem></tabItem>
+<tab titleList="{{['已参与','创建的']}}">
+<!-- <view slot='已参与'>
+    haha
+</view> -->
+<tabItem name='已参与'>
+hahah
+</tabItem>
+<tabItem name='创建的'>
+asfd</tabItem>
+</tab>

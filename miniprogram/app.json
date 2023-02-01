@@ -6,7 +6,8 @@
     "pages/mine/index",
     "pages/mine/uploading/index",
     "pages/mine/createActivity/index",
-    "pages/mine/audit/index"
+    "pages/mine/audit/index",
+    "pages/mine/mineActivity/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

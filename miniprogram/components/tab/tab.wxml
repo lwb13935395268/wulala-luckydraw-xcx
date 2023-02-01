@@ -1,0 +1,23 @@
+<!--components/tab/tab.wxml-->
+<view>
+    {{titleList}}
+</view>
+<view class='navBox'>
+    <view wx:for="{{titleList}}"  wx:key="index" class='titleBox' bindtap='titleClick' data-idx='{{index}}'>
+        <text class="{{index == currentIndex ? 'fontColorBox' : ''}}">{{item}}</text>
+        <hr class="{{index == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+    </view>
+</view>
+<slot></slot>
+<swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
+    <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox'>
+        <!-- <view class="activity wrap">
+            <image src="../../images/icon-activity_1.png" mode="" />
+            <view class="activity-content">
+                <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
+                <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
+            </view>
+        </view> -->
+        <slot name="{{item}}"></slot>
+    </swiper-item>
+</swiper>
