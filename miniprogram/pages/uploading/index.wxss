@@ -1,0 +1,65 @@
+/* pages/uploading/index.wxss */
+.wrap{
+    margin: 0;
+    padding: 0;
+}
+.wrap-title{
+    background-color: #ff3456;
+    padding: 20rpx 0;
+    width: 100vw;
+    text-align: center;
+    color: #ffffff;
+    font-size: 28rpx;
+}
+.header{
+    margin: 20rpx;
+}
+.header-row{
+    padding: 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.header-row text{
+    font-size: 26rpx;
+}
+.header-row input{
+    width: 450rpx;
+    height: 40rpx;
+    border: 3rpx solid silver;
+    font-size: 26rpx;
+    text-indent: 30rpx;
+}
+.approve-text{
+    background: #f1f1f1;
+    /* margin: 20rpx; */
+    padding: 20rpx 40rpx;
+}
+.approve-text text{
+    font-size: 26rpx;
+    color: #929292;
+}
+.approve-main_main{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30rpx 0;
+}
+.approve-main_main image{
+    width: 320rpx;
+    height: 220rpx;
+}
+.prompt{
+    display: flex;
+    flex-direction: column;
+    margin: 0 40rpx;
+    font-size: 26rpx;
+    color: #494949;
+}
+.da{
+    font-size: 28rpx;
+}
+.button button{
+    margin: 20rpx 0;
+    background-color: #ff3456;
+    color: #fff;
+    font-size: 32rpx;
+}

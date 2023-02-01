@@ -1,0 +1,54 @@
+<!--pages/uploading/index.wxml-->
+<view class="wrap">
+    <view class="wrap-title">
+        <text>入驻申请</text>
+    </view>
+    <view class="header">
+        <view class="header-row">
+            <text>店铺名称:</text>
+            <input type="text" placeholder="请输入您的店铺名称"/>
+        </view>
+        <view class="header-row">
+            <text>联系方式:</text>
+            <input type="text" placeholder="请输入您的联系方式"/>
+        </view>
+        <view class="header-row">
+            <text>姓名:</text>
+            <input type="text" placeholder="请输入法人姓名"/>
+        </view>
+    </view>
+
+    <view class="main">
+        <view class="approve">
+            <view class="approve-text">
+                <text>商家企业认证</text>
+            </view>
+            <view class="approve-main">
+                <view class="approve-main_main">
+                    <image src="../../images/yyzz.png"></image>
+                    <image src="../../images/sbzs.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="approve">
+            <view class="approve-text">
+                <text>法人身份证</text>
+            </view>
+            <view class="approve-main">
+                <view class="approve-main_main">
+                    <image src="../../images/sfz.png"></image>
+                    <image src="../../images/sfzf.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="prompt">
+            <text class="da">温馨提示：</text>
+            <text>1.为保证您的认证顺利，请保证信息清晰可见。</text>
+            <text>2.此证件信息，只作为商家入驻申请认证，请放心上传。</text>
+        </view>
+        <view class="button">
+            <button>申请入驻</button>
+        </view>
+    </view>
+
+</view>
