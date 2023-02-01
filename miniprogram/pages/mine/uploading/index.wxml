@@ -1,5 +1,5 @@
 <!--pages/uploading/index.wxml-->
-<view class="wrap">
+<view class="wraps">
     <view class="wrap-title">
         <text>入驻申请</text>
     </view>

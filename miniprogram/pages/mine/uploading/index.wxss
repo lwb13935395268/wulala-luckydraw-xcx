@@ -1,5 +1,5 @@
 /* pages/uploading/index.wxss */
-.wrap{
+.wraps{
     margin: 0;
     padding: 0;
 }

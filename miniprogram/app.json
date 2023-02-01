@@ -2,8 +2,10 @@
   "pages": [
     "pages/home/index",
     "pages/activity/index",
+    "pages/activityDetail/index",
     "pages/mine/index",
-    "pages/mine/uploading/index"
+    "pages/mine/uploading/index",
+    "pages/mine/createActivity/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
