@@ -1,0 +1,9 @@
+<!--components/tab/item/item.wxml-->
+<!-- <view slot="{{name}}">
+sdf
+<slot></slot>
+</view> -->
+<view>
+    这是 item内容：
+    <slot></slot>
+</view>
