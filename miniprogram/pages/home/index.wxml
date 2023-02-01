@@ -1,15 +1,25 @@
 <!--pages/home/index.wxml-->
 <view class="home">
-    
 <view class="header">
-    <view class="wrap justify-between">
-        <view class="flex-center">
-            <image class="img-4" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240" mode="" />
-            <text class="ml-20 fs-36">Hi,Dream</text>
+    <view class="wrap flex-between">
+    <view class="mine">
+        <view class="">
+            我的积分
         </view>
+        <view class="num mt-20">
+            <text>57</text>
+            <image src="../../images/icon-entry.png" mode=""/>
+        </view>
+    </view>
+    <view class="rule">
         <view>
-            <text class="fs-28">我的积分：666</text>
+            活动规则
         </view>
+        <view class="flex-center">
+        <image src="../../images/icon-record.png" mode=""/>
+        <text class="ml-5">兑换记录</text>
+        </view>
+    </view>
     </view>
 </view>
 <view class="body">
@@ -32,7 +42,7 @@
                         限量1,000
                     </view>
                     </view>
-                    <view class="btn mt-10">
+                    <view class="btn mt-20">
                         兑换
                     </view>
                 </view>
@@ -51,7 +61,7 @@
                         限量1,000
                     </view>
                     </view>
-                    <view class="btn mt-10">
+                    <view class="btn mt-20">
                         兑换
                     </view>
                 </view>
@@ -59,7 +69,7 @@
             <view class="item">
                 <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
                 <view class="title mt-10">
-                    XX优惠券
+                    XX优惠券sdssddssadssdf
                 </view>
                 <view class="content mt-10">
                     <view class="info">
@@ -70,7 +80,7 @@
                         限量1,000
                     </view>
                     </view>
-                    <view class="btn mt-10">
+                    <view class="btn mt-20">
                         兑换
                     </view>
                 </view>

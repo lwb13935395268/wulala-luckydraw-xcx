@@ -1,7 +1,8 @@
 <!--pages/mine/index.wxml-->
 <!-- <text>pages/mine/index.wxml</text> -->
 <view class="mine">
-    <view class="">
+    <view class="top">
+
         <view class="nav wrap">
             <view>
                 <image class="mr-20" src="../../images/icon-news.png" mode="" />
@@ -17,6 +18,8 @@
                 <view class="fs-24 fc-gray">查看个人信息</view>
             </view>
         </view>
+    </view>
+    <view>
         <view class="goods wrap">
             <view class="item back-yellow">
                 <view class="fs-24 fc-gray">
@@ -45,7 +48,7 @@
             <view class="item">
                 <view class="flex-center">
                     <image src="../../images/icon-business.png" mode="" />
-                    <view class="ml-20">
+                    <view class="ml-25">
                     商家入驻
                     </view>
                 </view>
@@ -56,7 +59,7 @@
             <view class="item">
                 <view class="flex-center">
                     <image src="../../images/icon-examine.png" mode="" />
-                    <view class="ml-20">
+                    <view class="ml-25">
                     审核列表
                     </view>
                 </view>
@@ -67,7 +70,7 @@
             <view class="item">
                 <view class="flex-center">
                     <image src="../../images/icon-address.png" mode="" />
-                    <view class="ml-20">
+                    <view class="ml-25">
                         收货地址
                     </view>
                 </view>
@@ -76,5 +79,6 @@
                 </view>
             </view>
         </view>
+        
     </view>
 </view>

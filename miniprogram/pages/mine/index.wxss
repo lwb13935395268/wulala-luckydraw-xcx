@@ -1,7 +1,15 @@
 /* pages/mine/index.wxss */
+.mine{
+    min-height: 100vh;
+    background-color: #f6f6f600;
+}
 .nav{
     display: flex;
     justify-content:flex-end;
+    padding: 15rpx 0;
+}
+.top{
+    background: linear-gradient(to bottom, #f8e8c4, #f6f6f6) ;
 }
 .nav image{
     width: 48rpx;
@@ -30,10 +38,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 20rpx 10rpx;
+    font-weight: bold;
+    font-size: 28rpx;
 }
 .list .item image{
-    width: 50rpx;
-    height: 50rpx;
+    width: 40rpx;
+    height: 40rpx;
 }
 .list .item .entry{
     width: 30rpx;
@@ -57,4 +67,10 @@
 }
 .fc-yellow{
     /* color: #cac8630a; */
+}
+.ml-30{
+    margin-left: 30rpx;
+}
+.ml-25{
+    margin-left: 25rpx;
 }
