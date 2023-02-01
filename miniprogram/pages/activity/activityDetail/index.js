@@ -1,4 +1,4 @@
-// pages/uploading/index.js
+// pages/activityDetail/index.js
 Page({
 
     /**

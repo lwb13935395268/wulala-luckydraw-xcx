@@ -27,8 +27,8 @@ page {
 }
 
 .wrap {
-    margin: 0 auto;
-    width: 740rpx;
+    margin: 0 auto !important;
+    width: 700rpx;
 }
 
 /*

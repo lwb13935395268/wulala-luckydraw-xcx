@@ -11,15 +11,17 @@
                     "query": ""
                 },
                 {
-                    "name": "pages/getOpenId/index",
-                    "pathName": "pages/getOpenId/index",
+                    "name": "创建活动",
+                    "pathName": "pages/mine/createActivity/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "pages/deployService/index",
-                    "pathName": "pages/deployService/index",
+                    "name": "活动详情",
+                    "pathName": "pages/activity/activityDetail/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
