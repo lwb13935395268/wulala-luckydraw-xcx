@@ -53,10 +53,16 @@
                     "scene": null
                 },
                 {
+                    "name": "pages/activity/index",
+                    "pathName": "pages/activity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
                     "name": "商家入驻",
                     "pathName": "pages/uploading/index",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 }
             ]
