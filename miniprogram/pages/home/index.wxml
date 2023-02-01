@@ -4,11 +4,11 @@
 <view class="header">
     <view class="wrap justify-between">
         <view class="flex-center">
-            <image class="img-4" src="../../images/icon-avatar.png" mode="" />
-            <text class="ml-10 fs-18">Hi,Dream</text>
+            <image class="img-4" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240" mode="" />
+            <text class="ml-20 fs-36">Hi,Dream</text>
         </view>
         <view>
-            <text class="fs-14">我的积分：666</text>
+            <text class="fs-28">我的积分：666</text>
         </view>
     </view>
 </view>
@@ -17,13 +17,13 @@
         <view class="shop-title text-center">
             积分兑换
         </view>
-        <view class="shops mt-10">
+        <view class="shops mt-20">
             <view class="item">
-                <image src="../../images/icon_banner.png" mode=""/>
-                <view class="title mt-5">
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
+                <view class="title mt-10">
                     XX优惠券
                 </view>
-                <view class="content mt-5">
+                <view class="content mt-10">
                     <view class="info">
                     <view class="price">
                         200积分
@@ -32,17 +32,17 @@
                         限量1,000
                     </view>
                     </view>
-                    <view class="btn mt-5">
+                    <view class="btn mt-10">
                         兑换
                     </view>
                 </view>
             </view>
             <view class="item">
-                <image src="../../images/icon_banner.png" mode=""/>
-                <view class="title mt-5">
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
+                <view class="title mt-10">
                     XX优惠券
                 </view>
-                <view class="content mt-5">
+                <view class="content mt-10">
                     <view class="info">
                     <view class="price">
                         200积分
@@ -51,17 +51,17 @@
                         限量1,000
                     </view>
                     </view>
-                    <view class="btn mt-5">
+                    <view class="btn mt-10">
                         兑换
                     </view>
                 </view>
             </view>
             <view class="item">
-                <image src="../../images/icon_banner.png" mode=""/>
-                <view class="title mt-5">
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
+                <view class="title mt-10">
                     XX优惠券
                 </view>
-                <view class="content mt-5">
+                <view class="content mt-10">
                     <view class="info">
                     <view class="price">
                         200积分
@@ -70,7 +70,7 @@
                         限量1,000
                     </view>
                     </view>
-                    <view class="btn mt-5">
+                    <view class="btn mt-10">
                         兑换
                     </view>
                 </view>

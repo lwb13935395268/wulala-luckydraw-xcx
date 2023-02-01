@@ -1,1 +1,16 @@
 /* pages/mine/index.wxss */
+.nav image{
+    width: 48rpx;
+    height: 48rpx;
+}
+.nav{
+    display: flex;
+    justify-content:flex-end;
+}
+.wrap{
+    width: 700rpx;
+    margin: 0 auto;
+}
+.mr-10{
+    margin-right: 20rpx;
+}
