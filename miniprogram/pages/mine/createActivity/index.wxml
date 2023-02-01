@@ -1,2 +1,17 @@
 <!--pages/mine/createActivity/index.wxml-->
-<text>pages/mine/createActivity/index.wxml</text>
+<view class="main">
+    <!-- nav -->
+    <view class="title">
+        <image bindtap="back" class="left-arrow" src="../../../images/icon-left_arrow.png" mode=""/>
+        <text class="title-name">创建活动</text>
+    </view>
+    <!-- 活动设置 -->
+    <view class="activity-set wrap">
+        <view class="activity-title mtb-20">活动设置</view>
+        <view class="activity-thememap">
+            <view class="bar"></view>
+            <view class="spot"></view>
+            <view class="name">活动主题图</view>
+        </view>
+    </view>
+</view>
