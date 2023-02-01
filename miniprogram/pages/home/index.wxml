@@ -4,7 +4,7 @@
 <view class="header">
     <view class="wrap justify-between">
         <view class="flex-center">
-            <image class="img-4" src="../../images/0.png" mode="" />
+            <image class="img-4" src="../../images/icon-avatar.png" mode="" />
             <text class="ml-10 fs-18">Hi,Dream</text>
         </view>
         <view>
@@ -20,7 +20,7 @@
         <view class="shops mt-10">
             <view class="item">
                 <image src="../../images/icon_banner.png" mode=""/>
-                <view class="title">
+                <view class="title mt-5">
                     XX优惠券
                 </view>
                 <view class="content mt-5">
@@ -39,7 +39,7 @@
             </view>
             <view class="item">
                 <image src="../../images/icon_banner.png" mode=""/>
-                <view class="title">
+                <view class="title mt-5">
                     XX优惠券
                 </view>
                 <view class="content mt-5">
@@ -58,27 +58,8 @@
             </view>
             <view class="item">
                 <image src="../../images/icon_banner.png" mode=""/>
-                <view class="title">
-                    XX优惠券appsdfsdfsfdv
-                </view>
-                <view class="content mt-5">
-                    <view class="info">
-                    <view class="price">
-                        200积分
-                    </view>
-                    <view class="num">
-                        限量1,000
-                    </view>
-                    </view>
-                    <view class="btn mt-5">
-                        兑换
-                    </view>
-                </view>
-            </view>
-            <view class="item">
-                <image src="../../images/icon_banner.png" mode=""/>
-                <view class="title">
-                    XX优惠券打剑三护发白癜风阿苏打粉
+                <view class="title mt-5">
+                    XX优惠券
                 </view>
                 <view class="content mt-5">
                     <view class="info">
