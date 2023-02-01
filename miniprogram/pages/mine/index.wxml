@@ -41,7 +41,7 @@
                 </view>
             </view>
         </view>
-        <view class="wrap list mt-10">
+        <view class="wrap list mt-40">
             <view class="item">
                 <view class="flex-center">
                     <image src="../../images/icon-business.png" mode="" />

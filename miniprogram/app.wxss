@@ -40,6 +40,13 @@ page {
     align-items: center;
 }
 
+.flex{
+    display: flex;
+    align-items: center;
+}
+.fw-700{
+    font-weight: 700;
+}
 .flex-center {
     display: flex;
     align-items: center;
@@ -51,13 +58,19 @@ page {
 }
 
 .mt-20 {
-    margin-top: 20rpx;
+    margin-top: 20rpx !important;
 }
 
 .mt-40 {
-    margin-top: 40rpx;
+    margin-top: 40rpx !important;
 }
 
+.mr-20{
+    margin-right: 20rpx;
+}
+.ml-20{
+    margin-left: 20rpx;
+}
 .pt-20 {
     padding-top: 20rpx;
 }
@@ -66,6 +79,12 @@ page {
     margin-left: 20rpx;
 }
 
+.fs-20{
+    font-size: 20rpx;
+}
+.mt-4{
+    margin-top: 4rpx;
+}
 .fs-36 {
     font-size: 36rpx;
 }

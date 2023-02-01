@@ -43,22 +43,9 @@
     width: 700rpx;
     margin: 0 auto;
 }
-.flex{
-    display: flex;
-    align-items: center;
-}
-.fw-700{
-    font-weight: bold;
-}
 .fc-gray{
     color: #393742;
     font-weight: bold;
-}
-.mr-20{
-    margin-right: 20rpx;
-}
-.ml-20{
-    margin-left: 20rpx;
 }
 .back-yellow{
     /* background-color: #fda725; */
@@ -70,10 +57,4 @@
 }
 .fc-yellow{
     /* color: #cac8630a; */
-}
-.fs-20{
-    font-size: 20rpx;
-}
-.mt-4{
-    margin-top: 4rpx;
 }
