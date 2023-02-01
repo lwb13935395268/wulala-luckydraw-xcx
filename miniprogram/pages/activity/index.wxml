@@ -21,14 +21,14 @@
                 <hr class="{{3 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
             </view>
             <view class='titleBox' bindtap='titleClick' data-idx='4'>
-                <text class="{{4 == currentIndex ? 'fontColorBox4' : ''}}">未参与</text>
+                <text class="{{4 == currentIndex ? 'fontColorBox4' : ''}}">已结束</text>
                 <hr class="{{4 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
             </view>
         </view>
         <!-- 内容布局 -->
         <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
             <swiper-item class='swiperTtemBox'>
-                <view class="activity">
+                <view class="activity wrap">
                     <image src="../../images/icon-activity_1.png" mode=""/>
                     <view class="activity-content">
                         <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
@@ -43,7 +43,7 @@
                 <view>2</view>
             </swiper-item>
             <swiper-item class='swiperTtemBox'>
-                <view class="activity">
+                <view class="activity wrap">
                     <image src="../../images/icon-activity_1.png" mode=""/>
                     <view class="activity-content">
                         <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
@@ -53,7 +53,7 @@
                 </view>
             </swiper-item>
             <swiper-item class='swiperTtemBox'>
-                <view class="activity opct">
+                <view class="activity opct wrap">
                     <image src="../../images/icon-activity_1.png" mode=""/>
                     <view class="activity-content">
                         <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>

@@ -28,5 +28,12 @@ page {
 
 .wrap{
     margin: 0 auto;
-    width: 740rpx;
+    width: 700rpx;
+}
+
+.pt-15{
+    padding-top: 15rpx;
+}
+.opct{
+    opacity: .5;
 }
