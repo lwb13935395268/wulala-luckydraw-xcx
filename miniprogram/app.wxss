@@ -25,3 +25,8 @@ page {
   flex-direction: column;
   justify-content: flex-start;
 }
+
+.wrap{
+    margin: 0 auto;
+    width: 740rpx;
+}

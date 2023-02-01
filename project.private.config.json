@@ -58,6 +58,12 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "商家入驻",
+                    "pathName": "pages/uploading/index",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }
