@@ -115,13 +115,3 @@
     width: 680rpx;
     margin: 0 auto;
 }
-.mt-40{
-    margin-top: 40rpx;
-}
-.flex-between{
-    display: flex;
-    justify-content: space-between;
-}
-.ml-5{
-    margin-left: 5rpx;
-}

@@ -49,10 +49,6 @@
     width: 30rpx;
     height: 30rpx;
 }
-.wrap{
-    width: 700rpx;
-    margin: 0 auto;
-}
 .fc-gray{
     color: #393742;
     font-weight: bold;
@@ -67,10 +63,4 @@
 }
 .fc-yellow{
     /* color: #cac8630a; */
-}
-.ml-30{
-    margin-left: 30rpx;
-}
-.ml-25{
-    margin-left: 25rpx;
 }
