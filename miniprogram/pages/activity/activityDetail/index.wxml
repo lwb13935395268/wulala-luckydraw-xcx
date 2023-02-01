@@ -1,2 +1,22 @@
 <!--pages/activityDetail/index.wxml-->
-<text>pages/activityDetail/index.wxml</text>
+<view class="wraps">
+    <view class="header">
+        <view class="convert">
+            <image src="../../../images/iocn-convert.png" bindtap="nextHome"></image>
+            <view class="setting">
+                <view class="setting-main">
+                    <text>设置</text>
+                </view>
+                <view class="setting-main">
+                    <text>规则</text>
+                </view>
+                <view class="setting-main">
+                    <text>客服</text>
+                </view>
+                <view class="setting-main">
+                    <text>分享</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

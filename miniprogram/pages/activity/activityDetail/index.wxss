@@ -1,1 +1,25 @@
 /* pages/activityDetail/index.wxss */
+.header{
+    width: 100vw;
+    height: 755rpx;
+    background-image: url('https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/detail.png?sign=af6042ff2dade0f8f6a342a63cafaefd&t=1675235305');
+    background-size: 100% 70%;
+    background-repeat: no-repeat;
+}
+.convert image{
+    width: 45rpx;
+    height: 45rpx;
+    margin: 20rpx;
+}
+.setting{
+    float: right;
+}
+.setting-main{
+    width: 100rpx;
+    height: 40rpx;
+    background-color: #8f4d4a;
+    margin: 20rpx 0;
+    border-radius: 30rpx 0 0 30rpx ;
+    color: #fff;
+    text-align: center;
+}
