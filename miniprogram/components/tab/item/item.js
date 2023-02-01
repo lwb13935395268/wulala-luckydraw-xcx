@@ -5,10 +5,16 @@ Component({
      */
     properties: {
         name:{
-            type:String
+            type:String,
+            value:'sf'
         }
     },
 
+    lifetimes: {
+        attached(){
+            // console.log(name);
+        }
+    },
     /**
      * 组件的初始数据
      */
