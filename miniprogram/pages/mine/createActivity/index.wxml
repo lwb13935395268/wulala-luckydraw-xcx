@@ -1,17 +1,24 @@
 <!--pages/mine/createActivity/index.wxml-->
 <view class="main">
     <!-- nav -->
-    <view class="title">
+    <view class="title mb-20">
         <image bindtap="back" class="left-arrow" src="../../../images/icon-left_arrow.png" mode=""/>
         <text class="title-name">创建活动</text>
     </view>
     <!-- 活动设置 -->
     <view class="activity-set wrap">
         <view class="activity-title mtb-20">活动设置</view>
-        <view class="activity-thememap">
+        <view class="activity-thememap mt-50">
             <view class="bar"></view>
             <view class="spot"></view>
             <view class="name">活动主题图</view>
         </view>
+        <view class="upload-img">
+            <view class="content">
+                <image src="../../../images/icon-plus.png" class="plus" mode=""/>
+                <view class="name">点击可自定义主题图，小于1Mjpg/png图片，建议尺寸600*450(宽高比 5:4)</view>
+            </view>
+        </view>
+        <view class="hr"></view>
     </view>
 </view>
