@@ -32,7 +32,7 @@
                     兑换商品>
                 </view>
             </view>
-            <view class="item back-orange">
+            <view class="item back-orange" bindtap="navgator" data-path="createActivity/index">
                 <view class="fs-24 fc-white">
                     我的活动
                 </view>
