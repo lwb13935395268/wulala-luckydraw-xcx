@@ -1,32 +1,83 @@
 /**app.wxss**/
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-} 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
 
 button {
-  background: initial;
+    background: initial;
 }
 
-button:focus{
-  outline: 0;
+button:focus {
+    outline: 0;
 }
 
-button::after{
-  border: none;
+button::after {
+    border: none;
 }
 
 
 page {
-  background: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+    background: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.wrap{
+.wrap {
     margin: 0 auto;
     width: 740rpx;
+}
+
+/*
+    正阳的公共样式
+*/
+.justify-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mt-10 {
+    margin-top: 10rpx;
+}
+
+.mt-20 {
+    margin-top: 20rpx;
+}
+
+.mt-40 {
+    margin-top: 40rpx;
+}
+
+.pt-20 {
+    padding-top: 20rpx;
+}
+
+.ml-20 {
+    margin-left: 20rpx;
+}
+
+.fs-36 {
+    font-size: 36rpx;
+}
+
+.fs-28 {
+    font-size: 28rpx;
+}
+
+.fs-24 {
+    font-size: 24rpx;
+}
+
+.text-center {
+    text-align: center;
 }

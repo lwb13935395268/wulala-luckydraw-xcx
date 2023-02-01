@@ -31,7 +31,6 @@
 }
 .approve-text{
     background: #f1f1f1;
-    /* margin: 20rpx; */
     padding: 20rpx 40rpx;
 }
 .approve-text text{
@@ -54,12 +53,14 @@
     font-size: 26rpx;
     color: #494949;
 }
-.da{
-    font-size: 28rpx;
-}
-.button button{
-    margin: 20rpx 0;
+.button{
     background-color: #ff3456;
+    width: 80vw;
+    margin: 20rpx auto;
+    text-align: center;
     color: #fff;
     font-size: 32rpx;
+    font-weight: 600;
+    padding: 20rpx;
+    border-radius: 10rpx;
 }
