@@ -84,17 +84,9 @@
     padding: 8rpx 80rpx;
     color: white;
 }
-.mt-5{
-    margin-top: 10rpx;
-}
-.mt-10{
-    margin-top: 20rpx;
-}
-.mt-20{
-    margin-top: 40rpx;
-}
-.pt-10{
-    padding-top: 20rpx;
+.wrap{
+    width: 680rpx;
+    margin: 0 auto;
 }
 .justify-between{
     display: flex;
@@ -106,21 +98,29 @@
     align-items: center;
     justify-content: center;
 }
-.wrap{
-    width: 680rpx;
-    margin: 0 auto;
-}
 
-.ml-10{
+.mt-10{
+    margin-top: 10rpx;
+}
+.mt-20{
+    margin-top: 20rpx;
+}
+.mt-40{
+    margin-top: 40rpx;
+}
+.pt-20{
+    padding-top: 20rpx;
+}
+.ml-20{
     margin-left: 20rpx;
 }
-.fs-18{
+.fs-36{
     font-size: 36rpx;
 }
-.fs-14{
+.fs-28{
     font-size: 28rpx;
 }
-.fs-12{
+.fs-24{
     font-size: 24rpx;
 }
 .text-center{

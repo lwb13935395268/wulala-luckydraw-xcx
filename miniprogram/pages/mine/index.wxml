@@ -1,2 +1,39 @@
 <!--pages/mine/index.wxml-->
-<text>pages/mine/index.wxml</text>
+<!-- <text>pages/mine/index.wxml</text> -->
+<view class="mine">
+    <view class="wrap">
+        <view class="nav">
+        <view>
+            <image class="mr-10" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-news.png?sign=513b96661ee3415728bc05586157e911&t=1675215973" mode=""/>
+            <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-set.png?sign=f7a617c028caeadb9b34174bc92ecfd2&t=1675215982" mode=""/>
+        </view>
+        </view>
+        <view class="header">
+            <view>
+                <image  src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240" mode=""/>
+            </view>
+            <view>
+                <view>Hi, Dream</view>
+                <view>查看个人信息</view>
+            </view>
+        </view>
+        <view class="goods">
+            <view class="item">
+                <view>
+                    积分
+                </view>
+                <view>
+                    666
+                </view>
+            </view>
+            <view class="item">
+                <view>
+                    我的活动
+                </view>
+                <view>
+                    12
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
