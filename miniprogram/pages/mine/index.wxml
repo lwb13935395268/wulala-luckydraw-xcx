@@ -56,7 +56,7 @@
                     <image class="entry" src="../../images/icon-entry.png" mode="" />
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap="navgator" data-path="audit/index">
                 <view class="flex-center">
                     <image src="../../images/icon-examine.png" mode="" />
                     <view class="ml-25">

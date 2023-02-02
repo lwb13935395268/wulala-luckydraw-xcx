@@ -1,0 +1,40 @@
+/* pages/home/exchangeRecord/index.wxss */
+.record{
+    background-color: white;
+    border-radius: 30rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+.aline-center{
+    align-items: center;
+    font-size: 28rpx;
+}
+.title{
+    padding: 30rpx 0;
+    gap: 40rpx;
+    font-size: 26rpx;
+    border-bottom: 2rpx solid #eaeaea;
+}
+.desc{
+    padding: 10px 0;
+}
+.date{
+    font-size: 24rpx;
+    color: #767676;
+}
+.num{
+    font-size: 24rpx;
+}
+.tip{
+    width: 100%;
+    text-align: center;
+    margin: 40rpx 0;
+    color: #afafaf;
+    font-size: 24rpx;
+}
+.record image{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 20rpx;
+    flex-shrink: 0;
+}

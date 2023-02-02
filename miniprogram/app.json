@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/index",
     "pages/home/goodDetail/index",
+    "pages/home/exchangeRecord/index",
     "pages/activity/index",
     "pages/activity/activityDetail/index",
     "pages/mine/index",

@@ -45,6 +45,7 @@
     /* 底部内容样式 */
     width: 100vw;
     box-sizing: border-box;
+    /* background-color: gray; */
     /* margin: 12rpx 0rpx; */
     font-size: 28rpx;
     position: relative;
