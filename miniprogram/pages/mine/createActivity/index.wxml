@@ -7,18 +7,16 @@
     </view>
     <!-- 活动设置 -->
     <view class="activity-set wrap">
-        <view class="activity-title mtb-20">活动设置</view>
-        <view class="activity-thememap mt-50">
-            <view class="bar"></view>
-            <view class="spot"></view>
-            <view class="name">活动主题图</view>
-        </view>
+        <title class="center">活动设置</title>
+        <activityTitle class="mt-50">活动主题图</activityTitle>
         <view class="upload-img">
             <view class="content">
                 <image src="../../../images/icon-plus.png" class="plus" mode=""/>
-                <view class="name">点击可自定义主题图，小于1Mjpg/png图片，建议尺寸600*450(宽高比 5:4)</view>
+                <view class="name">点击可自定义主题图，小于1Mjpg/png图片，建议尺寸750*600(宽高比 5:4)</view>
             </view>
         </view>
         <view class="hr"></view>
+        <activityTitle class="mt-50">活动标题</activityTitle>
+
     </view>
 </view>

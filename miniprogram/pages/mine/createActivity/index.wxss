@@ -1,9 +1,15 @@
 /* pages/mine/createActivity/index.wxss */
-.mtb-20{
-    margin:0 auto;
+.center{
+    display: table;
+    margin: 0 auto;
 }
 .mt-50{
+    display: table;
     margin-top: 50rpx;
+}
+.mb-50{
+    display: table;
+    margin-bottom: 50rpx;
 }
 .mt-15{
     margin-top: 15rpx;
@@ -34,40 +40,8 @@
 .activity-set{
     background-color: white;
     border-radius: 20rpx;
-    box-shadow: 10rpx 10rpx  10rpx 10rpx #ccc;
+    box-shadow: 2rpx -2rpx 13rpx 5rpx #ccc;
     overflow: hidden;
-}
-.activity-set .activity-title{
-    width: 450rpx;
-    height: 80rpx;
-    background-image: url("https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-activity_title.png?sign=3d6313138dd1cfca228b27ed5661c244&t=1675239753");
-    background-repeat: no-repeat;
-    background-size: 450rpx 80rpx;
-    text-align: center;
-    color: white;
-    line-height: 80rpx;
-    font-size: 28rpx;
-    font-weight: 550;
-    padding-bottom: -10rpx;
-}
-.activity-thememap{
-    display: flex;
-    align-items: center;
-    gap: 20rpx;
-}
-.activity-thememap .bar{
-    background-image: linear-gradient(to right,#dc3a38,#ed573c,#fd7541);
-    height: 50rpx;
-    width: 10rpx;
-}
-.activity-thememap .spot{
-    background-color: black;
-    width: 10rpx;
-    height: 10rpx;
-    border-radius: 50%;
-}
-.activity-thememap .name{
-    font-size: 30rpx;
 }
 .upload-img{
     border: 1rpx dashed #ccc;

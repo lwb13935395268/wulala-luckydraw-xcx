@@ -1,12 +1,10 @@
 <!--pages/mine/mineActivity/index.wxml-->
-<tabItem></tabItem>
+
 <tab titleList="{{['已参与','创建的']}}">
-<!-- <view slot='已参与'>
-    haha
-</view> -->
-<tabItem name='已参与'>
-hahah
-</tabItem>
-<tabItem name='创建的'>
-asfd</tabItem>
+<view slot='已参与' class="wrap gap-tb-20">
+<activity class="" status="0"></activity>
+<activity class="" status="1"></activity>
+<activity class="" status="2"></activity>
+</view>
+<view slot='创建的' class="wrap">222</view>
 </tab>

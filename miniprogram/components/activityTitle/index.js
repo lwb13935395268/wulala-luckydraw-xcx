@@ -1,20 +1,19 @@
-// components/tab/item/item.js
+// components/activityTitle/index.js
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        name:{
+        color:{
             type:String,
-            value:'sf'
+            value:'black'
+        },
+        spotColor:{
+            type:String,
+            value:'block'
         }
     },
 
-    lifetimes: {
-        attached(){
-            // console.log(name);
-        }
-    },
     /**
      * 组件的初始数据
      */

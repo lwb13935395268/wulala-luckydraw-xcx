@@ -1,0 +1,12 @@
+/* components/title/index.wxss */
+.title{
+    width: 450rpx;
+    height: 80rpx;
+    background-repeat: no-repeat;
+    background-size: 450rpx 80rpx;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 28rpx;
+    font-weight: 550;
+    padding-bottom: -10rpx;
+}

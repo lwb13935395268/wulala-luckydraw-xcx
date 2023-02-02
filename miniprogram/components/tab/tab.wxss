@@ -1,4 +1,7 @@
 /* components/tab/tab.wxss */
+.tab{
+    display: flow-root;
+}
 
 .fontColorBox,
 .fontColorBox1 {
@@ -39,31 +42,17 @@
     /* 未选中底线样式 */
     background: transparent;
 }
-
-.swiperTtemBox {
+.swiperBox {
     /* 底部内容样式 */
+    width: 100vw;
     height: 100vh;
-    overflow: scroll;
-    margin: 12rpx 0rpx;
+    /* margin: 12rpx 0rpx; */
     font-size: 28rpx;
-    /* position: relative; */
-}
-.activity{
-    background-color: white;
-    border-radius: 20rpx;
     position: relative;
 }
-.activity image{
-    height: 280rpx;
-    width: 100%;
-}
-.activity .activity-content{
-    padding: 20rpx;
-}
-.activity .activity-content .activity-content_title{
-    font-size: 30rpx;
-}
-.activity .activity-content .activity-content_timer{
-    font-size: 25rpx;
-    color: #9a9a9a;
+.swiperTtemBox{
+    padding: 30rpx 0;
+    box-sizing: border-box;
+    height: calc(100vh - 108rpx);
+    overflow-y: scroll;
 }
