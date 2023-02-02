@@ -26,6 +26,11 @@ Page({
         currentIndex: e.currentTarget.dataset.idx
         })
     },
+    auditDetail: function (){
+        wx.navigateTo({
+          url: '/pages/mine/audit/detail/index',
+        })
+    },
 
     /**
      * 生命周期函数--监听页面加载

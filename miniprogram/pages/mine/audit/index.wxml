@@ -19,7 +19,7 @@
     <view class="main">
         <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
             <swiper-item class='swiperTtemBox'>
-                <view class="detail wrap">
+                <view class="detail wrap" bindtap="auditDetail">
                     <view class="detail-header">
                         <view class="username">易烊千玺</view>
                         <view class="audit">
@@ -42,7 +42,7 @@
                             <text>2023-02-01 20:17:52</text>
                         </view>
                     </view>
-                        <view class="btn">审核</view>
+                        <!-- <view class="btn" bindtap="checkout">审核</view> -->
                 </view>
             </swiper-item>
             <swiper-item class='swiperTtemBox'>

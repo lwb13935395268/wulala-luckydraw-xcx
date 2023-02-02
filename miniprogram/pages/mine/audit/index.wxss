@@ -1,7 +1,4 @@
 /* pages/mine/audit/index.wxss */
-.wraps{
-
-}
 .fontColorBox,
 .fontColorBox1 {
     /* 文字默认颜色 */
