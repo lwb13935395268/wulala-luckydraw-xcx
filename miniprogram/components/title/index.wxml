@@ -1,0 +1,4 @@
+<!--components/title/index.wxml-->
+<view class="title" style="color:{{color}}; background-image:url({{bjImg}})">
+    <slot></slot>
+</view>
