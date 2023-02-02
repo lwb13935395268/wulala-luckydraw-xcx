@@ -122,6 +122,12 @@ page {
 .text-center {
     text-align: center;
 }
+.gap-tb-20{
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx 0;
+    padding: 20rpx 0;
+}
 /* 
   周永峰的公共样式
 */
