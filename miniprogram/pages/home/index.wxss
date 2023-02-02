@@ -9,7 +9,7 @@
 .header{
     height: 220rpx;
     box-sizing: border-box;
-    background:linear-gradient(to bottom, #f8e8c4, #f6f6f6);
+    background:linear-gradient(to bottom, #fc8f20, #f6f6f6);
     color: #5e5558;
     padding: 40rpx;
 }
@@ -48,7 +48,7 @@
     padding: 20rpx 0;
 }
 .shop-title{
-    background-color: #ff5100;
+    background-color: #f8e8c4;
     /* background-color: #f8e8c4; */
     border-radius: 20rpx;
     font-size: 36rpx;
