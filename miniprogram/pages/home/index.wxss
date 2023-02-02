@@ -156,6 +156,7 @@
       /* background-color: white; */
       /* opacity: .5;
       ba */
+      padding: 2rpx;
   }
   .box .content{
     height: calc(100% - 80rpx);
