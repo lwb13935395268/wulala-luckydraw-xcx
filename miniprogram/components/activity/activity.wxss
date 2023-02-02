@@ -1,8 +1,14 @@
 /* components/activity/activity.wxss */
+.opct{
+    opacity: .5;
+}
+.pt-15{
+    padding-top: 15rpx;
+}
 .activity{
     background-color: white;
     border-radius: 20rpx;
-    /* position: relative; */
+    position: relative;
     box-sizing: border-box;
 }
 .activity image{
@@ -18,4 +24,12 @@
 .activity .activity-content .activity-content_timer{
     font-size: 25rpx;
     color: #9a9a9a;
+}
+.closed-img{
+    position:absolute;
+    bottom: 40rpx;
+    right: 40rpx;
+    width: 140rpx !important;
+    height: 140rpx !important;
+    transform:rotate(-30deg);
 }

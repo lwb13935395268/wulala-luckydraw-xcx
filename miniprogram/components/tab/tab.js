@@ -6,6 +6,10 @@ Component({
     properties: {
         titleList:{
             type:[],
+        },
+        fixedHead:{
+            type:Boolean,
+            value:true
         }
     },
     lifetimes: {

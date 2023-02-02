@@ -15,6 +15,11 @@ Component({
         date: {
             type: String,
             value: '日期'
+        },
+        status:{
+            type:Number,
+            value:0
+            //0,正常；1已参与，2结束
         }
     },
     /**

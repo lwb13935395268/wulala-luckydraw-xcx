@@ -2,8 +2,9 @@
 
 <tab titleList="{{['已参与','创建的']}}">
 <view slot='已参与' class="wrap gap-tb-20">
-<activity class=""></activity>
-<activity class=""></activity>
+<activity class="" status="0"></activity>
+<activity class="" status="1"></activity>
+<activity class="" status="2"></activity>
 </view>
 <view slot='创建的' class="wrap">222</view>
 </tab>

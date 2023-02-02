@@ -1,11 +1,35 @@
 // pages/home/index.js
 Page({
-
+    setModal(){
+        this.setData({
+            modalName:!this.data.modalName
+          })
+    },
+    switch(){
+        this.setData({
+          catchtouchmove:!this.data.catchtouchmove
+        })
+      },
+    //   modal(){
+    //     this.setData({
+    //       modalName:!this.data.modalName
+    //     })
+    //   },
+    navgator(e){
+        let path=e.currentTarget.dataset.path;
+        wx.navigateTo({
+          url: '/pages/home/'+path,
+        })
+    },
     /**
      * 页面的初始数据
      */
     data: {
-
+        position:'center',
+        catchtouchmove:true,
+        modalName:false,
+        scrollbar:false,
+        enhanced:true,
     },
 
     /**
