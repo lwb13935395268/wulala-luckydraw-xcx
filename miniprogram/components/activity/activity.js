@@ -3,17 +3,20 @@ Component({
     /**
      * 组件的属性列表
      */
+    options: {
+        // styleIsolation: 'shared'
+    },
+    externalClasses: ['mt-50'],
     properties: {
-        title:{
-            type:String,
-            value:'标题'
+        title: {
+            type: String,
+            value: '标题'
         },
-        date:{
-            type:String,
-            value:'日期'
+        date: {
+            type: String,
+            value: '日期'
         }
     },
-
     /**
      * 组件的初始数据
      */

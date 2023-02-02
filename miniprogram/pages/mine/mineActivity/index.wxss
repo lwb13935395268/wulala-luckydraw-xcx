@@ -1,1 +1,12 @@
 /* pages/mine/mineActivity/index.wxss */
+.mt-50{
+    margin-top: 50rpx;
+    /* display: flow-root; */
+    width: 100rpx;
+    height: 50rpx;
+}
+.gap-tb-20{
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx 0;
+}
