@@ -46,11 +46,13 @@
     /* 底部内容样式 */
     width: 100vw;
     height: 100vh;
-    overflow: scroll;
     /* margin: 12rpx 0rpx; */
     font-size: 28rpx;
-    /* position: relative; */
+    position: relative;
 }
 .swiperTtemBox{
-    padding: 20rpx 0;
+    padding: 30rpx 0;
+    box-sizing: border-box;
+    height: calc(100vh - 108rpx);
+    overflow-y: scroll;
 }
