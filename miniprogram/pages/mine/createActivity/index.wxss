@@ -4,7 +4,12 @@
     margin: 0 auto;
 }
 .mt-50{
+    display: table;
     margin-top: 50rpx;
+}
+.mb-50{
+    display: table;
+    margin-bottom: 50rpx;
 }
 .mt-15{
     margin-top: 15rpx;
@@ -37,25 +42,6 @@
     border-radius: 20rpx;
     box-shadow: 2rpx -2rpx 13rpx 5rpx #ccc;
     overflow: hidden;
-}
-.activity-thememap{
-    display: flex;
-    align-items: center;
-    gap: 20rpx;
-}
-.activity-thememap .bar{
-    background-image: linear-gradient(to right,#dc3a38,#ed573c,#fd7541);
-    height: 50rpx;
-    width: 10rpx;
-}
-.activity-thememap .spot{
-    background-color: black;
-    width: 10rpx;
-    height: 10rpx;
-    border-radius: 50%;
-}
-.activity-thememap .name{
-    font-size: 30rpx;
 }
 .upload-img{
     border: 1rpx dashed #ccc;
