@@ -32,9 +32,10 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/sumRecordResult/index",
-                    "pathName": "pages/sumRecordResult/index",
+                    "name": "审核详情",
+                    "pathName": "pages/mine/audit/detail/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
