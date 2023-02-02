@@ -10,6 +10,8 @@
     "pages/mine/createActivity/index",
     "pages/mine/audit/index",
     "pages/mine/audit/detail/index",
+    "pages/mine/audit/succeed/index",
+    "pages/mine/audit/fail/index",
     "pages/mine/mineActivity/index"
   ],
   "window": {

@@ -39,15 +39,17 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/updateRecord/index",
-                    "pathName": "pages/updateRecord/index",
+                    "name": "审核成功",
+                    "pathName": "pages/mine/audit/succeed/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "pages/updateRecordResult/index",
-                    "pathName": "pages/updateRecordResult/index",
+                    "name": "审核失败",
+                    "pathName": "pages/mine/audit/fail/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
