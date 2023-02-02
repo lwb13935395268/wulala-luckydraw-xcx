@@ -52,6 +52,12 @@ page {
     align-items: center;
     justify-content: center;
 }
+.fc{
+    color: red;
+}
+.mb-40{
+    margin-bottom: 40rpx;
+}
 .ml-30{
     margin-left: 30rpx;
 }
@@ -116,7 +122,6 @@ page {
 .text-center {
     text-align: center;
 }
-
 /* 
   周永峰的公共样式
 */

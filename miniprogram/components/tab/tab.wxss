@@ -1,4 +1,7 @@
 /* components/tab/tab.wxss */
+.tab{
+    display: flow-root;
+}
 
 .fontColorBox,
 .fontColorBox1 {
@@ -39,12 +42,15 @@
     /* 未选中底线样式 */
     background: transparent;
 }
-
-.swiperTtemBox {
+.swiperBox {
     /* 底部内容样式 */
+    width: 100vw;
     height: 100vh;
     overflow: scroll;
-    margin: 12rpx 0rpx;
+    /* margin: 12rpx 0rpx; */
     font-size: 28rpx;
     /* position: relative; */
+}
+.swiperTtemBox{
+    padding: 20rpx 0;
 }

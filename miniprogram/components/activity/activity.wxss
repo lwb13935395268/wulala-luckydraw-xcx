@@ -1,9 +1,9 @@
 /* components/activity/activity.wxss */
-@import '../../app.wxss';
 .activity{
     background-color: white;
     border-radius: 20rpx;
     /* position: relative; */
+    box-sizing: border-box;
 }
 .activity image{
     height: 280rpx;

@@ -1,12 +1,14 @@
 <!--components/tab/tab.wxml-->
-<view class='navBox'>
-    <view wx:for="{{titleList}}"  wx:key="index" class='titleBox' bindtap='titleClick' data-idx='{{index}}'>
-        <text class="{{index == currentIndex ? 'fontColorBox' : ''}}">{{item}}</text>
-        <hr class="{{index == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+<view class="tab">
+    <view class='navBox'>
+        <view wx:for="{{titleList}}" wx:key="index" class='titleBox' bindtap='titleClick' data-idx='{{index}}'>
+            <text class="{{index == currentIndex ? 'fontColorBox' : ''}}">{{item}}</text>
+            <hr class="{{index == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+        </view>
     </view>
+    <swiper class='swiperBox' bindchange='pagechange' current='{{currentIndex}}'>
+        <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox'>
+            <slot name="{{item}}"></slot>
+        </swiper-item>
+    </swiper>
 </view>
-<swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
-    <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox'>
-        <slot name="{{item}}"></slot>
-    </swiper-item>
-</swiper>
