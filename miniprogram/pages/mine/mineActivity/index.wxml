@@ -1,3 +1,9 @@
 <!--pages/mine/mineActivity/index.wxml-->
-<text>pages/mine/mineActivity/index.wxml</text>
-<tab></tab>
+<tab titleList="{{['已参与','创建的']}}">
+<view slot='已参与'>
+<activity class="mt-20"></activity>
+<activity class="ml-20"></activity>
+<activity></activity>
+</view>
+<view slot='创建的'>222</view>
+</tab>

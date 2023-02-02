@@ -25,9 +25,10 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/selectRecord/index",
-                    "pathName": "pages/selectRecord/index",
+                    "name": "审核列表",
+                    "pathName": "pages/mine/audit/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
@@ -71,6 +72,27 @@
                 {
                     "name": "pages/mine/createActivity/index",
                     "pathName": "pages/mine/createActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "ff",
+                    "pathName": "pages/home/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "sdf",
+                    "pathName": "pages/mine/createActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/mineActivity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

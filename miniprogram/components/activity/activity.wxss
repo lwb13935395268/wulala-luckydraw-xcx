@@ -1,0 +1,21 @@
+/* components/activity/activity.wxss */
+@import '../../app.wxss';
+.activity{
+    background-color: white;
+    border-radius: 20rpx;
+    /* position: relative; */
+}
+.activity image{
+    height: 280rpx;
+    width: 100%;
+}
+.activity .activity-content{
+    padding: 20rpx;
+}
+.activity .activity-content .activity-content_title{
+    font-size: 30rpx;
+}
+.activity .activity-content .activity-content_timer{
+    font-size: 25rpx;
+    color: #9a9a9a;
+}

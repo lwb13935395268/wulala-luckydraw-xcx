@@ -1,0 +1,8 @@
+<!--components/activity/activity.wxml-->
+<view class="activity wrap">
+    <image src="../../images/icon-activity_1.png" mode="" />
+    <view class="activity-content">
+        <view class="activity-content_title ml-20">{{title}}</view>
+        <view class="activity-content_timer pt-15">{{date}}</view>
+    </view>
+</view>
