@@ -27,7 +27,7 @@ page {
 }
 
 .wrap {
-    margin: 0 auto !important;
+    margin: 0 auto;
     width: 700rpx;
 }
 
