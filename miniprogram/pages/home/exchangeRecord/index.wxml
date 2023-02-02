@@ -1,0 +1,72 @@
+<!--pages/home/exchangeRecord/index.wxml-->
+<view class="record-page">
+    <view class="wrap">
+        <view class="record mt-40">
+            <view class="title flex aline-center">
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
+                <view>
+                腾讯100元会员折扣券
+                </view>
+            </view>
+            <view class="desc flex-between">
+                <view class="date">
+                    2022/11/11 11:11:54
+                </view>
+                <view class="num">
+                    消耗积分：888
+                </view>
+            </view>
+        </view>
+        <view class="record mt-40">
+            <view class="title flex aline-center">
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
+                <view>
+                腾讯100元会员折扣券到北京岸边的房间啊安居房把就无法
+                </view>
+            </view>
+            <view class="desc flex-between">
+                <view class="date">
+                    2022/11/11 11:11:54
+                </view>
+                <view class="num">
+                    消耗积分：888
+                </view>
+            </view>
+        </view>
+        <view class="record mt-40">
+            <view class="title flex aline-center">
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
+                <view>
+                腾讯100元的房间啊法
+                </view>
+            </view>
+            <view class="desc flex-between">
+                <view class="date">
+                    2022/11/11 11:11:54
+                </view>
+                <view class="num">
+                    消耗积分：888
+                </view>
+            </view>
+        </view>
+        <view class="record mt-40">
+            <view class="title flex aline-center">
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
+                <view>
+                腾讯100元会员折扣券间啊安居房把就无法
+                </view>
+            </view>
+            <view class="desc flex-between">
+                <view class="date">
+                    2022/11/11 11:11:54
+                </view>
+                <view class="num">
+                    消耗积分：888
+                </view>
+            </view>
+        </view>
+        <view class="tip">
+            没有更多记录了
+        </view>
+    </view>
+</view>

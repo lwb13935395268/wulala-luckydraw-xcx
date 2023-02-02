@@ -1,91 +1,124 @@
 <!--pages/home/index.wxml-->
 <view class="home">
-<view class="header">
-    <view class="wrap flex-between">
-    <view class="mine">
-        <view class="">
-            我的积分
-        </view>
-        <view class="num mt-20">
-            <text>57</text>
-            <image src="../../images/icon-entry.png" mode=""/>
+    <view bindtap="modal" class="modal" wx:if="{{modalName}}" catchtouchmove="{{catchtouchmove}}">
+          <view class="box">
+            <image bindtap="setModal" src="../../images/icon-close.png" mode="" />
+            <view class="title">
+                活动规则
+            </view>
+            <view class="content">
+                <scroll-view scroll-y="true" style="height: 100%;" enhanced="{{enhanced}}" show-scrollbar="{{scrollbar}}">
+                    <view class="list">
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+
+                    </view>
+                </scroll-view>
+            </view>
         </view>
     </view>
-    <view class="rule">
-        <view>
-            活动规则
-        </view>
-        <view class="flex-center">
-        <image src="../../images/icon-record.png" mode=""/>
-        <text class="ml-5">兑换记录</text>
-        </view>
-    </view>
-    </view>
-</view>
-<view class="body">
-    <view class="wrap">
-        <view class="shop-title text-center">
-            积分兑换
-        </view>
-        <view class="shops mt-20">
-            <view class="item">
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
-                <view class="title mt-10">
-                    XX优惠券
+    <view class="header">
+        <view class="wrap flex-between">
+            <view class="mine">
+                <view class="">
+                    我的积分
                 </view>
-                <view class="content mt-10">
-                    <view class="info">
-                    <view class="price">
-                        200积分
-                    </view>
-                    <view class="num">
-                        限量1,000
-                    </view>
-                    </view>
-                    <view class="btn mt-20">
-                        兑换
-                    </view>
+                <view class="num mt-20">
+                    <text>57</text>
+                    <image src="../../images/icon-entry.png" mode="" />
                 </view>
             </view>
-            <view class="item">
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
-                <view class="title mt-10">
-                    XX优惠券
+            <view class="rule">
+                <view class="" bindtap="setModal">
+                    活动规则
                 </view>
-                <view class="content mt-10">
-                    <view class="info">
-                    <view class="price">
-                        200积分
-                    </view>
-                    <view class="num">
-                        限量1,000
-                    </view>
-                    </view>
-                    <view class="btn mt-20">
-                        兑换
-                    </view>
-                </view>
-            </view>
-            <view class="item">
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode=""/>
-                <view class="title mt-10">
-                    XX优惠券sdssddssadssdf
-                </view>
-                <view class="content mt-10">
-                    <view class="info">
-                    <view class="price">
-                        200积分
-                    </view>
-                    <view class="num">
-                        限量1,000
-                    </view>
-                    </view>
-                    <view class="btn mt-20">
-                        兑换
-                    </view>
+                <view class="flex-center" bindtap="navgator" data-path="exchangeRecord/index">
+                    <image src="../../images/icon-record.png" mode="" />
+                    <text class="ml-5">兑换记录</text>
                 </view>
             </view>
         </view>
     </view>
-</view>
+    <view class="body">
+        <view class="wrap">
+            <view class="shop-title text-center">
+                积分兑换
+            </view>
+            <view class="shops mt-20">
+                <view class="item" bindtap="navgator" data-path="goodDetail/index">
+                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
+                    <view class="title mt-10">
+                        XX优惠券
+                    </view>
+                    <view class="content mt-10">
+                        <view class="info">
+                            <view class="price">
+                                200积分
+                            </view>
+                            <view class="num">
+                                限量1,000
+                            </view>
+                        </view>
+                        <view class="btn mt-20">
+                            兑换
+                        </view>
+                    </view>
+                </view>
+                <view class="item" bindtap="navgator" data-path="goodDetail/index">
+                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
+                    <view class="title mt-10">
+                        XX优惠券
+                    </view>
+                    <view class="content mt-10">
+                        <view class="info">
+                            <view class="price">
+                                200积分
+                            </view>
+                            <view class="num">
+                                限量1,000
+                            </view>
+                        </view>
+                        <view class="btn mt-20">
+                            兑换
+                        </view>
+                    </view>
+                </view>
+                <view class="item" bindtap="navgator" data-path="goodDetail/index">
+                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
+                    <view class="title mt-10">
+                        XX优惠券
+                    </view>
+                    <view class="content mt-10">
+                        <view class="info">
+                            <view class="price">
+                                200积分
+                            </view>
+                            <view class="num">
+                                限量1,000
+                            </view>
+                        </view>
+                        <view class="btn mt-20">
+                            兑换
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>

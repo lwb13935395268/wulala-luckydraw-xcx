@@ -1,4 +1,7 @@
 /* pages/home/index.wxss */
+.home{
+    height: 100vh;
+}
 .img-4{
     width: 140rpx;
     height: 140rpx;
@@ -6,7 +9,7 @@
 .header{
     height: 220rpx;
     box-sizing: border-box;
-    background:linear-gradient(to bottom, #f8e8c4, #f6f6f6);
+    background:linear-gradient(to bottom, #fc8f20, #f6f6f6);
     color: #5e5558;
     padding: 40rpx;
 }
@@ -45,7 +48,7 @@
     padding: 20rpx 0;
 }
 .shop-title{
-    background-color: #ff5100;
+    background-color: #f8e8c4;
     /* background-color: #f8e8c4; */
     border-radius: 20rpx;
     font-size: 36rpx;
@@ -110,7 +113,68 @@
     padding: 8rpx 80rpx;
     color: #d8902a;
 }
-.wrap{
-    width: 680rpx;
-    margin: 0 auto;
-}
+.modal{
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal .box{
+    width: 75%;
+    height: 690rpx;
+    overflow-y: scroll;
+    background-color: #fff;
+    border-radius: 20rpx;
+    position: relative;
+    box-sizing: border-box;
+    padding:0 30rpx;
+    padding-bottom: 30rpx;
+  }
+  .modal image{
+      position: absolute;
+      width: 45rpx;
+      height: 45rpx;
+      right: 14rpx;
+      top: 14rpx;
+  }
+  .box .title{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    height: 80rpx;
+    background-color: white;
+    border-radius: 20rpx;
+    font-size: 30rpx;
+  }
+  .rule>view{
+      /* background-color: white; */
+      /* opacity: .5;
+      ba */
+      padding: 2rpx;
+  }
+  .box .content{
+    height: calc(100% - 80rpx);
+    /* overflow-y: scroll; */
+    box-sizing: border-box;
+    font-size: 28rpx;
+    color: #5c5c5c;
+  }
+  .box .list{
+    display: flex;
+    flex-direction: column;
+    gap:40rpx 0;
+    padding: 20rpx 0;
+
+  }
+  .box .text{
+      padding: 0 20rpx;
+  }
+  .h-80{
+      height: 80rpx;
+  }

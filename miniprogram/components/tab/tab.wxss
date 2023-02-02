@@ -1,6 +1,5 @@
 /* components/tab/tab.wxss */
 .tab{
-    display: flow-root;
 }
 
 .fontColorBox,
@@ -45,14 +44,16 @@
 .swiperBox {
     /* 底部内容样式 */
     width: 100vw;
-    height: 100vh;
+    box-sizing: border-box;
+    /* background-color: gray; */
     /* margin: 12rpx 0rpx; */
     font-size: 28rpx;
     position: relative;
 }
 .swiperTtemBox{
-    padding: 30rpx 0;
     box-sizing: border-box;
+}
+.scroll{
     height: calc(100vh - 108rpx);
-    overflow-y: scroll;
+
 }

@@ -39,14 +39,34 @@
 .goods .num{
     /* color:  w; */
 }
+.list{
+    border-radius: 10rpx;
+    overflow: hidden;
+}
 .list .item{
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    padding: 20rpx 10rpx;
+    padding-left: 20rpx;
     font-weight: bold;
     font-size: 28rpx;
+    background-color: white;
+    gap: 0 20rpx;
+}
+.item .icon{
+    display: block;
+    flex-shrink: 0;
+}
+.item .icon image{
+    display: block;
+}
+.item .link{
+    width: 100%;
+    border-bottom:4rpx solid #f6f6f6 ;
+    padding: 30rpx 0;
+    padding-right: 20rpx;
+    box-sizing: border-box;
 }
 .list .item image{
     width: 40rpx;

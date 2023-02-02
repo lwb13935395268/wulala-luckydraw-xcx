@@ -1,12 +1,12 @@
 <!--pages/mine/createActivity/index.wxml-->
 <view class="main">
     <!-- nav -->
-    <view class="title mb-20">
+    <view class="title">
         <image bindtap="back" class="left-arrow" src="../../../images/icon-left_arrow.png" mode=""/>
         <text class="title-name">创建活动</text>
     </view>
     <!-- 活动设置 -->
-    <view class="activity-set wrap">
+    <view class="activity-set mt-30 mb-30 wrap">
         <title class="center">活动设置</title>
         <activityTitle class="mt-50">活动主题图</activityTitle>
         <view class="upload-img">
@@ -17,6 +17,100 @@
         </view>
         <view class="hr"></view>
         <activityTitle class="mt-50">活动标题</activityTitle>
-
+        <form bindsubmit="bindFormSubmit">
+            <textarea placeholder="请输入您的活动标题(30字以内)" class="textarea" maxlength="30"    	placeholder-style="font-size:30rpx;color:#ccc;" name="textarea"/>
+            <!-- <button form-type="submit"> 提交 </button> -->
+        </form>
+        <activityTitle class="mt-50">活动时间</activityTitle>
+        <view class="activity-timer">
+            <picker mode="date" value="{{startDate}}" start="2023-02-02" end="2026-01-01"bindchange="bindDateChange">
+                <view class="picker">
+                    开始日期: 
+                    <text class="start-time">{{startDate}}</text>
+                </view>
+            </picker>
+            <picker mode="time" value="{{startTime}}" start="00:00" end="" bindchange="bindTimeChange">
+                <view class="picker">
+                    开始时间: 
+                    <text class="start-time">{{startTime}}</text>
+                </view>
+            </picker>
+        </view>
+        <view class="activity-timer">
+            <picker mode="date" value="{{endDate}}" start="2023-02-02" end="2026-01-01"bindchange="endDateChange">
+                <view class="picker">
+                    结束日期: 
+                    <text class="start-time">{{endDate}}</text>
+                </view>
+            </picker>
+            <picker mode="time" value="{{endTime}}" start="00:00" end="" bindchange="endTimeChange">
+                <view class="picker">
+                    结束时间: 
+                    <text class="start-time">{{endTime}}</text>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <!-- 奖品详情 -->
+    <view class="activity-set mt-30 mb-30 wrap">
+        <title class="center">奖品详情</title>
+        <activityTitle class="mt-50">奖品名称</activityTitle>
+        <form bindsubmit="bindFormSubmit">
+            <textarea placeholder="请输入您的奖品名称(30字以内)" class="textarea" maxlength="30"    	placeholder-style="font-size:30rpx;color:#ccc;" name="textarea"/>
+            <!-- <button form-type="submit"> 提交 </button> -->
+        </form>
+        <activityTitle class="mt-50">奖品数量</activityTitle>
+        <view class="prize">
+            <input placeholder="奖品数量" bindinput="prizeNum" maxlength="10" type="text"/>
+            <text>个</text>
+        </view>
+        <activityTitle class="mt-50">满足条件</activityTitle>
+        <input class="conditions-met" placeholder="如 : 集齐多少积分或者拉多少人" bindinput="conditionsMet" maxlength="10" type="text"/>
+        <activityTitle class="mt-50">奖品介绍</activityTitle>
+        <view class="activity-details">
+            <button type="primary" class="activity-details_btn" bindtap="addText">
+                <image src=".././../../images/icon-text.png" mode=""/>添加文本
+            </button>
+            <button type="primary" class="activity-details_btn">
+                <image src=".././../../images/icon-photo.png" mode=""/>添加图片
+            </button>
+        </view>
+    </view>
+    <!-- 其他设置 -->
+    <view class="activity-set mt-30 mb-30 wrap">
+        <title class="center">其他设置</title>
+        <activityTitle class="mt-50">活动规则</activityTitle>
+        <view class="activity-rule">
+            <view class="one">
+                1.点击我的点击->查看个人信息,填写姓名和手机号!
+            </view>
+            <view class="two">
+                2.参加成功后完成要求即可
+            </view>
+            <view class="three">
+                3.活动开始后必须在规定时间内完成,否则,不退费!
+            </view>
+        </view>
+        <activityTitle class="mt-50">报名设置</activityTitle>
+        <view class="sign-up">
+            <checkbox-group bindchange="checkboxChange" class="df">
+                <label class="df" wx:for="{{items}}" wx:key="index">
+                    <checkbox color="#fd7541" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                </label>
+            </checkbox-group>
+            <view class="tips mt-20">最多可选三项,选择的字段为客户参加活动时必填的内容</view>
+        </view>
+    </view>
+    <!-- 机构介绍 判断有没有上传合格证,上传是否通过 -->
+    <view class="activity-set mt-30 mb-30 wrap">
+        <title class="center">机构介绍</title>
+        <view class="introduce">
+            请先进行合格认证,在去我的页面完善我的个人信息,发布活动前编辑,活动发布前可修改活动内容,开始之后就不可以了!
+        </view>
+        <button type="primary" class="activity-details_btn mb-50">去认证</button>
+    </view>
+    <view class="df">
+        <button type="primary" class="activity-details_btn mb-50">取消发布</button>
+        <button type="primary" class="activity-details_btn mb-50">立即发布</button>
     </view>
 </view>
