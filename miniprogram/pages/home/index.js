@@ -1,6 +1,12 @@
 // pages/home/index.js
 Page({
 
+    navgator(e){
+        let path=e.currentTarget.dataset.path;
+        wx.navigateTo({
+          url: '/pages/home/'+path,
+        })
+    },
     /**
      * 页面的初始数据
      */

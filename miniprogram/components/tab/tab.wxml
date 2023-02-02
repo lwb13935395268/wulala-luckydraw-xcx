@@ -6,9 +6,11 @@
             <hr class="{{index == currentIndex ? 'lineBox' : 'notLineBox'}}" />
         </view>
     </view>
-    <swiper class='swiperBox' bindchange='pagechange' current='{{currentIndex}}'>
+    <swiper class="swiperBox {{fixedHead?'scroll':''}}" bindchange='pagechange' current='{{currentIndex}}'>
         <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox'>
+            <scroll-view scroll-y="true" style="height: 100%;">
             <slot name="{{item}}"></slot>
+        </scroll-view>
         </swiper-item>
     </swiper>
 </view>
