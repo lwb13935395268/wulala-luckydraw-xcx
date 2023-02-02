@@ -8,9 +8,6 @@
     background-color: #f6f6f6;
     height: 600rpx;
 }
-.back-red{
-    background-color: red;
-}
 .swiperTtemBox image {
     width: 100%;
     height: 100%;
@@ -83,11 +80,4 @@
 .text{
     font-size: 28rpx;
     color: #6c6c6c;
-}
-.h-120 {
-    width: 100%;
-    height: 120rpx;
-}
-.mr-10{
-    margin-right: 10rpx;
 }

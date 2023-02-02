@@ -19,7 +19,7 @@
             </view>
         </view>
     </view>
-    <view>
+    <view class="pt-40">
         <view class="goods wrap">
             <view class="item back-yellow">
                 <view class="fs-24 fc-white">
