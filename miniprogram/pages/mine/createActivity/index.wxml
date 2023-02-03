@@ -1,5 +1,6 @@
 <!--pages/mine/createActivity/index.wxml-->
 <!-- <view class="ns">创建活动</view> -->
+<scroll-view scroll-y="{{isScroll}}" scroll-with-animation="true" style="height: 100vh;">
 <view class="main">
     <!-- 活动设置 -->
     <view class="activity-set mt-30 mb-30 wrap">
@@ -57,11 +58,11 @@
         </form>
         <activityTitle class="mt-50">奖品数量</activityTitle>
         <view class="prize">
-            <input placeholder="奖品数量" bindinput="prizeNum" maxlength="10" type="text"/>
+            <input placeholder="奖品数量" bindinput="prizeNum" bindfocus="bindfocus" bindblur="closeblur" maxlength="10" type="text"/>
             <text>个</text>
         </view>
         <activityTitle class="mt-50">满足条件</activityTitle>
-        <input class="conditions-met" placeholder="如 : 集齐多少积分或者拉多少人" bindinput="conditionsMet" maxlength="10" type="text"/>
+        <input class="conditions-met" placeholder="如 : 集齐多少积分或者拉多少人" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" maxlength="10" type="text"/>
         <activityTitle class="mt-50">奖品介绍</activityTitle>
         <view class="activity-details">
             <button type="primary" class="activity-details_btn" bindtap="addText">
@@ -110,3 +111,4 @@
         <button type="primary" class="activity-details_btn mb-50">立即发布</button>
     </view>
 </view>
+</scroll-view>
