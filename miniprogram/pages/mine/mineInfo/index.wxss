@@ -1,0 +1,32 @@
+/* pages/mine/mineInfo/index.wxss */
+.mine-info{
+    min-height: 100vh;
+    background-color: #f6f6f6;
+}
+.ul{
+    box-sizing: border-box;
+    border-top: 0.5rpx solid #d9d9d9;
+    border-bottom: .5rpx solid #d9d9d9;
+}
+.ul .li{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx 30rpx;
+    border: 0.5rpx solid #d9d9d9;
+    box-sizing: border-box;
+}
+.li image{
+    width: 30rpx;
+    height: 30rpx;
+    display: block;
+}
+.btn{
+    display: inline-block;
+    background-color: #fd6262;
+    margin: 0 auto;
+    padding: 20rpx 140rpx;
+    border-radius: 20rpx;
+    font-size: 28rpx;
+    color: white;
+}

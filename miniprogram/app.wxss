@@ -39,7 +39,10 @@ page {
     justify-content: space-between;
     align-items: center;
 }
-
+.align-center{
+    display: flex;
+    align-items: center;
+}
 .flex{
     display: flex;
     align-items: center;
@@ -109,6 +112,9 @@ page {
 .mr-10{
     margin-right: 10rpx;
 }
+.ptb-20{
+    padding: 20rpx 0;
+}
 .back-red{
     background-color: red;
 }
@@ -124,6 +130,9 @@ page {
 }
 .fc-gray2{
     color: #f6f6f6ab;
+}
+.fc-gray3{
+    color: #808080;
 }
 
 .fs-20{
