@@ -96,9 +96,34 @@ page {
 .pt-20 {
     padding-top: 20rpx;
 }
-
+.pt-40{
+    padding-top: 40rpx;
+}
 .ml-20 {
     margin-left: 20rpx;
+}
+.h-120 {
+    width: 100%;
+    height: 120rpx;
+}
+.mr-10{
+    margin-right: 10rpx;
+}
+.back-red{
+    background-color: red;
+}
+.h-80{
+    height: 80rpx;
+}
+.fc-gray{
+    color: gray;
+    font-weight: bold;
+}
+.fc-white{
+    color: white;
+}
+.fc-gray2{
+    color: #f6f6f6ab;
 }
 
 .fs-20{

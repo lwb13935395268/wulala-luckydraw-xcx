@@ -31,6 +31,16 @@ Page({
           url: '/pages/mine/audit/detail/index',
         })
     },
+    auditSuccess: function (){
+        wx.navigateTo({
+          url: '/pages/mine/audit/succeed/index',
+        })
+    },
+    auditFail: function (){
+        wx.navigateTo({
+          url: '/pages/mine/audit/fail/index',
+        })
+    },
 
     /**
      * 生命周期函数--监听页面加载

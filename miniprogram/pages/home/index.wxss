@@ -9,7 +9,7 @@
 .header{
     height: 220rpx;
     box-sizing: border-box;
-    background:linear-gradient(to bottom, #f8e8c4, #f6f6f6);
+    background:linear-gradient(to right, #e2ad78, #fbd8b2);
     color: #5e5558;
     padding: 40rpx;
 }
@@ -30,7 +30,7 @@
     font-size: 28rpx;
 } 
 .header .num{
-    color: black;
+    color: #f8e8c4;
     font-size: 28px;
 }
 .header .num image{
@@ -42,19 +42,16 @@
 }
 .body{
     background-color: #f6f6f600;
-    /* background: linear-gradient(to bottom, #ec402c, #f9ceb1); */
     min-height: calc(100vh - 220rpx);
     box-sizing: border-box;
     padding: 20rpx 0;
 }
 .shop-title{
-    background-color: #ff5100;
-    /* background-color: #f8e8c4; */
+    background-color: #f8e8c4;
     border-radius: 20rpx;
     font-size: 36rpx;
     padding: 12rpx 0;
     font-weight: bold;
-    /* color: #d8902a; */
 }
 .shops{
     display: grid;
@@ -106,7 +103,6 @@
 }
 .item .btn{
     text-align: center;
-    /* background:linear-gradient(to right, #f69512, #f97406) ; */
     background-color: #fff5e9;
     font-size: 24rpx;
     border-radius: 10rpx;
@@ -153,14 +149,10 @@
     font-size: 30rpx;
   }
   .rule>view{
-      /* background-color: white; */
-      /* opacity: .5;
-      ba */
       padding: 2rpx;
   }
   .box .content{
     height: calc(100% - 80rpx);
-    /* overflow-y: scroll; */
     box-sizing: border-box;
     font-size: 28rpx;
     color: #5c5c5c;
@@ -174,7 +166,4 @@
   }
   .box .text{
       padding: 0 20rpx;
-  }
-  .h-80{
-      height: 80rpx;
   }

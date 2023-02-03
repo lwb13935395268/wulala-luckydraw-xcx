@@ -1,0 +1,59 @@
+/* pages/mine/audit/fail/index.wxss */
+.bj-white{
+    background: #fff;
+    margin-bottom: 20rpx !important;
+}
+.title{
+    color: #d81e06;
+    font-size: 38rpx;
+    font-weight: 600;
+    text-align: center;
+    padding: 30rpx;
+}
+.main{
+    display: flex;
+    
+}
+.main-left{
+    display: flex;
+    flex-direction: column;
+    margin: 20rpx;
+    align-items: flex-end;
+    color: #949494;
+}
+.main-right{
+    display: flex;
+    flex-direction: column;
+    margin: 20rpx;
+    align-items: flex-start;
+}
+.main-left text{
+    padding: 15rpx;
+}
+.main-right text{
+    padding: 15rpx;
+}
+.main-image{
+    display: grid;
+    justify-content: space-around;
+    padding: 20rpx 0;
+    grid-template-columns: 1fr 1fr;
+}
+.main-image image{
+    width: 300rpx;
+    height: 300rpx;
+}
+.button{
+    padding: 10rpx 0;
+}
+.btn{
+    background-color: #cfdef8;
+    width: 80vw;
+    margin: 20rpx auto;
+    text-align: center;
+    color: #2754fd;
+    font-size: 32rpx;
+    font-weight: 600;
+    padding: 20rpx;
+    border-radius: 10rpx;
+}

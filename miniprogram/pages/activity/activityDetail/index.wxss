@@ -1,9 +1,9 @@
 /* pages/activityDetail/index.wxss */
 .header{
     width: 100vw;
-    height: 755rpx;
-    background-image: url('https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/detail.png?sign=af6042ff2dade0f8f6a342a63cafaefd&t=1675235305');
-    background-size: 100% 70%;
+    height: 100vh;
+    background-image: url('https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/detail.png?sign=8b9fbc25fe1148ac3f47cc43097ad4d1&t=1675338201');
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .convert image{
