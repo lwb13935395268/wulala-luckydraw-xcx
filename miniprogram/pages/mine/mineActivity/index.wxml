@@ -2,9 +2,13 @@
 
 <tab titleList="{{['已参与','创建的']}}">
 <view slot='已参与' class="wrap gap-tb-20">
-<activity class="" status="0"></activity>
-<activity class="" status="1"></activity>
-<activity class="" status="2"></activity>
+<activity status="0"></activity>
+<activity  status="1"></activity>
+<activity  status="2"></activity>
 </view>
-<view slot='创建的' class="wrap">222</view>
+<view slot='创建的' class="wrap ptb-20">
+<view class="create-btn"  bindtap="navgator" data-path="createActivity/index">
+    去创建一个活动
+</view>
+</view>
 </tab>

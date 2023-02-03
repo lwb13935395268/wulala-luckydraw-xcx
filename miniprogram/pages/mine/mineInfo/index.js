@@ -1,23 +1,32 @@
-// pages/mine/mineActivity/index.js
+// pages/mine/mineInfo/index.js
 Page({
 
-    navgator(e){
-        let path=e.currentTarget.dataset.path;
-        wx.navigateTo({
-          url: '/pages/mine/'+path,
-        })
-    },
     /**
      * 页面的初始数据
      */
     data: {
-
+        showPop:false
     },
-
+    setPop(){
+        this.setData({
+            showPop:true
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        wx.setNavigationBarTitle({
+            title: '个人信息'
+        });
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#ed573c',
+            animation: {
+                duration: 400,
+                timingFunc: 'easeIn'
+            }
+        })
 
     },
 

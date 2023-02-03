@@ -1,7 +1,4 @@
 /* components/tab/tab.wxss */
-.tab{
-}
-
 .fontColorBox,
 .fontColorBox1 {
     /* 文字默认颜色 */
