@@ -1,3 +1,6 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "tab":"/components/tab/tab",
+        "activity":"/components/activity/activity"
+    }
 }
