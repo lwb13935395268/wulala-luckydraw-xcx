@@ -113,7 +113,17 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        wx.setNavigationBarTitle({
+            title: '创建活动'
+        })
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#ed573c',
+            animation: {
+              duration: 400,
+              timingFunc: 'easeIn'
+            }
+        })
     },
 
     /**

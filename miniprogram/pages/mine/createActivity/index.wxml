@@ -1,10 +1,6 @@
 <!--pages/mine/createActivity/index.wxml-->
+<!-- <view class="ns">创建活动</view> -->
 <view class="main">
-    <!-- nav -->
-    <view class="title">
-        <image bindtap="back" class="left-arrow" src="../../../images/icon-left_arrow.png" mode=""/>
-        <text class="title-name">创建活动</text>
-    </view>
     <!-- 活动设置 -->
     <view class="activity-set mt-30 mb-30 wrap">
         <title class="center">活动设置</title>
@@ -69,10 +65,10 @@
         <activityTitle class="mt-50">奖品介绍</activityTitle>
         <view class="activity-details">
             <button type="primary" class="activity-details_btn" bindtap="addText">
-                <image src=".././../../images/icon-text.png" mode=""/>添加文本
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-text.png?sign=468c4b15cf7e2491340cdf0bc50264e4&t=1675383115" mode=""/>添加文本
             </button>
             <button type="primary" class="activity-details_btn">
-                <image src=".././../../images/icon-photo.png" mode=""/>添加图片
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-photo.png?sign=a234427a224692e9c29ea2dec5aa7157&t=1675383148" mode=""/>添加图片
             </button>
         </view>
     </view>
