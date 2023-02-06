@@ -9,15 +9,15 @@
                     "query": ""
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/mine/mineInfo/index",
+                    "name": "pages/mine/selectActivity/index",
+                    "pathName": "pages/mine/selectActivity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/home/index",
+                    "name": "pages/activity/index",
+                    "pathName": "pages/activity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
