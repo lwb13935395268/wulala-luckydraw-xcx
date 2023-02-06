@@ -14,7 +14,7 @@
             </view>
         </view>
         <view class="body">
-            <view class="item" bindtap="navgatorTabBar" data-path="activity/index">
+            <view class="item" bindtap="navgator" data-path="mine/mineActivity/index">
                 <view class="num">
                     0
                 </view>
@@ -22,7 +22,7 @@
                     参与活动
                 </view>
             </view>
-            <view class="item sp-line" bindtap="navgator" data-path="mine/selectActivity/index">
+            <view class="item sp-line" bindtap="navgator" data-path="mine/mineCreatedActivity/index">
                 <view class="num">
                     0
                 </view>
@@ -48,30 +48,6 @@
         </view>
         </view>
     </view>
-    <!-- <view class="goods wrap">
-            <view class="item back-yellow">
-                <view class="fs-24 fc-white">
-                    积分
-                </view>
-                <view class="num mt-4">
-                    666
-                </view>
-                <view class="fs-20 mt-4 fc-gray2">
-                    兑换商品>
-                </view>
-            </view>
-            <view class="item back-orange" bindtap="navgator" data-path="mineActivity/index">
-                <view class="fs-24 fc-white">
-                    我的活动
-                </view>
-                <view class="num mt-4">
-                    12
-                </view>
-                <view class="fs-20 mt-4 fc-gray2">
-                    查看活动>
-                </view>
-            </view>
-        </view> -->
     <view class="wrap list mt-40">
         <view class="item" bindtap="navgator" data-path="mine/uploading/index">
             <view class="icon">
@@ -102,6 +78,19 @@
         <view class="item" bindtap="navgator" data-path="mine/audit/index">
             <view class="icon">
                 <image src="../../images/icon-address.png" mode="" />
+            </view>
+            <view class="link flex-between">
+                <view>
+                    收货地址
+                </view>
+                <view>
+                    <image class="entry" src="../../images/icon-entry.png" mode="" />
+                </view>
+            </view>
+        </view>
+        <view class="item" bindtap="navgator" data-path="mine/feedback/index">
+            <view class="icon">
+                <image src="../../images/icon-feedback.png" mode="" />
             </view>
             <view class="link flex-between">
                 <view>

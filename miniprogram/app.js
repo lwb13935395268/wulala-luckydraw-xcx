@@ -14,7 +14,10 @@ App({
       });
     }
 
-    this.globalData = {};
+    this.globalData = {
+        openId:'qw',
+        userId:''
+    };
 },
 // 返回上一级   
     back:function(){

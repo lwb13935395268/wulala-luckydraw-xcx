@@ -19,6 +19,17 @@ Page({
      */
     onLoad(options) {
 
+        wx.setNavigationBarTitle({
+            title: '我的活动'
+          })
+          wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#eb524c',
+            animation: {
+              duration: 400,
+              timingFunc: 'easeIn'
+            }
+          })
     },
 
     /**

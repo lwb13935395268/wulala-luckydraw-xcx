@@ -1,0 +1,15 @@
+<!--pages/mine/mineCreatedActivity/index.wxml-->
+
+<tab titleList="{{['正在进行','已结束']}}">
+    <view slot='正在进行' class="wrap gap-tb-20">
+        <view class="create-btn" bindtap="navgator" data-path="selectActivity/index">
+            去创建一个活动
+        </view>
+        <activity status="0"></activity>
+        <activity status="1"></activity>
+    </view>
+    <view slot='已结束' class="wrap ptb-20">
+        <activity status="2"></activity>
+        <activity status="2"></activity>
+    </view>
+</tab>

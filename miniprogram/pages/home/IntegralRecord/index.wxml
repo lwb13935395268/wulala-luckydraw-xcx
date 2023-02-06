@@ -1,0 +1,474 @@
+<!--pages/home/IntegralRecord/index.wxml-->
+<view class="page ">
+    
+<scroll-view scroll-y="{{true}}" style="height: 100%;">
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+    <view class="flex-between item wrap border-b-gray">
+        <view>
+            <view>
+                抽奖获得
+            </view>
+            <view class="tip mt-10">
+                02月03号
+            </view>
+        </view>
+        <view class="flex-right">
+            <view>
+                <text class="mr-10">-20</text>积分
+            </view>
+            <view class="tip mt-10">
+                余额：88899
+            </view>
+        </view>
+    </view> 
+</scroll-view>
+</view>

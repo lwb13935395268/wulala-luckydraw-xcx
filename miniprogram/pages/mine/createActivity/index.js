@@ -7,9 +7,9 @@ Page({
     data: {
         inputStartValue: '',//开始时间 start time 结束时间  end time
         inputEndValue: '',
-        startTime: '12:01',//时间选择器
+        startTime: '10:00',//时间选择器
         startDate: '2016-09-01',
-        endTime: '12:01',//时间选择器
+        endTime: '10:00',//时间选择器
         endDate: '2016-00-01',
         prizeNum:0,//奖品数量
         conditionsMet:'',//奖品满足条件
@@ -20,9 +20,20 @@ Page({
             {value: '年龄', name: '年龄'},
         ],
         isScroll:false,//解决input
+        imgFileId:'',//上传图片的路径
+        activityTitle:'',//活动标题
+        prizeName:'',//奖品名称
+        signUpSet:[],//选中
     },
     bindFormSubmit: function(e) {
-        console.log(e.detail.value.textarea)
+        this.setData({
+            activityTitle:e.detail.value,
+        })
+    },
+    bindFormSubmitPrize:function(e){
+        this.setData({
+            prizeName:e.detail.value,
+        })
     },
     bindKeyInput: function (e) {
       this.setData({
@@ -57,9 +68,21 @@ Page({
     },
     // 奖品数量
     prizeNum:function(e){
-        this.setData({
-            prizeNum:e.detail.value
-        })
+        switch (/^[0-9]*$/.test(e.detail.value)) {
+            case true:
+                this.setData({
+                    prizeNum:e.detail.value
+                });
+                break;
+            case false:
+                wx.showToast({
+                  title: '奖品只能输入数字',
+                  icon:'none',
+                })
+                break;
+            default:
+                break;
+        }
     },
     // 奖品满足条件
     conditionsMet:function(e){
@@ -92,7 +115,9 @@ Page({
     // 选中
     checkboxChange(e) {
         console.log('checkbox发生change事件，携带value值为：', e.detail.value)
-    
+        this.setData({
+            signUpSet:e.detail.value
+        })
         const items = this.data.items
         const values = e.detail.value
         for (let i = 0, lenI = items.length; i < lenI; ++i) {
@@ -113,14 +138,132 @@ Page({
     // 获取焦点事件
     bindfocus(e){
         this.setData({  
-        isScroll:false
-        })      
+            isScroll:false
+        })     
     },
     // 失去焦点事件
     closeblur(e) {
         this.setData({
         isScroll:true
         })
+    },
+      // 上传图片
+    doUpload: function () {
+        let _this = this;
+        // 选择图片
+        wx.chooseMedia({
+        count: 1,//图片个数
+        sizeType: ['compressed'],
+        mediaType:['image'],
+        sourceType: ['album', 'camera'],
+        success: function (res) {
+            // console.log(res)
+            wx.showLoading({
+                title: '上传中',
+            })
+
+            const filePath = res.tempFiles[0].tempFilePath;
+            // console.log(res.tempFiles[0].tempFilePath);
+            var timestamp = (new Date()).valueOf();//新建日期对象并变成时间戳
+            wx.cloud.uploadFile({
+            cloudPath: "img/"+timestamp+".jpg", // 上传至云端的路径
+            filePath: filePath, // 小程序临时文件路径
+            success: res => {
+                console.log('[上传文件] 成功：', res)
+                _this.setData({
+                    imgFileId:res.fileID,
+                });
+                app.globalData.fileID = res.fileID
+                app.globalData.cloudPath = cloudPath
+                app.globalData.imagePath = filePath
+                
+                wx.navigateTo({
+                    url: '../storageConsole/storageConsole',
+                })
+            },
+            fail: e => {
+                console.error('[上传文件] 失败：', e)
+                wx.showToast({
+                    icon: 'none',
+                    title: '上传失败',
+                })
+            },
+            complete: () => {
+                wx.hideLoading()
+            }
+            })
+
+        },
+        fail: e => {
+            console.log(e)
+            this.setData({
+                imgFileId:'',
+            });
+        }
+        })
+    },
+    // 取消发布
+    cancelRelease:function(){
+        wx.navigateBack({}) //跳转到前一个页面
+    },
+    // 立即发布
+    immediatelyRelease:function(){
+        if (this.data.imgFileId == '') {
+            wx.showToast({
+                title: '请上传活动主图',
+                icon:'none',
+            })
+        }else if (this.data.activityTitle == '') {
+            wx.showToast({
+                title: '请输入活动标题',
+                icon:'none',
+            })
+        }else if (this.data.startDate == '2016-09-01'){
+            wx.showToast({
+                title: '请选择开始日期',
+                icon:'none',
+            })
+        }else if (this.data.endDate == '2016-00-01') {
+            wx.showToast({
+                title: '请选择结束日期',
+                icon:'none',
+            })
+        }else if (this.data.prizeName == '') {
+            wx.showToast({
+                title: '请输入奖品名称',
+                icon:'none',
+            })
+        }else if (this.data.prizeNum == '') {
+            wx.showToast({
+                title: '请输入奖品数量',
+                icon:'none',
+            })
+        }else if (this.data.conditionsMet == '') {
+            wx.showToast({
+                title: '请输入满足条件',
+                icon:'none',
+            })
+        }else {
+            wx.cloud.callFunction({
+                name:'activity',
+                data:{
+                    type:'create',
+                    activityInfo:{
+                        imgFileId:this.data.imgFileId,//banner
+                        activityTitle:this.data.activityTitle + this.data.startTime,//活动标题
+                        startDate:this.data.startDate + this.data.endTime,//开始时间
+                        endDate:this.data.endDate,//结束时间
+                        prizeName:this.data.prizeName,//奖品名称
+                        prizeNum:this.data.prizeNum,//奖品数量
+                        conditionsMet:this.data.conditionsMet,//满足条件
+                        signUpSet:this.data.signUpSet,
+                    }
+                },
+                success(res){
+                    console.log(res.result);
+                },
+            })
+        }
     },
     /**
      * 生命周期函数--监听页面加载
@@ -131,12 +274,25 @@ Page({
         })
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
-            backgroundColor: '#ed573c',
+            backgroundColor: '#eb524c',
             animation: {
               duration: 400,
               timingFunc: 'easeIn'
             }
         })
+        // wx.cloud.callFunction({
+        //     name:'activity',
+        //     data:{
+        //         type:'create',
+        //         activityInfo:{
+        //             name:'妇女合适的接口返回看',
+        //             endDate:'2022-10-10 12:01'
+        //         }
+        //     },
+        //     success(res){
+        //         console.log(res.result);
+        //     },
+        // })
     },
 
     /**
