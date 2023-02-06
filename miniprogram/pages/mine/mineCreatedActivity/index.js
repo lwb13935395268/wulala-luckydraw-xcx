@@ -1,10 +1,10 @@
-// pages/mine/mineActivity/index.js
+// pages/mine/mineCreatedActivity/index.js
 Page({
 
-    navgator(e){
-        let path=e.currentTarget.dataset.path;
+    navgator(e) {
+        let path = e.currentTarget.dataset.path;
         wx.navigateTo({
-          url: '/pages/mine/'+path,
+            url: '/pages/mine/' + path,
         })
     },
     /**
@@ -20,16 +20,16 @@ Page({
     onLoad(options) {
 
         wx.setNavigationBarTitle({
-            title: '我的活动'
-          })
-          wx.setNavigationBarColor({
+            title: '发布的活动'
+        })
+        wx.setNavigationBarColor({
             frontColor: '#ffffff',
             backgroundColor: '#eb524c',
             animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
+                duration: 400,
+                timingFunc: 'easeIn'
             }
-          })
+        })
     },
 
     /**

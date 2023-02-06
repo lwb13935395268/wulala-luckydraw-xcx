@@ -13,6 +13,17 @@ Page({
      */
     onLoad(options) {
 
+        wx.setNavigationBarTitle({
+            title: '兑换记录'
+          })
+          wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#e04540',
+            animation: {
+              duration: 400,
+              timingFunc: 'easeIn'
+            }
+          })
     },
 
     /**

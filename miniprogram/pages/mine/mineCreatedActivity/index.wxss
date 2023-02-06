@@ -1,0 +1,7 @@
+/* pages/mine/mineCreatedActivity/index.wxss */
+.create-btn{
+    padding: 20rpx;
+    text-align: center;
+    background-color: #e04540;
+    color: white;
+}

@@ -32,14 +32,14 @@
     position: absolute;
     bottom: 0;
     width: 50rpx;
-    height: 8rpx;
+    height: 10rpx;
 }
 
 .lineBox {
     /* 选中底线样式 */
     background: #df463e;
-    margin-top: 16rpx;
-    border-radius: 4rpx;
+    /* margin-top: 16rpx; */
+    border-radius: 10rpx;
 }
 
 .notLineBox {

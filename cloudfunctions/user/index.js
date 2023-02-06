@@ -12,6 +12,8 @@ exports.main = async (event, context) => {
     switch (event.type) {
       case 'detail':
         return await detail.main(event, context);
+      case 'add':
+        return await add.main(event, context);
     }
     // return {}
 }

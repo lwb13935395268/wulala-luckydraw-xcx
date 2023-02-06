@@ -73,19 +73,21 @@
 
 .content {
     background-color: white;
-    /* padding: 20rpx 0; */
     box-sizing: border-box;
 }
 
 .content .top {
     border-bottom: 2rpx solid #f1f1f1;
+    padding: 20rpx 0;
 }
 
 .content .title {
     font-weight: normal;
     font-size: 32rpx;
-    padding: 20rpx 0;
     font-weight: bold;
+    border-left:10rpx solid #fe442b;
+    padding-left: 10rpx;
+    box-sizing: border-box;
 }
 
 .content .text {

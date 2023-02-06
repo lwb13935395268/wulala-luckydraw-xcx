@@ -41,13 +41,14 @@ Page({
         query.exec( (res)=> {
             // #the-id节点的上边界坐标
             //   console.log(res[0].top);
-            //   console.log(res[1].scrollTop);
             // 显示区域的竖直滚动位置
-            if (res[0].top <= 0) {
+            //   console.log(res[1].scrollTop);
+            let topNum=Math.floor(res[0].top);
+            if (topNum <= 0) {
                 this.setData({
                     scroll: true
                 })
-            }else if(res[0].top >=0){
+            }else if(topNum >=0){
                 this.setData({
                     scroll: false
                 })

@@ -1,12 +1,6 @@
-// pages/mine/mineActivity/index.js
+// pages/home/IntegralRecord/index.js
 Page({
 
-    navgator(e){
-        let path=e.currentTarget.dataset.path;
-        wx.navigateTo({
-          url: '/pages/mine/'+path,
-        })
-    },
     /**
      * 页面的初始数据
      */
@@ -20,11 +14,11 @@ Page({
     onLoad(options) {
 
         wx.setNavigationBarTitle({
-            title: '我的活动'
+            title: '积分记录'
           })
           wx.setNavigationBarColor({
             frontColor: '#ffffff',
-            backgroundColor: '#eb524c',
+            backgroundColor: '#e04540',
             animation: {
               duration: 400,
               timingFunc: 'easeIn'

@@ -22,7 +22,7 @@
                     参与活动
                 </view>
             </view>
-            <view class="item sp-line" bindtap="navgator" data-path="mine/selectActivity/index">
+            <view class="item sp-line" bindtap="navgator" data-path="mine/mineCreatedActivity/index">
                 <view class="num">
                     0
                 </view>
