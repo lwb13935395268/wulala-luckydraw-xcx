@@ -3,7 +3,7 @@
 <view class="mine">
     <view class="nav wrap mt-40">
         <view class="header flex-between align-center">
-            <view class="userinfo flex" bindtap="{{userInfo?'navgator':'getUserInfo'}}" data-path="mineInfo/index">
+            <view class="userinfo flex" bindtap="{{userInfo?'navgator':'getUserInfo'}}" data-path="mine/mineInfo/index">
                 <image class="avatar" src="{{userInfo?userInfo.avatarUrl:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240'}}" mode="" />
                 <text class="ml-20" wx:if="{{userInfo}}">{{userInfo.nickName}}</text>
                 <text class="ml-20" wx:else>微信授权</text>
@@ -14,7 +14,7 @@
             </view>
         </view>
         <view class="body">
-            <view class="item">
+            <view class="item" bindtap="navgatorTabBar" data-path="activity/index">
                 <view class="num">
                     0
                 </view>
@@ -22,7 +22,7 @@
                     参与活动
                 </view>
             </view>
-            <view class="item sp-line">
+            <view class="item sp-line" bindtap="navgator" data-path="mine/selectActivity/index">
                 <view class="num">
                     0
                 </view>
@@ -44,7 +44,7 @@
             我的账户余额：0.00
         </view>
         <view class="btn">
-            提现
+            查看
         </view>
         </view>
     </view>
@@ -73,7 +73,7 @@
             </view>
         </view> -->
     <view class="wrap list mt-40">
-        <view class="item" bindtap="navgator" data-path="uploading/index">
+        <view class="item" bindtap="navgator" data-path="mine/uploading/index">
             <view class="icon">
                 <image src="../../images/icon-business.png" mode="" />
             </view>
@@ -86,7 +86,7 @@
                 </view>
             </view>
         </view>
-        <view class="item" bindtap="navgator" data-path="audit/index">
+        <view class="item" bindtap="navgator" data-path="mine/audit/index">
             <view class="icon">
                 <image src="../../images/icon-examine.png" mode="" />
             </view>
@@ -99,7 +99,7 @@
                 </view>
             </view>
         </view>
-        <view class="item" bindtap="navgator" data-path="audit/index">
+        <view class="item" bindtap="navgator" data-path="mine/audit/index">
             <view class="icon">
                 <image src="../../images/icon-address.png" mode="" />
             </view>

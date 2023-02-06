@@ -21,7 +21,7 @@
             </view>
             <view class="fc-gray3 fs-28 align-center">
                 <text class="mr-10">hahaha</text>
-                <image src="../../../images/icon-entry.png" mode="" />
+                <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
         </view>
         <view class="li">
@@ -30,7 +30,7 @@
             </view>
             <view class="fc-gray3 fs-28 align-center">
                 <text class="mr-10">hahaha</text>
-                <image src="../../../images/icon-entry.png" mode="" />
+                <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
         </view>
         <view class="li">
@@ -39,7 +39,7 @@
             </view>
             <view class="fc-gray3 fs-28 align-center">
                 <text class="mr-10">暂无设置哈哈哈</text>
-                <image src="../../../images/icon-entry.png" mode="" />
+                <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
         </view>
         <view class="li">
@@ -48,7 +48,7 @@
             </view>
             <view class="fc-gray3 fs-28 align-center">
                 <text class="mr-10">暂未设置</text>
-                <image src="../../../images/icon-entry.png" mode="" />
+                <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
         </view>
     </view>
