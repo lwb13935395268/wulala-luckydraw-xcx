@@ -33,6 +33,17 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        wx.setNavigationBarTitle({
+          title: '奖品详情'
+        })
+        wx.setNavigationBarColor({
+          frontColor: '#ffffff',
+          backgroundColor: '#fe442b',
+          animation: {
+            duration: 400,
+            timingFunc: 'easeIn'
+          }
+        })
 
     },
 

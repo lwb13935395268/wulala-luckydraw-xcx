@@ -24,29 +24,29 @@ Page({
       })
   },
   async getUserInfo() {
-    let openId=await this.getUserOpenId();
-    wx.cloud.callFunction({
-      name: 'user',
-      data: {
-        type: 'detail',
-        openId
-      }
-    }).then(res => {
-      console.log(res.result);
-    })
+    // let openId=await this.getUserOpenId();
+    // wx.cloud.callFunction({
+    //   name: 'user',
+    //   data: {
+    //     type: 'detail',
+    //     openId
+    //   }
+    // }).then(res => {
+    //   console.log(res.result);
+    // })
     //--------------------
-    // let {
-    //     getUserInfo,
-    // } = getApp();
-    // let {
-    //     userInfo
-    // } = await getUserInfo('我的页面登录');
-    // if (userInfo) {
-    //     this.setData({
-    //         userInfo
-    //     });
-    //     console.log(userInfo);
-    // }
+    let {
+        getUserInfo,
+    } = getApp();
+    let {
+        userInfo
+    } = await getUserInfo('我的页面登录');
+    if (userInfo) {
+        this.setData({
+            userInfo
+        });
+        console.log(userInfo);
+    }
   },
   /**
    * 页面的初始数据

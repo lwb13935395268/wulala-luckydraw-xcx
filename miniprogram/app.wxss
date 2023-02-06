@@ -162,6 +162,9 @@ page {
     gap: 20rpx 0;
     padding: 20rpx 0;
 }
+.gap-lr-10{
+    gap: 0 10rpx;
+}
 /* 
   周永峰的公共样式
 */
