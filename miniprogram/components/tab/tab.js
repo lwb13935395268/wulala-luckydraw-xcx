@@ -10,7 +10,11 @@ Component({
         fixedHead:{
             type:Boolean,
             value:true
-        }
+        },
+        scroll:{
+            type:Boolean,
+            value:true
+        },
     },
     lifetimes: {
         attached(){
