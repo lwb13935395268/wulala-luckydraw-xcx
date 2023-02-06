@@ -1,7 +1,5 @@
 {
-    "setting": {
-        "compileHotReLoad": true
-    },
+    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
     "condition": {
         "miniprogram": {
             "list": [
@@ -11,129 +9,13 @@
                     "query": ""
                 },
                 {
-                    "name": "创建活动",
-                    "pathName": "pages/mine/createActivity/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "活动详情",
-                    "pathName": "pages/activity/activityDetail/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "审核列表",
-                    "pathName": "pages/mine/audit/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "审核详情",
-                    "pathName": "pages/mine/audit/detail/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "审核成功",
-                    "pathName": "pages/mine/audit/succeed/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "审核失败",
-                    "pathName": "pages/mine/audit/fail/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "pages/updateRecordSuccess/index",
-                    "pathName": "pages/updateRecordSuccess/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "pages/activity/index",
-                    "pathName": "pages/activity/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "商家入驻",
-                    "pathName": "pages/mine/uploading/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
                     "name": "pages/mine/createActivity/index",
                     "pathName": "pages/mine/createActivity/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "ff",
-                    "pathName": "pages/home/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "sdf",
-                    "pathName": "pages/mine/createActivity/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/mine/mineActivity/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/home/goodDetail/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-<<<<<<< HEAD
-                    "name": "pages/mine/mineSet/index",
-                    "pathName": "pages/mine/mineSet/index",
-=======
-                    "name": "",
-                    "pathName": "pages/mine/mineInfo/index",
->>>>>>> f1d5e2096726bc7f764f45c0310e69790f24de38
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-<<<<<<< HEAD
-                    "name": "pages/mine/feedback/index",
-                    "pathName": "pages/mine/feedback/index",
-=======
-                    "name": "",
-                    "pathName": "pages/mine/index",
->>>>>>> f1d5e2096726bc7f764f45c0310e69790f24de38
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 }
             ]
         }
-    },
-    "projectname": "wulala-luckydraw-xcx",
-    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+    }
 }
