@@ -8,9 +8,9 @@
     </view>
     <swiper class="swiperBox {{fixedHead?'scroll':''}}" bindchange='pagechange' current='{{currentIndex}}'>
         <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox'>
-            <!-- <scroll-view scroll-y="true" style="height: 100%;"> -->
+            <scroll-view scroll-y="true" style="height: 100%;">
                 <slot name="{{item}}"></slot>
-            <!-- </scroll-view> -->
+            </scroll-view>
         </swiper-item>
     </swiper>
 </view>

@@ -53,6 +53,6 @@
     box-sizing: border-box;
 }
 .scroll{
-    /* height: calc(100vh - 108rpx); */
-height: 100%;
+    height: calc(100vh - 108rpx);
+
 }

@@ -14,7 +14,7 @@
             </view>
         </view>
         <view class="body">
-            <view class="item" bindtap="navgatorTabBar" data-path="activity/index">
+            <view class="item" bindtap="navgator" data-path="mine/mineActivity/index">
                 <view class="num">
                     0
                 </view>
