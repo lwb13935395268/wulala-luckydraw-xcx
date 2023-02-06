@@ -9,16 +9,9 @@ Page({
     },
     // 切换swiper-item触发bindchange事件
     pagechange: function (e) {
-        // 通过touch判断，改变tab的下标值
-        // console.log(e);
-        // if ("touch" === e.detail.source) {
-        // let currentPageIndex = this.data.currentIndex;
-        // currentPageIndex = (currentPageIndex + 1) % 2;
-        // 拿到当前索引并动态改变
         this.setData({
             currentIndex: e.detail.current,
         })
-        // }
     },
 
     //点击tab时触发
@@ -42,7 +35,7 @@ Page({
         })
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
-            backgroundColor: '#ed573c',
+            backgroundColor: '#eb524c',
             animation: {
               duration: 400,
               timingFunc: 'easeIn'

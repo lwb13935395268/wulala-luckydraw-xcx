@@ -9,8 +9,8 @@
                     "query": ""
                 },
                 {
-                    "name": "pages/mine/selectActivity/index",
-                    "pathName": "pages/mine/selectActivity/index",
+                    "name": "pages/mine/createActivity/index",
+                    "pathName": "pages/mine/createActivity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
