@@ -14,7 +14,9 @@
     "pages/mine/audit/fail/index",
     "pages/mine/mineActivity/index",
     "pages/mine/mineInfo/index",
-    "pages/mine/selectActivity/index"
+    "pages/mine/selectActivity/index",
+    "pages/mine/mineSet/index",
+    "pages/mine/feedback/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

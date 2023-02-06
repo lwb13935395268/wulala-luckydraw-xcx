@@ -1,0 +1,39 @@
+<!--pages/mine/feedback/index.wxml-->
+<view class="main wrap">
+    <!-- 提示 -->
+    <view class="tips mt-20">
+        提示:
+        <view class="content">
+            您的意见将反馈给wulala专业团队,以帮助我们进一步完善系统
+        </view>
+    </view>
+    <!-- 建议 -->
+    <view class="proposal mt-20">
+        <form bindsubmit="bindFormSubmit">
+            <textarea placeholder="请写下您的意见或建议" class="textarea" maxlength="-1"    	placeholder-style="font-size:30rpx;color:#ccc;" name="textarea"/>
+            <!-- <button form-type="submit"> 提交 </button> -->
+        </form>
+        <view class="camera">
+            <image src="../../../images/icon-camera.png" mode=""/>
+            上传图片
+        </view>
+    </view>
+    <!-- 类型 -->
+    <view class="type mt-20">
+        <view class="text">请选择反馈类型</view>
+        <checkbox-group bindchange="checkboxChange">
+            <label wx:for="{{items}}" wx:key="index">
+                <checkbox color="#fd7541" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+            </label>
+        </checkbox-group>
+    </view>
+    <!-- 联系方式 -->
+    <view class="contact mt-20 mb-40">
+        联系方式 :
+        <input placeholder="请输入您的手机号" bindinput="phoneValue" type="text"/>
+    </view>
+</view>
+    <!-- 提交按钮 -->
+    <view class="submit-btn">
+        <button class="mt-10">提交</button>
+    </view>

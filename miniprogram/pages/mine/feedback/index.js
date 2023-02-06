@@ -1,31 +1,41 @@
-// pages/activity/index.js
+// pages/mine/feedback/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        currentIndex: 0, //默认是活动项
+        items: [//选中
+            {value: '程序bug反馈', name: '程序bug反馈',checked:'true'},
+            {value: '参与活动失败', name: '参与活动失败', checked: 'true'},
+            {value: '功能无法理解', name: '功能无法理解'},
+            {value: '产品优化建议', name: '产品优化建议'},
+            {value: '其他建议', name: '其他建议'},
+        ],
+        phoneValue:'',
     },
-    // 切换swiper-item触发bindchange事件
-    pagechange: function (e) {
-        // 通过touch判断，改变tab的下标值
-        // console.log(e);
-        // if ("touch" === e.detail.source) {
-        // let currentPageIndex = this.data.currentIndex;
-        // currentPageIndex = (currentPageIndex + 1) % 2;
-        // 拿到当前索引并动态改变
-        this.setData({
-            currentIndex: e.detail.current,
-        })
-        // }
+    getPhoneNumber (e) {
+        console.log(e.detail.code)
     },
-
-    //点击tab时触发
-    titleClick: function (e) {
+    // 选中
+    checkboxChange(e) {
+        console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    
+        const items = this.data.items
+        const values = e.detail.value
+        for (let i = 0, lenI = items.length; i < lenI; ++i) {
+          items[i].checked = false
+    
+          for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
+            if (items[i].value === values[j]) {
+              items[i].checked = true
+              break
+            }
+          }
+        }
+    
         this.setData({
-        //拿到当前索引并动态改变
-        currentIndex: e.currentTarget.dataset.idx
+          items
         })
     },
     /**
@@ -33,7 +43,7 @@ Page({
      */
     onLoad(options) {
         wx.setNavigationBarTitle({
-            title: '活动中心'
+            title: '意见反馈'
         })
         wx.setNavigationBarColor({
             frontColor: '#ffffff',

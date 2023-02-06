@@ -109,15 +109,25 @@
                     "scene": null
                 },
                 {
+<<<<<<< HEAD
+                    "name": "pages/mine/mineSet/index",
+                    "pathName": "pages/mine/mineSet/index",
+=======
                     "name": "",
                     "pathName": "pages/mine/mineInfo/index",
+>>>>>>> f1d5e2096726bc7f764f45c0310e69790f24de38
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
+<<<<<<< HEAD
+                    "name": "pages/mine/feedback/index",
+                    "pathName": "pages/mine/feedback/index",
+=======
                     "name": "",
                     "pathName": "pages/mine/index",
+>>>>>>> f1d5e2096726bc7f764f45c0310e69790f24de38
                     "query": "",
                     "launchMode": "default",
                     "scene": null
