@@ -14,7 +14,7 @@
             </view>
         </view>
         <view class="body">
-            <view class="item" bindtap="navgatorTabBar" data-path="activity/index">
+            <view class="item" bindtap="navgator" data-path="mine/mineActivity/index">
                 <view class="num">
                     0
                 </view>
@@ -102,6 +102,19 @@
         <view class="item" bindtap="navgator" data-path="mine/audit/index">
             <view class="icon">
                 <image src="../../images/icon-address.png" mode="" />
+            </view>
+            <view class="link flex-between">
+                <view>
+                    收货地址
+                </view>
+                <view>
+                    <image class="entry" src="../../images/icon-entry.png" mode="" />
+                </view>
+            </view>
+        </view>
+        <view class="item" bindtap="navgator" data-path="mine/feedback/index">
+            <view class="icon">
+                <image src="../../images/icon-feedback.png" mode="" />
             </view>
             <view class="link flex-between">
                 <view>

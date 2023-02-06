@@ -9,9 +9,10 @@
 .header{
     height: 220rpx;
     box-sizing: border-box;
-    background:linear-gradient(to right, #e2ad78, #fbd8b2);
-    color: #5e5558;
-    padding: 40rpx;
+    /* background:linear-gradient(to right, #e8534c,#fd655a, #fbd8b2); */
+    background-color: #e04540;
+    color: white;
+    padding: 40rpx 0;
 }
 .header .rule{
     font-size: 24rpx;
@@ -30,24 +31,23 @@
     font-size: 28rpx;
 } 
 .header .num{
-    color: #f8e8c4;
+    /* color: #f8e8c4; */
     font-size: 28px;
 }
 .header .num image{
-    width: 28rpx;
-    height: 28rpx;
+    width: 34rpx;
+    height: 34rpx;
 }
 .home{
     height: 100vh;
 }
 .body{
-    background-color: #f6f6f600;
+    background-color: #f2f2f2;
     min-height: calc(100vh - 220rpx);
     box-sizing: border-box;
     padding: 20rpx 0;
 }
 .shop-title{
-    background-color: #f8e8c4;
     border-radius: 20rpx;
     font-size: 36rpx;
     padding: 12rpx 0;
