@@ -1,7 +1,7 @@
 <view class="main">
     <tab titleList="{{['全部','推荐','最新','已参与','已结束']}}">
         <view slot="全部" class="wrap mt-20">
-            <activity status="0" title="理财夏利营，9888元红包等你拿" date="2015-07-22 至 2016-08-21">0</activity>
+            <activity bindtap="toCommodityDetails" status="0" title="理财夏利营，9888元红包等你拿" date="2015-07-22 至 2016-08-21">0</activity>
             <activity status="1">1</activity>
             <activity status="2">2</activity>
         </view>
