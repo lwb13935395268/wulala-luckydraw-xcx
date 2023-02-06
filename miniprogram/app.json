@@ -13,7 +13,8 @@
     "pages/mine/audit/succeed/index",
     "pages/mine/audit/fail/index",
     "pages/mine/mineActivity/index",
-    "pages/mine/mineInfo/index"
+    "pages/mine/mineInfo/index",
+    "pages/mine/selectActivity/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

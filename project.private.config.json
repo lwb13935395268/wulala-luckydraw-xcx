@@ -1,6 +1,7 @@
 {
     "setting": {
-        "compileHotReLoad": true
+        "compileHotReLoad": true,
+        "urlCheck": false
     },
     "condition": {
         "miniprogram": {
@@ -117,6 +118,13 @@
                 {
                     "name": "",
                     "pathName": "pages/mine/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/createActivity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

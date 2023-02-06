@@ -16,14 +16,14 @@
     border: 0.5rpx solid #d9d9d9;
     box-sizing: border-box;
 }
-.li image{
+.li .image{
     width: 30rpx;
     height: 30rpx;
     display: block;
 }
 .btn{
     display: inline-block;
-    background-color: #fd6262;
+    background-color: #ed573c;
     margin: 0 auto;
     padding: 20rpx 140rpx;
     border-radius: 20rpx;
