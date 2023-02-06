@@ -12,13 +12,17 @@
     "pages/mine/audit/detail/index",
     "pages/mine/audit/succeed/index",
     "pages/mine/audit/fail/index",
-    "pages/mine/mineActivity/index"
+    "pages/mine/mineActivity/index",
+    "pages/mine/mineInfo/index",
+    "pages/mine/selectActivity/index",
+    "pages/mine/mineSet/index",
+    "pages/mine/feedback/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "抽奖",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

@@ -22,10 +22,12 @@
         <view class="name wrap">
             爱奇艺1个月会员兑换券
         </view>
-        <view class="content wrap">
-            <view class="title">
+        <view class="content">
+        
+            <activityTitle>奖品介绍</activityTitle>
+            <!-- <view class="title">
                 奖品介绍
-            </view>
+            </view> -->
             <view class="text mt-20">
                 爱奇艺的会员兑换券，可以观看爱奇艺会员影视，免广告等权益
             </view>

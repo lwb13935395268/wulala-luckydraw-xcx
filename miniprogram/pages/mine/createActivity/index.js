@@ -18,7 +18,8 @@ Page({
             {value: '手机号', name: '手机号', checked: 'true'},
             {value: '性别', name: '性别'},
             {value: '年龄', name: '年龄'},
-          ]
+        ],
+        isScroll:false,//解决input
     },
     bindFormSubmit: function(e) {
         console.log(e.detail.value.textarea)
@@ -109,11 +110,33 @@ Page({
           items
         })
     },
+    // 获取焦点事件
+    bindfocus(e){
+        this.setData({  
+        isScroll:false
+        })      
+    },
+    // 失去焦点事件
+    closeblur(e) {
+        this.setData({
+        isScroll:true
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        wx.setNavigationBarTitle({
+            title: '创建活动'
+        })
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#ed573c',
+            animation: {
+              duration: 400,
+              timingFunc: 'easeIn'
+            }
+        })
     },
 
     /**

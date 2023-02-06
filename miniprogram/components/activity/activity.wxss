@@ -11,7 +11,7 @@
     position: relative;
     box-sizing: border-box;
 }
-.activity image{
+.activity .image{
     height: 280rpx;
     width: 100%;
 }

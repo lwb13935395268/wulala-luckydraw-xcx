@@ -1,31 +1,33 @@
 <view class="main">
-    <!-- title -->
-    <view class="title">活动中心</view>
-    <view>
-        <!-- Tab布局 -->
-        <view class='navBox'>
-            <view class='titleBox' bindtap='titleClick' data-idx='0'>
-                <text class="{{0 == currentIndex ? 'fontColorBox' : ''}}">全部</text>
-                <hr class="{{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
-            </view>
-            <view class='titleBox' bindtap='titleClick' data-idx='1'>
-                <text class="{{1 == currentIndex ? 'fontColorBox1' : ''}}">推荐</text>
-                <hr class="{{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
-            </view>
-            <view class='titleBox' bindtap='titleClick' data-idx='2'>
-                <text class="{{2 == currentIndex ? 'fontColorBox2' : ''}}">最新</text>
-                <hr class="{{2 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
-            </view>
-            <view class='titleBox' bindtap='titleClick' data-idx='3'>
-                <text class="{{3 == currentIndex ? 'fontColorBox3' : ''}}">已参与</text>
-                <hr class="{{3 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
-            </view>
-            <view class='titleBox' bindtap='titleClick' data-idx='4'>
-                <text class="{{4 == currentIndex ? 'fontColorBox4' : ''}}">已结束</text>
-                <hr class="{{4 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
-            </view>
+    <tab titleList="{{['全部','推荐','最新','已参与','已结束']}}">
+        <view slot="全部" class="wrap mt-20">
+            <activity status="0" title="理财夏利营，9888元红包等你拿" date="2015-07-22 至 2016-08-21">0</activity>
+            <activity status="1">1</activity>
+            <activity status="2">2</activity>
         </view>
-        <!-- 内容布局 -->
+        <view slot="推荐" class="wrap">
+            <activity status="0"></activity>
+            <activity status="1"></activity>
+            <activity status="2"></activity>
+        </view>
+        <view slot="最新" class="wrap">
+            <activity status="0"></activity>
+            <activity status="1"></activity>
+            <activity status="2"></activity>
+        </view>
+        <view slot="已参与" class="wrap">
+            <activity status="0"></activity>
+            <activity status="1"></activity>
+            <activity status="2"></activity>
+        </view>
+        <view slot="已结束" class="wrap">
+            <activity status="0"></activity>
+            <activity status="1"></activity>
+            <activity status="2"></activity>
+        </view>
+    </tab>
+    
+    <!-- <view>
         <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
             <swiper-item class='swiperTtemBox'>
                 <view class="activity wrap">
@@ -91,5 +93,5 @@
                 </view>
             </swiper-item>
         </swiper>
-    </view>
+    </view> -->
 </view>

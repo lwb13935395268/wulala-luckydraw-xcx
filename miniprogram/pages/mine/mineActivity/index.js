@@ -1,6 +1,12 @@
 // pages/mine/mineActivity/index.js
 Page({
 
+    navgator(e){
+        let path=e.currentTarget.dataset.path;
+        wx.navigateTo({
+          url: '/pages/mine/'+path,
+        })
+    },
     /**
      * 页面的初始数据
      */

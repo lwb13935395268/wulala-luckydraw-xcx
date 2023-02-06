@@ -1,26 +1,54 @@
 <!--pages/mine/index.wxml-->
 <!-- <text>pages/mine/index.wxml</text> -->
 <view class="mine">
-    <view class="top">
-
-        <view class="nav wrap">
-            <view>
-                <image class="mr-20" src="../../images/icon-news.png" mode="" />
-                <image src="../../images/icon-set.png" mode="" />
+    <view class="nav wrap mt-40">
+        <view class="header flex-between align-center">
+            <view class="userinfo flex" bindtap="{{userInfo?'navgator':'getUserInfo'}}" data-path="mine/mineInfo/index">
+                <image class="avatar" src="{{userInfo?userInfo.avatarUrl:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240'}}" mode="" />
+                <text class="ml-20" wx:if="{{userInfo}}">{{userInfo.nickName}}</text>
+                <text class="ml-20" wx:else>微信授权</text>
+            </view>
+            <view class="num align-center">
+                <text>积分888</text>
+                <image src="../../images/icon-entry2.png" mode=""/>
             </view>
         </view>
-        <view class="header wrap flex">
-            <view>
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240" mode="" />
+        <view class="body">
+            <view class="item" bindtap="navgatorTabBar" data-path="activity/index">
+                <view class="num">
+                    0
+                </view>
+                <view class="title fc-gray3">
+                    参与活动
+                </view>
             </view>
-            <view class="ml-20">
-                <view class="fs-36 fw-700">Hi, Dream</view>
-                <view class="fs-24 fc-gray">查看个人信息</view>
+            <view class="item sp-line" bindtap="navgator" data-path="mine/selectActivity/index">
+                <view class="num">
+                    0
+                </view>
+                <view class="title fc-gray3">
+                    发起活动
+                </view>
             </view>
+            <view class="item">
+                <view class="num">
+                    0
+                </view>
+                <view class="title fc-gray3">
+                    中奖记录
+                </view>
+            </view>
+        </view>
+        <view class="foot flex-between align-center">
+        <view class="text">
+            我的账户余额：0.00
+        </view>
+        <view class="btn">
+            查看
+        </view>
         </view>
     </view>
-    <view>
-        <view class="goods wrap">
+    <!-- <view class="goods wrap">
             <view class="item back-yellow">
                 <view class="fs-24 fc-white">
                     积分
@@ -43,48 +71,46 @@
                     查看活动>
                 </view>
             </view>
-        </view>
-        <view class="wrap list mt-40">
-            <view class="item" bindtap="navgator" data-path="uploading/index">
-                <view class="icon">
-                    <image src="../../images/icon-business.png" mode="" />
-                </view>
-                <view class="link flex-between">
-                    <view>
-                        商家入驻
-                    </view>
-                    <view>
-                        <image class="entry" src="../../images/icon-entry.png" mode="" />
-                    </view>
-                </view>
+        </view> -->
+    <view class="wrap list mt-40">
+        <view class="item" bindtap="navgator" data-path="mine/uploading/index">
+            <view class="icon">
+                <image src="../../images/icon-business.png" mode="" />
             </view>
-            <view class="item" bindtap="navgator" data-path="audit/index">
-                <view class="icon">
-                    <image src="../../images/icon-examine.png" mode="" />
+            <view class="link flex-between">
+                <view>
+                    商家入驻
                 </view>
-                <view class="link flex-between">
-                    <view>
-                        审核列表
-                    </view>
-                    <view>
-                        <image class="entry" src="../../images/icon-entry.png" mode="" />
-                    </view>
-                </view>
-            </view>
-            <view class="item" bindtap="navgator" data-path="audit/index">
-                <view class="icon">
-                    <image src="../../images/icon-address.png" mode="" />
-                </view>
-                <view class="link flex-between">
-                    <view>
-                        收货地址
-                    </view>
-                    <view>
-                        <image class="entry" src="../../images/icon-entry.png" mode="" />
-                    </view>
+                <view>
+                    <image class="entry" src="../../images/icon-entry.png" mode="" />
                 </view>
             </view>
         </view>
-
+        <view class="item" bindtap="navgator" data-path="mine/audit/index">
+            <view class="icon">
+                <image src="../../images/icon-examine.png" mode="" />
+            </view>
+            <view class="link flex-between">
+                <view>
+                    审核列表
+                </view>
+                <view>
+                    <image class="entry" src="../../images/icon-entry.png" mode="" />
+                </view>
+            </view>
+        </view>
+        <view class="item" bindtap="navgator" data-path="mine/audit/index">
+            <view class="icon">
+                <image src="../../images/icon-address.png" mode="" />
+            </view>
+            <view class="link flex-between">
+                <view>
+                    收货地址
+                </view>
+                <view>
+                    <image class="entry" src="../../images/icon-entry.png" mode="" />
+                </view>
+            </view>
+        </view>
     </view>
 </view>

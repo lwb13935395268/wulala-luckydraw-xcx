@@ -1,7 +1,7 @@
 /* pages/mine/mineActivity/index.wxss */
-.mt-50{
-    margin-top: 50rpx;
-    /* display: flow-root; */
-    width: 100rpx;
-    height: 50rpx;
+.create-btn{
+    padding: 20rpx;
+    text-align: center;
+    background-color: #3699ff;
+    color: white;
 }

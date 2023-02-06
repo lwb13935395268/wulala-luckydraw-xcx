@@ -21,5 +21,15 @@ App({
         wx.navigateBack({
             delta:1
         })
+    },
+    getUserInfo(desc){
+        return new Promise((resolve,reject)=>{
+          wx.getUserProfile({
+            desc,
+            success(res){
+              resolve(res);
+            }
+          })
+        })
     }
 });
