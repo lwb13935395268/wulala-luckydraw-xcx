@@ -1,0 +1,64 @@
+<!--pages/mine/rechargeRecord/buyPoints/index.wxml-->
+<view class="wrap">
+    <view class="header">
+        <view class="sum">
+            <view class="num">102</view>
+            <view class="conter">我的积分(个)</view>
+        </view>
+        <view class="record">
+            <view class="set">
+                <image src="../../../../images/icon-top.png"></image>
+                <text>充值记录</text>
+            </view>
+            <view class="set">
+                <image src="../../../../images/icon-deal.png"></image>
+                <text>交易记录</text>
+            </view>
+        </view>
+    </view>
+        <view class="main">
+            <view class="title">充值金额</view>
+            <view class="main-top">
+                <view class="main-set">
+                    <view class="amount">50元</view>
+                    <view class="price">售价 49.8元</view>
+                </view>
+                <view class="main-sets">
+                    <view class="amount">50元</view>
+                    <view class="price">售价 49.8元</view>
+                </view>
+                <view class="main-sets">
+                    <view class="amount">50元</view>
+                    <view class="price">售价 49.8元</view>
+                </view>
+                <view class="main-sets">
+                    <view class="amount">50元</view>
+                    <view class="price">售价 49.8元</view>
+                </view>
+                <view class="main-sets">
+                    <view class="amount">50元</view>
+                    <view class="price">售价 49.8元</view>
+                </view>
+                <view class="main-sets">
+                    <view class="amount">50元</view>
+                    <view class="price">售价 49.8元</view>
+                </view>
+            </view>
+            <view class="title">充值说明</view>
+            <view class="explain">
+                <image src="../../../../images/icon-green.png"></image>
+                <text>充值只可选择以上固定档位金额</text>
+            </view>
+            <view class="explain">
+                <image src="../../../../images/icon-green.png"></image>
+                <text>充值只可选择以上固定档位金额</text>
+            </view>
+            <view class="explain">
+                <image src="../../../../images/icon-green.png"></image>
+                <text>充值只可选择以上固定档位金额</text>
+            </view>
+        </view>
+        <view class="button">
+            确认充值
+        </view>
+</view>

@@ -16,7 +16,9 @@
     "pages/mine/mineInfo/index",
     "pages/mine/selectActivity/index",
     "pages/mine/mineSet/index",
-    "pages/mine/feedback/index"
+    "pages/mine/feedback/index",
+    "pages/mine/rechargeRecord/index",
+    "pages/mine/rechargeRecord/buyPoints/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
