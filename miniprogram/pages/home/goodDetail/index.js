@@ -6,6 +6,7 @@ Page({
      */
     data: {
         currentIndex: 0, //默认是活动项
+        prizeInfo:{}
     },
 
         // 切换swiper-item触发bindchange事件
@@ -29,10 +30,24 @@ Page({
                 currentIndex: e.currentTarget.dataset.idx
             })
         },
+        async getPrizeDetail(id){
+            let {getPrizeDetail}=getApp();
+            console.log(222222);
+            let res=await getPrizeDetail(id);
+            console.log(res);
+            if(res){
+                this.setData({
+                    prizeInfo:res
+                })
+            }
+        },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        console.log(options);
+        this.getPrizeDetail(options.id)
+
         wx.setNavigationBarTitle({
           title: '奖品详情'
         })

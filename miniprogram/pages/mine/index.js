@@ -12,17 +12,6 @@ Page({
             url: '/pages/' + path,
         })
     },
-    addUser(openId) {
-        return wx.cloud.callFunction({
-            name: 'user',
-            data: {
-                type: 'add',
-                openId: openId
-            }
-        }).then(res => {
-            return res
-        })
-    },
     getUserOpenId() {
         return wx.cloud.callFunction({
             name: 'quickstartFunctions',
@@ -35,34 +24,32 @@ Page({
     },
     async getUserInfo() {
         let {
-            getUserInfo
+            getUserInfo,
+            addUser,
+            getUserInfos
         } = getApp();
-        let app=getApp()
+        let app = getApp()
         let {
             userInfo
         } = await getUserInfo('我的页面登录');
         if (userInfo) {
             this.setData({
-                userInfo
+                userInfos: userInfo,
+                loginStatus: true
             });
-            console.log(userInfo);
+            app.globalData.loginStatus = true
         };
-        let openId = await this.getUserOpenId();
-        let res = await wx.cloud.callFunction({
-            name: 'user',
-            data: {
-                type: 'detail',
-                openId
-            }
-        })
-        if (res.result.length) {
-            app.globalData.openId = res.result[0].openId;
-            app.globalData.userId=res.result[0]._id;
-            console.log(app.globalData);
+        let res = await getUserInfos();
+        console.log(res);
+        if (res.length) {
+            console.log('有这个人');
+            app.globalData.userInfo = res[0];
+            this.setData({
+                userInfo:res[0]
+            })
         } else {
-           let res2= await this.addUser(openId);
-           app.globalData.openId =openId;
-           app.globalData.userId=res2.result._id;
+            console.log('添加');
+            let res2 = await addUser();
         }
     },
     /**
@@ -74,6 +61,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        let app = getApp()
+        this.setData({
+            userInfo: app.globalData.userInfo,
+            loginStatus: app.globalData.loginStatus
+        })
+        
         wx.setNavigationBarTitle({
             title: '我的'
         })
