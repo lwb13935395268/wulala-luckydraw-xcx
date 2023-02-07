@@ -1,6 +1,6 @@
 <!--components/activity/activity.wxml-->
 <view class="activity {{(status==2)?'opct':''}}">
-    <image class="image" src="../../images/icon-activity_1.png" mode="" />
+    <image class="image" src="{{imageUrl}}" mode="" />
     <view class="activity-content">
         <view class="activity-content_title">{{title}}</view>
         <view class="activity-content_timer pt-15">{{date}}</view>
