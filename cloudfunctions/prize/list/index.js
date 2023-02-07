@@ -7,6 +7,17 @@ const db = cloud.database();
 
 
 exports.main = async (event, context) => {
-    let res = await db.collection('prize').where({}).get();
-    return res.data
+    let result = await db.collection('prize').where({}).get();
+    
+    let res = {
+        status:0,
+        msg:"查询错误",
+        data:[]
+    }
+    if (result.data) {
+        res.status = 200;
+        res.msg = "查询成功";
+        res.data=result.data;
+    }
+    return res
 }

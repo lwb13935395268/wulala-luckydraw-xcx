@@ -5,10 +5,18 @@ cloud.init({
 
 const db = cloud.database();
 exports.main = async (event, context) => {
-    let res = await db.collection('userInfo').add({
+    let result = await db.collection('userInfo').add({
         // data 字段表示需新增的 JSON 数据
         data: event.data
     })
-    console.log(res);
-    //   return res
+    let res = {
+        status:0,
+        msg:"添加失败",
+        data:[]
+    }
+    if(result){
+        res.status=200;
+        res.mag="添加成功"
+    }
+    return res;
 }
