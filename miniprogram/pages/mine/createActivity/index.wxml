@@ -11,7 +11,10 @@
                 <image src="../../../images/icon-plus.png" class="plus" mode=""/>
                 <view class="name">点击可自定义主题图，小于1Mjpg/png图片，建议尺寸750*600(宽高比 5:4)</view>
             </view>
-            <image wx:else src="{{imgFileId}}" mode=""/>
+            <view wx:else>
+                <image src="{{imgFileId}}" mode=""/>
+                <view class="close" bindtap="close">x</view>
+            </view>
         </view>
         <view class="hr"></view>
         <activityTitle class="mt-50">活动标题</activityTitle>
@@ -59,12 +62,25 @@
         <activityTitle class="mt-50">满足条件</activityTitle>
         <input class="conditions-met" placeholder="如 : 集齐多少积分或者拉多少人" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" maxlength="10" type="text"/>
         <activityTitle class="mt-50">奖品介绍</activityTitle>
+        <view class="" wx:if="{{addText!=[]}}" >
+            <view class="{{addText != '' ? 'activity-rule' : ''}}">
+                <view class="one">
+                    {{addText}}
+                </view>
+            </view>
+        </view>
+        <view class="{{addImg != ''?'upload-img':''}}">
+            <view wx:if="{{addImg != ''}}">
+                <image src="{{addImg}}" mode=""/>
+                <view class="close" bindtap="closeImg">x</view>
+            </view>
+        </view>
         <view class="activity-details">
             <button type="primary" class="activity-details_btn" bindtap="addText">
                 <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-text.png?sign=468c4b15cf7e2491340cdf0bc50264e4&t=1675383115" mode=""/>添加文本
             </button>
-            <button type="primary" class="activity-details_btn">
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-photo.png?sign=a234427a224692e9c29ea2dec5aa7157&t=1675383148" mode=""/>添加图片
+            <button type="primary" class="activity-details_btn" bindtap="addImgs">
+                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-photo.png?sign=a234427a224692e9c29ea2dec5aa7157&t=1675383148" mode=""  />添加图片
             </button>
         </view>
     </view>

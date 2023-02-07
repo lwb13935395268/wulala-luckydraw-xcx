@@ -59,6 +59,7 @@
     height: 450rpx;
     margin: 0 auto;
     margin-top: 30rpx;
+    position: relative;
 }
 
 .upload-img{
@@ -160,4 +161,16 @@
     font-size: 30rpx;
     line-height: 50rpx;
     color: rgb(124, 123, 123);
+}
+.close{
+    width: 35rpx;
+    height: 35rpx;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;  
+    position: absolute;
+    top: -20rpx;
+    right: -15rpx;
+    line-height: 35rpx;
 }

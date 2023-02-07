@@ -24,6 +24,8 @@ Page({
         activityTitle:'',//活动标题
         prizeName:'',//奖品名称
         signUpSet:[],//选中
+        addText:[],//添加文本
+        addImg:'',//添加图片
     },
     bindFormSubmit: function(e) {
         this.setData({
@@ -90,6 +92,20 @@ Page({
             conditionsMet:e.detail.value
         })
     },
+    // 删除上传图片
+    close:function(){
+        wx.cloud.deleteFile({
+            fileList: [this.data.imgFileId]
+        }).then(res => {
+            // handle success
+            console.log("删除成功")
+        }).catch(error => {
+            // handle error
+        })
+        this.setData({
+            imgFileId:'',
+        })
+    },
     // 文本btn
     addText:function(){
         wx.showModal({
@@ -100,10 +116,13 @@ Page({
           editable: true,
           placeholderText: '奖品介绍',
           showCancel: true,
-          title: '审核',
+          title: '添加奖品介绍',
           success: (res) => {
               if(res.confirm){
                   console.log('确定');
+                  this.setData({
+                    addText:res.content,
+                  })
               } else if(res.cancel){
                   console.log('取消');
               }
@@ -204,7 +223,7 @@ Page({
     },
     // 取消发布
     cancelRelease:function(){
-        wx.navigateBack({}) //跳转到前一个页面
+        wx.navigateBack({});//跳转到前一个页面
     },
     // 立即发布
     immediatelyRelease:function(){
@@ -250,9 +269,9 @@ Page({
                     type:'create',
                     activityInfo:{
                         imgFileId:this.data.imgFileId,//banner
-                        activityTitle:this.data.activityTitle + this.data.startTime,//活动标题
-                        startDate:this.data.startDate + this.data.endTime,//开始时间
-                        endDate:this.data.endDate,//结束时间
+                        activityTitle:this.data.activityTitle,//活动标题
+                        startDate:this.data.startDate +''+ this.data.startTime,//开始时间
+                        endDate:this.data.endDate +''+ this.data.endTime,//结束时间
                         prizeName:this.data.prizeName,//奖品名称
                         prizeNum:this.data.prizeNum,//奖品数量
                         conditionsMet:this.data.conditionsMet,//满足条件
@@ -261,9 +280,93 @@ Page({
                 },
                 success(res){
                     console.log(res.result);
+                    switch (res.result.status) {
+                        case 200:
+                            wx.showToast({
+                                title: '发布成功',
+                            })
+                            break;
+                        case 500:
+                            wx.showToast({
+                                title: '创建失败',
+                                icon:'none',
+                            })
+                            break
+                        default:
+                            break;
+                    }
                 },
             })
         }
+    },
+    // 添加图片
+    addImgs:function(){
+        let _this = this;
+        // 选择图片
+        wx.chooseMedia({
+        count: 1,//图片个数
+        sizeType: ['compressed'],
+        mediaType:['image'],
+        sourceType: ['album', 'camera'],
+        success: function (res) {
+            // console.log(res)
+            wx.showLoading({
+                title: '上传中',
+            })
+
+            const filePath = res.tempFiles[0].tempFilePath;
+            // console.log(res.tempFiles[0].tempFilePath);
+            var timestamp = (new Date()).valueOf();//新建日期对象并变成时间戳
+            wx.cloud.uploadFile({
+            cloudPath: "img/"+timestamp+".jpg", // 上传至云端的路径
+            filePath: filePath, // 小程序临时文件路径
+            success: res => {
+                console.log('[上传文件] 成功：', res)
+                _this.setData({
+                    addImg:res.fileID,
+                });
+                app.globalData.fileID = res.fileID
+                app.globalData.cloudPath = cloudPath
+                app.globalData.imagePath = filePath
+                
+                wx.navigateTo({
+                    url: '../storageConsole/storageConsole',
+                })
+            },
+            fail: e => {
+                console.error('[上传文件] 失败：', e)
+                wx.showToast({
+                    icon: 'none',
+                    title: '上传失败',
+                })
+            },
+            complete: () => {
+                wx.hideLoading()
+            }
+            })
+
+        },
+        fail: e => {
+            console.log(e)
+            this.setData({
+                addImg:'',
+            });
+        }
+        })
+    },
+    //删除添加图片
+    closeImg:function(){
+        wx.cloud.deleteFile({
+            fileList: [this.data.addImg]
+        }).then(res => {
+            // handle success
+            console.log("删除成功")
+        }).catch(error => {
+            // handle error
+        })
+        this.setData({
+            addImg:'',
+        })
     },
     /**
      * 生命周期函数--监听页面加载

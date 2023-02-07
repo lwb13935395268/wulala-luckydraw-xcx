@@ -8,16 +8,10 @@ const db = cloud.database();
 
 // 创建集合云函数入口函数
 exports.main = async (event, context) => {
-    console.log(event);
+    const wxContext = cloud.getWXContext();
+    event.activityInfo.OPENID = wxContext.OPENID;
     let createActivity = await db.collection('activity').add({
         data:  event.activityInfo
-    //   data: {
-    //     image:'',
-    //     title:'刚刚该方法',
-    //     startDate:'2022-10-10 12:01',
-    //     endDate:'2023-10-10 12:01',
-    //     prizeName:'的复活节平时克林顿访华',
-    //   }
     });
     let res = {
         status:0,
