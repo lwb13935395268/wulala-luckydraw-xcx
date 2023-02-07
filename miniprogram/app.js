@@ -29,16 +29,6 @@ App({
                 openId: ''
             },
             loginStatus: false,
-            shop: {
-                prizeName: '腾讯视频会员一个月',
-                price: 360,
-                limitNum: 1500, //总件
-                prizeDes: '这是商品的详细信息，哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈',
-                exchangeNum: 688, //已兑换
-                remainderNum: 20, //剩余
-                imageUrl: 'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/img-prize_aiqiyi.png?sign=6fc4d78c8f368b597d9128da3feb6862&t=1675738370',
-                imageArr: ['https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/img-prize_aiqiyi1.png?sign=30026d2779e46eb90c66c9e5f4d84c24&t=1675738648', 'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/img-prize_aiqiyi2.png?sign=fc919df3067c1d9b95d6fa94d54075f4&t=1675738658']
-            }
         };
     },
     getOpenId() {

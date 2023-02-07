@@ -7,6 +7,7 @@ const db = cloud.database();
 
 
 exports.main = async (event, context) => {
-    let res = await db.collection('prize').doc(event.prizeId).get();
+    console.log(event);
+    let res = await db.collection('prize').doc(event.openId).get();
     return res.data
 }
