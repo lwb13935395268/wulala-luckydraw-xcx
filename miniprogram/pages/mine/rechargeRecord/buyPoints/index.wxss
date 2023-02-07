@@ -1,0 +1,96 @@
+/* pages/mine/rechargeRecord/buyPoints/index.wxss */
+.header {
+    background: #12dbae;
+    border-radius: 20rpx;
+}
+
+.sum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    padding: 30rpx 0;
+}
+
+.num {
+    font-size: 70rpx;
+}
+
+.conter {
+    font-size: 30rpx;
+}
+
+.record {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    border-top: 5rpx solid #24e4bb;
+    padding: 20rpx 0;
+}
+
+.record image {
+    width: 55rpx;
+    height: 55rpx;
+    margin: 0 10rpx;
+}
+.set{
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+.main{
+    padding: 30rpx 0;
+}
+.title{
+    font-size: 38rpx;
+    font-weight: 600;
+    padding: 20rpx 0;
+}
+.main-top{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.main-set{
+    border: 5rpx solid #25a15e;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx 0;
+    color: #0cc169;
+    background: #bbffe4;
+    margin: 10rpx;
+}
+.main-sets{
+    border: 5rpx solid rgb(235, 237, 236);
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx 0;
+    color: rgb(91, 96, 103);
+    background: #fff;
+    margin: 10rpx;
+}
+.amount{
+    font-size: 38rpx;
+    font-weight: 600;
+}
+.explain{
+    display: flex;
+    align-items: center;
+    color: #858890;
+    font-size: 30rpx;
+}
+.explain image{
+    width: 65rpx;
+    height: 65rpx;
+}
+.button{
+    background: #08c666;
+    padding: 25rpx 0;
+    border-radius: 55rpx;
+    color: #fff;
+    font-size: 32rpx;
+    text-align: center;
+}
