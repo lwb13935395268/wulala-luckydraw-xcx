@@ -3,20 +3,20 @@
 <view class="mine">
     <view class="nav wrap mt-40">
         <view class="header flex-between align-center">
-            <view class="userinfo flex" bindtap="{{userInfo?'navgator':'getUserInfo'}}" data-path="mine/mineInfo/index">
-                <image class="avatar" src="{{userInfo?userInfo.avatarUrl:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240'}}" mode="" />
-                <text class="ml-20" wx:if="{{userInfo}}">{{userInfo.nickName}}</text>
+            <view class="userinfo flex" bindtap="{{loginStatus?'navgator':'getUserInfo'}}" data-path="mine/mineInfo/index">
+                <image class="avatar" src="{{loginStatus?userInfos.avatarUrl:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240'}}" mode="" />
+                <text class="ml-20" wx:if="{{loginStatus}}">{{userInfos.nickName}}</text>
                 <text class="ml-20" wx:else>微信授权</text>
             </view>
             <view class="num align-center">
-                <text>积分888</text>
+                <text>积分{{userInfo.integral}}</text>
                 <image src="../../images/icon-entry2.png" mode=""/>
             </view>
         </view>
         <view class="body">
             <view class="item" bindtap="navgator" data-path="mine/mineActivity/index">
                 <view class="num">
-                    0
+                    {{userInfo.joinedActivity}}
                 </view>
                 <view class="title fc-gray3">
                     参与活动
@@ -24,7 +24,7 @@
             </view>
             <view class="item sp-line" bindtap="navgator" data-path="mine/mineCreatedActivity/index">
                 <view class="num">
-                    0
+                    {{userInfo.createdActivity}}
                 </view>
                 <view class="title fc-gray3">
                     发起活动
@@ -32,7 +32,7 @@
             </view>
             <view class="item">
                 <view class="num">
-                    0
+                    {{userInfo.awards}}
                 </view>
                 <view class="title fc-gray3">
                     中奖记录
@@ -41,7 +41,7 @@
         </view>
         <view class="foot flex-between align-center">
         <view class="text">
-            我的账户余额：0.00
+            我的账户余额：{{userInfo.money}}
         </view>
         <view class="btn">
             查看
@@ -94,7 +94,7 @@
             </view>
             <view class="link flex-between">
                 <view>
-                    收货地址
+                    意见反馈
                 </view>
                 <view>
                     <image class="entry" src="../../images/icon-entry.png" mode="" />

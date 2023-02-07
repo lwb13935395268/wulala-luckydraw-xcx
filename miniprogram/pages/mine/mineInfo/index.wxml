@@ -17,19 +17,10 @@
     <view class="ul mt-40">
         <view class="li">
             <view>
-                用户名
-            </view>
-            <view class="fc-gray3 fs-28 align-center">
-                <text class="mr-10">hahaha</text>
-                <image class="image" src="../../../images/icon-entry.png" mode="" />
-            </view>
-        </view>
-        <view class="li">
-            <view>
                 性别
             </view>
             <view class="fc-gray3 fs-28 align-center">
-                <text class="mr-10">hahaha</text>
+                <text class="mr-10">{{userInfo.sex}}</text>
                 <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
         </view>
@@ -38,7 +29,7 @@
                 生日
             </view>
             <view class="fc-gray3 fs-28 align-center">
-                <text class="mr-10">暂无设置哈哈哈</text>
+                <text class="mr-10">{{userInfo.birthdayDate}}</text>
                 <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
         </view>
@@ -47,7 +38,7 @@
                 地区
             </view>
             <view class="fc-gray3 fs-28 align-center">
-                <text class="mr-10">暂未设置</text>
+                <text class="mr-10">{{userInfo.area}}</text>
                 <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
         </view>
