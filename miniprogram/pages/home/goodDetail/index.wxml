@@ -2,7 +2,7 @@
 <view class="good-detail">
     <view class="good-img">
         <swiper class='swiperBox' bindchange='pagechange' current='{{currentIndex}}'>
-            <swiper-item wx:for="{{prizeInfo.imageArr}}" class='swiperTtemBox'>
+            <swiper-item wx:for="{{prizeInfo.imageArr}}" wx:key="index" class='swiperTtemBox'>
                 <image src="{{item}}" mode="" />
             </swiper-item>
         </swiper>

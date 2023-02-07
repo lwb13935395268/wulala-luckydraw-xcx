@@ -20,6 +20,10 @@ Component({
             type:Number,
             value:0
             //0,正常；1已参与，2结束
+        },
+        imageUrl:{
+            type:String,
+            value:'../../images/icon-activity_1.png'
         }
     },
     /**
