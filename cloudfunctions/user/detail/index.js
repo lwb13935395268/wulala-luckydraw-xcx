@@ -13,13 +13,16 @@ exports.main = async (event, context) => {
     
     let res = {
         status:0,
-        msg:"创建失败,请重新在试一试",
+        msg:"查询错误",
         data:[]
     }
-    if (result) {
+    if (result.data.length) {
         res.status = 200;
-        res.msg = "创建成功";
+        res.msg = "查询成功";
+        res.data=result.data[0];
+    }else{
+        res.status=200;
+        res.msg="新用户";
     }
     return res;
-      return res.data
 }

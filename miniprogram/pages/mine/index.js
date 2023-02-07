@@ -12,26 +12,16 @@ Page({
             url: '/pages/' + path,
         })
     },
-    getUserOpenId() {
-        return wx.cloud.callFunction({
-            name: 'quickstartFunctions',
-            data: {
-                type: 'getOpenId',
-            }
-        }).then(res => {
-            return res.result.userInfo.openId
-        })
-    },
     async getUserInfo() {
         let {
             getUserInfo,
             addUser,
-            getUserInfos
+            login
         } = getApp();
-        let app = getApp()
+        let app = getApp();
         let {
             userInfo
-        } = await getUserInfo('我的页面登录');
+        } = await login('我的页面登录');
         if (userInfo) {
             this.setData({
                 userInfos: userInfo,
@@ -39,34 +29,26 @@ Page({
             });
             app.globalData.loginStatus = true
         };
-        let res = await getUserInfos();
+        let res = await getUserInfo();
         console.log(res);
-        if (res.length) {
-            console.log('有这个人');
-            app.globalData.userInfo = res[0];
-            this.setData({
-                userInfo:res[0]
-            })
+        if (res.status == 200) {
+            if (res.data) {
+                console.log('有这个人');
+                app.globalData.userInfo = res.data;
+                this.setData({
+                    userInfo: res.data
+                })
+            } else {
+                console.log('添加');
+                let res2 = await addUser();
+            }
         } else {
-            console.log('添加');
-            let res2 = await addUser();
+            console.log('登入失败');
         }
-    },
-    /**
-     * 页面的初始数据
-     */
-    data: {},
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-        let app = getApp()
-        this.setData({
-            userInfo: app.globalData.userInfo,
-            loginStatus: app.globalData.loginStatus
-        })
-        
+
+    },
+    setTitle() {
         wx.setNavigationBarTitle({
             title: '我的'
         })
@@ -78,6 +60,23 @@ Page({
                 timingFunc: 'easeIn'
             }
         })
+    },
+    /**
+     * 页面的初始数据
+     */
+    data: {},
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad(options) {
+        let app = getApp()
+        this.setTitle();
+        this.setData({
+            userInfo: app.globalData.userInfo,
+            loginStatus: app.globalData.loginStatus
+        })
+
     },
 
     /**

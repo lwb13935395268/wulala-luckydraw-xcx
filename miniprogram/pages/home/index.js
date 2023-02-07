@@ -62,21 +62,7 @@ Page({
             })
         })
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    async onLoad(options) {
-        let {
-            getPrizeList
-        } = getApp();
-        let res = await getPrizeList();
-        console.log(res);
-        this.setData({
-            prizeList: res
-        })
-
-
-        getPrizeList();
+    setTitle(){
         wx.setNavigationBarTitle({
             title: '首页'
         })
@@ -88,7 +74,23 @@ Page({
                 timingFunc: 'easeIn'
             }
         })
-
+    },
+    async getPrizeList(){
+        let {
+            getPrizeList
+        } = getApp();
+        let res = await getPrizeList();
+        console.log(res);
+        this.setData({
+            prizeList: res.data
+        })
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    async onLoad(options) {
+        this.setTitle();
+        this.getPrizeList();
     },
 
     /**

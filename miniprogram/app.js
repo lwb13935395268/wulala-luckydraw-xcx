@@ -42,7 +42,7 @@ App({
             this.globalData.userInfo.openId = res.result.userInfo.openId;
         })
     },
-    getUserInfos() {
+    getUserInfo() {
         return wx.cloud.callFunction({
             name: 'user',
             data: {
@@ -79,7 +79,6 @@ App({
         })
     },
     getPrizeDetail(prizeId) {
-        console.log(22);
         return wx.cloud.callFunction({
             name: 'prize',
             data: {
@@ -87,7 +86,6 @@ App({
                 prizeId
             }
         }).then(res => {
-            console.log(res);
             return res.result
         })
     },
@@ -97,7 +95,7 @@ App({
             delta: 1
         })
     },
-    getUserInfo(desc) {
+    login(desc) {
         return new Promise((resolve, reject) => {
             wx.getUserProfile({
                 desc,
