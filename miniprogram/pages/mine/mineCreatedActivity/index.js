@@ -11,7 +11,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        myActicityList:[],//我创建的活动
     },
 
     /**
@@ -36,12 +36,28 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
+        let _this = this;
         wx.cloud.callFunction({
             name:'activity',
             data:{
                 type:'queryMyActivityList',
             },
             success(res){
+                switch (res.status) {
+                    case 200:
+                        _this.setData({
+                            myActicityList:res.result.data.data
+                        })
+                        break;
+                    case 0:
+                        wx.showToast({
+                            title: '暂无活动，去创建吧!',
+                            icon:'none',
+                        })
+                        break;
+                    default:
+                        break;
+                }
                 console.log(res.result);
             },
         })
