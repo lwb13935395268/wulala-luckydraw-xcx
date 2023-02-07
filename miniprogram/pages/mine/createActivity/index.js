@@ -331,7 +331,7 @@ Page({
                 title: '请输入满足条件',
                 icon:'none',
             })
-        }else if (this.data.addText==''  || this.data.addImg == '') {
+        }else if (this.data.addText==[] && this.data.addImg == '') {
             wx.showToast({
                 title: '请添加奖品介绍(最少一个)',
                 icon:'none',
