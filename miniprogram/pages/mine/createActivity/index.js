@@ -221,84 +221,6 @@ Page({
         }
         })
     },
-    // 取消发布
-    cancelRelease:function(){
-        wx.navigateBack({});//跳转到前一个页面
-    },
-    // 立即发布
-    immediatelyRelease:function(){
-        if (this.data.imgFileId == '') {
-            wx.showToast({
-                title: '请上传活动主图',
-                icon:'none',
-            })
-        }else if (this.data.activityTitle == '') {
-            wx.showToast({
-                title: '请输入活动标题',
-                icon:'none',
-            })
-        }else if (this.data.startDate == '2016-09-01'){
-            wx.showToast({
-                title: '请选择开始日期',
-                icon:'none',
-            })
-        }else if (this.data.endDate == '2016-00-01') {
-            wx.showToast({
-                title: '请选择结束日期',
-                icon:'none',
-            })
-        }else if (this.data.prizeName == '') {
-            wx.showToast({
-                title: '请输入奖品名称',
-                icon:'none',
-            })
-        }else if (this.data.prizeNum == '') {
-            wx.showToast({
-                title: '请输入奖品数量',
-                icon:'none',
-            })
-        }else if (this.data.conditionsMet == '') {
-            wx.showToast({
-                title: '请输入满足条件',
-                icon:'none',
-            })
-        }else {
-            wx.cloud.callFunction({
-                name:'activity',
-                data:{
-                    type:'create',
-                    activityInfo:{
-                        imgFileId:this.data.imgFileId,//banner
-                        activityTitle:this.data.activityTitle,//活动标题
-                        startDate:this.data.startDate +''+ this.data.startTime,//开始时间
-                        endDate:this.data.endDate +''+ this.data.endTime,//结束时间
-                        prizeName:this.data.prizeName,//奖品名称
-                        prizeNum:this.data.prizeNum,//奖品数量
-                        conditionsMet:this.data.conditionsMet,//满足条件
-                        signUpSet:this.data.signUpSet,
-                    }
-                },
-                success(res){
-                    console.log(res.result);
-                    switch (res.result.status) {
-                        case 200:
-                            wx.showToast({
-                                title: '发布成功',
-                            })
-                            break;
-                        case 500:
-                            wx.showToast({
-                                title: '创建失败',
-                                icon:'none',
-                            })
-                            break
-                        default:
-                            break;
-                    }
-                },
-            })
-        }
-    },
     // 添加图片
     addImgs:function(){
         let _this = this;
@@ -367,6 +289,91 @@ Page({
         this.setData({
             addImg:'',
         })
+    },
+    // 取消发布
+    cancelRelease:function(){
+        wx.navigateBack({});//跳转到前一个页面
+    },
+    // 立即发布
+    immediatelyRelease:function(){
+        if (this.data.imgFileId == '') {
+            wx.showToast({
+                title: '请上传活动主图',
+                icon:'none',
+            })
+        }else if (this.data.activityTitle == '') {
+            wx.showToast({
+                title: '请输入活动标题',
+                icon:'none',
+            })
+        }else if (this.data.startDate == '2016-09-01'){
+            wx.showToast({
+                title: '请选择开始日期',
+                icon:'none',
+            })
+        }else if (this.data.endDate == '2016-00-01') {
+            wx.showToast({
+                title: '请选择结束日期',
+                icon:'none',
+            })
+        }else if (this.data.prizeName == '') {
+            wx.showToast({
+                title: '请输入奖品名称',
+                icon:'none',
+            })
+        }else if (this.data.prizeNum == '') {
+            wx.showToast({
+                title: '请输入奖品数量',
+                icon:'none',
+            })
+        }else if (this.data.conditionsMet == '') {
+            wx.showToast({
+                title: '请输入满足条件',
+                icon:'none',
+            })
+        }else if (this.data.addText==''  || this.data.addImg == '') {
+            wx.showToast({
+                title: '请添加奖品介绍(最少一个)',
+                icon:'none',
+            })
+        }else {
+            wx.cloud.callFunction({
+                name:'activity',
+                data:{
+                    type:'create',
+                    activityInfo:{
+                        imgFileId:this.data.imgFileId,//banner
+                        activityTitle:this.data.activityTitle,//活动标题
+                        startDate:this.data.startDate +''+ this.data.startTime,//开始时间
+                        endDate:this.data.endDate +''+ this.data.endTime,//结束时间
+                        prizeName:this.data.prizeName,//奖品名称
+                        prizeNum:this.data.prizeNum,//奖品数量
+                        conditionsMet:this.data.conditionsMet,//满足条件
+                        signUpSet:this.data.signUpSet,//选中
+                        addImg:this.data.addImg,//添加图片
+                        addText:this.data.addText,//提加文本
+                    }
+                },
+                success(res){
+                    console.log(res.result);
+                    switch (res.result.status) {
+                        case 200:
+                            wx.showToast({
+                                title: '发布成功',
+                            })
+                            break;
+                        case 500:
+                            wx.showToast({
+                                title: '创建失败',
+                                icon:'none',
+                            })
+                            break
+                        default:
+                            break;
+                    }
+                },
+            })
+        }
     },
     /**
      * 生命周期函数--监听页面加载
