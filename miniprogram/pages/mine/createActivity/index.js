@@ -344,8 +344,8 @@ Page({
                     activityInfo:{
                         imgFileId:this.data.imgFileId,//banner
                         activityTitle:this.data.activityTitle,//活动标题
-                        startDate:this.data.startDate +''+ this.data.startTime,//开始时间
-                        endDate:this.data.endDate +''+ this.data.endTime,//结束时间
+                        startDate:this.data.startDate +' '+ this.data.startTime,//开始时间
+                        endDate:this.data.endDate +' '+ this.data.endTime,//结束时间
                         prizeName:this.data.prizeName,//奖品名称
                         prizeNum:this.data.prizeNum,//奖品数量
                         conditionsMet:this.data.conditionsMet,//满足条件

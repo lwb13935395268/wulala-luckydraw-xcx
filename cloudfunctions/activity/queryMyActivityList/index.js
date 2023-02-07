@@ -13,10 +13,9 @@ exports.main = async (event, context) => {
     let queryMyActivityList = await db.collection('activity').where({
         OPENID:wxContext.OPENID
     }).get();
-    console.log(queryMyActivityList);
     let res = {
         status:0,
-        msg:"查询失败,请重新在试一试",
+        msg:"查询失败,请重新在试",
         data:[]
     }
     if (queryMyActivityList.errMsg) {
