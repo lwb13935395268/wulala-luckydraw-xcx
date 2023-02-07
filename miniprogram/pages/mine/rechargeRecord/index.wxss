@@ -1,0 +1,111 @@
+/* pages/mine/rechargeRecord/index.wxss */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx 0;
+    /* background-color: red; */
+    align-items: center;
+}
+
+.integral {
+    font-size: 26rpx;
+    color: #727272;
+}
+
+.num {
+    font-size: 65rpx;
+    font-weight: 600;
+    color: #1a40df;
+}
+
+.recharge {
+    background: #becbdb;
+    color: #1a40df;
+    padding: 10rpx 30rpx;
+    border-radius: 45rpx;
+}
+
+.main {
+    background: #ddd9dd;
+}
+
+.main-num {
+    display: flex;
+    padding: 10rpx 0 30rpx 0;
+    color: #727272;
+}
+
+.title {
+    font-size: 35rpx;
+    padding: 40rpx 0 0 0;
+}
+
+.weight {
+    color: #000;
+    font-weight: 600;
+    font-size: 32rpx;
+}
+
+.pd-20 {
+    padding-right: 40rpx;
+}
+
+.record {
+    padding: 20rpx 0;
+    border-bottom: 3rpx solid #d6dbdb;
+}
+
+.record-header {
+    color: #727272;
+    display: flex;
+    justify-content: space-between;
+}
+
+.record-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 0;
+}
+
+.record-main image {
+    width: 55rpx;
+    height: 55rpx;
+}
+.record-main-image{
+    width: 95rpx;
+    height: 95rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e3e7eb;
+    border-radius: 85rpx;
+}
+.record-main-content{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.black{
+    color: #000;
+    font-size: 38rpx;
+    font-weight: 600;
+}
+.origin{
+    color: #ea9977;
+    font-size: 38rpx;
+    font-weight: 600;
+}
+.content{
+    color: #727272;
+    font-size: 26rpx;
+}
+.record-main-left{
+    display: flex;
+    justify-content: space-between;
+    padding: 10rpx 0;
+}
+.record-main-right{
+    display: flex;
+    justify-content: space-between;
+}
