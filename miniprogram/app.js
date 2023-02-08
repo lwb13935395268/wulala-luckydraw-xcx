@@ -33,6 +33,7 @@ App({
             this.globalData.userInfo.openId = res.result.userInfo.openId;
         })
     },
+    //获取用户信息接口
     getUserInfo() {
         return wx.cloud.callFunction({
             name: 'user',
@@ -45,6 +46,7 @@ App({
             return res.result
         })
     },
+    //添加新用户接口
     addUser() {
         return wx.cloud.callFunction({
             name: 'user',
@@ -57,6 +59,7 @@ App({
             return res
         })
     },
+    //获取奖品列表接口
     getPrizeList() {
         return wx.cloud.callFunction({
             name: 'prize',
@@ -68,12 +71,25 @@ App({
             return res.result
         })
     },
+    //奖品详情接口
     getPrizeDetail(prizeId) {
         return wx.cloud.callFunction({
             name: 'prize',
             data: {
                 type: 'detail',
                 prizeId
+            }
+        }).then(res => {
+            return res.result
+        })
+    },
+    //兑换奖品接口
+    exchangePrize(){    
+        return wx.cloud.callFunction({
+            name: 'prize',
+            data: {
+                type: 'exchange',
+                prizeId: 'dc49771c63e222a301f61c404a87d7f0',
             }
         }).then(res => {
             return res.result

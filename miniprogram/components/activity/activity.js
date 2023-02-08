@@ -1,3 +1,5 @@
+
+
 // components/activity/activity.js
 Component({
     /**
@@ -28,6 +30,14 @@ Component({
         imageUrl:{
             type:String,
             value:'../../images/icon-activity_1.png'
+        },
+        isSet:{
+            type:Boolean,
+            value:false
+        },
+        toSetRouter:{
+            type:String,
+            value:''
         }
     },
     /**
@@ -41,6 +51,10 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+        navgator(){
+            wx.navigateTo({
+                url: this.properties.toSetRouter,
+            })
+        }
     }
 })

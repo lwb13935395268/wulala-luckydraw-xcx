@@ -1,4 +1,5 @@
 /* components/activity/activity.wxss */
+@import '../../app.wxss';
 .opct{
     opacity: .5;
 }
@@ -18,8 +19,30 @@
 .activity .activity-content{
     padding: 20rpx;
 }
+.width-70{
+    width: 70%;
+}
+.activity-content .btn{
+padding: 0 10rpx;
+font-size: 28rpx;
+border: 2rpx solid gray;
+color: white;
+background-color: gray;
+border-radius: 10rpx;
+}
+.text-ellipsis{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
+
+}
 .activity .activity-content .activity-content_title{
     font-size: 30rpx;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
 }
 .activity .activity-content .activity-content_timer{
     font-size: 25rpx;
