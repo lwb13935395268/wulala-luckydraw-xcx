@@ -61,6 +61,16 @@ Page({
                 console.log(res.result);
             },
         })
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'modifyMyActivity',
+                toUpdateActivityInfo:{}
+            },
+            success(res){
+                console.log(res);
+            }
+        })
     },
 
     /**
