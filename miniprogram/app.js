@@ -13,28 +13,15 @@ App({
                 traceUser: true,
             });
         }
-        this.getOpenId();
         this.globalData = {
-            openId: '',
             userId: '',
-            userInfo: {
-            },
+            userInfo: {},
             loginStatus: false,
         };
     },
-    getOpenId() {
-        return wx.cloud.callFunction({
-            name: 'quickstartFunctions',
-            data: {
-                type: 'getOpenId',
-            }
-        }).then(res => {
-            this.globalData.openId = res.result.userInfo.openId;
-            this.globalData.userInfo.openId = res.result.userInfo.openId;
-        })
-    },
     //获取用户信息接口
     getUserInfo() {
+        console.log('userinfo');
         return wx.cloud.callFunction({
             name: 'user',
             data: {
@@ -42,7 +29,6 @@ App({
                 openId: this.globalData.openId
             }
         }).then(res => {
-            // console.log(res);
             return res.result
         })
     },
@@ -84,12 +70,12 @@ App({
         })
     },
     //兑换奖品接口
-    exchangePrize(){    
+    exchangePrize(prizeId) {
         return wx.cloud.callFunction({
             name: 'prize',
             data: {
                 type: 'exchange',
-                prizeId: 'dc49771c63e222a301f61c404a87d7f0',
+                prizeId,
             }
         }).then(res => {
             return res.result
@@ -101,6 +87,7 @@ App({
             delta: 1
         })
     },
+    //wx登录
     login(desc) {
         return new Promise((resolve, reject) => {
             wx.getUserProfile({
