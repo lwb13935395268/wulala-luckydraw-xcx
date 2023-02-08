@@ -45,7 +45,10 @@ Page({
         })
     },
     async getPrizeDetail(id) {
-        console.log(id);
+        wx.showLoading({
+            title:'加载中..',
+            // mask:true
+        })
         let {
             getPrizeDetail
         } = getApp();
@@ -54,7 +57,8 @@ Page({
         if (res.status==200) {
             this.setData({
                 prizeInfo: res.data
-            })
+            });
+            wx.hideLoading()
         }
     },
     /**
@@ -63,7 +67,7 @@ Page({
     onLoad(options) {
         console.log(options);
         this.setTitle()
-        this.getPrizeDetail(options.id)
+        this.getPrizeDetail(options.id);
     },
 
     /**

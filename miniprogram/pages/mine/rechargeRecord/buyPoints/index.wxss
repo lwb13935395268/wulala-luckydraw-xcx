@@ -68,7 +68,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20rpx 0;
-    color: rgb(91, 96, 103);
+    color: #5b6067;
     background: #fff;
     margin: 10rpx;
 }

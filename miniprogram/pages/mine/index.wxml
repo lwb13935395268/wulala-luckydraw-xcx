@@ -9,14 +9,14 @@
                 <text class="ml-20" wx:else>微信授权</text>
             </view>
             <view class="num align-center">
-                <text>积分{{userInfo.integral}}</text>
+                <text>积分{{userInfo.integral||0}}</text>
                 <image src="../../images/icon-entry2.png" mode=""/>
             </view>
         </view>
         <view class="body">
             <view class="item" bindtap="navgator" data-path="mine/mineActivity/index">
                 <view class="num">
-                    {{userInfo.joinedActivity}}
+                    {{userInfo.joinedActivity||0}}
                 </view>
                 <view class="title fc-gray3">
                     参与活动
@@ -24,7 +24,7 @@
             </view>
             <view class="item sp-line" bindtap="navgator" data-path="mine/mineCreatedActivity/index">
                 <view class="num">
-                    {{userInfo.createdActivity}}
+                    {{userInfo.createdActivity||0}}
                 </view>
                 <view class="title fc-gray3">
                     发起活动
@@ -32,7 +32,7 @@
             </view>
             <view class="item">
                 <view class="num">
-                    {{userInfo.awards}}
+                    {{userInfo.awards||0}}
                 </view>
                 <view class="title fc-gray3">
                     中奖记录
@@ -41,9 +41,9 @@
         </view>
         <view class="foot flex-between align-center">
         <view class="text">
-            我的账户余额：{{userInfo.money}}
+            我的账户余额：{{userInfo.money||0.00}}
         </view>
-        <view class="btn">
+        <view class="btn" bindtap="navgator" data-path="mine/rechargeRecord/index">
             查看
         </view>
         </view>

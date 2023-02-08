@@ -1,21 +1,56 @@
 <!--pages/activityDetail/index.wxml-->
 <view class="wraps">
+    <view class="modal" wx:if="{{modalName}}" catchtouchmove="{{catchtouchmove}}">
+          <view class="box">
+            <image bindtap="setModal" src="../../../images/icon-close.png" mode="" />
+            <view class="title">
+                活动规则
+            </view>
+            <view class="content">
+                <scroll-view scroll-y="true" style="height: 600rpx;" enhanced="{{enhanced}}" show-scrollbar="{{scrollbar}}">
+                    <view class="list">
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+                        <view class="text">
+                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                        </view>
+
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
     <view class="header">
         <view class="convert">
             <image src="../../../images/iocn-convert.png" bindtap="nextHome"></image>
             <view class="setting">
-                <view class="setting-main">
-                    <image src="../../../images/icon-setting.png"></image>
-                    <text>设置</text>
-                </view>
-                <view class="setting-main">
+                <view class="setting-main" bindtap="setModal">
                     <image src="../../../images/icon-rule.png"></image>
                     <text>规则</text>
                 </view>
-                <view class="setting-main">
+                <!-- <view class="setting-main">
                     <image src="../../../images/icon-service.png"></image>
                     <text>客服</text>
-                </view>
+                </view> -->
+                <button class="style-clear" type="default" open-type="share">
+                    <view class="setting-main">
+                        <image src="../../../images/icon-share.png"></image>
+                        <text>分享</text>
+                    </view>
+                </button>
             </view>
         </view>
     </view>
@@ -51,14 +86,37 @@
             <!-- <view class="progress-box">
                 <progress percent="20" active border-radius="100" stroke-width="20" activeColor="#fd292e"/>
             </view> -->
-            <view class="prople">
+            <!-- <view class="prople">
                 <image src="../../../images/icon-people.png"></image>
                 <image src="../../../images/icon-people.png"></image>
                 <image src="../../../images/icon-peoples.png"></image>
                 <image src="../../../images/icon-peoples.png"></image>
                 <image src="../../../images/icon-peoples.png"></image>
+            </view> -->
+            <view class="box-progressBar">
+                <view class="progressBar">
+                </view>
+                <view class="box-post">
+                    <view class="box-img">
+                        <image class="icon-jp" src="../../../images/icon-people.png" mode="" />
+                    </view>
+                    <text>200人</text>
+                </view>
+                <view class="box-post2">
+                    <view class="box-img">
+                        <image class="icon-jp" src="../../../images/icon-people.png" mode="" />
+                    </view>
+                    <text>500人</text>
+                </view>
+                <view class="box-post3">
+                    <view class="box-img">
+                        <image class="icon-jp" src="../../../images/icon-people.png" mode="" />
+                    </view>
+                    <text>1000人</text>
+                </view>
             </view>
-            <view class="prople-title">
+
+            <!-- <view class="prople-title">
                 <view class="red">已邀请
                     <text>2</text>
                     好友
@@ -67,9 +125,10 @@
                     <text>3</text>
                     好友可领福利
                 </view>
-            </view>
+            </view> -->
             <view class="prople-button">
-                <view class="button">邀请好友为我助力</view>
+                <view class="button">助力</view>
+                <!-- <view bindtap="onShareAppMessage" class="button" open-type="share">还差12人可获得二级奖励,立即邀请</view> -->
             </view>
         </view>
     </view>

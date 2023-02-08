@@ -7,30 +7,35 @@ Page({
         })
     },
     navgator(e) {
-        let path = e.currentTarget.dataset.path;
-        wx.navigateTo({
-            url: '/pages/' + path,
-        })
+        // if (this.data.loginStatus) {
+            let path = e.currentTarget.dataset.path;
+            wx.navigateTo({
+                url: '/pages/' + path,
+            })
+        // } else {
+        //     this.getUserInfo()
+        // }
     },
     async getUserInfo() {
+        
         let {
             getUserInfo,
             addUser,
             login
         } = getApp();
         let app = getApp();
+        
         let {
             userInfo
         } = await login('我的页面登录');
+        let res = await getUserInfo();
         if (userInfo) {
             this.setData({
                 userInfos: userInfo,
                 loginStatus: true
             });
-            app.globalData.loginStatus = true
+            app.globalData.loginStatus = true;
         };
-        let res = await getUserInfo();
-        console.log(res);
         if (res.status == 200) {
             if (res.data) {
                 console.log('有这个人');
@@ -38,15 +43,21 @@ Page({
                 this.setData({
                     userInfo: res.data
                 })
+            wx.hideLoading();
+            wx.showToast({
+                title:'登录成功',
+            })
             } else {
                 console.log('添加');
                 let res2 = await addUser();
+                wx.hideLoading();
+                wx.showToast({
+                    title:'登录成功',
+                })
             }
         } else {
             console.log('登入失败');
         }
-
-
     },
     setTitle() {
         wx.setNavigationBarTitle({
@@ -61,21 +72,35 @@ Page({
             }
         })
     },
+    getPageParams() {
+        let app = getApp()
+        this.setData({
+            userInfo: app.globalData.userInfo,
+            loginStatus: app.globalData.loginStatus
+        })
+    },
     /**
      * 页面的初始数据
      */
-    data: {},
+    data: {
+        // userInfo:{
+        //     area: "未选择",
+        //     awards: 0,
+        //     birthdayDate: "未填写",
+        //     createdActivity: 0,
+        //     integral: 0,
+        //     joinedActivity: 0,
+        //     money: 0,
+        //     sex: "未填写",
+        //     openId: ''}
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let app = getApp()
+        let app = getApp();
         this.setTitle();
-        this.setData({
-            userInfo: app.globalData.userInfo,
-            loginStatus: app.globalData.loginStatus
-        })
 
     },
 
@@ -90,7 +115,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+        let app = getApp();
 
+        if (app.globalData.loginStatus) {
+            this.getPageParams()
+        }
     },
 
     /**

@@ -1,0 +1,22 @@
+/* pages/mine/newsDetail/index.wxss */
+.page{
+    padding-top: 20rpx;
+}
+.box{
+    
+    background-color: white;
+    padding: 20rpx 30rpx;
+}
+.box .title{
+    font-weight: bold;
+    font-size: 32rpx;
+}
+.date{
+    font-size: 24rpx;
+    color: #59595993;
+}
+.text{
+    text-indent:56rpx;
+    font-size: 28rpx;
+    padding: 20rpx 0;
+}

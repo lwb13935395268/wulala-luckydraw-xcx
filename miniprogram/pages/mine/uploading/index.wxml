@@ -6,15 +6,15 @@
     <view class="header">
         <view class="header-row">
             <text>店铺名称:</text>
-            <input type="text" placeholder="请输入您的店铺名称"/>
+            <input bindinput="getName" type="text" placeholder="请输入您的店铺名称" />
         </view>
         <view class="header-row">
             <text>联系方式:</text>
-            <input type="text" placeholder="请输入您的联系方式"/>
+            <input bindinput="getPhone" type="text" placeholder="请输入您的联系方式" />
         </view>
         <view class="header-row">
             <text>姓名:</text>
-            <input type="text" placeholder="请输入法人姓名"/>
+            <input bindinput="getUser" type="text" placeholder="请输入法人姓名" />
         </view>
     </view>
 
@@ -25,8 +25,16 @@
             </view>
             <view class="approve-main">
                 <view class="approve-main_main">
-                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzz.png?sign=d9b09b34888db506e046f906e0946bd4&t=1675388771"></image>
-                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/sbzs.png?sign=a9b6e8c44ed950893f38b7eb03bd3039&t=1675388732"></image>
+                    <!-- 营业执照 -->
+                    <view wx:if="{{imgYyzz == ''}}" bindtap="doUploadyyzz">
+                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzz.png?sign=d9b09b34888db506e046f906e0946bd4&t=1675388771"></image>
+                    </view>
+                    <image wx:else src="{{imgYyzz}}" mode="" />
+                    <!-- 商标证书 -->
+                    <view wx:if="{{imgSbzs == ''}}" bindtap="doUploadsbzs">
+                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/sbzs.png?sign=a9b6e8c44ed950893f38b7eb03bd3039&t=1675388732"></image>
+                    </view>
+                    <image wx:else src="{{imgSbzs}}" mode="" />
                 </view>
             </view>
         </view>
@@ -36,8 +44,16 @@
             </view>
             <view class="approve-main">
                 <view class="approve-main_main">
-                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/sfz.png?sign=2c6d7e3eb3d8a8b47581d168b0b4a7bc&t=1675388797"></image>
-                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/sbzs.png?sign=9563f06c52dddee6803840e5b27af77c&t=1675388816"></image>
+                    <!-- 身份证正 -->
+                    <view wx:if="{{imgSfz == ''}}" bindtap="doUploadsfz">
+                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/sfz.png?sign=2c6d7e3eb3d8a8b47581d168b0b4a7bc&t=1675388797"></image>
+                    </view>
+                    <image wx:else src="{{imgSfz}}" mode="" />
+                    <!-- 身份证反 -->
+                    <view wx:if="{{imgSfzs == ''}}" bindtap="doUploadsfzs">
+                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/sfzs.png?sign=fad455d6f9e5b9aed29f16d5a0b0e829&t=1675734962"></image>
+                    </view>
+                        <image wx:else src="{{imgSfzs}}" mode="" />
                 </view>
             </view>
         </view>
@@ -46,7 +62,7 @@
             <view>1.为保证您的认证顺利，请保证信息清晰可见。</view>
             <view>2.此证件信息，只作为商家入驻申请认证，请放心上传。</view>
         </view>
-        <view class="button">
+        <view class="button" bindtap="addmerchantInfo">
             <text>申请入驻</text>
         </view>
     </view>
