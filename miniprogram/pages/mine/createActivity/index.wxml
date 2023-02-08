@@ -20,7 +20,7 @@
         </view>
         <view class="hr"></view>
         <activityTitle class="mt-50">活动标题</activityTitle>
-        <textarea placeholder="请输入您的活动标题(30字以内)" bindinput="bindFormSubmit" class="textarea"maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;" name="textarea"/>
+        <textarea placeholder="请输入您的活动标题(30字以内)" bindinput="bindFormSubmit" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;" name="textarea"/>
         <activityTitle class="mt-50">活动时间</activityTitle>
         <view class="activity-timer">
             <picker mode="date" value="{{startDate}}" start="2023-02-02" end="2026-01-01"bindchange="bindDateChange">
@@ -66,7 +66,7 @@
                 <text>个</text>
             </view>
             <activityTitle class="mt-50">满足条件</activityTitle>
-            <input class="conditions-met" value="{{item.conditionsMet}}" placeholder="如 : 点赞多少(非必填)" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" maxlength="10" type="text"/>
+            <input class="conditions-met" value="{{item.conditionsMet}}" placeholder="如 : 点赞多少(非必填)" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" data-index="{{index}}" maxlength="10" type="text"/>
             <activityTitle class="mt-50">奖品介绍</activityTitle>
             <view class="" wx:if="{{item.addText!=[]}}" >
                 <view class="{{item.addText != '' ? 'activity-rule' : ''}}">
