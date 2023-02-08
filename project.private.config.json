@@ -16,8 +16,8 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/activity/index",
-                    "pathName": "pages/activity/index",
+                    "name": "pages/mine/uploading/index",
+                    "pathName": "pages/mine/uploading/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -72,22 +72,22 @@
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/mine/index",
+                    "name": "充值",
+                    "pathName": "pages/mine/rechargeRecord/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "pages/mine/createActivity/index",
-                    "pathName": "pages/mine/createActivity/index",
+                    "name": "pages/activity/activityDetail/index",
+                    "pathName": "pages/activity/activityDetail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/mine/mineNews/index",
+                    "name": "商家入驻",
+                    "pathName": "pages/mine/uploading/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
