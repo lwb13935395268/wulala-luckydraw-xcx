@@ -2,8 +2,8 @@
 <view class="wraps">
     <view class="header wrap">
         <view class="integral">
-            <view>剩余积分</view>
-            <view class="num">102</view>
+            <view>剩余余额</view>
+            <view class="num">102.86</view>
         </view>
         <view class="recharge" bindtap="recharge">
             充值
