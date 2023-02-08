@@ -1,4 +1,5 @@
 // pages/uploading/index.js
+let util = require('../../../utils/util.js')
 Page({
 
     /**
@@ -12,7 +13,8 @@ Page({
         imgSfzs:'',//身份证反
         name:'',
         phone:'',
-        getUser:''
+        getUser:'',
+        time:''
     },
     getName(e){
         // console.log(e.detail.value);
@@ -33,6 +35,11 @@ Page({
         })
     },
     addmerchantInfo(){
+        let TIME = util.formatTime(new Date());
+        this.setData({
+            time:TIME
+        })
+        console.log(TIME);
         wx.cloud.callFunction({
             name: 'uploading',
             data:{
@@ -40,11 +47,29 @@ Page({
                 merchantInfo:{
                     name: this.data.name,
                     phone: this.data.phone,
-                    getUser: this.data.getUser
+                    getUser: this.data.getUser,
+                    doUploadyyzz: this.data.imgYyzz,
+                    doUploadimgSbzs: this.data.imgSbzs,
+                    doUploadimgSfz: this.data.imgSfz,
+                    doUploadimgSfzs: this.data.imgSfzs,
+                    time: this.data.time
                 }
             },
             success(res){
                 console.log(res.result);
+                if(res.result.status == 200){
+                    wx.showToast({
+                        title: '申请成功',
+                        icon: 'success',
+                        duration: 1500
+                      })
+                } else {
+                    wx.showToast({
+                        title: '申请失败',
+                        icon: 'error',
+                        duration: 1500
+                      })
+                }
             }
         })
     },
@@ -74,6 +99,7 @@ Page({
                 _this.setData({
                     imgYyzz:res.fileID,
                 });
+                console.log(_this.data.imgYyzz);
                 app.globalData.fileID = res.fileID
                 app.globalData.cloudPath = cloudPath
                 app.globalData.imagePath = filePath
