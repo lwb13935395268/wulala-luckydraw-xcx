@@ -437,12 +437,34 @@ Page({
                     data:{
                         type:'modifyMyActivity',
                         toUpdateActivityInfo:{  
-                            signUpSet:'哈哈哈'
+                            imgFileId:_this.data.imgFileId,//banner
+                            activityTitle:_this.data.activityTitle,//活动标题
+                            startDate:_this.data.startDate +' '+ _this.data.startTime,//开始时间
+                            endDate:_this.data.endDate +' '+ _this.data.endTime,//结束时间
+                            signUpSet:_this.data.signUpSet,//选中
+                            prizeNums:_this.data.prizeNums,//奖品信息
                         },
                         activityId:_this.data.activityId,
                     },
                     success(res){
                         console.log(res.result);
+                        switch (res.result.status) {
+                            case 200:
+                                wx.showToast({
+                                    title: '修改成功',
+                                    icon:'none',
+                                });
+                                wx.navigateBack({});
+                                break;
+                            case 0:
+                                wx.showToast({
+                                    title: '修改失败,请稍后在试',
+                                    icon:'none',
+                                })
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 });
               } else if (res.cancel) {

@@ -102,7 +102,7 @@
                 {
                     "name": "pages/mine/createActivity/index",
                     "pathName": "pages/mine/createActivity/index",
-                    "query": "id=fdfe8f1b63e355840046ed9b533ff1bc",
+                    "query": "",
                     "launchMode": "default",
                     "scene": null
                 }
