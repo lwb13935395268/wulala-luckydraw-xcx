@@ -43,7 +43,7 @@
         <view class="text">
             我的账户余额：{{userInfo.money||0.00}}
         </view>
-        <view class="btn">
+        <view class="btn" bindtap="navgator" data-path="mine/rechargeRecord/index">
             查看
         </view>
         </view>
