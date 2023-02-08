@@ -16,6 +16,8 @@
     "pages/mine/mineActivity/index",
     "pages/mine/mineCreatedActivity/index",
     "pages/mine/mineInfo/index",
+    "pages/mine/mineNews/index",
+    "pages/mine/newsDetail/index",
     "pages/mine/selectActivity/index",
     "pages/mine/mineSet/index",
     "pages/mine/feedback/index",

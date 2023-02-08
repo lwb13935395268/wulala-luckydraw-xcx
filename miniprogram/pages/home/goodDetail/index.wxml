@@ -6,7 +6,7 @@
                 <image src="{{item}}" mode="" />
             </swiper-item>
         </swiper>
-        <view class="page-label">
+        <view wx:if="{{prizeInfo.imageArr}}" class="page-label">
             {{currentIndex+1}}/{{prizeInfo.imageArr.length}}
         </view>
     </view>

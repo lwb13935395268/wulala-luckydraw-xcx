@@ -61,21 +61,35 @@ Page({
             }
         })
     },
+    getPageParams(){
+        let app=getApp()
+        this.setData({
+            userInfo: app.globalData.userInfo,
+            loginStatus: app.globalData.loginStatus
+        })
+    },
     /**
      * 页面的初始数据
      */
-    data: {},
+    data: {
+        // userInfo:{
+        //     area: "未选择",
+        //     awards: 0,
+        //     birthdayDate: "未填写",
+        //     createdActivity: 0,
+        //     integral: 0,
+        //     joinedActivity: 0,
+        //     money: 0,
+        //     sex: "未填写",
+        //     openId: ''}
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let app = getApp()
+        let app = getApp();
         this.setTitle();
-        this.setData({
-            userInfo: app.globalData.userInfo,
-            loginStatus: app.globalData.loginStatus
-        })
 
     },
 
@@ -90,7 +104,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+        let app=getApp();
 
+        if(app.globalData.loginStatus){
+            this.getPageParams()
+        }
     },
 
     /**

@@ -25,7 +25,7 @@
                 {
                     "name": "",
                     "pathName": "pages/home/goodDetail/index",
-                    "query": "",
+                    "query": "id=4f1d421c63e2035201f188df08b11666",
                     "launchMode": "default",
                     "scene": null
                 },
@@ -81,6 +81,20 @@
                 {
                     "name": "pages/mine/mineCreatedActivity/index",
                     "pathName": "pages/mine/mineCreatedActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/mineNews/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/newsDetail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

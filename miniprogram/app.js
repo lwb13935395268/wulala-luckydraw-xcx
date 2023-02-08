@@ -18,15 +18,6 @@ App({
             openId: '',
             userId: '',
             userInfo: {
-                area: "未选择",
-                awards: 0,
-                birthdayDate: "未填写",
-                createdActivity: 0,
-                integral: 0,
-                joinedActivity: 0,
-                money: 0,
-                sex: "未填写",
-                openId: ''
             },
             loginStatus: false,
         };
