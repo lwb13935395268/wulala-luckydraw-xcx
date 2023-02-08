@@ -5,7 +5,45 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        list:[
+            {
+                amount: 50,
+                price: 49.8
+            },
+            {
+                amount: 50,
+                price: 49.8
+            },
+            {
+                amount: 50,
+                price: 49.8
+            },
+            {
+                amount: 50,
+                price: 49.8
+            },
+            {
+                amount: 50,
+                price: 49.8
+            },
+            {
+                amount: 50,
+                price: 49.8
+            },
+        ],
+        idx: 0
+    },
+    goindex(e){
+        let index = e.currentTarget.dataset.index;
+        // console.log('每个index',index);
+        this.setData({
+            idx: index
+        })
+    },
+    recharge:function(){
+        wx.redirectTo({
+            url: '/pages/mine/rechargeRecord/index'
+          })
     },
 
     /**

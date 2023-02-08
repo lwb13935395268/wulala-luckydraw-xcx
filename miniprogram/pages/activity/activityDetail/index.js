@@ -5,7 +5,20 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        modalName: false,
+        scrollbar: false,
+        enhanced: true,
+        catchtouchmove: true,
+    },
+    setModal() {
+        this.setData({
+            modalName: !this.data.modalName
+        })
+    },
+    switch () {
+        this.setData({
+            catchtouchmove: !this.data.catchtouchmove
+        })
     },
 
     nextHome:function () {
@@ -13,11 +26,20 @@ Page({
           url: '/pages/home/index',
         })
       },
+    // onShareAppMessage: function (res){
+    //     console.log(res);
+    //     console.log('转发页面');
+    //     console.log(res.webViewUrl);
+    // },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        wx.showShareMenu({
+            withShareTicket: true,
+            menus:['shareAppMessage','shareTimeline']
+        })
 
     },
 
