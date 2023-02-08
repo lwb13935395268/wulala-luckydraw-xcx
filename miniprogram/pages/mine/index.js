@@ -29,7 +29,7 @@ Page({
             userInfo
         } = await login('我的页面登录');
         let res = await getUserInfo();
-        if (userInfo) {
+        if (userInfo) { m
             this.setData({
                 userInfos: userInfo,
                 loginStatus: true
@@ -39,7 +39,7 @@ Page({
         if (res.status == 200) {
             if (res.data) {
                 console.log('有这个人');
-                app.globalData.userInfo = res.data;
+                app.globalData.userInfo = res.data; 
                 this.setData({
                     userInfo: res.data
                 })
@@ -101,7 +101,7 @@ Page({
     onLoad(options) {
         let app = getApp();
         this.setTitle();
-
+ 
     },
 
     /**
