@@ -12,68 +12,43 @@ Page({
             url: '/pages/' + path,
         })
     },
-    addUser(openId) {
-        return wx.cloud.callFunction({
-            name: 'user',
-            data: {
-                type: 'add',
-                openId: openId
-            }
-        }).then(res => {
-            return res
-        })
-    },
-    getUserOpenId() {
-        return wx.cloud.callFunction({
-            name: 'quickstartFunctions',
-            data: {
-                type: 'getOpenId',
-            }
-        }).then(res => {
-            return res.result.userInfo.openId
-        })
-    },
     async getUserInfo() {
         let {
-            getUserInfo
+            getUserInfo,
+            addUser,
+            login
         } = getApp();
-        let app=getApp()
+        let app = getApp();
         let {
             userInfo
-        } = await getUserInfo('我的页面登录');
+        } = await login('我的页面登录');
         if (userInfo) {
             this.setData({
-                userInfo
+                userInfos: userInfo,
+                loginStatus: true
             });
-            console.log(userInfo);
+            app.globalData.loginStatus = true
         };
-        let openId = await this.getUserOpenId();
-        let res = await wx.cloud.callFunction({
-            name: 'user',
-            data: {
-                type: 'detail',
-                openId
+        let res = await getUserInfo();
+        console.log(res);
+        if (res.status == 200) {
+            if (res.data) {
+                console.log('有这个人');
+                app.globalData.userInfo = res.data;
+                this.setData({
+                    userInfo: res.data
+                })
+            } else {
+                console.log('添加');
+                let res2 = await addUser();
             }
-        })
-        if (res.result.length) {
-            app.globalData.openId = res.result[0].openId;
-            app.globalData.userId=res.result[0]._id;
-            console.log(app.globalData);
         } else {
-           let res2= await this.addUser(openId);
-           app.globalData.openId =openId;
-           app.globalData.userId=res2.result._id;
+            console.log('登入失败');
         }
-    },
-    /**
-     * 页面的初始数据
-     */
-    data: {},
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
+
+    },
+    setTitle() {
         wx.setNavigationBarTitle({
             title: '我的'
         })
@@ -85,6 +60,37 @@ Page({
                 timingFunc: 'easeIn'
             }
         })
+    },
+    getPageParams(){
+        let app=getApp()
+        this.setData({
+            userInfo: app.globalData.userInfo,
+            loginStatus: app.globalData.loginStatus
+        })
+    },
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        // userInfo:{
+        //     area: "未选择",
+        //     awards: 0,
+        //     birthdayDate: "未填写",
+        //     createdActivity: 0,
+        //     integral: 0,
+        //     joinedActivity: 0,
+        //     money: 0,
+        //     sex: "未填写",
+        //     openId: ''}
+    },
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad(options) {
+        let app = getApp();
+        this.setTitle();
+
     },
 
     /**
@@ -98,7 +104,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+        let app=getApp();
 
+        if(app.globalData.loginStatus){
+            this.getPageParams()
+        }
     },
 
     /**

@@ -7,8 +7,22 @@ const db = cloud.database();
 
 
 exports.main = async (event, context) => {
-    let res = await db.collection('userInfo').where({
+    let result = await db.collection('userInfo').where({
       openId:event.openId
     }).get();
-      return res.data
+    
+    let res = {
+        status:0,
+        msg:"查询错误",
+        data:[]
+    }
+    if (result.data.length) {
+        res.status = 200;
+        res.msg = "查询成功";
+        res.data=result.data[0];
+    }else{
+        res.status=200;
+        res.msg="新用户";
+    }
+    return res;
 }

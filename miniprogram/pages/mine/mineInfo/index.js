@@ -16,6 +16,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        let app = getApp();
+        this.setData({
+            userInfo:app.globalData.userInfo
+        })
         wx.setNavigationBarTitle({
             title: '个人信息'
         });

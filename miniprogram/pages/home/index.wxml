@@ -40,7 +40,7 @@
                     我的积分
                 </view>
                 <view class="num mt-20">
-                    <text>57</text>
+                    <text>{{integral}}</text>
                     <image src="../../images/icon-entry_white.png" mode="" />
                 </view>
             </view>
@@ -62,133 +62,19 @@
         </view>
         <tab id="tab" titleList="{{['全部商品','热门兑换','特惠专享','爆款商品']}}" scroll="{{scroll}}">
             <view class="wrap" slot='全部商品' style="height: 100%;">
-                <view class="shops ptb-20">
-                    <view class="item" bindtap="navgator" data-path="goodDetail/index">
-                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
+                <view wx:if="{{prizeList.length}}" class="shops ptb-20">
+                    <view class="item" bindtap="navgator" wx:for="{{prizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
+                        <image src="{{item.imageUrl}}" mode="" />
                         <view class="title mt-10">
-                            XX优惠券
+                            {{item.prizeName}}
                         </view>
                         <view class="content mt-10">
                             <view class="info">
                                 <view class="price">
-                                    200积分
+                                    {{item.price}}积分
                                 </view>
                                 <view class="num">
-                                    限量1,000
-                                </view>
-                            </view>
-                            <view class="btn mt-20">
-                                兑换
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item" bindtap="navgator" data-path="goodDetail/index">
-                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
-                        <view class="title mt-10">
-                            XX优惠券
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    200积分
-                                </view>
-                                <view class="num">
-                                    限量1,000
-                                </view>
-                            </view>
-                            <view class="btn mt-20">
-                                兑换
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item" bindtap="navgator" data-path="goodDetail/index">
-                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
-                        <view class="title mt-10">
-                            XX优惠券
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    200积分
-                                </view>
-                                <view class="num">
-                                    限量1,000
-                                </view>
-                            </view>
-                            <view class="btn mt-20">
-                                兑换
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item" bindtap="navgator" data-path="goodDetail/index">
-                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
-                        <view class="title mt-10">
-                            XX优惠券
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    200积分
-                                </view>
-                                <view class="num">
-                                    限量1,000
-                                </view>
-                            </view>
-                            <view class="btn mt-20">
-                                兑换
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item" bindtap="navgator" data-path="goodDetail/index">
-                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
-                        <view class="title mt-10">
-                            XX优惠券
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    200积分
-                                </view>
-                                <view class="num">
-                                    限量1,000
-                                </view>
-                            </view>
-                            <view class="btn mt-20">
-                                兑换
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item" bindtap="navgator" data-path="goodDetail/index">
-                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
-                        <view class="title mt-10">
-                            XX优惠券
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    200积分
-                                </view>
-                                <view class="num">
-                                    限量1,000
-                                </view>
-                            </view>
-                            <view class="btn mt-20">
-                                兑换
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item" bindtap="navgator" data-path="goodDetail/index">
-                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
-                        <view class="title mt-10">
-                            XX优惠券
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    200积分
-                                </view>
-                                <view class="num">
-                                    限量1,000
+                                    限量{{item.limitNum}}
                                 </view>
                             </view>
                             <view class="btn mt-20">
@@ -197,13 +83,87 @@
                         </view>
                     </view>
                 </view>
+                <view wx:else class="void-tip">
+                    暂无奖品，正在全力补货中...
+                </view>
             </view>
             <view class="wrap" slot="热门兑换" style="height: 100%;">
-                <!-- <view class="shops ptb-20"> -->
-                    <view class="void-tip">
-                        暂无奖品，正在全力补货中
+                <view wx:if="{{hoyPrizeList.length}}" class="shops ptb-20">
+                    <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
+                        <image src="{{item.imageUrl}}" mode="" />
+                        <view class="title mt-10">
+                            {{item.prizeName}}
+                        </view>
+                        <view class="content mt-10">
+                            <view class="info">
+                                <view class="price">
+                                    {{item.price}}积分
+                                </view>
+                                <view class="num">
+                                    限量{{item.limitNum}}
+                                </view>
+                            </view>
+                            <view class="btn mt-20">
+                                兑换
+                            </view>
+                        </view>
                     </view>
-                <!-- </view> -->
+                </view>
+                <view wx:else class="void-tip">
+                    暂无奖品，正在全力补货中...
+                </view>
+            </view>
+            <view class="wrap" slot="特惠专享" style="height: 100%;">
+                <view wx:if="{{disPrizeList.length}}" class="shops ptb-20">
+                    <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
+                        <image src="{{item.imageUrl}}" mode="" />
+                        <view class="title mt-10">
+                            {{item.prizeName}}
+                        </view>
+                        <view class="content mt-10">
+                            <view class="info">
+                                <view class="price">
+                                    {{item.price}}积分
+                                </view>
+                                <view class="num">
+                                    限量{{item.limitNum}}
+                                </view>
+                            </view>
+                            <view class="btn mt-20">
+                                兑换
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view wx:else class="void-tip">
+                    暂无奖品，正在全力补货中...
+                </view>
+            </view>
+            <view class="wrap" slot="爆款商品" style="height: 100%;">
+                <view wx:if="{{burstPrizeList.length}}" class="shops ptb-20">
+                    <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
+                        <image src="{{item.imageUrl}}" mode="" />
+                        <view class="title mt-10">
+                            {{item.prizeName}}
+                        </view>
+                        <view class="content mt-10">
+                            <view class="info">
+                                <view class="price">
+                                    {{item.price}}积分
+                                </view>
+                                <view class="num">
+                                    限量{{item.limitNum}}
+                                </view>
+                            </view>
+                            <view class="btn mt-20">
+                                兑换
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view wx:else class="void-tip">
+                    暂无奖品，正在全力补货中...
+                </view>
             </view>
         </tab>
     </view>

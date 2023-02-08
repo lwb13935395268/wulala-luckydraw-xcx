@@ -12,14 +12,22 @@ Component({
             type: String,
             value: '标题'
         },
-        date: {
+        startDate: {
             type: String,
-            value: '日期'
+            value: '开始日期'
+        },
+        endDate: {
+            type: String,
+            value: '结束日期'
         },
         status:{
             type:Number,
             value:0
             //0,正常；1已参与，2结束
+        },
+        imageUrl:{
+            type:String,
+            value:'../../images/icon-activity_1.png'
         }
     },
     /**

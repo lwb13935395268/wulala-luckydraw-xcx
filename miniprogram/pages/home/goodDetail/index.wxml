@@ -2,29 +2,26 @@
 <view class="good-detail">
     <view class="good-img">
         <swiper class='swiperBox' bindchange='pagechange' current='{{currentIndex}}'>
-            <swiper-item class='swiperTtemBox'>
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
-            </swiper-item>
-            <swiper-item class='swiperTtemBox'>
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon_banner.png?sign=628bafa92ef578dc38fbb8ed5f100bc3&t=1675215218" mode="" />
+            <swiper-item wx:for="{{prizeInfo.imageArr}}" wx:key="index" class='swiperTtemBox'>
+                <image src="{{item}}" mode="" />
             </swiper-item>
         </swiper>
-        <view class="page-label">
-            {{currentIndex+1}}/2
+        <view wx:if="{{prizeInfo.imageArr}}" class="page-label">
+            {{currentIndex+1}}/{{prizeInfo.imageArr.length}}
         </view>
     </view>
     <view class="good-price">
         <view class="wrap">
         <view class="flex-between">
             <view class="price">
-            <text class="num mr-10">1500</text>积分
+            <text class="num mr-10">{{prizeInfo.price}}</text>积分
             </view>
-            <view class="tip align-center gap-lr-10">热卖688件
+            <view class="tip align-center gap-lr-10">热卖{{prizeInfo.exchangeNum}}件
             <text class="">|</text>
-            剩余5件</view>
+            剩余{{prizeInfo.remainderNum}}件</view>
         </view>
         <view class="title mt-20">
-            爱奇艺1个月会员兑换券
+            {{prizeInfo.prizeName}}
         </view>
         </view>
     </view>
@@ -37,10 +34,7 @@
             </view>
             <view class="bottom">
                 <view class="text wrap">
-                    爱奇艺的会员兑换券，可以观看爱奇艺会员影视，免广告等权益
-                    爱奇艺的会员兑换券，可以观看爱奇艺会员影视，免广告等权益
-                    爱奇艺的会员兑换券，可以观看爱奇艺会员影视，免广告等权益
-                    爱奇艺的会员兑换券，可以观看爱奇艺会员影视，免广告等权益
+                    {{prizeInfo.prizeDes}}
                 </view>
             </view>
             <!-- <activityTitle>奖品介绍</activityTitle> -->

@@ -46,6 +46,10 @@
     width: 35rpx;
     height: 40rpx;
 }
+.error{
+    width: 35rpx;
+    height: 35rpx;
+}
 /* 活动设置 */
 .activity-set{
     background-color: white;
@@ -59,13 +63,24 @@
     height: 450rpx;
     margin: 0 auto;
     margin-top: 30rpx;
+    position: relative;
 }
 
 .upload-img{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
     flex-direction: column;
+}
+.upload-img .image-file{ 
+    display: block;
+    width: 600rpx;
+    height: 450rpx;
+}
+.prize-icon{
+    display: block;
+    width: 600rpx;
+    height: 450rpx;
 }
 .upload-img .content .name{
     font-size: 25rpx;
@@ -160,4 +175,27 @@
     font-size: 30rpx;
     line-height: 50rpx;
     color: rgb(124, 123, 123);
+}
+.close image{
+    width: 35rpx;
+    height: 35rpx;
+    display: flex;
+    justify-content: center;  
+    position: absolute;
+    top: -20rpx;
+    right: -15rpx;
+    line-height: 35rpx;
+}
+.addPrize{
+    background-image: linear-gradient(to right,#dc3a38,#ed573c,#fd7541);
+}
+.prize-info{
+    position: relative;
+}
+.activity-delete image{
+    width: 50rpx;
+    height: 50rpx;
+    position:absolute;
+    right: 30rpx;
+    top: -30rpx;
 }

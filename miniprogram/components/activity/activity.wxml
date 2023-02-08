@@ -1,9 +1,9 @@
 <!--components/activity/activity.wxml-->
 <view class="activity {{(status==2)?'opct':''}}">
-    <image class="image" src="../../images/icon-activity_1.png" mode="" />
+    <image class="image" src="{{imageUrl}}" mode="" />
     <view class="activity-content">
         <view class="activity-content_title">{{title}}</view>
-        <view class="activity-content_timer pt-15">{{date}}</view>
+        <view class="activity-content_timer pt-15">{{startDate}}至{{endDate}}</view>
     </view>
     <image class="image" wx:if="{{status==1}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-participated.png?sign=2b91147819789efd6f82d12ebcc8889e&t=1675173206" mode="" />
     <image class="image" wx:if="{{status==2}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-closed.png?sign=514c42b3d0ff28fbed5360053fafe8be&t=1675173275" mode="" />

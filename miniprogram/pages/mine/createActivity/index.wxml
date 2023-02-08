@@ -11,7 +11,12 @@
                 <image src="../../../images/icon-plus.png" class="plus" mode=""/>
                 <view class="name">点击可自定义主题图，小于1Mjpg/png图片，建议尺寸750*600(宽高比 5:4)</view>
             </view>
-            <image wx:else src="{{imgFileId}}" mode=""/>
+            <view wx:else>
+                <image class="image-file" src="{{imgFileId}}" mode=""/>
+                <view class="close" bindtap="close">
+                    <image class="error" src="../../../images/icon-error.png" mode=""/>
+                </view>
+            </view>
         </view>
         <view class="hr"></view>
         <activityTitle class="mt-50">活动标题</activityTitle>
@@ -49,24 +54,47 @@
     <!-- 奖品详情 -->
     <view class="activity-set mt-30 mb-30 wrap">
         <title class="center">奖品详情</title>
-        <activityTitle class="mt-50">奖品名称</activityTitle>
-        <textarea placeholder="请输入您的奖品名称(30字以内)" bindinput="bindFormSubmitPrize"class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;"name="textarea"/>
-        <activityTitle class="mt-50">奖品数量</activityTitle>
-        <view class="prize">
-            <input placeholder="奖品数量" bindinput="prizeNum" bindfocus="bindfocus" bindblur="closeblur" maxlength="10" type="text"/>
-            <text>个</text>
+        <view class="prize-info" wx:for="{{prizeNums}}" wx:key="index">
+            <view wx:if="{{prizeNums.length > 1}}" class="activity-delete" bindtap="deletePrize" data-index="{{index}}">
+                <image src="../../../images/icon-reduce.png" mode=""/>
+            </view>
+            <activityTitle class="mt-50">奖品名称</activityTitle>
+            <textarea placeholder="请输入您的奖品名称(30字以内)" bindinput="bindFormSubmitPrize" value="{{item.prizeName}}" data-index="{{index}}" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;"name="textarea"/>
+            <activityTitle class="mt-50">奖品数量</activityTitle>
+            <view class="prize">
+                <input placeholder="奖品数量" bindinput="prizeNum" data-index="{{index}}" value="{{item.prizeNum}}" bindfocus="bindfocus" bindblur="closeblur" maxlength="10" type="text"/>
+                <text>个</text>
+            </view>
+            <activityTitle class="mt-50">满足条件</activityTitle>
+            <input class="conditions-met" value="{{item.conditionsMet}}" placeholder="如 : 点赞多少(非必填)" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" maxlength="10" type="text"/>
+            <activityTitle class="mt-50">奖品介绍</activityTitle>
+            <view class="" wx:if="{{item.addText!=[]}}" >
+                <view class="{{item.addText != '' ? 'activity-rule' : ''}}">
+                    <view class="one">
+                        {{item.addText}}
+                    </view>
+                </view>
+            </view>
+            <view class="{{item.addImg != '' ? 'upload-img' : ''}}">
+                <view wx:if="{{item.addImg != ''}}">
+                    <image class="prize-icon" src="{{item.addImg}}" mode=""/>
+                    <view class="close" bindtap="closeImg" data-index="{{index}}">
+                        <image src="../../../images/icon-error.png" mode=""/>
+                    </view>
+                </view>
+            </view>
+            <view class="activity-details">
+                <button type="primary" class="activity-details_btn" bindtap="addText" data-index="{{index}}">
+                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-text.png?sign=468c4b15cf7e2491340cdf0bc50264e4&t=1675383115" mode=""/>添加文本
+                </button>
+                <button type="primary" class="activity-details_btn" bindtap="addImgs" data-index="{{index}}">
+                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-photo.png?sign=a234427a224692e9c29ea2dec5aa7157&t=1675383148" mode=""  />添加图片
+                </button>
+            </view>
         </view>
-        <activityTitle class="mt-50">满足条件</activityTitle>
-        <input class="conditions-met" placeholder="如 : 集齐多少积分或者拉多少人" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" maxlength="10" type="text"/>
-        <activityTitle class="mt-50">奖品介绍</activityTitle>
-        <view class="activity-details">
-            <button type="primary" class="activity-details_btn" bindtap="addText">
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-text.png?sign=468c4b15cf7e2491340cdf0bc50264e4&t=1675383115" mode=""/>添加文本
-            </button>
-            <button type="primary" class="activity-details_btn">
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-photo.png?sign=a234427a224692e9c29ea2dec5aa7157&t=1675383148" mode=""/>添加图片
-            </button>
-        </view>
+        <button type="primary" class="addPrize mb-20" bindtap="newBuilt">
+            +新建奖项
+        </button>
     </view>
     <!-- 其他设置 -->
     <view class="activity-set mt-30 mb-30 wrap">
