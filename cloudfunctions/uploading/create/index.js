@@ -21,9 +21,17 @@ exports.main = async (event, context) => {
     });
     console.log(createActivity);
 
-    return{
-        message:'添加成功'
+    let res = {
+        status:0,
+        msg:"申请失败,请重新在试一试",
+        data:[]
     }
+    if (createActivity._id) {
+        res.status = 200;
+        res.msg = "申请成功";
+    }
+
+    return res;
 
 
 

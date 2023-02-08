@@ -20,12 +20,7 @@ Page({
         isScroll:false,//解决input
         imgFileId:'',//上传图片的路径
         activityTitle:'',//活动标题
-        prizeName:'',//奖品名称
-        prizeNum:0,//奖品数量
-        conditionsMet:'',//奖品满足条件
         signUpSet:[],//选中
-        addText:[],//添加文本
-        addImg:'',//添加图片
         datas:{
             prizeName:'',//奖品名称
             prizeNum:0,//奖品数量
@@ -33,19 +28,17 @@ Page({
             addText:"",//添加文本
             addImg:'',//添加图片
         },
-        prizeNums:[],
-        isActivity:false,
+        prizeNums:[],//上传服务端的奖品数据
+        isActivity:false,//判断是否填写完成
+        currentTime:'',//当前时间
     },
+    //活动标题
     bindFormSubmit: function(e) {
         this.setData({
             activityTitle:e.detail.value,
         })
     },
     bindFormSubmitPrize:function(e){
-        // this.setData({
-        //     prizeName:e.detail.value,
-        //     'datas.prizeName':e.detail.value,
-        // });
         let i=e.currentTarget.dataset.index;
         let text = 'prizeNums['+i+'].prizeName';
         this.setData({
@@ -105,10 +98,11 @@ Page({
     },
     // 奖品满足条件
     conditionsMet:function(e){
+        let i=e.currentTarget.dataset.index;
+        let image = "prizeNums["+i+"].conditionsMet";
         this.setData({
-            conditionsMet:e.detail.value,
-            // 'datas.conditionsMet':e.detail.value
-        })
+            [image]:e.detail.value
+        });
     },
     // 删除上传图片
     close:function(){
@@ -294,11 +288,6 @@ Page({
         },
         fail: e => {
             console.log(e)
-            // let i=e.currentTarget.dataset.index;
-            // let image = "prizeNums["+i+"].addImg";
-            // this.setData({
-            //     [image]:'',
-            // });
         }
         })
     },
@@ -450,6 +439,9 @@ Page({
               timingFunc: 'easeIn'
             }
         })
+        let data = new Date();
+        data.getFullYear();
+        console.log(data.getFullYear());
         // wx.cloud.callFunction({
         //     name:'activity',
         //     data:{
