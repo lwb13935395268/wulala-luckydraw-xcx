@@ -37,16 +37,12 @@
                     {{prizeInfo.prizeDes}}
                 </view>
             </view>
-            <!-- <activityTitle>奖品介绍</activityTitle> -->
         </view>
     </view>
     <view class="h-120">
 
     </view>
-    <view class="obtain">
-        <!-- <view class="obtain-btn">
-            兑换奖品
-        </view> -->
+    <view class="obtain" bindtap="exchangePrize">
         兑换奖品
     </view>
 </view>

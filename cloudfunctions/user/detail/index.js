@@ -7,10 +7,13 @@ const db = cloud.database();
 
 
 exports.main = async (event, context) => {
+    const wxContext = cloud.getWXContext();
+    const OPENID = wxContext.OPENID;
+    console.log(OPENID);
     let result = await db.collection('userInfo').where({
-      openId:event.openId
+      openId:OPENID
     }).get();
-    
+    console.log(result);
     let res = {
         status:0,
         msg:"查询错误",

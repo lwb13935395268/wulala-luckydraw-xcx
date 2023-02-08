@@ -1,6 +1,19 @@
 // pages/mine/mineInfo/index.js
 Page({
-
+    setTitle(){
+        
+        wx.setNavigationBarTitle({
+            title: '个人信息'
+        });
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#ed573c',
+            animation: {
+                duration: 400,
+                timingFunc: 'easeIn'
+            }
+        })
+    },
     /**
      * 页面的初始数据
      */
@@ -17,21 +30,10 @@ Page({
      */
     onLoad(options) {
         let app = getApp();
+        this.setTitle();
         this.setData({
             userInfo:app.globalData.userInfo
         })
-        wx.setNavigationBarTitle({
-            title: '个人信息'
-        });
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#ed573c',
-            animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }
-        })
-
     },
 
     /**

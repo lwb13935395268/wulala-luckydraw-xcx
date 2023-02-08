@@ -37,6 +37,7 @@ Page({
         scrollbar: false,
         enhanced: true,
         scroll: true,
+        loginStatus:false,
         prizeList: [],
     },
 
@@ -83,7 +84,6 @@ Page({
             userInfo: app.globalData.userInfo,
             userId:app.globalData.userId,
             loginStatus: app.globalData.loginStatus,
-            integral: app.globalData.userInfo.integral
         })
     },
     async getPrizeList(){
@@ -111,7 +111,7 @@ Page({
      */
     async onLoad(options) {
         this.setTitle();
-        // this.getPrizeList();
+        this.getPrizeList();
     },
 
     /**
@@ -124,7 +124,10 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        this.getPageParams();
+        let app=getApp();
+        if(this.data.loginStatus||app.globalData.loginStatus){
+            this.getPageParams();
+        }
     },
 
     /**
