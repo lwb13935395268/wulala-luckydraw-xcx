@@ -45,7 +45,6 @@ App({
             return res.result
         })
     },
-
     addUser() {
         return wx.cloud.callFunction({
             name: 'user',

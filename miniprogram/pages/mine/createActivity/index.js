@@ -34,6 +34,7 @@ Page({
             addImg:'',//添加图片
         },
         prizeNums:[],
+        isActivity:false,
     },
     bindFormSubmit: function(e) {
         this.setData({
@@ -289,7 +290,7 @@ Page({
                 wx.hideLoading()
             }
             })
-
+                             
         },
         fail: e => {
             console.log(e)
@@ -332,7 +333,6 @@ Page({
     // 立即发布
     immediatelyRelease:function(){
         this.data.prizeNums.forEach((item,index) => {
-            console.log(item);
             if (this.data.imgFileId == '') {
                 wx.showToast({
                     title: '请上传活动主图',
@@ -358,7 +358,6 @@ Page({
                     title: '请输入奖品名称',
                     icon:'none',
                 })
-                console.log(item.prizeName);
             }else if (item.prizeNum == '') {
                 wx.showToast({
                     title: '请输入奖品数量',
@@ -375,6 +374,16 @@ Page({
                     icon:'none',
                 })
             }else {
+                this.setData({
+                    isActivity:true,
+                })
+            }
+        })
+        console.log(this.data.isActivity);
+        switch (this.data.isActivity) {
+            case false:
+                break;
+            case true:
                 wx.cloud.callFunction({
                     name:'activity',
                     data:{
@@ -382,29 +391,26 @@ Page({
                         activityInfo:{
                             imgFileId:this.data.imgFileId,//banner
                             activityTitle:this.data.activityTitle,//活动标题
-                            startDate:this.data.startDate +' '+ this.data.startTime,//开始时间
-                            endDate:this.data.endDate +' '+ this.data.endTime,//结束时间
-                            // prizeName:this.data.prizeName,//奖品名称
-                            // prizeNum:this.data.prizeNum,//奖品数量
-                            // conditionsMet:this.data.conditionsMet,//满足条件
-                            // addImg:this.data.addImg,//添加图片
-                            // addText:this.data.addText,//提加文本
+                            startDate:this.data.startDate +' '+ this.data.startTime,//开始时间
+                            endDate:this.data.endDate +' '+ this.data.endTime,//结束时间
                             signUpSet:this.data.signUpSet,//选中
                             prizeNums:this.data.prizeNums,//奖品信息
                         }
                     },
                     success(res){
-                        console.log(res.result);
-                        switch (res.result.status) {
-                            case 200:
+                        switch (res.result.status) {
+                            case 200:
                                 wx.showToast({
-                                    title: '发布成功',
+                                    title: '发布成功',
+                                });
+                                wx.navigateTo({
+                                  url: '/pages/mine/mineCreatedActivity/index',
                                 })
                                 break;
-                            case 500:
+                            case 500:
                                 wx.showToast({
-                                    title: '创建失败',
-                                    icon:'none',
+                                    title: '创建失败',
+                                    icon:'none',
                                 })
                                 break
                             default:
@@ -412,9 +418,10 @@ Page({
                         }
                     },
                 })
-            }
-        })
-        
+                break;
+            default:
+                break;
+        }
     },
     // 新建奖项
     newBuilt:function(){
