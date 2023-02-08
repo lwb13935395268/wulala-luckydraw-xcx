@@ -31,6 +31,9 @@ Page({
         prizeNums:[],//上传服务端的奖品数据
         isActivity:false,//判断是否填写完成
         currentTime:'',//当前时间
+        afterTime:'',//之后时间
+        modifyInfo:[],//修改信息
+        activityId:'',//我的活动id
     },
     //活动标题
     bindFormSubmit: function(e) {
@@ -420,10 +423,39 @@ Page({
             prizeNums:prizeNum,
         })
     },
+    // 立即修改
+    immediatelyModify:function(){
+        let _this = this;
+        wx.showModal({
+            title: '提示',
+            content: '确定要修改此活动吗?',
+            success (res) {
+              if (res.confirm) {
+                // 修改我的活动
+                wx.cloud.callFunction({
+                    name:'activity',
+                    data:{
+                        type:'modifyMyActivity',
+                        toUpdateActivityInfo:{  
+                            signUpSet:'哈哈哈'
+                        },
+                        activityId:_this.data.activityId,
+                    },
+                    success(res){
+                        console.log(res.result);
+                    }
+                });
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        let _this = this;
         let datas=JSON.parse(JSON.stringify(this.data.datas));
         this.setData({
             prizeNums:[datas]
@@ -439,9 +471,72 @@ Page({
               timingFunc: 'easeIn'
             }
         })
-        let data = new Date();
-        data.getFullYear();
-        console.log(data.getFullYear());
+        
+        let timestamp = Date.parse(new Date());
+        let date = new Date(timestamp);
+        //获取年份  
+        let Y =date.getFullYear();
+        //获取月份  
+        let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+        //获取当日日期 
+        let D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        let time = Y+'-'+M+'-'+D;
+        let afterTime = (Y+30) +'-'+M+'-'+D
+        this.setData({
+            currentTime:time,
+            startDate:time,
+        })
+        this.setData({
+            afterTime:afterTime,
+            endDate:time,
+        })
+       
+        switch (options.id) { 
+            case undefined:
+                break;
+            default:
+                _this.setData({
+                    activityId:options.id,
+                })
+                wx.cloud.callFunction({
+                    name:'activity',
+                    data:{
+                        type:'queryMyActivityList',
+                    },
+                    success(res){
+                        switch (res.result.status) {
+                            case 200:
+                                res.result.data.data.forEach(item => {
+                                    if (item._id == options.id) {
+                                        _this.setData({
+                                            modifyInfo:item
+                                        });
+                                    }else{
+                                        return
+                                    }
+                                })
+                                console.log(_this.data.modifyInfo);
+                                _this.setData({
+                                    imgFileId:_this.data.modifyInfo.imgFileId,
+                                    activityTitle:_this.data.modifyInfo.activityTitle,
+                                    startDate:_this.data.modifyInfo.startDate.substring(0,10),
+                                    endDate:_this.data.modifyInfo.endDate.substring(0,10),
+                                    prizeNums:_this.data.modifyInfo.prizeNums,
+                                })
+                                break;
+                            case 0:
+                                wx.showToast({
+                                    title: '暂无活动，去创建吧!',
+                                    icon:'none',
+                                })
+                                break;
+                            default:
+                                break;
+                        }
+                    },
+                })
+                break;
+        }
         // wx.cloud.callFunction({
         //     name:'activity',
         //     data:{

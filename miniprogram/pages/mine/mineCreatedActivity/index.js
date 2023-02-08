@@ -61,19 +61,6 @@ Page({
                 console.log(res.result);
             },
         })
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'modifyMyActivity',
-                toUpdateActivityInfo:{
-                    signUpSet:'撒打发'
-                },
-                activityId:'22896bbf63e354ed0208344b32b23c5d'
-            },
-            success(res){
-                console.log(res.result);
-            }
-        })
     },
 
     /**
