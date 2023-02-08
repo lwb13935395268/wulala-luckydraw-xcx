@@ -43,7 +43,7 @@ Page({
                 type:'queryMyActivityList',
             },
             success(res){
-                switch (res.status) {
+                switch (res.result.status) {
                     case 200:
                         _this.setData({
                             myActicityList:res.result.data.data

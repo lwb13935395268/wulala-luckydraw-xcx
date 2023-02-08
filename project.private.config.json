@@ -79,8 +79,8 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/mine/mineCreatedActivity/index",
-                    "pathName": "pages/mine/mineCreatedActivity/index",
+                    "name": "pages/mine/createActivity/index",
+                    "pathName": "pages/mine/createActivity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

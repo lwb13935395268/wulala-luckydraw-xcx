@@ -5,8 +5,10 @@
         <view class="create-btn" bindtap="navgator" data-path="selectActivity/index">
             去创建一个活动
         </view>
-        <activity status="0"></activity>
-        <activity status="1"></activity>
+        <view class="" wx:for="{{myActicityList}}" wx:key="index">
+          <activity status="0" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}">
+          </activity>
+        </view>
     </view>
     <view slot='已结束' class="wrap ptb-20">
         <activity status="2"></activity>
