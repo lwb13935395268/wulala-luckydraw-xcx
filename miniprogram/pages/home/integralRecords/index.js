@@ -1,6 +1,32 @@
 // pages/home/IntegralRecord/index.js
 Page({
+    async getIntegralRecord() {
 
+        wx.showLoading({
+            title: '加载中..',
+            mask: true
+        })
+        let {
+            getIntegralRecord
+        } = getApp();
+        let res = await getIntegralRecord();
+        console.log(res);
+        wx.hideLoading()
+    },
+    setTitle(){
+
+        wx.setNavigationBarTitle({
+            title: '积分记录'
+        })
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#e04540',
+            animation: {
+                duration: 400,
+                timingFunc: 'easeIn'
+            }
+        })
+    },
     /**
      * 页面的初始数据
      */
@@ -12,18 +38,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
-        wx.setNavigationBarTitle({
-            title: '积分记录'
-          })
-          wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#e04540',
-            animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
-            }
-          })
+        this.setTitle();
+        this.getIntegralRecord()
     },
 
     /**

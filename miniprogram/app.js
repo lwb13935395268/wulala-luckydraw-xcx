@@ -85,6 +85,18 @@ App({
             return res.result
         })
     },
+    //获取积分记录接口
+    getIntegralRecord(){
+       return  wx.cloud.callFunction({
+            name: 'integral',
+            data: {
+                type: 'record',
+            }
+        }).then(res => {
+            console.log(res);
+            return res.result
+        })
+    },
     // 返回上一级   
     back: function () {
         wx.navigateBack({

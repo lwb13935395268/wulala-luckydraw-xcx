@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/home/index",
+    "pages/home/integralRecords/index",
     "pages/home/goodDetail/index",
     "pages/home/exchangeRecord/index",
-    "pages/home/integralRecord/index",
     "pages/activity/index",
     "pages/activity/activityDetail/index",
     "pages/mine/index",

@@ -14,6 +14,7 @@ exports.main = async (event, context) => {
         data: []
     }
     try {
+        console.log(OPENID);
         let result = await db.collection('integralRecord').add({
             data: {
                 date: new Date().valueOf(),
