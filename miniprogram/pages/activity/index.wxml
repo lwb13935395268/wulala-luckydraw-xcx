@@ -1,24 +1,24 @@
 <view class="main">
     <tab titleList="{{['全部','推荐','最新','已参与','已结束']}}">
-        <view slot="全部" class="wrap mt-20 mb-40">
+        <view slot="全部" class="wrap gap-tb-20">
             <activity wx:for="{{activityList}}" wx:key="index" bindtap="toCommodityDetails" status="0" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
         </view>
-        <view slot="推荐" class="wrap">
+        <view slot="推荐" class="wrap gap-tb-20">
             <activity status="0"></activity>
             <activity status="1"></activity>
             <activity status="2"></activity>
         </view>
-        <view slot="最新" class="wrap">
+        <view slot="最新" class="wrap gap-tb-20">
             <activity status="0"></activity>
             <activity status="1"></activity>
             <activity status="2"></activity>
         </view>
-        <view slot="已参与" class="wrap">
+        <view slot="已参与" class="wrap gap-tb-20">
             <activity status="0"></activity>
             <activity status="1"></activity>
             <activity status="2"></activity>
         </view>
-        <view slot="已结束" class="wrap">
+        <view slot="已结束" class="wrap gap-tb-20">
             <activity status="0"></activity>
             <activity status="1"></activity>
             <activity status="2"></activity>
