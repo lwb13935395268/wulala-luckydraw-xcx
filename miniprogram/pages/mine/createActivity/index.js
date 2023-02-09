@@ -559,19 +559,6 @@ Page({
                 })
                 break;
         }
-        // wx.cloud.callFunction({
-        //     name:'activity',
-        //     data:{
-        //         type:'create',
-        //         activityInfo:{
-        //             name:'妇女合适的接口返回看',
-        //             endDate:'2022-10-10 12:01'
-        //         }
-        //     },
-        //     success(res){
-        //         console.log(res.result);
-        //     },
-        // })
     },
 
     /**

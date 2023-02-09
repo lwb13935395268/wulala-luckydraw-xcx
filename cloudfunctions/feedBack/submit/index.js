@@ -9,7 +9,7 @@ const db = cloud.database();
 // 创建集合云函数入口函数
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
-    event.activityInfo.OPENID = wxContext.OPENID;
+    event.feedBackInfo.OPENID = wxContext.OPENID;
     let createActivity = await db.collection('feedBack').add({
         data:  event.feedBackInfo
     });

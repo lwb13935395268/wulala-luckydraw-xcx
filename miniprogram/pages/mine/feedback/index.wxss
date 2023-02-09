@@ -42,9 +42,6 @@
     padding: 30rpx 0;
 }
 .type checkbox-group{
-    /* display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15rpx; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -76,4 +73,17 @@
 .submit-btn button{
     background-color: #dc3a38;
     color: white;
+}
+.feedback-img{
+    position: relative;
+}
+.feedback-img image{
+    width: 620rpx;
+}
+.close .error{
+    width: 35rpx;
+    height: 35rpx;
+    position: absolute;
+    top: -25rpx;
+    right: -25rpx;
 }
