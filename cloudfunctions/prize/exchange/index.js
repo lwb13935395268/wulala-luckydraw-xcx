@@ -30,12 +30,26 @@ exports.main = async (event, context) => {
                 remainderNum: _.inc(-1),
                 exchangeNum: _.inc(1),
             }
-        })
+        });
         await db.collection('userInfo').doc(userData._id).update({
             data: {
                 integral: _.inc(-prizeData.price)
             }
+        });
+        cloud.callFunction({
+            name: 'integral',
+            data: {
+                type: 'change',
+                data: {
+                    type: 4,
+                    num: prizeData.price, //改变数量
+                    balance: userData.integral - prizeData.price, //余额\
+                }
+            }
+        }).then(res => {
+            console.log(res);
         })
+
         res.status = 200;
         res.msg = '兑换成功';
     } else if (prizeData.remainderNum <= 0) {

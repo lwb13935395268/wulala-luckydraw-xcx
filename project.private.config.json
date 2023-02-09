@@ -52,13 +52,6 @@
                 },
                 {
                     "name": "",
-                    "pathName": "pages/home/IntegralRecord/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
                     "pathName": "pages/activity/index",
                     "query": "",
                     "launchMode": "default",
@@ -107,15 +100,29 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/mine/feedback/index",
+                    "name": "",
+                    "pathName": "pages/home/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
                     "pathName": "pages/mine/feedback/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "pages/activity/index",
-                    "pathName": "pages/activity/index",
+                    "name": "",
+                    "pathName": "pages/home/exchangeRecord/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/home/integralRecord/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

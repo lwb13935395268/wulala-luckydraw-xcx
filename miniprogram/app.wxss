@@ -165,6 +165,9 @@ page {
 .gap-lr-10{
     gap: 0 10rpx;
 }
+.over-hidden{
+    overflow: hidden;
+}
 /* 
   周永峰的公共样式
 */

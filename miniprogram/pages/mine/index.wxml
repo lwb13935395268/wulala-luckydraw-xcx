@@ -9,7 +9,9 @@
                 <text class="ml-20" wx:else>微信授权</text>
             </view>
             <view class="num align-center">
-                <text>积分{{userInfo.integral||0}}</text>
+                <view>积分
+                <text class="ml-10 mr-10">{{userInfo.integral||0}}</text>
+                </view>
                 <image src="../../images/icon-entry2.png" mode=""/>
             </view>
         </view>

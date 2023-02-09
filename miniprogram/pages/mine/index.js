@@ -106,7 +106,6 @@ Page({
      */
     onShow() {
         let app = getApp();
-
         if (app.globalData.loginStatus) {
             this.getPageParams()
         }
