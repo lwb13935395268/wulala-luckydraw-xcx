@@ -117,7 +117,7 @@ Page({
     onLoad(options) {
         this.data.prizeId = options.id;
         this.setTitle();
-        // this.getPrizeDetail(options.id);
+        this.getPrizeDetail(options.id);
     },
 
     /**
