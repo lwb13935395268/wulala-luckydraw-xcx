@@ -118,7 +118,6 @@ Page({
         this.data.prizeId = options.id;
         this.setTitle();
         // this.getPrizeDetail(options.id);
-        console.log(2);
     },
 
     /**

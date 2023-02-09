@@ -5,7 +5,7 @@
             去创建一个活动
         </view>
         <view class="" wx:for="{{myActicityList}}" wx:key="index">
-          <activity status="0" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}">
+          <activity status="0" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}" isSet="{{true}}" toSetRouter='/pages/mine/createActivity/index?id={{item._id}}'>
           </activity>
         </view>
     </view>

@@ -20,10 +20,10 @@
         </view>
         <view class="hr"></view>
         <activityTitle class="mt-50">活动标题</activityTitle>
-        <textarea placeholder="请输入您的活动标题(30字以内)" bindinput="bindFormSubmit" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;" name="textarea"/>
+        <textarea placeholder="请输入您的活动标题(30字以内)" bindinput="bindFormSubmit" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;" value="{{activityTitle}}" name="textarea"/>
         <activityTitle class="mt-50">活动时间</activityTitle>
         <view class="activity-timer">
-            <picker mode="date" value="{{startDate}}" start="2023-02-02" end="2026-01-01"bindchange="bindDateChange">
+            <picker mode="date" value="{{startDate}}" start="{{currentTime}}" end="{{afterTime}}" bindchange="bindDateChange">
                 <view class="picker">
                     开始日期: 
                     <text class="start-time">{{startDate}}</text>
@@ -37,7 +37,7 @@
             </picker>
         </view>
         <view class="activity-timer">
-            <picker mode="date" value="{{endDate}}" start="2023-02-02" end="2026-01-01"bindchange="endDateChange">
+            <picker mode="date" value="{{endDate}}" start="{{currentTime}}" end="{{afterTime}}" bindchange="endDateChange">
                 <view class="picker">
                     结束日期: 
                     <text class="start-time">{{endDate}}</text>
@@ -129,9 +129,13 @@
         </view>
         <button type="primary" class="activity-details_btn mb-50">去认证</button>
     </view>
-    <view class="df">
+    <view class="df" wx:if="{{modifyInfo == ''}}">
         <button type="primary" class="activity-details_btn mb-50" bindtap="cancelRelease">取消发布</button>
         <button type="primary" class="activity-details_btn mb-50" bindtap="immediatelyRelease">立即发布</button>
+    </view>
+    <view class="df" wx:else>
+        <button type="primary" class="activity-details_btn mb-50" bindtap="cancelRelease">取消修改</button>
+        <button type="primary" class="activity-details_btn mb-50" bindtap="immediatelyModify">立即修改</button>
     </view>
 </view>
 </scroll-view>
