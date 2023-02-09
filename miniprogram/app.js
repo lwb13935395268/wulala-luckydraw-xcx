@@ -17,6 +17,10 @@ App({
             userId: '',
             userInfo: {},
             loginStatus: false,
+            aa:{
+                name:'小明',
+                age:18
+            }
         };
     },
     //获取用户信息接口

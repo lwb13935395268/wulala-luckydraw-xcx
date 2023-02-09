@@ -111,7 +111,7 @@ Page({
      */
     async onLoad(options) {
         this.setTitle();
-        this.getPrizeList();
+        // this.getPrizeList();
     },
 
     /**
