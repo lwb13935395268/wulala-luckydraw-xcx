@@ -67,9 +67,6 @@
     color: #cdcdcd;
 }
 
-.good-desc {
-    /* padding: 20rpx 0; */
-}
 
 .content {
     background-color: white;

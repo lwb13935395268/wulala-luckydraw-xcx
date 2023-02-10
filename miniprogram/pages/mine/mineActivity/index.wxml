@@ -1,12 +1,9 @@
 <!--pages/mine/mineActivity/index.wxml-->
-
 <tab titleList="{{['正在进行','已结束']}}">
     <view slot='正在进行' class="wrap gap-tb-20">
-        <activity status="0"></activity>
-        <activity status="1"></activity>
+        <activity title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}" wx:for="{{activityList}}" wx:key="_id" status=""></activity>
     </view>
     <view slot='已结束' class="wrap gap-tb-20">
-        <activity status="2"></activity>
-        <activity status="2"></activity>
+        <activity title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}" wx:for="{{overActivityList}}" wx:key="_id" status=""></activity>
     </view>
 </tab>

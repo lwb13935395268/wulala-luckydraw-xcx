@@ -7,7 +7,7 @@
                 活动规则
             </view>
             <view class="content">
-                <scroll-view scroll-y="true" style="height: 600rpx;" enhanced="{{enhanced}}" show-scrollbar="{{scrollbar}}">
+                <scroll-view scroll-y="true" style="height: 580rpx;" enhanced="{{enhanced}}" show-scrollbar="{{scrollbar}}">
                     <view class="list">
                         <view class="text">
                             1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
@@ -41,10 +41,6 @@
                     <image src="../../../images/icon-rule.png"></image>
                     <text>规则</text>
                 </view>
-                <!-- <view class="setting-main">
-                    <image src="../../../images/icon-service.png"></image>
-                    <text>客服</text>
-                </view> -->
                 <button class="style-clear" type="default" open-type="share">
                     <view class="setting-main">
                         <image src="../../../images/icon-share.png"></image>

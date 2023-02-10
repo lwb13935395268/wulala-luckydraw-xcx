@@ -17,25 +17,28 @@ Page({
         // }
     },
     async getUserInfo() {
+        
+        let app=getApp();
+        app.globalData.callLogin=false;
         let {
             getUserInfo,
             addUser,
             login
         } = getApp();
-        let app = getApp();
-        let {
-            userInfo
-        } = await login('我的页面登录');
+        // let {
+        //     userInfo
+        // } = await login('我的页面登录');
         let res = await getUserInfo();
-        if (userInfo) {
-            this.setData({
-                userInfos: userInfo,
-                loginStatus: true
-            });
-            app.globalData.loginStatus = true;
-        };
-        console.log(res);
+        // if (userInfo) {
+        //     this.setData({
+        //         userInfos: userInfo,
+        //         loginStatus: true
+        //     });
+        //     app.globalData.loginStatus = true;
+        // };
+        // console.log(res);
         if (res.status == 200) {
+                app.globalData.loginStatus = true;
             if (!Array.isArray(res.data)) {
                 console.log('有这个人');
                 app.globalData.userInfo = res.data;
@@ -90,7 +93,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let app = getApp();
         this.setTitle();
     },
 
@@ -100,15 +102,22 @@ Page({
     onReady() {
 
     },
-
+    getUserParams(){
+        let app = getApp();
+        console.log(app.globalData);
+        if (app.globalData.loginStatus) {
+            this.getPageParams()
+        }
+        if(app.globalData.callLogin){
+            console.log(999);
+            this.getUserInfo()
+        }
+    },
     /**
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        let app = getApp();
-        if (app.globalData.loginStatus) {
-            this.getPageParams()
-        }
+        this.getUserParams()
     },
 
     /**

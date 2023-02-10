@@ -17,10 +17,7 @@ App({
             userId: '',
             userInfo: {},
             loginStatus: false,
-            aa:{
-                name:'小明',
-                age:18
-            }
+            callLogin:false
         };
     },
     //获取用户信息接口
@@ -105,6 +102,18 @@ App({
                  type: 'prizeRecord',
              }
          }).then(res => {
+             return res.result
+         })
+    },
+    //获取我参与的活动
+    getMineActivity(){
+        return  wx.cloud.callFunction({
+             name: 'activity',
+             data: {
+                 type: 'participateActivity',
+             }
+         }).then(res => {
+             console.log(res);
              return res.result
          })
     },

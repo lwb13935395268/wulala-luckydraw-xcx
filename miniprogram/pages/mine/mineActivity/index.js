@@ -3,9 +3,36 @@ Page({
 
     navgator(e){
         let path=e.currentTarget.dataset.path;
+        let app=getApp();
+        app.globalData.callLogin=true;
         wx.navigateTo({
           url: '/pages/mine/'+path,
         })
+    },
+    setTitle(){
+        wx.setNavigationBarTitle({
+            title: '我的活动'
+          })
+          wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#eb524c',
+            animation: {
+              duration: 400,
+              timingFunc: 'easeIn'
+            }
+          })
+    },
+    async getMineActivitys(){
+        let {
+            getMineActivity
+        }=getApp();
+        let res=await getMineActivity();
+        if(res.status==200){
+            this.setData({
+                activityList:res.data,
+                overActivityList:res.data
+            })
+        }
     },
     /**
      * 页面的初始数据
@@ -18,18 +45,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
-        wx.setNavigationBarTitle({
-            title: '我的活动'
-          })
-          wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#eb524c',
-            animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
-            }
-          })
+        this.setTitle();
+        this.getMineActivitys();
     },
 
     /**
