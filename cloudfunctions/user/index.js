@@ -2,6 +2,7 @@
 const cloud = require('wx-server-sdk')
 const detail = require('./detail/index');
 const add = require('./add/index');
+const update = require('./update/index');
 // const getOpenid = require('../quickstartFunctions/getOpenId/index')
 cloud.init({
     env: cloud.DYNAMIC_CURRENT_ENV
@@ -17,6 +18,8 @@ exports.main = async (event, context) => {
             return await detail.main(event, context);
         case 'add':
             return await add.main(event, context);
+        case 'update':
+            return await update.main(event, context);
     }
     // return {}
 }

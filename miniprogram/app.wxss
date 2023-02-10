@@ -58,6 +58,12 @@ page {
 .fc{
     color: red;
 }
+.pd-20{
+    padding: 20rpx;
+}
+.ptb-30{
+    padding: 30rpx 0;
+}
 .mb-40{
     margin-bottom: 40rpx;
 }

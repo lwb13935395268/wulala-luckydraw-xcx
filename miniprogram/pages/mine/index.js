@@ -17,51 +17,31 @@ Page({
         // }
     },
     async getUserInfo() {
-        
-        let app=getApp();
-        app.globalData.callLogin=false;
+        wx.showLoading({
+          title: '登录中',
+        })
+        let app = getApp();
+        app.globalData.callLogin = false;
         let {
             getUserInfo,
-            addUser,
-            login
         } = getApp();
-        // let {
-        //     userInfo
-        // } = await login('我的页面登录');
         let res = await getUserInfo();
-        // if (userInfo) {
-        //     this.setData({
-        //         userInfos: userInfo,
-        //         loginStatus: true
-        //     });
-        //     app.globalData.loginStatus = true;
-        // };
-        // console.log(res);
         if (res.status == 200) {
-                app.globalData.loginStatus = true;
-            if (!Array.isArray(res.data)) {
-                console.log('有这个人');
-                app.globalData.userInfo = res.data;
-                this.setData({
-                    userInfo: res.data
-                })
-                wx.hideLoading();
-                wx.showToast({
-                    title: '登录成功',
-                })
-            } else {
-                console.log('添加');
-                let res2 = await addUser();
-                if (res2) {
-                    let res3 = await getUserInfo();
-                    app.globalData.userInfo = res3.data;
-                    this.setData({
-                        userInfo: res3.data
-                    })
-                }
-            }
+            this.setData({
+                loginStatus: true,
+                userInfo: res.data
+            })
+            app.globalData.loginStatus = true;
+            app.globalData.userInfo = res.data;
+            wx.hideLoading();
+            wx.showToast({
+                title: '登录成功',
+            })
         } else {
-            console.log('登入失败');
+            wx.showToast({
+                title: '登录失败',
+                icon:'error'
+            })
         }
     },
     setTitle() {
@@ -102,13 +82,13 @@ Page({
     onReady() {
 
     },
-    getUserParams(){
+    getUserParams() {
         let app = getApp();
         console.log(app.globalData);
         if (app.globalData.loginStatus) {
             this.getPageParams()
         }
-        if(app.globalData.callLogin){
+        if (app.globalData.callLogin) {
             console.log(999);
             this.getUserInfo()
         }
