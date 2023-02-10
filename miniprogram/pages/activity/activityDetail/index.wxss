@@ -271,7 +271,7 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: -90%;
+    top: -100%;
     left: 10%;
 }
 
@@ -280,7 +280,7 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: -90%;
+    top: -100%;
     left: 50%;
 }
 
@@ -289,7 +289,7 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: -90%;
+    top: -100%;
     left: 90%;
 }
 

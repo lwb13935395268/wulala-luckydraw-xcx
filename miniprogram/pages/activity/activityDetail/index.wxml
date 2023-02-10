@@ -67,22 +67,25 @@
      -->
     <view class="main">
         <view class="main-shop">
-        <view class="shop" wx:for="{{lists}}" wx:key="index">
-            <view class="shopimage">
-                <image src="{{item.addImg}}"></image>
-            </view>
-            <view class="shopdetail">
-                <view>{{item.prizeName}}</view>
-                <view>
-                    <text>数量:</text>
-                    <text>{{item.prizeNum}}份</text>
+            <view class="shop" wx:for="{{lists}}" wx:key="index">
+                <view class="shopimage">
+                    <image src="{{item.addImg}}"></image>
+                </view>
+                <view class="shopdetail">
+                    <view>{{item.prizeName}}</view>
+                    <view>
+                        <text>数量:</text>
+                        <text>{{item.prizeNum}}份</text>
+                    </view>
                 </view>
             </view>
         </view>
-        </view>
         <view class="schedule">
             <view class="box-progressBar">
-                <view class="progressBar">
+                <!-- <view class="progressBar">
+                </view> -->
+                <view class="progress">
+                    <progress percent="{{total}}" active stroke-width="9" border-radius="15"/>
                 </view>
                 <view class="box-post">
                     <view class="box-img">
