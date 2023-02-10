@@ -10,7 +10,6 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     event.prizeInfo.OPENID = wxContext.OPENID;
-    console.log(event.prizeInfo);
     let createPrize = await db.collection('merchantPrizeList').add({
         data:  event.prizeInfo
     });

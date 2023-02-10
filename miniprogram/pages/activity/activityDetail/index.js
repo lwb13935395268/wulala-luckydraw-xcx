@@ -9,6 +9,22 @@ Page({
         scrollbar: false,
         enhanced: true,
         catchtouchmove: true,
+        activityDetail:'',
+        startDate:'',
+        endDate:'',
+        lists:'',
+        _id:''
+    },
+    help(){
+        // console.log('11111');
+        console.log(this._id);
+        // wx.cloud.callFunction({
+        //     name:'activity',
+        //     data:{
+        //         type:'participateActivity',
+        //         activityId: this._id
+        //     }
+        // })
     },
     setModal() {
         this.setData({
@@ -36,6 +52,39 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        console.log(options.id);
+        this._id = options.id;
+        let _this = this;
+        
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'queryMyActivityList',
+                wholeActivity : true
+            },
+            success(res){
+                console.log(res.result.data.data);
+                let list = res.result.data.data;
+                list.forEach(el => {
+                    let startDates = el.startDate.slice(5,10);
+                    let endDates = el.endDate.slice(5,10);
+                    let str = startDates;
+                    let strr = endDates;
+                    let strs = str.replace('-','.');
+                    let strrs = strr.replace('-','.');
+                    console.log(el.prizeNums);
+                    _this.setData({
+                        startDate: strs,
+                        endDate: strrs,
+                        lists: el.prizeNums
+                    })
+                });
+                _this.setData({
+                    activityDetail: res.result.data.data
+                })
+
+            }
+        })
         wx.showShareMenu({
             withShareTicket: true,
             menus:['shareAppMessage','shareTimeline']

@@ -1,8 +1,10 @@
-const create = require("./create/index");
-const queryMyActivityList = require("./queryMyActivityList/index");
-const modifyMyActivity = require("./modifyMyActivity");
-const merchantPrizeList = require("./merchantPrizeList/index");
-const myParticipateActivity = require("./myParticipateActivity/index")
+const create = require("./create/index");//创建活动列表
+const queryMyActivityList = require("./queryMyActivityList/index");//查询活动接口
+const modifyMyActivity = require("./modifyMyActivity");//修改活动
+const merchantPrizeList = require("./merchantPrizeList/index");//商户创建的奖品列表
+const myParticipateActivity = require("./myParticipateActivity/index");//我参加的活动列表
+const participateActivity = require("./participateActivity/index");//参与活动接口
+const getActivityCount = require("./getActivityCount/index");//获取当前活动参与的人数
 // 云函数入口函数
 exports.main = async (event, context) => {
   switch (event.type) {
@@ -16,5 +18,9 @@ exports.main = async (event, context) => {
         return await merchantPrizeList.main(event, context);
     case 'myParticipateActivity':
         return await myParticipateActivity.main(event, context);
+    case 'participateActivity':
+        return await participateActivity.main(event, context);
+    case 'getActivityCount':
+        return await getActivityCount.main(event, context);
   }
 };
