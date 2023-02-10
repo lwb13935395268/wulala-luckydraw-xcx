@@ -103,5 +103,18 @@
                 </view>
             </view>
         </view>
+        <view class="item" bindtap="navgator" data-path="mine/feedback/index">
+            <view class="icon">
+                <image src="../../images/icon-prize.png" mode="" />
+            </view>
+            <view class="link flex-between">
+                <view>
+                    管理奖品
+                </view>
+                <view>
+                    <image class="entry" src="../../images/icon-entry.png" mode="" />
+                </view>
+            </view>
+        </view>
     </view>
 </view>
