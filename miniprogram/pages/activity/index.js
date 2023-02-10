@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        currentIndex: 0, //默认是活动项
+        currentIndex: 1, //默认是活动项
         activityList:[],//活动列表
     },
     toCommodityDetails:function(e){
