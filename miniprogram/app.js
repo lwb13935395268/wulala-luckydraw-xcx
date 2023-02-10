@@ -52,9 +52,9 @@ App({
     //获取奖品列表接口
     getPrizeList() {
         return wx.cloud.callFunction({
-            name: 'prize',
+            name: 'transaction',
             data: {
-                type: 'list'
+                type: 'prizeList'
             }
         }).then(res => {
             // console.log(res);
@@ -64,9 +64,9 @@ App({
     //奖品详情接口
     getPrizeDetail(prizeId) {
         return wx.cloud.callFunction({
-            name: 'prize',
+            name: 'transaction',
             data: {
-                type: 'detail',
+                type: 'prizeDetail',
                 prizeId
             }
         }).then(res => {
@@ -76,9 +76,9 @@ App({
     //兑换奖品接口
     exchangePrize(prizeId) {
         return wx.cloud.callFunction({
-            name: 'prize',
+            name: 'transaction',
             data: {
-                type: 'exchange',
+                type: 'prizeExchange',
                 prizeId,
             }
         }).then(res => {
@@ -88,14 +88,25 @@ App({
     //获取积分记录接口
     getIntegralRecord(){
        return  wx.cloud.callFunction({
-            name: 'integral',
+            name: 'transaction',
             data: {
-                type: 'record',
+                type: 'intergralRecord',
             }
         }).then(res => {
             console.log(res);
             return res.result
         })
+    },
+    //获取兑奖记录
+    getPrizeRecord(){
+        return  wx.cloud.callFunction({
+             name: 'transaction',
+             data: {
+                 type: 'prizeRecord',
+             }
+         }).then(res => {
+             return res.result
+         })
     },
     // 返回上一级   
     back: function () {

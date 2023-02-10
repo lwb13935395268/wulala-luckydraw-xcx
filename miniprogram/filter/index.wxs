@@ -1,0 +1,39 @@
+function getRecoedType(type) {
+    switch (type) {
+        case 0:
+            return '新用户奖励' //0新用户奖励，1抽奖获得，2，充值获得，4积分兑换奖品消耗，5,兑换现金
+        case 1:
+            return '抽奖获得'
+        case 2:
+            return '充值获得'
+        case 3:
+            return '兑换奖品'
+        case 4:
+            return '兑换现金'
+    }
+};
+
+function formatTime(dateNum) {
+    console.log(22);
+    // if (!dateNum) return ''
+    // var date = new Date(dateNum); //时间戳为10位需*1000
+    var date = getDate(dateNum);//时间戳为10位需*1000
+    var Y = date.getFullYear() + '/';
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '/';
+    var D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' ';
+    var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+    var m = (date.getMinutes() < 10 ? '0' + date.getMinutes(): date.getMinutes());
+    console.log(887384);
+    return Y+M+D+h+m
+};
+
+function getRecoedNum(type, num) {
+    var typeArr = [0, 1, 2];
+    var res = (typeArr.indexOf(type) ? '+' : '-') + num + '积分';
+    return res
+};
+module.exports = {
+    getDate: formatTime,
+    getRecoedType: getRecoedType,
+    getRecoedNum: getRecoedNum
+}

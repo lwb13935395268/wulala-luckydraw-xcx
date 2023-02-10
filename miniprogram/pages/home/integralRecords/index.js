@@ -10,11 +10,13 @@ Page({
             getIntegralRecord
         } = getApp();
         let res = await getIntegralRecord();
+        this.setData({
+            recordList: res.data
+        })
         console.log(res);
         wx.hideLoading()
     },
-    setTitle(){
-
+    setTitle() {
         wx.setNavigationBarTitle({
             title: '积分记录'
         })
@@ -31,7 +33,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        recordList: []
     },
 
     /**
@@ -39,7 +41,8 @@ Page({
      */
     onLoad(options) {
         this.setTitle();
-        this.getIntegralRecord()
+        console.log(88);
+        // this.getIntegralRecord()
     },
 
     /**

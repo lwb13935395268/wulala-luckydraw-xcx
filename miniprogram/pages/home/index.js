@@ -91,17 +91,16 @@ Page({
             getPrizeList
         } = getApp();
         let res = await getPrizeList();
-        console.log(res);
         this.setData({
             prizeList: res.data,
             hotPrizeList:res.data.filter(e=>{
                 return e.prizeType==1
             }),
             disPrizeList:res.data.filter(e=>{
-                return e.prizeType==1
+                return e.prizeType==2
             }),
             burstPrizeList:res.data.filter(e=>{
-                return e.prizeType==1
+                return e.prizeType==3
             })
         });
         return res
@@ -157,18 +156,34 @@ Page({
         wx.showLoading({
           title: '刷新中...',
         })
-        let res=await this.getPrizeList();
-        if(res){
-            //停止下拉刷新
+        // if(res){
+        //     //停止下拉刷新
+        //     wx.stopPullDownRefresh();
+        //     wx.hideLoading();
+        //     wx.hideNavigationBarLoading();
+        // }else{
+        //     console.log('失败');
+        //     //停止下拉刷新
+        //     wx.stopPullDownRefresh();
+        //     wx.hideLoading();
+        //     wx.hideNavigationBarLoading();
+        // }
+        try{
+            let res=await this.getPrizeList();
+                wx.stopPullDownRefresh();
+                wx.hideLoading();
+                wx.hideNavigationBarLoading();
+
+        }catch{
             wx.stopPullDownRefresh();
             wx.hideLoading();
             wx.hideNavigationBarLoading();
-        }else{
-            console.log('失败');
-            //停止下拉刷新
-            wx.stopPullDownRefresh();
-            wx.hideLoading();
-            wx.hideNavigationBarLoading();
+           
+            wx.showToast({
+                icon: 'error',
+                title: '刷新失败',
+            })
+
         }
       },
     /**
