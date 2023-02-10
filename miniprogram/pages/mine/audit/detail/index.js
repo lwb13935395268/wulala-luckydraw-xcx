@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        imgUrl:['https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzzs.png?sign=455f6eb54223c646aeef259a261cdabc&t=1675321156/200*200','https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzzs.png?sign=455f6eb54223c646aeef259a261cdabc&t=1675321156/200*200','https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzzs.png?sign=455f6eb54223c646aeef259a261cdabc&t=1675321156/200*200','https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzzs.png?sign=455f6eb54223c646aeef259a261cdabc&t=1675321156/200*200']
+        auditList:[],
+        imgUrl:[],
     },
     clickImg: function(e){
         var imgUrl = this.data.imgUrl;
@@ -31,8 +32,32 @@ Page({
           success: (res) => {
               if(res.confirm){
                   console.log('通过');
+                  wx.cloud.callFunction({
+                      name: 'uploading',
+                      data:{
+                          type:'modify',
+                          merchantInfo:{
+                            audit: '1'
+                          }
+                      },
+                      success(res){
+                        console.log(res);
+                      }
+                  })
               } else if(res.cancel){
                   console.log('不通过');
+                  wx.cloud.callFunction({
+                    name: 'uploading',
+                    data:{
+                        type:'modify',
+                        merchantInfo:{
+                          audit: '0'
+                        }
+                    },
+                    success(res){
+                        console.log(res);
+                    }
+                })
               }
           },
           fail: (res) => {},
@@ -44,6 +69,19 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        let _this = this;
+        const eventChannel = this.getOpenerEventChannel()
+        eventChannel.on('acceptDataFromOpenerPage', function(data) {
+          let yyzz = data.data.doUploadyyzz;
+          let sbzs = data.data.doUploadimgSbzs;
+          let sfz = data.data.doUploadimgSfz;
+          let sfzs = data.data.doUploadimgSfzs;
+          let urls = [yyzz].concat(sbzs,sfz,sfzs);
+          _this.setData({
+            auditList: data,
+            imgUrl: urls
+          })
+        })
 
     },
 

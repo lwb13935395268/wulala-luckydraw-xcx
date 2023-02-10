@@ -86,8 +86,8 @@
                     "scene": null
                 },
                 {
-                    "name": "商家入驻",
-                    "pathName": "pages/mine/uploading/index",
+                    "name": "审核",
+                    "pathName": "pages/mine/audit/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -102,6 +102,13 @@
                 {
                     "name": "pages/mine/createActivity/index",
                     "pathName": "pages/mine/createActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/mine/audit/detail/index",
+                    "pathName": "pages/mine/audit/detail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

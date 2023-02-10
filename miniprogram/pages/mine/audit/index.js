@@ -6,14 +6,9 @@ Page({
      */
     data: {
         currentIndex: 0, //默认是活动项
+        audit:''
     },
     pagechange: function (e) {
-        // 通过touch判断，改变tab的下标值
-        // console.log(e);
-        // if ("touch" === e.detail.source) {
-        // let currentPageIndex = this.data.currentIndex;
-        // currentPageIndex = (currentPageIndex + 1) % 2;
-        // 拿到当前索引并动态改变
         this.setData({
             currentIndex: e.detail.current,
         })
@@ -22,14 +17,19 @@ Page({
     //点击tab时触发
     titleClick: function (e) {
         this.setData({
-        //拿到当前索引并动态改变
         currentIndex: e.currentTarget.dataset.idx
         })
     },
-    auditDetail: function (){
+    auditDetail: function (e){
+
         wx.navigateTo({
-          url: '/pages/mine/audit/detail/index',
+          url: `/pages/mine/audit/detail/index`,
+          success: function(res) {
+            // 通过 eventChannel 向被打开页面传送数据
+            res.eventChannel.emit('acceptDataFromOpenerPage', { data: e.currentTarget.dataset.item })
+          }
         })
+
     },
     auditSuccess: function (){
         wx.navigateTo({
@@ -46,7 +46,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        let _this = this;
+        wx.cloud.callFunction({
+            name:'uploading',
+            data:{
+                type:'query',
+            },
+            success(res){
+                // console.log(res.result.data.data);
+                _this.setData({
+                    audit: res.result.data.data
+                })
+                console.log(_this.data.audit);
+            }
+        })
     },
 
     /**

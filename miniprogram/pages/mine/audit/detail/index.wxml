@@ -11,11 +11,11 @@
                 <text>店铺名称</text>
                 <text>申请时间</text>
             </view>
-            <view class="main-right">
-                <text>刘伟博</text>
-                <text>13935395268</text>
-                <text>REX休闲娱乐场所</text>
-                <text>2023-02-01 20:17:52</text>
+            <view class="main-right" wx:for="{{auditList}}" wx:key="index"> 
+                <text>{{item.getUser}}</text>
+                <text>{{item.phone}}</text>
+                <text>{{item.name}}</text>
+                <text>{{item.time}}</text>
             </view>
         </view>
     </view>
@@ -23,11 +23,11 @@
         https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzzs.png?sign=455f6eb54223c646aeef259a261cdabc&t=1675321156
      -->
     <view class="wrap bj-white">
-        <view class="main-image" bindtap="clickImg">
-            <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzzs.png?sign=455f6eb54223c646aeef259a261cdabc&t=1675321156"></image>
-            <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzzs.png?sign=455f6eb54223c646aeef259a261cdabc&t=1675321156"></image>
-            <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzzs.png?sign=455f6eb54223c646aeef259a261cdabc&t=1675321156"></image>
-            <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/yyzzs.png?sign=455f6eb54223c646aeef259a261cdabc&t=1675321156"></image>
+        <view class="main-image" bindtap="clickImg" wx:for="{{auditList}}" wx:key="index">
+            <image src="{{item.doUploadyyzz}}"></image>
+            <image src="{{item.doUploadimgSbzs}}"></image>
+            <image src="{{item.doUploadimgSfz}}"></image>
+            <image src="{{item.doUploadimgSfzs}}"></image>
         </view>
         <view class="button">
             <view class="btn" bindtap="checkout">审核</view>
