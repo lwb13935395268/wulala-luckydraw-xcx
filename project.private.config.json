@@ -30,8 +30,8 @@
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/home/index",
+                    "name": "活动详细",
+                    "pathName": "pages/activity/activityDetail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -79,8 +79,8 @@
                     "scene": null
                 },
                 {
-                    "name": "商家入驻",
-                    "pathName": "pages/mine/uploading/index",
+                    "name": "审核",
+                    "pathName": "pages/mine/audit/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -100,8 +100,8 @@
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/home/index",
+                    "name": "pages/mine/audit/detail/index",
+                    "pathName": "pages/mine/audit/detail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

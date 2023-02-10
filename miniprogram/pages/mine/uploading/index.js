@@ -52,7 +52,7 @@ Page({
                     doUploadimgSbzs: this.data.imgSbzs,
                     doUploadimgSfz: this.data.imgSfz,
                     doUploadimgSfzs: this.data.imgSfzs,
-                    time: this.data.time
+                    time: this.data.time,
                 }
             },
             success(res){

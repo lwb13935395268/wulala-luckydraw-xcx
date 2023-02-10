@@ -1,7 +1,8 @@
 const create = require("./create/index");
 const queryMyActivityList = require("./queryMyActivityList/index");
 const modifyMyActivity = require("./modifyMyActivity");
-const participate = require("./participate/index");
+const merchantPrizeList = require("./merchantPrizeList/index");
+const myParticipateActivity = require("./myParticipateActivity/index")
 // 云函数入口函数
 exports.main = async (event, context) => {
   switch (event.type) {
@@ -11,7 +12,9 @@ exports.main = async (event, context) => {
         return await queryMyActivityList.main(event, context);
     case 'modifyMyActivity':
         return await modifyMyActivity.main(event, context);
-    case 'participate':
-        return await participate.main(event, context);
+    case 'merchantPrizeList':
+        return await merchantPrizeList.main(event, context);
+    case 'myParticipateActivity':
+        return await myParticipateActivity.main(event, context);
   }
 };
