@@ -12,7 +12,19 @@ Page({
         activityDetail:'',
         startDate:'',
         endDate:'',
-        lists:''
+        lists:'',
+        _id:''
+    },
+    help(){
+        // console.log('11111');
+        console.log(this._id);
+        // wx.cloud.callFunction({
+        //     name:'activity',
+        //     data:{
+        //         type:'participateActivity',
+        //         activityId: this._id
+        //     }
+        // })
     },
     setModal() {
         this.setData({
@@ -40,7 +52,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        console.log(options.id);
+        this._id = options.id;
         let _this = this;
+        
         wx.cloud.callFunction({
             name:'activity',
             data:{

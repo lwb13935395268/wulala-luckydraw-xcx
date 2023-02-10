@@ -105,7 +105,7 @@
             </view>
 
             <view class="prople-button">
-                <view class="button">助力</view>
+                <view class="button" bindtap="help">助力</view>
             </view>
         </view>
     </view>
