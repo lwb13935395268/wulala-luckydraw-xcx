@@ -128,7 +128,7 @@
                     "scene": null
                 },
                 {
-                    "name": "",
+                    "name": "pages/activity/index",
                     "pathName": "pages/activity/index",
                     "query": "",
                     "launchMode": "default",
