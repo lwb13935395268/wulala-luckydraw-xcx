@@ -8,9 +8,10 @@ Page({
         currentIndex: 0, //默认是活动项
         activityList:[],//活动列表
     },
-    toCommodityDetails:function(){
+    toCommodityDetails:function(e){
+        console.log(e.target.dataset.id);
         wx.navigateTo({
-          url: '/pages/activity/activityDetail/index',
+          url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
         })
     },
     /**
