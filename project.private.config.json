@@ -30,8 +30,8 @@
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/home/index",
+                    "name": "活动详细",
+                    "pathName": "pages/activity/activityDetail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
