@@ -4,9 +4,9 @@
     <tab titleList="{{['待审核','审核成功','审核失败']}}">
 
         <view slot='待审核' class="wrap gap-tb-20">
-            <view class="detail wrap" bindtap="auditDetail">
+            <view class="detail wrap"  bindtap="auditDetail" wx:for="{{audit}}" wx:key="index" data-item="{{item}}">
                 <view class="detail-header">
-                    <view class="username">易烊千玺</view>
+                    <view class="username">{{item.getUser}}</view>
                     <view class="audit">
                         <image src="../../../images/icon-yellow.png"></image>
                         <text>待审核</text>
@@ -15,16 +15,14 @@
                 </view>
                 <view class="detail-main">
                     <view class="detail-main_left">
-                        <text>姓名</text>
                         <text>联系方式</text>
                         <text>店铺名称</text>
                         <text>申请时间</text>
                     </view>
                     <view class="detail-main_right">
-                        <text>刘伟博</text>
-                        <text>13935395268</text>
-                        <text>REX休闲娱乐场所</text>
-                        <text>2023-02-01 20:17:52</text>
+                        <text>{{item.phone}}</text>
+                        <text>{{item.name}}</text>
+                        <text>{{item.time}}</text>
                     </view>
                 </view>
                 <!-- <view class="btn" bindtap="checkout">审核</view> -->

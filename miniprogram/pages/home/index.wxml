@@ -62,7 +62,7 @@
         </view>
         <tab id="tab" titleList="{{['全部商品','热门兑换','特惠专享','爆款商品']}}" scroll="{{scroll}}">
             <view class="wrap" slot='全部商品' style="height: 100%;">
-                <view class="shops ptb-20">
+                <view wx:if="{{prizeList.length}}"  class="shops ptb-20">
                     <view class="item" bindtap="navgator" data-path="goodDetail/index" wx:for="{{prizeList}}" wx:key="index" data-id="{{item._id}}">
                         <image src="{{item.imageUrl}}" mode="" />
                         <view class="title mt-10">
@@ -83,9 +83,9 @@
                         </view>
                     </view>
                 </view>
-                <!-- <view wx:else class="void-tip">
+                <view wx:else class="void-tip">
                     暂无奖品，正在全力补货中...
-                </view> -->
+                </view>
             </view>
             <view class="wrap" slot="热门兑换" style="height: 100%;">
                 <view wx:if="{{hoyPrizeList.length}}" class="shops ptb-20">
