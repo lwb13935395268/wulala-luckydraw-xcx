@@ -6,20 +6,7 @@ Page({
      */
     data: {
         currentIndex: 0, //默认是活动项
-    },
-    // 切换swiper-item触发bindchange事件
-    pagechange: function (e) {
-        this.setData({
-            currentIndex: e.detail.current,
-        })
-    },
-
-    //点击tab时触发
-    titleClick: function (e) {
-        this.setData({
-        //拿到当前索引并动态改变
-        currentIndex: e.currentTarget.dataset.idx
-        })
+        activityList:[],//活动列表
     },
     toCommodityDetails:function(){
         wx.navigateTo({
@@ -30,6 +17,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        let _this  = this;
         wx.setNavigationBarTitle({
             title: '活动中心'
         })
@@ -40,6 +28,19 @@ Page({
               duration: 400,
               timingFunc: 'easeIn'
             }
+        })
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'queryMyActivityList',
+                wholeActivity:true
+            },
+            success(res){
+                console.log(res.result.data.data);
+                _this.setData({
+                    activityList:res.result.data.data,
+                })
+            }
         })
     },
 

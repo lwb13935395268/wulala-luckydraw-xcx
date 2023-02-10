@@ -39,8 +39,8 @@
                 <view class="">
                     我的积分
                 </view>
-                <view class="num mt-20">
-                    <text>{{integral}}</text>
+                <view class="num mt-20"  bindtap="navgator" data-path="integralRecords/index">
+                    <text>{{userInfo.integral||0}}</text>
                     <image src="../../images/icon-entry_white.png" mode="" />
                 </view>
             </view>
@@ -55,15 +55,15 @@
             </view>
         </view>
     </view>
-    <view id="aa" class="body">
+    <view class="body">
         <!-- <view class="wrap"> -->
         <view class="wrap shop-title">
             积分兑换
         </view>
         <tab id="tab" titleList="{{['全部商品','热门兑换','特惠专享','爆款商品']}}" scroll="{{scroll}}">
             <view class="wrap" slot='全部商品' style="height: 100%;">
-                <view wx:if="{{prizeList.length}}" class="shops ptb-20">
-                    <view class="item" bindtap="navgator" wx:for="{{prizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
+                <view wx:if="{{prizeList.length}}"  class="shops ptb-20">
+                    <view class="item" bindtap="navgator" data-path="goodDetail/index" wx:for="{{prizeList}}" wx:key="index" data-id="{{item._id}}">
                         <image src="{{item.imageUrl}}" mode="" />
                         <view class="title mt-10">
                             {{item.prizeName}}

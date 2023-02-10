@@ -3,7 +3,7 @@
     <image class="image" src="{{imageUrl}}" mode="" />
     <view class="activity-content flex-between align-center">
     <view class="content-left {{isSet?'width-70':'text-ellipsis'}}">
-        <view class="activity-content_title">哈哈哈哈哈奥哈或哈哈哈哈哈奥哈或或哈或或或或或哈哈哈哈哈奥哈或或哈或或或或或哈哈哈哈哈奥哈或或哈或或或或或或哈或或或或或</view>
+        <view class="activity-content_title">{{title}}</view>
         <view class="activity-content_timer pt-15">{{startDate}}至{{endDate}}</view>
     </view>
     <view wx:if="{{isSet}}" class="content-right">

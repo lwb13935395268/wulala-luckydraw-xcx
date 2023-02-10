@@ -1,18 +1,31 @@
 // pages/home/exchangeRecord/index.js
 Page({
-
+    
+    async getPrizeRecord(){
+        wx.showLoading({
+          title: '加载中',
+          mask:true
+        })
+        let {
+            getPrizeRecord
+        } = getApp();
+        let res = await getPrizeRecord();
+        console.log(res.data);
+        this.setData({
+            prizeList:res.data.sort((m,n)=>{
+              return n.date-m.date
+            })
+        })
+        wx.hideLoading()
+    },
     /**
      * 页面的初始数据
      */
     data: {
-
+        prizeList:[]
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-
+    setTitle(){
+        
         wx.setNavigationBarTitle({
             title: '兑换记录'
           })
@@ -24,6 +37,13 @@ Page({
               timingFunc: 'easeIn'
             }
           })
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad(options) {
+        this.setTitle()
+        this.getPrizeRecord()
     },
 
     /**

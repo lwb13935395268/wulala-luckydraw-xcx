@@ -14,14 +14,14 @@
         <view class="wrap">
         <view class="flex-between">
             <view class="price">
-            <text class="num mr-10">{{prizeInfo.price}}</text>积分
+            <text class="num mr-10">{{prizeInfo.price||0}}</text>积分
             </view>
-            <view class="tip align-center gap-lr-10">热卖{{prizeInfo.exchangeNum}}件
+            <view class="tip align-center gap-lr-10">热卖{{prizeInfo.exchangeNum||0}}件
             <text class="">|</text>
-            剩余{{prizeInfo.remainderNum}}件</view>
+            剩余{{prizeInfo.remainderNum||0}}件</view>
         </view>
         <view class="title mt-20">
-            {{prizeInfo.prizeName}}
+            {{prizeInfo.prizeName||"商品名称"}}
         </view>
         </view>
     </view>
@@ -37,16 +37,12 @@
                     {{prizeInfo.prizeDes}}
                 </view>
             </view>
-            <!-- <activityTitle>奖品介绍</activityTitle> -->
         </view>
     </view>
     <view class="h-120">
 
     </view>
-    <view class="obtain">
-        <!-- <view class="obtain-btn">
-            兑换奖品
-        </view> -->
+    <view class="obtain" bindtap="exchangePrize">
         兑换奖品
     </view>
 </view>

@@ -37,6 +37,7 @@ Page({
         scrollbar: false,
         enhanced: true,
         scroll: true,
+        loginStatus:false,
         prizeList: [],
     },
 
@@ -83,7 +84,6 @@ Page({
             userInfo: app.globalData.userInfo,
             userId:app.globalData.userId,
             loginStatus: app.globalData.loginStatus,
-            integral: app.globalData.userInfo.integral
         })
     },
     async getPrizeList(){
@@ -91,17 +91,16 @@ Page({
             getPrizeList
         } = getApp();
         let res = await getPrizeList();
-        console.log(res);
         this.setData({
             prizeList: res.data,
             hotPrizeList:res.data.filter(e=>{
                 return e.prizeType==1
             }),
             disPrizeList:res.data.filter(e=>{
-                return e.prizeType==1
+                return e.prizeType==2
             }),
             burstPrizeList:res.data.filter(e=>{
-                return e.prizeType==1
+                return e.prizeType==3
             })
         });
         return res
@@ -111,7 +110,7 @@ Page({
      */
     async onLoad(options) {
         this.setTitle();
-        // this.getPrizeList();
+        this.getPrizeList();
     },
 
     /**
@@ -124,7 +123,10 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        this.getPageParams();
+        let app=getApp();
+        if(this.data.loginStatus||app.globalData.loginStatus){
+            this.getPageParams();
+        }
     },
 
     /**
@@ -154,18 +156,34 @@ Page({
         wx.showLoading({
           title: '刷新中...',
         })
-        let res=await this.getPrizeList();
-        if(res){
-            //停止下拉刷新
+        // if(res){
+        //     //停止下拉刷新
+        //     wx.stopPullDownRefresh();
+        //     wx.hideLoading();
+        //     wx.hideNavigationBarLoading();
+        // }else{
+        //     console.log('失败');
+        //     //停止下拉刷新
+        //     wx.stopPullDownRefresh();
+        //     wx.hideLoading();
+        //     wx.hideNavigationBarLoading();
+        // }
+        try{
+            let res=await this.getPrizeList();
+                wx.stopPullDownRefresh();
+                wx.hideLoading();
+                wx.hideNavigationBarLoading();
+
+        }catch{
             wx.stopPullDownRefresh();
             wx.hideLoading();
             wx.hideNavigationBarLoading();
-        }else{
-            console.log('失败');
-            //停止下拉刷新
-            wx.stopPullDownRefresh();
-            wx.hideLoading();
-            wx.hideNavigationBarLoading();
+           
+            wx.showToast({
+                icon: 'error',
+                title: '刷新失败',
+            })
+
         }
       },
     /**

@@ -52,13 +52,6 @@
                 },
                 {
                     "name": "",
-                    "pathName": "pages/home/IntegralRecord/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
                     "pathName": "pages/activity/index",
                     "query": "",
                     "launchMode": "default",
@@ -109,6 +102,48 @@
                 {
                     "name": "pages/mine/audit/detail/index",
                     "pathName": "pages/mine/audit/detail/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/feedback/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/home/exchangeRecord/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/home/integralRecords/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/activity/index",
+                    "pathName": "pages/activity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/mineNews/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/mineActivity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

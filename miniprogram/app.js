@@ -13,28 +13,19 @@ App({
                 traceUser: true,
             });
         }
-        this.getOpenId();
         this.globalData = {
-            openId: '',
             userId: '',
-            userInfo: {
-            },
+            userInfo: {},
             loginStatus: false,
-        };
-    },
-    getOpenId() {
-        return wx.cloud.callFunction({
-            name: 'quickstartFunctions',
-            data: {
-                type: 'getOpenId',
+            aa:{
+                name:'小明',
+                age:18
             }
-        }).then(res => {
-            this.globalData.openId = res.result.userInfo.openId;
-            this.globalData.userInfo.openId = res.result.userInfo.openId;
-        })
+        };
     },
     //获取用户信息接口
     getUserInfo() {
+        console.log('userinfo');
         return wx.cloud.callFunction({
             name: 'user',
             data: {
@@ -42,7 +33,6 @@ App({
                 openId: this.globalData.openId
             }
         }).then(res => {
-            // console.log(res);
             return res.result
         })
     },
@@ -62,9 +52,9 @@ App({
     //获取奖品列表接口
     getPrizeList() {
         return wx.cloud.callFunction({
-            name: 'prize',
+            name: 'transaction',
             data: {
-                type: 'list'
+                type: 'prizeList'
             }
         }).then(res => {
             // console.log(res);
@@ -74,9 +64,9 @@ App({
     //奖品详情接口
     getPrizeDetail(prizeId) {
         return wx.cloud.callFunction({
-            name: 'prize',
+            name: 'transaction',
             data: {
-                type: 'detail',
+                type: 'prizeDetail',
                 prizeId
             }
         }).then(res => {
@@ -84,16 +74,39 @@ App({
         })
     },
     //兑换奖品接口
-    exchangePrize(){    
+    exchangePrize(prizeId) {
         return wx.cloud.callFunction({
-            name: 'prize',
+            name: 'transaction',
             data: {
-                type: 'exchange',
-                prizeId: 'dc49771c63e222a301f61c404a87d7f0',
+                type: 'prizeExchange',
+                prizeId,
             }
         }).then(res => {
             return res.result
         })
+    },
+    //获取积分记录接口
+    getIntegralRecord(){
+       return  wx.cloud.callFunction({
+            name: 'transaction',
+            data: {
+                type: 'intergralRecord',
+            }
+        }).then(res => {
+            console.log(res);
+            return res.result
+        })
+    },
+    //获取兑奖记录
+    getPrizeRecord(){
+        return  wx.cloud.callFunction({
+             name: 'transaction',
+             data: {
+                 type: 'prizeRecord',
+             }
+         }).then(res => {
+             return res.result
+         })
     },
     // 返回上一级   
     back: function () {
@@ -101,6 +114,7 @@ App({
             delta: 1
         })
     },
+    //wx登录
     login(desc) {
         return new Promise((resolve, reject) => {
             wx.getUserProfile({
