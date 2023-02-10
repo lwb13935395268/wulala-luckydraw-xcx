@@ -1,5 +1,5 @@
 <!--pages/activityDetail/index.wxml-->
-<view class="wraps">
+<view class="wraps" wx:for="{{activityDetail}}" wx:key="index">
     <view class="modal" wx:if="{{modalName}}" catchtouchmove="{{catchtouchmove}}">
           <view class="box">
             <image bindtap="setModal" src="../../../images/icon-close.png" mode="" />
@@ -51,7 +51,7 @@
         </view>
     </view>
     <view class="title">
-        <text>活动时间：2.1-2.15</text>
+        <text>活动时间:{{startDate}}-{{endDate}}</text>
     </view>
     <view class="time">
         <text>距离结束</text>
@@ -66,29 +66,21 @@
         https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/shop.png?sign=523c472aa093669f06279df1ff42f145&t=1675412261
      -->
     <view class="main">
-        <view class="shop">
+        <view class="main-shop">
+        <view class="shop" wx:for="{{lists}}" wx:key="index">
             <view class="shopimage">
-                <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/shop.png?sign=523c472aa093669f06279df1ff42f145&t=1675412261"></image>
+                <image src="{{item.addImg}}"></image>
             </view>
             <view class="shopdetail">
-                <view>iphone 14 Pro Max 暗夜紫(1TB)</view>
+                <view>{{item.prizeName}}</view>
                 <view>
-                    <text>已领20</text>
-                    <text>剩余20</text>
+                    <text>数量:</text>
+                    <text>{{item.prizeNum}}份</text>
                 </view>
             </view>
         </view>
+        </view>
         <view class="schedule">
-            <!-- <view class="progress-box">
-                <progress percent="20" active border-radius="100" stroke-width="20" activeColor="#fd292e"/>
-            </view> -->
-            <!-- <view class="prople">
-                <image src="../../../images/icon-people.png"></image>
-                <image src="../../../images/icon-people.png"></image>
-                <image src="../../../images/icon-peoples.png"></image>
-                <image src="../../../images/icon-peoples.png"></image>
-                <image src="../../../images/icon-peoples.png"></image>
-            </view> -->
             <view class="box-progressBar">
                 <view class="progressBar">
                 </view>
@@ -112,19 +104,8 @@
                 </view>
             </view>
 
-            <!-- <view class="prople-title">
-                <view class="red">已邀请
-                    <text>2</text>
-                    好友
-                </view>
-                <view class="black">还差
-                    <text>3</text>
-                    好友可领福利
-                </view>
-            </view> -->
             <view class="prople-button">
                 <view class="button">助力</view>
-                <!-- <view bindtap="onShareAppMessage" class="button" open-type="share">还差12人可获得二级奖励,立即邀请</view> -->
             </view>
         </view>
     </view>
