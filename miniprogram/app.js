@@ -20,6 +20,18 @@ App({
             callLogin:false
         };
     },
+    //修改用户信息
+    updateUserInfo(userInfo){
+        return wx.cloud.callFunction({
+            name: 'user',
+            data: {
+                type: 'update',
+                data:userInfo
+            }
+        }).then(res => {
+            return res.result
+        })
+    },
     //获取用户信息接口
     getUserInfo() {
         console.log('userinfo');
@@ -110,7 +122,7 @@ App({
         return  wx.cloud.callFunction({
              name: 'activity',
              data: {
-                 type: 'participateActivity',
+                 type: 'myParticipateActivity',
              }
          }).then(res => {
              console.log(res);

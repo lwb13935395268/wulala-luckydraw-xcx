@@ -1,27 +1,38 @@
 <!--pages/mine/mineInfo/index.wxml-->
 <view class="mine-info">
-    <page-container show="{{showPop}}" >
-    <view class="" >
-        
-        <view class="text-center">
-            男
-        </view>
-        <view class="text-center">
-            女
-        </view>
-        <view class="text-center">
-            取消
-        </view>
-    </view>
-    </page-container>
+    <!-- <view class="section"> -->
+    <!-- </view> -->
     <view class="ul mt-40">
+        <view class="li">
+            <view>
+                昵称
+            </view>
+            <view class="fc-gray3 fs-28 align-center ptb-30" bindtap="showInput">
+                <text class="mr-10">{{userInfo.nickName||'未填写'}}</text>
+                <image class="image" src="../../../images/icon-entry.png" mode="" />
+            </view>
+        </view>
+        <view class="li align-center">
+            <view>
+                头像
+            </view>
+            <view bindtap="doUpload" class="fc-gray3 fs-28 align-center ptb-20">
+                <!-- <text class="mr-10">{{userInfo.avataUrl||}}</text> -->
+                <image class="avatarImg mr-10" src="{{userInfo.avatarUrl}}" mode="" />
+                <image class="image" src="../../../images/icon-entry.png" mode="" />
+            </view>
+        </view>
         <view class="li">
             <view>
                 性别
             </view>
             <view class="fc-gray3 fs-28 align-center">
-                <text class="mr-10">{{userInfo.sex||'未选择'}}</text>
-                <image class="image" src="../../../images/icon-entry.png" mode="" />
+                <picker class="" bindchange="bindPickerChange" value="{{userInfo.sex}}" range-key="name" range="{{sexList}}" bindchange="sexChange">
+                    <view class="picker ptb-30 flex-between align-center">
+                        <text class="mr-10">{{sexList[userInfo.sex-1].name||'未选择'}}</text>
+                        <image class="image" src="../../../images/icon-entry.png" mode="" />
+                    </view>
+                </picker>
             </view>
         </view>
         <view class="li">
@@ -29,22 +40,31 @@
                 生日
             </view>
             <view class="fc-gray3 fs-28 align-center">
-                <text class="mr-10">{{userInfo.birthdayDate||'未选择'}}</text>
-                <image class="image" src="../../../images/icon-entry.png" mode="" />
+                <picker mode="date" class="" bindchange="bindPickerChange" value="{{userInfo.birthdayDate}}" bindchange="bindDateChange" start="1920-01-01" end="">
+                    <view class="picker ptb-30 flex-between align-center">
+                        <text class="mr-10">{{userInfo.birthdayDate||'未选择'}}</text>
+                        <image class="image" src="../../../images/icon-entry.png" mode="" />
+                    </view>
+                </picker>
             </view>
         </view>
         <view class="li">
             <view>
                 地区
             </view>
+
             <view class="fc-gray3 fs-28 align-center">
-                <text class="mr-10">{{userInfo.area||'未选择'}}</text>
-                <image class="image" src="../../../images/icon-entry.png" mode="" />
+                <picker mode="region" class="" bindchange="bindPickerChange" value="{{userInfo.area}}"  custom-item="{{customItem}}" bindchange="bindRegionChange">
+                    <view class="picker ptb-30 flex-between align-center">
+                        <text class="mr-10">{{(userInfo.area.length&&userInfo.area[0]!='全部')?userInfo.area[0]+'，'+userInfo.area[1]+'，'+userInfo.area[2]:'请选择'}}</text>
+                        <image class="image" src="../../../images/icon-entry.png" mode="" />
+                    </view>
+                </picker>
             </view>
         </view>
     </view>
     <view class="mt-40 flex-center">
-        <view class="btn" bindtap="setPop">
+        <view class="btn" bindtap="save">
             保存信息
         </view>
     </view>

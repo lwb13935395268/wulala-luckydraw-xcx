@@ -12,6 +12,7 @@ exports.main = async (event, context) => {
     let queryMyParticipateActivity = await db.collection('myParticipateActivity').where({
         OPENID:wxContext.OPENID
     }).get();
+    console.log(queryMyParticipateActivity);
     let res = {
         status:0,
         msg:"查询失败,请重新在试",
@@ -20,7 +21,7 @@ exports.main = async (event, context) => {
     if (queryMyParticipateActivity.errMsg) {
         res.status = 200;
         res.msg = "查询成功";
-        res.data = queryMyParticipateActivity
+        res.data = queryMyParticipateActivity.data
     }
     return res;
 };
