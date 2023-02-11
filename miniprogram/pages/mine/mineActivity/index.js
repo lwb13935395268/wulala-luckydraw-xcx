@@ -34,11 +34,15 @@ Page({
             })
         }
     },
+    onMyEvent(e){
+        // e.detail//下标
+        this.getMineActivitys()
+    },
     /**
      * 页面的初始数据
      */
     data: {
-
+        titleList:['正在进行','已结束']
     },
 
     /**
@@ -46,7 +50,7 @@ Page({
      */
     onLoad(options) {
         this.setTitle();
-        this.getMineActivitys();
+        // this.getMineActivitys();
     },
 
     /**
