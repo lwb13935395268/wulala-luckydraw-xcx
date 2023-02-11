@@ -14,7 +14,7 @@ Page({
         endDate:'',
         lists:'',
         _id:'',
-        total:''
+        // total:''
     },
     help(){
         // console.log('11111');
@@ -67,8 +67,8 @@ Page({
                 wholeActivity : true
             },
             success(res){
-                console.log(res.result.data.data);
-                let list = res.result.data.data;
+                console.log(res.result.data);
+                let list = res.result.data;
                 list.forEach(el => {
                     let startDates = el.startDate.slice(5,10);
                     let endDates = el.endDate.slice(5,10);
@@ -84,7 +84,7 @@ Page({
                     })
                 });
                 _this.setData({
-                    activityDetail: res.result.data.data
+                    activityDetail: res.result.data
                 })
 
             }
@@ -102,13 +102,14 @@ Page({
             },
             success(res){
                 console.log(res.result.data.total);
-                _this.setData({
-                    total: res.result.data.total
-                })
-                console.log(this.total);
+                let total = res.result.data.total;
+                console.log(total);
+                // _this.setData({
+                //     total: res.result.data.total
+                // })
+
             }
         })
-
     },
 
     /**
