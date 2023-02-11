@@ -7,7 +7,10 @@
 .tips{
     font-size: 30rpx;
     color: #aaa;
-    transform: translate(50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 50vh;
 }
 .tips image{
     width: 100rpx;

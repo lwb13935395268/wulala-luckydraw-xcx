@@ -135,7 +135,7 @@ App({
             name: 'activity',
             data: {
                 type: 'queryMyActivityList',
-                wholeActivity: false
+                // wholeActivity: false
             }
         }).then(res => {
             console.log(res);
