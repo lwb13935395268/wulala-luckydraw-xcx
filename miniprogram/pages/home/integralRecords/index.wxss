@@ -3,6 +3,12 @@
     height: 100vh;
     background-color: white;
 }
+.header{
+    border-bottom: 2rpx solid #f3f3f3;
+}
+.header-box{
+    height: 130rpx;
+}
 .item{
     padding: 20rpx 0;
     font-size: 30rpx;

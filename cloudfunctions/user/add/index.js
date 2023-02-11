@@ -9,11 +9,8 @@ exports.main = async (event, context) => {
     const OPENID = wxContext.OPENID;
     const newUser= {
         area: [],
-        awards: 0,
         birthdayDate: "",
-        createdActivity: 0,
         integral: 600,
-        joinedActivity: 0,
         money: 0,
         openId:OPENID,
         sex: 0,

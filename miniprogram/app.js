@@ -17,16 +17,16 @@ App({
             userId: '',
             userInfo: {},
             loginStatus: false,
-            callLogin:false
+            callLogin: false
         };
     },
     //修改用户信息
-    updateUserInfo(userInfo){
+    updateUserInfo(userInfo) {
         return wx.cloud.callFunction({
             name: 'user',
             data: {
                 type: 'update',
-                data:userInfo
+                data: userInfo
             }
         }).then(res => {
             return res.result
@@ -95,8 +95,8 @@ App({
         })
     },
     //获取积分记录接口
-    getIntegralRecord(){
-       return  wx.cloud.callFunction({
+    getIntegralRecord() {
+        return wx.cloud.callFunction({
             name: 'transaction',
             data: {
                 type: 'intergralRecord',
@@ -107,27 +107,40 @@ App({
         })
     },
     //获取兑奖记录
-    getPrizeRecord(){
-        return  wx.cloud.callFunction({
-             name: 'transaction',
-             data: {
-                 type: 'prizeRecord',
-             }
-         }).then(res => {
-             return res.result
-         })
+    getPrizeRecord() {
+        return wx.cloud.callFunction({
+            name: 'transaction',
+            data: {
+                type: 'prizeRecord',
+            }
+        }).then(res => {
+            return res.result
+        })
     },
     //获取我参与的活动
-    getMineActivity(){
-        return  wx.cloud.callFunction({
-             name: 'activity',
-             data: {
-                 type: 'myParticipateActivity',
-             }
-         }).then(res => {
-             console.log(res);
-             return res.result
-         })
+    getMineActivity() {
+        return wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'myParticipateActivity',
+            }
+        }).then(res => {
+            console.log(res);
+            return res.result
+        })
+    },
+    //获取我创建的活动
+    getMineCreatedActivity() {
+        return wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'queryMyActivityList',
+                wholeActivity: false
+            }
+        }).then(res => {
+            console.log(res);
+            return res.result
+        })
     },
     // 返回上一级   
     back: function () {
