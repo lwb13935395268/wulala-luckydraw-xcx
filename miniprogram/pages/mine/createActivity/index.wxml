@@ -66,7 +66,7 @@
                 <text>个</text>
             </view>
             <activityTitle class="mt-50">满足条件</activityTitle>
-            <input class="conditions-met" value="{{item.conditionsMet}}" placeholder="如 : 点赞多少(非必填)" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" data-index="{{index}}" maxlength="10" type="text"/>
+            <input class="conditions-met" value="{{item.conditionsMet}}" placeholder="点赞多少人(必填)" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" data-index="{{index}}" maxlength="10" type="text"/>
             <activityTitle class="mt-50">奖品介绍</activityTitle>
             <view class="" wx:if="{{item.addText!=[]}}" >
                 <view class="{{item.addText != '' ? 'activity-rule' : ''}}">
