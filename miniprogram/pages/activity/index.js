@@ -27,7 +27,7 @@ Page({
                 console.log(res.result.data);
                 _this.setData({
                     participateActivity:res.result.data
-                })
+                });
             }
         })
     },
