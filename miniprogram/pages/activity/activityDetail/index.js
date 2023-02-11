@@ -13,7 +13,8 @@ Page({
         startDate:'',
         endDate:'',
         lists:'',
-        _id:''
+        _id:'',
+        total:''
     },
     help(){
         // console.log('11111');
@@ -53,6 +54,9 @@ Page({
      */
     onLoad(options) {
         console.log(options.id);
+        this.setData({
+            _id: options.id
+        })
         this._id = options.id;
         let _this = this;
         
@@ -88,6 +92,21 @@ Page({
         wx.showShareMenu({
             withShareTicket: true,
             menus:['shareAppMessage','shareTimeline']
+        })
+
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'getActivityCount',
+                activityId:_this.data._id
+            },
+            success(res){
+                console.log(res.result.data.total);
+                _this.setData({
+                    total: res.result.data.total
+                })
+            }
+
         })
 
     },

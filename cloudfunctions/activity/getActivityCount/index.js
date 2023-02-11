@@ -19,7 +19,7 @@ exports.main = async (event, context) => {
     if (getActivityCount.errMsg) {
         res.status = 200;
         res.msg = "查询成功";
-        res.data = queryMyActivityList
+        res.data = getActivityCount
     }
     return res;
 };
