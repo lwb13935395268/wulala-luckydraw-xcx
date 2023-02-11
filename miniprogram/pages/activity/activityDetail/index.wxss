@@ -266,7 +266,7 @@
     background-color: #ef0900;
 }
 
-.box-post {
+.box-post1 {
     display: flex;
     flex-direction: column;
     align-items: center;
