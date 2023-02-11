@@ -54,9 +54,9 @@ Page({
                 wholeActivity:true
             },
             success(res){
-                console.log(res.result.data.data);
+                console.log(res);
                 _this.setData({
-                    activityList:res.result.data.data,
+                    activityList:res.result.data,
                 })
             }
         })
