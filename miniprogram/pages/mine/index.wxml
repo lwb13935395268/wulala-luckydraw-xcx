@@ -18,7 +18,7 @@
         <view class="body">
             <view class="item" bindtap="navgator" data-path="mine/mineActivity/index">
                 <view class="num">
-                    {{userInfo.joinedActivity||0}}
+                    {{mineActivityNum||0}}
                 </view>
                 <view class="title fc-gray3">
                     参与活动
@@ -26,7 +26,7 @@
             </view>
             <view class="item sp-line" bindtap="navgator" data-path="mine/mineCreatedActivity/index">
                 <view class="num">
-                    {{userInfo.createdActivity||0}}
+                    {{mineCreatedActivityNum||0}}
                 </view>
                 <view class="title fc-gray3">
                     发起活动
