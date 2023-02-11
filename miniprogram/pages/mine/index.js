@@ -7,16 +7,25 @@ Page({
         })
     },
     navgator(e) {
-        // if (this.data.loginStatus) {
+        if (this.data.loginStatus) {
         let path = e.currentTarget.dataset.path;
         wx.navigateTo({
             url: '/pages/' + path,
         })
-        // } else {
-        //     this.getUserInfo()
-        // }
+        } else {
+            wx.showModal({
+                content: '登录后可查看',
+                confirmText: '登录',
+                success: res => {
+                    if (res.confirm) {
+                        this.getUserInfo();
+                    }
+                }
+            })
+        }
     },
     async getUserInfo() {
+
         wx.showLoading({
           title: '登录中',
         })
@@ -33,6 +42,8 @@ Page({
             })
             app.globalData.loginStatus = true;
             app.globalData.userInfo = res.data;
+            this.getMineActivitys();
+            this.getMineCreatedActivity();
             wx.hideLoading();
             wx.showToast({
                 title: '登录成功',
@@ -41,6 +52,28 @@ Page({
             wx.showToast({
                 title: '登录失败',
                 icon:'error'
+            })
+        }
+    },
+    async getMineActivitys(){
+        let {
+            getMineActivity
+        }=getApp();
+        let res=await getMineActivity();
+        if(res.status==200){
+            this.setData({
+                mineActivityNum:res.data.length
+            })
+        }
+    },
+    async getMineCreatedActivity(){
+        let {
+            getMineCreatedActivity
+        }=getApp();
+        let res=await getMineCreatedActivity();
+        if(res.status==200){
+            this.setData({
+                mineCreatedActivityNum:res.data.length
             })
         }
     },

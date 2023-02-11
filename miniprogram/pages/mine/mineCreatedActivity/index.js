@@ -46,7 +46,7 @@ Page({
                 switch (res.result.status) {
                     case 200:
                         _this.setData({
-                            myActicityList:res.result.data.data
+                            myActicityList:res.result.data
                         })
                         break;
                     case 0:

@@ -2,7 +2,23 @@
 <!-- <wxs /> -->
 <wxs module="fun" src="../../../filter/index.wxs"></wxs>
 <view class="page">
-    <scroll-view scroll-y="{{true}}" style="height: 100%;">
+    <!-- <view class="header">
+        <view class="header-box wrap align-center flex-between">
+            <view class="left">
+                <view>
+                    我的积分
+                </view>
+                <view>
+                    487
+                </view>
+            </view>
+            <view class="right">
+                充值
+            </view>
+        </view>
+    </view> -->
+    <scroll-view scroll-y="{{true}}" style="height: 100vh;">
+        <!-- // -->
         <view wx:for="{{recordList}}" wx:key="index" class="flex-between item wrap border-b-gray">
             <view>
                 <view>
@@ -22,4 +38,4 @@
             </view>
         </view>
     </scroll-view>
-    </view>
+</view>

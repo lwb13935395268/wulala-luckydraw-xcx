@@ -30,7 +30,7 @@ Page({
         console.log('picker发送选择改变，携带值为', e.detail.value)
         let name = 'userInfo.area'
         this.setData({
-            [name]: e.detail.value
+            [name]: e.detail.value[0]=="全部"?[]: e.detail.value
         })
     },
 
@@ -104,6 +104,7 @@ Page({
         })
     },
     async save() {
+        console.log(this.data.userInfo);
         wx.showLoading({
             title: '更新中..',
         })
@@ -117,6 +118,12 @@ Page({
             wx.showToast({
                 title: '修改成功',
             })
+            setTimeout(()=>{
+                wx.switchTab({
+                    url: '../index',
+                  })
+            },1000)
+            
         } else {
             wx.showToast({
                 title: '修改失败',

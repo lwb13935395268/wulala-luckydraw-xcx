@@ -8,7 +8,7 @@
                 <text class="ml-20" wx:if="{{loginStatus}}">{{userInfo.nickName}}</text>
                 <text class="ml-20" wx:else>微信授权</text>
             </view>
-            <view class="num align-center">
+            <view class="num align-center" bindtap="navgator" data-path="home/integralRecords/index">
                 <view>积分
                 <text class="ml-10 mr-10">{{userInfo.integral||0}}</text>
                 </view>
@@ -18,7 +18,7 @@
         <view class="body">
             <view class="item" bindtap="navgator" data-path="mine/mineActivity/index">
                 <view class="num">
-                    {{userInfo.joinedActivity||0}}
+                    {{mineActivityNum||0}}
                 </view>
                 <view class="title fc-gray3">
                     参与活动
@@ -26,7 +26,7 @@
             </view>
             <view class="item sp-line" bindtap="navgator" data-path="mine/mineCreatedActivity/index">
                 <view class="num">
-                    {{userInfo.createdActivity||0}}
+                    {{mineCreatedActivityNum||0}}
                 </view>
                 <view class="title fc-gray3">
                     发起活动
