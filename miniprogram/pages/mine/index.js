@@ -42,7 +42,8 @@ Page({
             })
             app.globalData.loginStatus = true;
             app.globalData.userInfo = res.data;
-            this.getMineActivitys()
+            this.getMineActivitys();
+            this.getMineCreatedActivity();
             wx.hideLoading();
             wx.showToast({
                 title: '登录成功',
