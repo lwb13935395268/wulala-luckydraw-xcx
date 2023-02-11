@@ -15,6 +15,9 @@ Component({
             type:Boolean,
             value:true
         },
+        tabFun:{
+            type:Function
+        }
     },
     lifetimes: {
         attached(){
@@ -42,6 +45,10 @@ Component({
             // let currentPageIndex = this.data.currentIndex;
             // currentPageIndex = (currentPageIndex + 1) % 2;
             // 拿到当前索引并动态改变
+            
+            var myEventDetail = e.detail.current // detail对象，提供给事件监听函数
+            var myEventOption = {} // 触发事件的选项
+            this.triggerEvent('myevent', myEventDetail, myEventOption);
             this.setData({
                 currentIndex: e.detail.current,
             })
@@ -50,10 +57,13 @@ Component({
 
         //点击tab时触发
         titleClick: function (e) {
+            if(e.currentTarget.dataset.idx!=this.data.currentIndex){
+
             this.setData({
-                //拿到当前索引并动态改变
                 currentIndex: e.currentTarget.dataset.idx
             })
+            return
+            }
         },
     }
 })
