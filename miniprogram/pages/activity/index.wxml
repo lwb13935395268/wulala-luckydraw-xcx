@@ -1,5 +1,5 @@
 <view class="main">
-    <tab titleList="{{['全部','推荐','最新','已参与','已结束']}}">
+    <tab titleList="{{['全部','推荐','最新','已参与','已结束']}}" bind:myevent="onMyEvent">
         <view slot="全部" class="wrap gap-tb-20">
             <activity wx:for="{{activityList}}" wx:key="index" bindtap="toCommodityDetails" data-id="{{item._id}}" status="0" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
         </view>
@@ -16,7 +16,10 @@
             </view>
         </view>
         <view slot="已参与" class="wrap gap-tb-20" bindtap="participateActivity">
-            <view class="tips">
+            <view wx:if="{{participateActivity != ''}}">
+                <activity  wx:for="{{participateActivity}}" wx:key="index" status="1" bindtap="toCommodityDetails" data-id="{{item._id}}"  title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+            </view>
+            <view wx:else class="tips">
                 暂无已 参加活动哦亲
                 <image src="../../images/nothing-info.png" mode=""/>
             </view>

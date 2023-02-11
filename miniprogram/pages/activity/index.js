@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        currentIndex: 1, //默认是活动项
+        currentIndex: 0, //tab下标
         activityList:[],//活动列表
         participateActivity:[],//已参与活动列表
     },
@@ -14,6 +14,26 @@ Page({
         wx.navigateTo({
           url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
         })
+    },
+    //下标
+    onMyEvent:function(e){
+        console.log(e.detail);
+        switch (e.detail) {
+            case 0:
+                this.wholeActivity();//全部
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                this.participateActivity();
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
     },
     // 全部
     wholeActivity:function(){
