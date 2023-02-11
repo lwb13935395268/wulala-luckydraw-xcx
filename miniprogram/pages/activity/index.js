@@ -7,11 +7,28 @@ Page({
     data: {
         currentIndex: 1, //默认是活动项
         activityList:[],//活动列表
+        participateActivity:[],//已参与活动列表
     },
     toCommodityDetails:function(e){
         console.log(e.target.dataset.id);
         wx.navigateTo({
           url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
+        })
+    },
+    // 已参与
+    participateActivity:function(){
+        let _this = this;
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'myParticipateActivity'
+            },
+            success(res){
+                console.log(res.result.data);
+                _this.setData({
+                    participateActivity:res.result.data
+                })
+            }
         })
     },
     /**
@@ -37,9 +54,9 @@ Page({
                 wholeActivity:true
             },
             success(res){
-                console.log(res.result.data.data);
+                console.log(res.result.data);
                 _this.setData({
-                    activityList:res.result.data.data,
+                    activityList:res.result.data,
                 })
             }
         })
