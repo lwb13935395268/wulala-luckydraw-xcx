@@ -23,6 +23,7 @@
 .header .num{
     font-size: 26rpx;
     color: #7f5b35;
+    padding: 20rpx 0;
 }
 .num image{
     width: 30rpx;
