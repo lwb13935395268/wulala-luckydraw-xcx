@@ -15,7 +15,7 @@
                 <image src="../../images/nothing-info.png" mode=""/>
             </view>
         </view>
-        <view slot="已参与" class="wrap gap-tb-20">
+        <view slot="已参与" class="wrap gap-tb-20" bindtap="participateActivity">
             <view class="tips">
                 暂无已 参加活动哦亲
                 <image src="../../images/nothing-info.png" mode=""/>

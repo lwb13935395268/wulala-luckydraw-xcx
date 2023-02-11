@@ -33,7 +33,7 @@ exports.main = async (event, context) => {
     if (queryMyActivityList.errMsg) {
         res.status = 200;
         res.msg = "查询成功";
-        res.data = queryMyActivityList
+        res.data = queryMyActivityList.data
     }
     return res;
 };
