@@ -15,6 +15,23 @@ Page({
           url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
         })
     },
+    // 全部
+    wholeActivity:function(){
+        let _this = this
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'queryMyActivityList',
+                wholeActivity:true
+            },
+            success(res){
+                console.log(res);
+                _this.setData({
+                    activityList:res.result.data,
+                })
+            }
+        })
+    },
     // 已参与
     participateActivity:function(){
         let _this = this;
@@ -35,7 +52,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let _this  = this;
         wx.setNavigationBarTitle({
             title: '活动中心'
         })
@@ -47,19 +63,7 @@ Page({
               timingFunc: 'easeIn'
             }
         })
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'queryMyActivityList',
-                wholeActivity:true
-            },
-            success(res){
-                console.log(res);
-                _this.setData({
-                    activityList:res.result.data,
-                })
-            }
-        })
+        this.wholeActivity();
     },
 
     /**
