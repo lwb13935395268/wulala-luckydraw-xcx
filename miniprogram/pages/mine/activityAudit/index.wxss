@@ -1,0 +1,64 @@
+/* pages/mine/activityAudit/index.wxss */
+.wrap {
+    margin: 0 auto;
+}
+
+.list {
+    width: 96%;
+}
+
+.box {
+    border-bottom:1rpx solid rgb(199, 193, 193);
+    padding: 30rpx 0;
+}
+
+.avatar-box {
+    padding: 0 20rpx 20rpx 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.icon-avatar {
+    display: inline-block;
+    width: 60rpx;
+    height: 60rpx;
+    background-color: salmon;
+    border-radius: 50%;
+}
+
+.avatar-name {
+    color: rgb(68, 104, 158);
+    font-size: 30rpx;
+    font-weight: 540;
+    text-align: center;
+    padding-left: 18rpx;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-img {
+    width: 420rpx;
+    height: 200rpx;
+    background-color: slateblue;
+    margin: 0rpx 20rpx;
+}
+
+.product-font {
+    width: 60%;
+    margin: 0rpx 14rpx;
+}
+.product-font_big{
+    font-size: 30rpx;
+}
+.product-font_small{
+    font-size: 24rpx;
+    margin-top: 20rpx;
+    color: rgb(155, 155, 155);
+    width: 300rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

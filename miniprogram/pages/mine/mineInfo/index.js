@@ -17,7 +17,7 @@ Page({
         console.log(e);
         let name = 'userInfo.sex';
         this.setData({
-            [name]: Number(e.detail.value) + 1
+            [name]: Number(e.detail.value)
         })
     },
     bindDateChange(e) {
@@ -136,10 +136,10 @@ Page({
      */
     data: {
         sexList: [{
-            sex: 1,
+            sex: 0,
             name: '男'
         }, {
-            sex: 2,
+            sex: 1,
             name: '女'
         }],
         num: 1,
@@ -162,7 +162,8 @@ Page({
         if (res.status == 200) {
             delete res.data._id;
             delete res.data.openId
-            wx.hideLoading()
+            wx.hideLoading();
+            console.log(res.data);
             this.setData({
                 userInfo: res.data
             })

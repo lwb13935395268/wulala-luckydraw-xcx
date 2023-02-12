@@ -1,0 +1,53 @@
+<!--pages/mine/activityAudit/index.wxml-->
+<tab titleList="{{['未审核','已审核']}}">
+
+    <view slot='未审核' class="list wrap">
+        <view class="box" bindtap="popup">
+            <view class="avatar-box">
+                <text class="icon-avatar"></text>
+                <text class="avatar-name">佳华老师</text>
+            </view>
+
+            <view class="product-list">
+                <view class="product-img"></view>
+                <view class="product-font">
+                    <view class="product-font_big">阿拉丁与神灯之沉睡精灵</view>
+                    <view class="product-font_small">平凡小子阿拉丁阴差阳错获得了神灯，并意外发现了神灯的秘密，这是...</view>
+                </view>
+            </view>
+        </view>
+        <view class="box" bindtap="popup">
+            <view class="avatar-box">
+                <text class="icon-avatar"></text>
+                <text class="avatar-name">周晓晨老师</text>
+            </view>
+
+            <view class="product-list">
+                <view class="product-img"></view>
+                <view class="product-font">
+                    <view class="product-font_big">游乐园奇遇记-上海站</view>
+                    <view class="product-font_small">2016年秋冬巧虎大型舞台剧《游乐园奇遇记》上海站</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view slot='已审核' class="list wrap">
+        <view class="box" bindtap="popup">
+            <view class="avatar-box">
+                <text class="icon-avatar"></text>
+                <text class="avatar-name">佳华老师</text>
+            </view>
+
+            <view class="product-list">
+                <view class="product-img"></view>
+                <view class="product-font">
+                    <view class="product-font_big">阿拉丁与神灯之沉睡精灵</view>
+                    <view class="product-font_small">平凡小子阿拉丁阴差阳错获得了神灯，并意外发现了神灯的秘密，这是...</view>
+                </view>
+            </view>
+        </view>
+   </view>
+
+
+</tab>

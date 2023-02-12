@@ -29,7 +29,7 @@
             <view class="fc-gray3 fs-28 align-center">
                 <picker class="" bindchange="bindPickerChange" value="{{userInfo.sex}}" range-key="name" range="{{sexList}}" bindchange="sexChange">
                     <view class="picker ptb-30 flex-between align-center">
-                        <text class="mr-10">{{sexList[userInfo.sex-1].name||'未选择'}}</text>
+                        <text class="mr-10">{{sexList[userInfo.sex].name||'未选择'}}</text>
                         <image class="image" src="../../../images/icon-entry.png" mode="" />
                     </view>
                 </picker>

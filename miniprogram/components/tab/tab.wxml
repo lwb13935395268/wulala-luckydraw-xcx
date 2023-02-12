@@ -1,13 +1,13 @@
 <!--components/tab/tab.wxml-->
 <view class="tab">
     <view class='navBox'>
-        <view wx:for="{{titleList}}" wx:key="index" class='titleBox' bindtap='titleClick' data-idx='{{index}}'>
+        <view wx:for="{{titleList}}" wx:key="index" class='titleBox' bindtap='titleClick' data-idx='{{index}}' data-params="{{item}}">
             <text class="{{index == currentIndex ? 'fontColorBox' : ''}}">{{item}}</text>
             <hr class="{{index == currentIndex ? 'lineBox' : 'notLineBox'}}" />
         </view>
     </view>
     <swiper class="swiperBox {{fixedHead?'scroll':''}}" bindchange='pagechange' current='{{currentIndex}}'>
-        <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox'>
+        <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox' data-params="{{item}}">
             <scroll-view scroll-y="{{scroll}}" style="height: 100%;">
                 <slot name="{{item}}"></slot>
             </scroll-view>
