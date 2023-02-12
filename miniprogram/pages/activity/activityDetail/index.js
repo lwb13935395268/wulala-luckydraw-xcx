@@ -28,6 +28,19 @@ Page({
             },
             success(res){
                 console.log(res);
+                if(res.result.status == 0){
+                    wx.showToast({
+                        title: '已参加过活动',
+                        icon: 'error',
+                        duration: 1500
+                      })
+                } else {
+                    wx.showToast({
+                        title: '已参加',
+                        icon: 'success',
+                        duration: 1500
+                      })
+                }
             }
         })
     },
@@ -47,17 +60,16 @@ Page({
           url: '/pages/home/index',
         })
       },
-    // onShareAppMessage: function (res){
-    //     console.log(res);
-    //     console.log('转发页面');
-    //     console.log(res.webViewUrl);
-    // },
+
+      Datas:function (){
+          console.log('225525');
+      },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options.id);
+        // console.log(options.id);
         this.setData({
             _id: options.id
         })
@@ -72,40 +84,37 @@ Page({
             },
             success(res){
                 console.log(res.result.data);
-                let maxObj;
-                let list = res.result.data;
-                list.forEach(el => {
-                    maxObj=  JSON.parse(JSON.stringify(el.prizeNums)).sort((n,m)=>{
-                        return m.conditionsMet-n.conditionsMet
-                    })[0];
-                    // console.log(maxObj.conditionsMet);
-                    let startDates = el.startDate.slice(5,10);
-                    let endDates = el.endDate.slice(5,10);
-                    let str = startDates;
-                    let strr = endDates;
-                    let strs = str.replace('-','.');
-                    let strrs = strr.replace('-','.');
-                    let barNum = maxObj.conditionsMet;
-                    console.log(barNum);
-                    // _this.setData({
-                    //     headcount: barNum
-                    // })
-
-
-                    console.log(el.prizeNums);
-                    _this.setData({
-                        startDate: strs,
-                        endDate: strrs,
-                        lists: el.prizeNums,
-                        headcount: barNum
-                    })
+                res.result.data.forEach(el => {
+                    // console.log(el.prizeNums);
+                    // maxObj= el.prizeNums.sort((n,m)=>{
+                    if(_this.data._id == el._id){
+                        let maxObj;
+                        let arrs = [];
+                        // console.log(el);
+                        arrs.push(el);
+                        // console.log(arrs);
+                        let startDates = el.startDate.slice(5,10);
+                        let endDates = el.endDate.slice(5,10);
+                        let str = startDates;
+                        let strr = endDates;
+                        let strs = str.replace('-','.');
+                        let strrs = strr.replace('-','.');
+                        console.log(el.prizeNums);
+                        // maxObj= el.prizeNums.sort((n,m)=>{
+                        maxObj = JSON.parse(JSON.stringify(el.prizeNums)).sort((n,m)=>{
+                            return m.conditionsMet-n.conditionsMet
+                        })[0];
+                        let barNum = maxObj.conditionsMet;
+                        _this.setData({
+                            activityDetail: arrs,
+                            startDate: strs,
+                            endDate: strrs,
+                            lists: el.prizeNums,
+                            headcount: barNum
+                        })
+                        // console.log(_this.data.activityDetail);
+                    }
                 });
-                
-                console.log(maxObj);
-                _this.setData({
-                    activityDetail: res.result.data
-                })
-
             }
         })
         wx.showShareMenu({
@@ -120,15 +129,15 @@ Page({
                 activityId:_this.data._id
             },
             success(res){
-                console.log(res.result.data.total);
+                // console.log(res.result.data.total);
                 let total = res.result.data.total;
-                console.log(total);
-                console.log(_this.data.headcount);
+                // console.log(total);
+                // console.log(_this.data.headcount);
                 let people = _this.data.headcount;
-                console.log(people);
+                // console.log(people);
 
                 let bar = 50 / total * 100;
-                console.log(bar);
+                // console.log(bar);
 
             }
         })
