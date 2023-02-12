@@ -8,6 +8,7 @@ Page({
         currentIndex: 0, //tab下标
         activityList:[],//活动列表
         participateActivity:[],//已参与活动列表
+        recommend:[],//推荐的活动列表
     },
     toCommodityDetails:function(e){
         console.log(e.target.dataset.id);
@@ -23,11 +24,12 @@ Page({
                 this.wholeActivity();//全部
                 break;
             case 1:
+                this.recommend();//推荐
                 break;
             case 2:
                 break;
             case 3:
-                this.participateActivity();
+                this.participateActivity();//已参与
                 break;
             case 4:
                 break;
@@ -48,6 +50,22 @@ Page({
                 console.log(res);
                 _this.setData({
                     activityList:res.result.data,
+                })
+            }
+        })
+    },
+    //推荐
+    recommend:function(){
+        let _this = this;
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'recommend',
+            },
+            success(res){
+                console.log(res);
+                _this.setData({
+                    recommend:res.result.data
                 })
             }
         })
