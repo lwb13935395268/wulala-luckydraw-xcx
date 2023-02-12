@@ -35,12 +35,12 @@ exports.main = async (event, context) => {
         });
         await db.collection('userInfo').doc(userData._id).update({
             data: {
-                integral: _.inc(userData.integral-prizeData.price)
+                integral: userData.integral-prizeData.price
             }
         });
         console.log('兑换');
         await integralChange.main({
-            type:4,
+            type:3,
             num: prizeData.price, //改变数量
             balance: userData.integral-prizeData.price, //余额
         },context);

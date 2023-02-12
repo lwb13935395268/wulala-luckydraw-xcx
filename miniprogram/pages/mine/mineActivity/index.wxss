@@ -5,3 +5,10 @@
     background-color: #3699ff;
     color: white;
 }
+.void-tip{
+    height: calc(100vh - 108rpx);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}

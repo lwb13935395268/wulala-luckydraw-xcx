@@ -2,7 +2,23 @@
 Page({
     navgatorTabBar(path) {
         wx.switchTab({
-            url: '../../'+path,
+            url: '../../' + path,
+        })
+    },
+    async getUserIntegral() {
+        let {
+            getUserInfo
+        } = getApp();
+        let app = getApp()
+        let res = await getUserInfo();
+        app.userInfo = res.data;
+    },
+    toLogin() {
+        let app = getApp();
+        app.globalData.callLogin = true;
+        console.log('to');
+        wx.switchTab({
+            url: '../../mine/index',
         })
     },
     exchangePrize() {
@@ -17,21 +33,22 @@ Page({
                 confirmText: '去登录',
                 success: res => {
                     if (res.confirm) {
-                        this.navgatorTabBar('mine/index');
+                        this.toLogin();
                     }
                 }
             })
             return
         }
-        if (this.data.prizeInfo.price > this.data.integral) {
+        if (this.data.prizeInfo.price > app.globalData.userInfo.integral) {
+            console.log('进来');
             wx.showToast({
-                icon: 'error',
                 title: '积分不足',
+                icon: 'error',
             })
         } else if (this.data.prizeInfo.remainderNum <= 0) {
             wx.showToast({
-                icon: 'error',
                 title: '奖品已兑换完',
+                icon: 'error',
             })
 
         } else {
@@ -40,7 +57,12 @@ Page({
                 content: '是否确认兑换该奖品?',
                 success: async res => {
                     if (res.confirm) {
+                        wx.showLoading({
+                            title: '兑换中..',
+                            mask: true
+                        })
                         let res = await exchangePrize(this.data.prizeId);
+                        wx.hideLoading()
                         if (res.status == 200) {
                             let res2 = await getUserInfo();
                             if (!Array.isArray(res2.data)) {
@@ -49,9 +71,12 @@ Page({
                             wx.showToast({
                                 title: '兑换成功',
                             });
+                            this.getPrizeDetail();
+                            this.getUserIntegral()
                         } else {
                             wx.showToast({
                                 title: res.msg,
+                                icon: 'error',
                             })
                         }
                     } else if (res.cancel) {
@@ -94,30 +119,37 @@ Page({
             }
         })
     },
-    async getPrizeDetail(id) {
-        wx.showLoading({
-            title: '加载中..',
-            mask: true
-        })
+    async getPrizeDetail() {
+        let id = this.data.prizeId
         let {
             getPrizeDetail
         } = getApp();
         let res = await getPrizeDetail(id);
-        console.log(res);
         if (res.status == 200) {
             this.setData({
                 prizeInfo: res.data
             });
-            wx.hideLoading()
         }
+        return res
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
-        this.data.prizeId = options.id;
+    async onLoad(options) {
         this.setTitle();
-        this.getPrizeDetail(options.id);
+        this.data.prizeId = options.id;
+        wx.showLoading({
+            title: '加载中..',
+            mask: true
+        })
+        let app = getApp();
+        if (app.globalData.loginStatus) {
+            this.setData({
+                integral: app.globalData.userInfo.integral
+            })
+        }
+        await this.getPrizeDetail();
+        wx.hideLoading()
     },
 
     /**
@@ -130,11 +162,7 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow() {
-        this.setData({
-            integral: getApp().globalData.userInfo.integral
-        })
-    },
+    onShow() {},
 
     /**
      * 生命周期函数--监听页面隐藏
