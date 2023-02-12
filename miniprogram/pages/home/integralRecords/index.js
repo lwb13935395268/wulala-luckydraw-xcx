@@ -9,9 +9,13 @@ Page({
         let {
             getIntegralRecord
         } = getApp();
+        let app = getApp();
         let res = await getIntegralRecord();
         this.setData({
-            recordList: res.data
+            integral :app.globalData.userInfo.integral,
+            recordList: res.data.sort((m, n) => {
+                return n.date - m.date
+            })
         })
         console.log(res);
         wx.hideLoading()
@@ -41,8 +45,7 @@ Page({
      */
     onLoad(options) {
         this.setTitle();
-        console.log(88);
-        // this.getIntegralRecord()
+        this.getIntegralRecord()
     },
 
     /**

@@ -14,18 +14,22 @@ Page({
         endDate:'',
         lists:'',
         _id:'',
-        total:''
+        headcount:'',
+        // total:''
     },
     help(){
         // console.log('11111');
-        console.log(this._id);
-        // wx.cloud.callFunction({
-        //     name:'activity',
-        //     data:{
-        //         type:'participateActivity',
-        //         activityId: this._id
-        //     }
-        // })
+        console.log(this.data._id);
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'participateActivity',
+                activityId: this.data._id
+            },
+            success(res){
+                console.log(res);
+            }
+        })
     },
     setModal() {
         this.setData({
@@ -67,24 +71,39 @@ Page({
                 wholeActivity : true
             },
             success(res){
-                console.log(res.result.data.data);
-                let list = res.result.data.data;
+                console.log(res.result.data);
+                let maxObj;
+                let list = res.result.data;
                 list.forEach(el => {
+                    maxObj=  JSON.parse(JSON.stringify(el.prizeNums)).sort((n,m)=>{
+                        return m.conditionsMet-n.conditionsMet
+                    })[0];
+                    // console.log(maxObj.conditionsMet);
                     let startDates = el.startDate.slice(5,10);
                     let endDates = el.endDate.slice(5,10);
                     let str = startDates;
                     let strr = endDates;
                     let strs = str.replace('-','.');
                     let strrs = strr.replace('-','.');
+                    let barNum = maxObj.conditionsMet;
+                    console.log(barNum);
+                    // _this.setData({
+                    //     headcount: barNum
+                    // })
+
+
                     console.log(el.prizeNums);
                     _this.setData({
                         startDate: strs,
                         endDate: strrs,
-                        lists: el.prizeNums
+                        lists: el.prizeNums,
+                        headcount: barNum
                     })
                 });
+                
+                console.log(maxObj);
                 _this.setData({
-                    activityDetail: res.result.data.data
+                    activityDetail: res.result.data
                 })
 
             }
@@ -102,13 +121,17 @@ Page({
             },
             success(res){
                 console.log(res.result.data.total);
-                _this.setData({
-                    total: res.result.data.total
-                })
+                let total = res.result.data.total;
+                console.log(total);
+                console.log(_this.data.headcount);
+                let people = _this.data.headcount;
+                console.log(people);
+
+                let bar = 50 / total * 100;
+                console.log(bar);
+
             }
-
         })
-
     },
 
     /**

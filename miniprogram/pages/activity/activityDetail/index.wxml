@@ -87,13 +87,13 @@
                 <view class="progress">
                     <progress percent="{{total}}" active stroke-width="9" border-radius="15"/>
                 </view>
-                <view class="box-post">
+                <view class="box-post{{index+1}}" wx:for="{{lists}}" wx:key="index">
                     <view class="box-img">
                         <image class="icon-jp" src="../../../images/icon-people.png" mode="" />
                     </view>
-                    <text>200人</text>
+                    <text>{{item.conditionsMet}}人</text>
                 </view>
-                <view class="box-post2">
+                <!-- <view class="box-post2">
                     <view class="box-img">
                         <image class="icon-jp" src="../../../images/icon-people.png" mode="" />
                     </view>
@@ -104,7 +104,7 @@
                         <image class="icon-jp" src="../../../images/icon-people.png" mode="" />
                     </view>
                     <text>1000人</text>
-                </view>
+                </view> -->
             </view>
 
             <view class="prople-button">

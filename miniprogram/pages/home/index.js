@@ -15,14 +15,14 @@ Page({
     //       modalName:!this.data.modalName
     //     })
     //   },
-    toLogin(){
-        let app=getApp();
-        app.globalData.callLogin=true;
+    toLogin() {
+        let app = getApp();
+        app.globalData.callLogin = true;
         wx.switchTab({
-          url: '../mine/index',
+            url: '../mine/index',
         })
     },
-    to(path,parmas){
+    to(path, parmas) {
         wx.navigateTo({
             url: '/pages/home/' + path + parmas,
         })
@@ -30,14 +30,12 @@ Page({
     navgator(e) {
         let path = e.currentTarget.dataset.path;
         let id = e.currentTarget.dataset.id;
-        console.log(e.currentTarget.dataset.power);
-        let powerFlag = e.currentTarget.dataset.power||false;
-        console.log(powerFlag);
+        let powerFlag = e.currentTarget.dataset.power || false;
         let parmas = '';
         if (id) {
             parmas = '?id=' + id
         }
-        if (powerFlag && !this.loginStatus) {
+        if (powerFlag && !this.data.loginStatus) {
             wx.showModal({
                 content: '您还没有登录，是否前往登录？',
                 confirmText: '去登录',
@@ -49,7 +47,7 @@ Page({
             })
             return
         } else {
-            this.to(path,parmas)
+            this.to(path, parmas)
         }
     },
     /**
@@ -115,27 +113,38 @@ Page({
         let {
             getPrizeList
         } = getApp();
-        let res = await getPrizeList();
-        this.setData({
-            prizeList: res.data,
-            hotPrizeList: res.data.filter(e => {
-                return e.prizeType == 1
-            }),
-            disPrizeList: res.data.filter(e => {
-                return e.prizeType == 2
-            }),
-            burstPrizeList: res.data.filter(e => {
-                return e.prizeType == 3
+        wx.showLoading({
+            title: '加载中..',
+        })
+        try {
+            let res = await getPrizeList();
+            this.setData({
+                prizeList: res.data,
+                hotPrizeList: res.data.filter(e => {
+                    return e.prizeType == 1
+                }),
+                disPrizeList: res.data.filter(e => {
+                    return e.prizeType == 2
+                }),
+                burstPrizeList: res.data.filter(e => {
+                    return e.prizeType == 3
+                })
+            });
+            wx.hideLoading();
+        } catch {
+            wx.hideLoading();
+            wx.showToast({
+                icon: 'error',
+                title: '获取奖品失败',
             })
-        });
-        return res
+        }
     },
     /**
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
         this.setTitle();
-        // this.getPrizeList();
+        this.getPrizeList();
     },
 
     /**
@@ -148,7 +157,9 @@ Page({
      */
     onShow() {
         let app = getApp();
-        if (this.data.loginStatus || app.globalData.loginStatus) {
+        this.data.loginStatus = app.globalData.loginStatus;
+        console.log(this.data);
+        if (this.data.loginStatus) {
             this.getPageParams();
         }
     },
@@ -180,35 +191,21 @@ Page({
         wx.showLoading({
             title: '刷新中...',
         })
-        // if(res){
-        //     //停止下拉刷新
-        //     wx.stopPullDownRefresh();
-        //     wx.hideLoading();
-        //     wx.hideNavigationBarLoading();
-        // }else{
-        //     console.log('失败');
-        //     //停止下拉刷新
-        //     wx.stopPullDownRefresh();
-        //     wx.hideLoading();
-        //     wx.hideNavigationBarLoading();
-        // }
         try {
             let res = await this.getPrizeList();
-            wx.stopPullDownRefresh();
             wx.hideLoading();
-            wx.hideNavigationBarLoading();
 
         } catch {
-            wx.stopPullDownRefresh();
             wx.hideLoading();
-            wx.hideNavigationBarLoading();
-
             wx.showToast({
                 icon: 'error',
                 title: '刷新失败',
             })
 
         }
+        wx.stopPullDownRefresh();
+        wx.hideLoading();
+        wx.hideNavigationBarLoading();
     },
     /**
      * 页面上拉触底事件的处理函数

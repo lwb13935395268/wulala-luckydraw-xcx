@@ -5,14 +5,69 @@ Page({
      * 页面的初始数据
      */
     data: {
-        currentIndex: 1, //默认是活动项
+        currentIndex: 0, //tab下标
         activityList:[],//活动列表
         participateActivity:[],//已参与活动列表
+        recommend:[],//推荐的活动列表
     },
     toCommodityDetails:function(e){
         console.log(e.target.dataset.id);
         wx.navigateTo({
           url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
+        })
+    },
+    //下标
+    onMyEvent:function(e){
+        console.log(e.detail);
+        switch (e.detail) {
+            case 0:
+                this.wholeActivity();//全部
+                break;
+            case 1:
+                this.recommend();//推荐
+                break;
+            case 2:
+                break;
+            case 3:
+                this.participateActivity();//已参与
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
+    },
+    // 全部
+    wholeActivity:function(){
+        let _this = this
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'queryMyActivityList',
+                wholeActivity:true
+            },
+            success(res){
+                console.log(res);
+                _this.setData({
+                    activityList:res.result.data,
+                })
+            }
+        })
+    },
+    //推荐
+    recommend:function(){
+        let _this = this;
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'recommend',
+            },
+            success(res){
+                console.log(res);
+                _this.setData({
+                    recommend:res.result.data
+                })
+            }
         })
     },
     // 已参与
@@ -27,7 +82,7 @@ Page({
                 console.log(res.result.data);
                 _this.setData({
                     participateActivity:res.result.data
-                })
+                });
             }
         })
     },
@@ -35,7 +90,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let _this  = this;
         wx.setNavigationBarTitle({
             title: '活动中心'
         })
@@ -47,19 +101,7 @@ Page({
               timingFunc: 'easeIn'
             }
         })
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'queryMyActivityList',
-                wholeActivity:true
-            },
-            success(res){
-                console.log(res.result.data);
-                _this.setData({
-                    activityList:res.result.data,
-                })
-            }
-        })
+        this.wholeActivity();
     },
 
     /**

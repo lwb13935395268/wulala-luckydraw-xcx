@@ -51,6 +51,19 @@
         </view>
     </view>
     <view class="wrap list mt-40">
+        <view class="item" bindtap="navgator" data-path="mine/mineNews/index">
+            <view class="icon">
+                <image src="../../images/icon-news2.png" mode="" />
+            </view>
+            <view class="link flex-between">
+                <view>
+                    我的消息
+                </view>
+                <view>
+                    <image class="entry" src="../../images/icon-entry.png" mode="" />
+                </view>
+            </view>
+        </view>
         <view class="item" bindtap="navgator" data-path="mine/uploading/index">
             <view class="icon">
                 <image src="../../images/icon-business.png" mode="" />

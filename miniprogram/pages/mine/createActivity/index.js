@@ -101,11 +101,24 @@ Page({
     },
     // 奖品满足条件
     conditionsMet:function(e){
-        let i=e.currentTarget.dataset.index;
-        let image = "prizeNums["+i+"].conditionsMet";
-        this.setData({
-            [image]:e.detail.value
-        });
+        switch (/^[0-9]*$/.test(e.detail.value)) {
+            case true:
+                let i=e.currentTarget.dataset.index;
+                let image = "prizeNums["+i+"].conditionsMet";
+                this.setData({
+                    [image]:e.detail.value
+                });
+                break;
+            case false:
+                wx.showToast({
+                    title: '满足条件只能输入数字',
+                    icon:'none',
+                  })
+                break;
+            default:
+                break;
+        }
+        
     },
     // 删除上传图片
     close:function(){
@@ -353,6 +366,11 @@ Page({
             }else if (item.prizeNum == '') {
                 wx.showToast({
                     title: '请输入奖品数量',
+                    icon:'none',
+                })
+            }else if (item.conditionsMet == '') {
+                wx.showToast({
+                    title: '请输入满足条件',
                     icon:'none',
                 })
             }else if (item.addText == '') {

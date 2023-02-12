@@ -8,32 +8,23 @@ const db = cloud.database();
 
 // 创建集合云函数入口函数
 exports.main = async (event, context) => {
-    const wxContext = cloud.getWXContext();
-    console.log('-------OPENID-------');
-    console.log(wxContext.OPENID);
     let activityRes = await db.collection('activity').aggregate().lookup({
         from:'myParticipateActivity',
         localField:'_id',
         foreignField: 'activityId',
         as:'row',
     }).end().then(res=>{
-        console.log('----------------具体的活动-------------')
-        console.log(res.list);
-        let participate = [];
-        res.list.forEach(item=>{
-            switch (item.row.length) {
-                case 0:
-                    break;
-                default:
-                    item.row.forEach(el => {
-                        if (el.OPENID == wxContext.OPENID) {
-                            participate.push(item);
-                        }
-                    })
-                    break;
+        console.log('--------------- 推荐的具体的活动-------------')
+        console.log(res);
+        function sortBy(property){
+            return function(value1,value2){
+                let a=value1[property]
+                let b=value2[property]
+                
+                return a < b ? 1:a > b? -1 : 0
             }
-        });
-        return participate;
+        }
+        return res.list.sort(sortBy('row.length'));
     })
     console.log(activityRes);
     let res = {
