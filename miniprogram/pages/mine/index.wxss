@@ -85,6 +85,7 @@
 .list{
     border-radius: 10rpx;
     overflow: hidden;
+    margin-bottom: 40rpx;
 }
 .list .item{
     display: flex;

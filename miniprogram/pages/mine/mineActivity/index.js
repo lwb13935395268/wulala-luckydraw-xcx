@@ -1,40 +1,40 @@
 // pages/mine/mineActivity/index.js
 Page({
 
-    navgator(e){
-        let path=e.currentTarget.dataset.path;
-        let app=getApp();
-        app.globalData.callLogin=true;
+    navgator(e) {
+        let path = e.currentTarget.dataset.path;
+        let app = getApp();
+        app.globalData.callLogin = true;
         wx.navigateTo({
-          url: '/pages/mine/'+path,
+            url: '/pages/mine/' + path,
         })
     },
-    setTitle(){
+    setTitle() {
         wx.setNavigationBarTitle({
             title: '我的活动'
-          })
-          wx.setNavigationBarColor({
+        })
+        wx.setNavigationBarColor({
             frontColor: '#ffffff',
             backgroundColor: '#eb524c',
             animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
+                duration: 400,
+                timingFunc: 'easeIn'
             }
-          })
+        })
     },
-    async getMineActivitys(){
+    async getMineActivitys() {
         let {
             getMineActivity
-        }=getApp();
-        let res=await getMineActivity();
-        if(res.status==200){
+        } = getApp();
+        let res = await getMineActivity();
+        if (res.status == 200) {
             this.setData({
-                activityList:res.data,
-                overActivityList:res.data
+                activityList: res.data,
+                overActivityList: res.data
             })
         }
     },
-    onMyEvent(e){
+    onMyEvent(e) {
         // e.detail//下标
         this.getMineActivitys()
     },
@@ -42,7 +42,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        titleList:['正在进行','已结束']
+        titleList: ['正在进行', '已结束']
     },
 
     /**
@@ -84,9 +84,6 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh() {
-
-    },
 
     /**
      * 页面上拉触底事件的处理函数
@@ -100,5 +97,28 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+    onPullDownRefresh() {
+        this.onRefresh();
+    },
+
+    async onRefresh() {
+        //导航条加载动画
+        wx.showNavigationBarLoading()
+        //loading 提示框
+        wx.showLoading({
+            title: '刷新中...',
+        })
+        try {
+            let res = await this.getMineActivitys();
+        } catch {
+            wx.showToast({
+                icon: 'error',
+                title: '刷新失败',
+            })
+        }
+        wx.stopPullDownRefresh();
+        wx.hideLoading();
+        wx.hideNavigationBarLoading();
     }
 })

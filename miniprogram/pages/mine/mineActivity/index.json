@@ -2,5 +2,6 @@
     "usingComponents": {
         "tab":"/components/tab/tab",
         "activity":"/components/activity/activity"
-    }
+    },
+    "enablePullDownRefresh": true
 }

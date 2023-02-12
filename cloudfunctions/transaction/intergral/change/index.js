@@ -21,7 +21,7 @@ exports.main = async (event, context) => {
         let result = await db.collection('integralRecord').add({
             data: {
                 date: new Date().valueOf(),
-                type: event.type, //0新用户奖励，1抽奖获得，2，充值获得，4积分兑换奖品消耗，5,兑换现金
+                type: event.type, //0新用户奖励，1抽奖获得，2，充值获得，3积分兑换奖品消耗，4,兑换现金
                 num: event.num, //改变数量
                 balance: event.balance, //余额
                 openId: OPENID

@@ -4,10 +4,35 @@
     background-color: white;
 }
 .header{
-    border-bottom: 2rpx solid #f3f3f3;
+    background-color: white;
+    height: 170rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    border-bottom: 4rpx solid #eff1f5;
 }
 .header-box{
-    height: 130rpx;
+    /* padding: 30rpx 0; */
+}
+.header-box .num{
+    font-size: 70rpx;
+}
+.void-tip{
+    box-sizing: border-box;
+    height:calc(100vh - 170rpx);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 34rpx;
+    background-color: #f5f3fb;
+}
+.btn{
+    background-color: #3f43ee;
+    color: white;
+    font-size: 26rpx;
+    padding: 15rpx 25rpx;
+    border-radius: 60rpx;
 }
 .item{
     padding: 20rpx 0;
