@@ -14,17 +14,10 @@ exports.main = async (event, context) => {
         foreignField: 'activityId',
         as:'row',
     }).end().then(res=>{
-        console.log('--------------- 推荐的具体的活动-------------')
-        console.log(res);
-        function sortBy(property){
-            return function(value1,value2){
-                let a=value1[property]
-                let b=value2[property]
-                
-                return a < b ? 1:a > b? -1 : 0
-            }
-        }
-        return res.list.sort(sortBy('row.length'));
+        let row = res.list.sort(function (a,b) {
+            return b.row.length - a.row.length
+        });
+        return row;
     })
     console.log(activityRes);
     let res = {

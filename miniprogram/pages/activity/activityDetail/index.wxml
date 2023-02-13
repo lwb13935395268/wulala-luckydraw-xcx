@@ -1,5 +1,6 @@
 <!--pages/activityDetail/index.wxml-->
 <view class="wraps" wx:for="{{activityDetail}}" wx:key="index">
+
     <view class="modal" wx:if="{{modalName}}" catchtouchmove="{{catchtouchmove}}">
           <view class="box">
             <image bindtap="setModal" src="../../../images/icon-close.png" mode="" />
@@ -62,9 +63,7 @@
             <view class="sum">23</view>秒
         </view>
     </view>
-    <!-- 
-        https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/shop.png?sign=523c472aa093669f06279df1ff42f145&t=1675412261
-     -->
+
     <view class="main">
         <view class="main-shop">
             <view class="shop" wx:for="{{lists}}" wx:key="index">
@@ -85,7 +84,7 @@
                 <!-- <view class="progressBar">
                 </view> -->
                 <view class="progress">
-                    <progress percent="{{total}}" active stroke-width="9" border-radius="15"/>
+                    <progress percent="{{total}}" active stroke-width="9" border-radius="15" />
                 </view>
                 <view class="box-post{{index+1}}" wx:for="{{lists}}" wx:key="index">
                     <view class="box-img">
@@ -93,18 +92,6 @@
                     </view>
                     <text>{{item.conditionsMet}}人</text>
                 </view>
-                <!-- <view class="box-post2">
-                    <view class="box-img">
-                        <image class="icon-jp" src="../../../images/icon-people.png" mode="" />
-                    </view>
-                    <text>500人</text>
-                </view>
-                <view class="box-post3">
-                    <view class="box-img">
-                        <image class="icon-jp" src="../../../images/icon-people.png" mode="" />
-                    </view>
-                    <text>1000人</text>
-                </view> -->
             </view>
 
             <view class="prople-button">
@@ -112,4 +99,6 @@
             </view>
         </view>
     </view>
+
+
 </view>

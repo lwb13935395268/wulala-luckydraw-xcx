@@ -17,7 +17,6 @@ Page({
                 return n.date - m.date
             })
         })
-        console.log(res);
         wx.hideLoading()
     },
     setTitle() {

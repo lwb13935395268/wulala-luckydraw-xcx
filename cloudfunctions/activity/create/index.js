@@ -10,6 +10,7 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     event.activityInfo.OPENID = wxContext.OPENID;
+    event.activityInfo.activityType = 0;
     console.log(event.activityInfo);
     let createActivity = await db.collection('activity').add({
         data:  event.activityInfo
