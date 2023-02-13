@@ -120,7 +120,6 @@ Page({
     },
     getUserParams() {
         let app = getApp();
-        console.log(app.globalData);
         if (app.globalData.loginStatus) {
             this.getPageParams()
         }
