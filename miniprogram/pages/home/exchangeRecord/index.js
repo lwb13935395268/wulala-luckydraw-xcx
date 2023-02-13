@@ -10,7 +10,6 @@ Page({
             getPrizeRecord
         } = getApp();
         let res = await getPrizeRecord();
-        console.log(res.data);
         this.setData({
             prizeList:res.data.sort((m,n)=>{
               return n.date-m.date

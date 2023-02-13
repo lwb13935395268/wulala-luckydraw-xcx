@@ -40,7 +40,7 @@
     font-weight: bold;
 }
 .tip{
-    color: #aaaaaa;
+    color: #aaa;
     font-size: 24rpx;
     font-weight: normal;
 }

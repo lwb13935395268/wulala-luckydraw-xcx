@@ -1,10 +1,16 @@
 <view class="main">
     <tab titleList="{{['全部','推荐','最新','已参与','已结束']}}" bind:myevent="onMyEvent">
-        <view slot="全部" class="wrap gap-tb-20">
-            <activity wx:for="{{activityList}}" wx:key="index" bindtap="toCommodityDetails" data-id="{{item._id}}" status="0" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+        <view slot="全部" class="wrap">
+            <view class="gap-tb-20" wx:if="{{activityList}}">
+                <activity wx:for="{{activityList}}" wx:key="index" bindtap="toCommodityDetails" data-id="{{item._id}}" status="0" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+            </view>
+            <view class="tips" wx:else>
+                暂无活动哦亲
+                <image src="../../images/nothing-info.png" mode=""/>
+            </view>
         </view>
-        <view slot="推荐" class="wrap gap-tb-20">
-            <view class="" wx:if="{{recommend != ''}}">
+        <view slot="推荐" class="wrap">
+            <view class="gap-tb-20" wx:if="{{recommend != ''}}">
                 <activity  wx:for="{{recommend}}" wx:key="index" status="0" bindtap="toCommodityDetails" data-id="{{item._id}}"  title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
             <view class="tips" wx:else>
@@ -12,14 +18,17 @@
                 <image src="../../images/nothing-info.png" mode=""/>
             </view>
         </view>
-        <view slot="最新" class="wrap gap-tb-20">
-            <view class="tips">
+        <view slot="最新" class="wrap">
+            <view class="gap-tb-20" wx:if="{{newest!=''}}">
+                <activity  wx:for="{{newest}}" wx:key="index" status="0" bindtap="toCommodityDetails" data-id="{{item._id}}"  title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+            </view>
+            <view class="tips" wx:else>
                 暂无最新活动哦亲
                 <image src="../../images/nothing-info.png" mode=""/>
             </view>
         </view>
-        <view slot="已参与" class="wrap gap-tb-20" bindtap="participateActivity">
-            <view wx:if="{{participateActivity != ''}}">
+        <view slot="已参与" class="wrap">
+            <view class="gap-tb-20" wx:if="{{participateActivity != ''}}">
                 <activity  wx:for="{{participateActivity}}" wx:key="index" status="1" bindtap="toCommodityDetails" data-id="{{item._id}}"  title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
             <view wx:else class="tips">
