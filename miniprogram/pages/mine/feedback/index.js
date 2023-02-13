@@ -13,6 +13,7 @@ Page({
             {value: '产品优化建议', name: '产品优化建议'},
             {value: '其他建议', name: '其他建议'},
         ],
+        content:'<h3>gjhj</h3>',
         feedbackType:[],
         phoneValue:'',//手机号
         feedbackContent:'',//反馈内容
@@ -30,26 +31,9 @@ Page({
         // }
     },
     // 选中
-    checkboxChange(e) {
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    updataRadio:function(e){
         this.setData({
-            feedbackType:e.detail.value
-        });
-        const items = this.data.items
-        const values = e.detail.value
-        for (let i = 0, lenI = items.length; i < lenI; ++i) {
-          items[i].checked = false
-    
-          for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
-            if (items[i].value === values[j]) {
-              items[i].checked = true
-              break
-            }
-          }
-        }
-    
-        this.setData({
-          items
+        index:e.currentTarget.dataset.index
         })
     },
     // 反馈内容

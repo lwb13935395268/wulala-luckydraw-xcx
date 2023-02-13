@@ -38,8 +38,8 @@
 .lineBox {
     /* 选中底线样式 */
     background: #df463e;
-    /* margin-top: 16rpx; */
     border-radius: 10rpx;
+    margin-bottom: 14rpx;
 }
 
 .notLineBox {
