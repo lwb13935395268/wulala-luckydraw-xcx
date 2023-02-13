@@ -68,7 +68,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
+    async onLoad(options) {
         // console.log(options.id);
         this.setData({
             _id: options.id
@@ -76,71 +76,69 @@ Page({
         this._id = options.id;
         let _this = this;
         
-        wx.cloud.callFunction({
+      let res= await wx.cloud.callFunction({
             name:'activity',
             data:{
                 type:'queryMyActivityList',
                 wholeActivity : true
-            },
-            success(res){
-                console.log(res.result.data);
-                res.result.data.forEach(el => {
-                    // console.log(el.prizeNums);
-                    // maxObj= el.prizeNums.sort((n,m)=>{
-                    if(_this.data._id == el._id){
-                        let maxObj;
-                        let arrs = [];
-                        // console.log(el);
-                        arrs.push(el);
-                        // console.log(arrs);
-                        let startDates = el.startDate.slice(5,10);
-                        let endDates = el.endDate.slice(5,10);
-                        let str = startDates;
-                        let strr = endDates;
-                        let strs = str.replace('-','.');
-                        let strrs = strr.replace('-','.');
-                        console.log(el.prizeNums);
-                        // maxObj= el.prizeNums.sort((n,m)=>{
-                        maxObj = JSON.parse(JSON.stringify(el.prizeNums)).sort((n,m)=>{
-                            return m.conditionsMet-n.conditionsMet
-                        })[0];
-                        let barNum = maxObj.conditionsMet;
-                        _this.setData({
-                            activityDetail: arrs,
-                            startDate: strs,
-                            endDate: strrs,
-                            lists: el.prizeNums,
-                            headcount: barNum
-                        })
-                        // console.log(_this.data.activityDetail);
-                    }
-                });
             }
+        })
+        console.log(res.result);
+        res.result.data.forEach(el => {
+            // console.log(el.prizeNums);
+            // maxObj= el.prizeNums.sort((n,m)=>{
+            if(_this.data._id == el._id){
+                let maxObj;
+                let arrs = [];
+                // console.log(el);
+                arrs.push(el);
+                // console.log(arrs);
+                let startDates = el.startDate.slice(5,10);
+                let endDates = el.endDate.slice(5,10);
+                let str = startDates;
+                let strr = endDates;
+                let strs = str.replace('-','.');
+                let strrs = strr.replace('-','.');
+                // console.log(el.prizeNums);
+                // maxObj= el.prizeNums.sort((n,m)=>{
+                maxObj = JSON.parse(JSON.stringify(el.prizeNums)).sort((n,m)=>{
+                    return m.conditionsMet-n.conditionsMet
+                })[0];
+                let barNum = maxObj.conditionsMet;
+                _this.setData({
+                    activityDetail: arrs,
+                    startDate: strs,
+                    endDate: strrs,
+                    lists: el.prizeNums,
+                    headcount: barNum
+                })
+                // console.log(_this.data.activityDetail);
+            }
+        });
+        let res2=await wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'getActivityCount',
+                activityId:_this.data._id
+            }
+        })
+        
+        let total = res2.result.data.total;
+        // console.log(total);
+        // console.log(_this.data.headcount);
+        let people = _this.data.headcount;
+        // console.log(people);
+        let bar = total / people * 100;
+        console.log(bar);
+        this.setData({
+            total: bar
         })
         wx.showShareMenu({
             withShareTicket: true,
             menus:['shareAppMessage','shareTimeline']
         })
 
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'getActivityCount',
-                activityId:_this.data._id
-            },
-            success(res){
-                // console.log(res.result.data.total);
-                let total = res.result.data.total;
-                // console.log(total);
-                // console.log(_this.data.headcount);
-                let people = _this.data.headcount;
-                // console.log(people);
-
-                let bar = 50 / total * 100;
-                // console.log(bar);
-
-            }
-        })
+        
     },
 
     /**
