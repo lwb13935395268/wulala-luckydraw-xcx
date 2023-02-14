@@ -1,5 +1,12 @@
 // pages/mine/mineInfo/index.js
 Page({
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad(options) {
+        this.setTitle();
+        this.getUserInfo()
+    },
     setTitle() {
         wx.setNavigationBarTitle({
             title: '个人信息'
@@ -20,22 +27,20 @@ Page({
             [name]: Number(e.detail.value)
         })
     },
-    bindDateChange(e) {
+    dateChange(e) {
         let name = 'userInfo.birthdayDate';
         this.setData({
             [name]: e.detail.value
         })
     },
-    bindRegionChange: function (e) {
+    regionChange: function (e) {
         console.log('picker发送选择改变，携带值为', e.detail.value)
         let name = 'userInfo.area'
         this.setData({
             [name]: e.detail.value[0]=="全部"?[]: e.detail.value
         })
     },
-
     doUpload: function () {
-        let _this = this;
         // 选择图片
         wx.chooseMedia({
             count: 1, //图片个数
@@ -53,9 +58,6 @@ Page({
                     filePath: filePath, // 小程序临时文件路径
                     success: res => {
                         console.log('[上传文件] 成功：', res)
-                        // _this.setData({
-                        //     imgFileId:res.fileID,
-                        // });
                         let name = 'userInfo.avatarUrl'
                         this.setData({
                             [name]: res.fileID
@@ -67,7 +69,7 @@ Page({
                         wx.hideLoading()
                         wx.showToast({
                             icon: 'none',
-                            title: '上传失败',
+                            title: '网络错误，请稍后再试',
                         })
                     },
                     complete: () => {
@@ -81,7 +83,7 @@ Page({
             }
         })
     },
-    showInput() {
+    showNameInput() {
         wx.showModal({
             cancelColor: '#000000',
             cancelText: '取消',
@@ -90,7 +92,6 @@ Page({
             editable: true,
             placeholderText: '输入昵称',
             showCancel: true,
-            // title: '输入昵称',
             success: (res) => {
                 if (res.confirm) {
                     let name = 'userInfo.nickName'
@@ -131,24 +132,6 @@ Page({
             })
         }
     },
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        sexList: [{
-            sex: 0,
-            name: '男'
-        }, {
-            sex: 1,
-            name: '女'
-        }],
-        num: 1,
-        newDate: new Date(),
-        date: '',
-        region: [],
-        customItem: '全部',
-        userInfo: {}
-    },
     async getUserInfo() {
         wx.showLoading({
             title: '获取中..',
@@ -157,8 +140,6 @@ Page({
             getUserInfo
         } = getApp();
         let res = await getUserInfo();
-        console.log(res);
-
         if (res.status == 200) {
             delete res.data._id;
             delete res.data.openId
@@ -176,12 +157,22 @@ Page({
         }
     },
     /**
-     * 生命周期函数--监听页面加载
+     * 页面的初始数据
      */
-    onLoad(options) {
-        let app = getApp();
-        this.setTitle();
-        this.getUserInfo()
+    data: {
+        sexList: [{
+            sex: 0,
+            name: '男'
+        }, {
+            sex: 1,
+            name: '女'
+        }],
+        num: 1,
+        newDate: new Date(),
+        date: '',
+        region: [],
+        customItem: '全部',
+        userInfo: {}
     },
 
     /**

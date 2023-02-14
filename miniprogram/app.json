@@ -5,6 +5,7 @@
     "pages/home/goodDetail/index",
     "pages/home/exchangeRecord/index",
     "pages/activity/index",
+    "pages/activity/countDown/index",
     "pages/activity/activityDetail/index",
     "pages/activity/goodsDetail/index",
     "pages/mine/index",

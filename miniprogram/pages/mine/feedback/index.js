@@ -8,11 +8,10 @@ Page({
         items: [//选中
             // checked:'true'
             {value: '程序bug反馈', name: '程序bug反馈'},
-            {value: '参与活动失败', name: '参与活动失败'},
-            {value: '功能无法理解', name: '功能无法理解'},
             {value: '产品优化建议', name: '产品优化建议'},
             {value: '其他建议', name: '其他建议'},
         ],
+        content:'<h3>gjhj</h3>',
         feedbackType:[],
         phoneValue:'',//手机号
         feedbackContent:'',//反馈内容
@@ -30,26 +29,9 @@ Page({
         // }
     },
     // 选中
-    checkboxChange(e) {
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    updataRadio:function(e){
         this.setData({
-            feedbackType:e.detail.value
-        });
-        const items = this.data.items
-        const values = e.detail.value
-        for (let i = 0, lenI = items.length; i < lenI; ++i) {
-          items[i].checked = false
-    
-          for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
-            if (items[i].value === values[j]) {
-              items[i].checked = true
-              break
-            }
-          }
-        }
-    
-        this.setData({
-          items
+        index:e.currentTarget.dataset.index
         })
     },
     // 反馈内容
@@ -139,11 +121,6 @@ Page({
                 icon: 'none',
                 title: '请选中你的反馈类型',
             })
-        }else if(/^[1][3,4,5,7,8][0-9]{9}$/.test(this.data.phoneValue) == false){
-            wx.showToast({
-                icon: 'none',
-                title: '请输入正确的手机号',
-            })
         }else{
             wx.cloud.callFunction({
                 name:'feedBack',
@@ -153,7 +130,6 @@ Page({
                         feedbackContent:this.data.feedbackContent,//反馈内容
                         feedbackImg:this.data.feedbackImg,//反馈图片
                         feedbackType:this.data.feedbackType,//反馈类型
-                        phoneValue:this.data.phoneValue,//手机号
                     }
                 },
                 success(res){

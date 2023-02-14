@@ -9,34 +9,31 @@
     </view>
     <!-- 建议 -->
     <view class="proposal mt-20">
-        <textarea placeholder="请写下您的意见或建议" class="textarea" bindinput="feedbackContent" maxlength="-1"    	placeholder-style="font-size:30rpx;color:#ccc;" name="textarea"/>
+        <textarea placeholder="请写下您的意见或建议" class="textarea" bindinput="feedbackContent" maxlength="-1" placeholder-style="font-size:30rpx;color:#ccc;" name="textarea" />
         <view wx:if="{{feedbackImg == ''}}" class="camera" bindtap="doUpload">
-            <image src="../../../images/icon-camera.png" mode=""/>
+            <image src="../../../images/icon-camera.png" mode="" />
             上传图片
         </view>
         <view class="feedback-img" wx:else>
-            <image src="{{feedbackImg}}" mode=""/>
+            <image src="{{feedbackImg}}" mode="" />
             <view class="close" bindtap="close">
-                <image class="error" src="../../../images/icon-error.png" mode=""/>
+                <image class="error" src="../../../images/icon-error.png" mode="" />
             </view>
         </view>
     </view>
     <!-- 类型 -->
     <view class="type mt-20">
         <view class="text">请选择反馈类型</view>
-        <checkbox-group bindchange="checkboxChange">
-            <label wx:for="{{items}}" wx:key="index">
-                <checkbox color="#fd7541" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
-            </label>
-        </checkbox-group>
+        <radio-group bindchange="updataRadio" class="radio">
+            <view wx:for="{{items}}" wx:key="index">
+                <radio color="#fd7541" value="{{item.value}}" checked="{{item.checked}}" class="radio-type">{{item.name}}</radio>
+            </view>
+        </radio-group>
     </view>
-    <!-- 联系方式 -->
-    <view class="contact mt-20 mb-40">
-        联系方式 :
-        <input placeholder="请输入您的手机号" bindinput="getPhoneNumber" maxlength="11" type="text"/>
-    </view>
+ 
+   
 </view>
-    <!-- 提交按钮 -->
-    <view class="submit-btn" bindtap="submit">
-        <button class="mt-10">提交</button>
-    </view>
+<!-- 提交按钮 -->
+<view class="submit-btn" bindtap="submit">
+    <button class="mt-10">提交</button>
+</view>

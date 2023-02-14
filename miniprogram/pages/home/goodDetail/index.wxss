@@ -4,13 +4,13 @@
     background-color: #f6f6f6;
 }
 
-.swiperBox {
+.swiper-box {
     /* 底部内容样式 */
     background-color: #f6f6f6;
     height: 600rpx;
 }
 
-.swiperTtemBox image {
+.swiper-item_box image {
     width: 100%;
     height: 100%;
 }

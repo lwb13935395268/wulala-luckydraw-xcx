@@ -17,6 +17,43 @@ Page({
         headcount:'',
         totals:''
     },
+    help(){
+        // console.log('11111');
+        console.log(this.data._id);
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{      
+                type:'participateActivity',
+                activityId: this.data._id
+            },
+            success(res){
+                console.log(res);
+                if(res.result.status == 0){
+                    wx.showToast({
+                        title: '已参加过活动',
+                        icon: 'error',
+                        duration: 1500
+                      })
+                } else {
+                    wx.showToast({
+                        title: '已参加',
+                        icon: 'success',
+                        duration: 1500
+                      })
+                }
+            }
+        })
+    },
+    setModal() {
+        this.setData({
+            modalName: !this.data.modalName
+        })
+    },
+    switch () {
+        this.setData({
+            catchtouchmove: !this.data.catchtouchmove
+        })
+    },
 
 
     /**
