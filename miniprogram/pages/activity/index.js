@@ -2,7 +2,7 @@
 Page({
 
     /**
-     * 页面的初始数据
+     * 页面的初始数据         
      */
     data: {
         currentIndex: 0, //tab下标
@@ -12,56 +12,32 @@ Page({
         newest:[],//最新
     },
     toCommodityDetails:function(e){
-        console.log(e.target.dataset.id);
+        // console.log(e.target.dataset.id);
         wx.navigateTo({
           url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
         })
     },
     //下标
     onMyEvent:function(e){
-        console.log(e.detail);
+        // console.log(e.detail);
         wx.showLoading({
             title: '加载中',
             mask: true,
         })
         switch (e.detail) {
             case 0:
-                this.wholeActivity();//全部
+                this.newest();//最新
                 break;
             case 1:
                 this.recommend();//推荐
                 break;
             case 2:
-                this.newest();//最新
                 break;
             case 3:
-                this.participateActivity();//已参与
-                break;
-            case 4:
                 break;
             default:
                 break;
         }
-    },
-    // 全部
-    wholeActivity:function(){
-        let _this = this
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'queryMyActivityList',
-                wholeActivity:true
-            },
-            success(res){
-                console.log(res);
-                _this.setData({
-                    activityList:res.result.data,
-                })
-                setTimeout(function () {
-                    wx.hideLoading()
-                }, 500)
-            }
-        })
     },
     //推荐
     recommend:function(){
@@ -72,7 +48,7 @@ Page({
                 type:'recommend',
             },
             success(res){
-                console.log(res);
+                // console.log(res);
                 _this.setData({
                     recommend:res.result.data
                 });
@@ -91,31 +67,12 @@ Page({
                 type:'newest'
             },
             success(res){
-                console.log(res);
+                // console.log(res);
                 _this.setData({
                     newest:res.result.data
                 });
                 setTimeout(function () {
                     wx.hideLoading()
-                }, 500)
-            }
-        })
-    },
-    // 已参与
-    participateActivity:function(){
-        let _this = this;
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'myParticipateActivity'
-            },
-            success(res){
-                console.log(res.result.data);
-                _this.setData({
-                    participateActivity:res.result.data
-                });
-                setTimeout(function () {
-                    wx.hideLoading();
                 }, 500)
             }
         })
@@ -139,7 +96,7 @@ Page({
               timingFunc: 'easeIn'
             }
         })
-        this.wholeActivity();
+        this.newest();
     },
 
     /**
@@ -178,7 +135,7 @@ Page({
             title: '加载中',
             mask: true,
         });
-        this.wholeActivity();
+        this.newest();
     },
 
     /**
