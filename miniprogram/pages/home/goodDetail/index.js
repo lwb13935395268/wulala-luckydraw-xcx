@@ -68,11 +68,11 @@ Page({
                             if (!Array.isArray(res2.data)) {
                                 app.globalData.userInfo = res2.data
                             }
+                            this.getPrizeDetail();
+                            this.getUserIntegral()
                             wx.showToast({
                                 title: '兑换成功',
                             });
-                            this.getPrizeDetail();
-                            this.getUserIntegral()
                         } else {
                             wx.showToast({
                                 title: res.msg,

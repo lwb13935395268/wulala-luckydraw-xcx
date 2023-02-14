@@ -64,30 +64,6 @@ Page({
         prizeList: [],
     },
 
-    onPageScroll(e) {
-        // setTimeout(() => {
-        //     const query = wx.createSelectorQuery()
-        //     query.select('#tab').boundingClientRect()
-        //     query.selectViewport().scrollOffset()
-        //     query.exec((res) => {
-        //         console.log(res);
-        //         // #the-id节点的上边界坐标
-        //         //   console.log(res[0].top);
-        //         // 显示区域的竖直滚动位置
-        //         //   console.log(res[1].scrollTop);
-        //         let topNum = Math.floor(res[0].top);
-        //         if (topNum <= 0) {
-        //             this.setData({
-        //                 scroll: true
-        //             })
-        //         } else if (topNum >= 0) {
-        //             this.setData({
-        //                 scroll: false
-        //             })
-        //         }
-        //     })
-        // })
-    },
     setTitle() {
         wx.setNavigationBarTitle({
             title: '首页'
@@ -144,7 +120,6 @@ Page({
      */
     async onLoad(options) {
         this.setTitle();
-        this.getPrizeList();
     },
 
     /**
@@ -156,9 +131,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+        this.getPrizeList();
         let app = getApp();
         this.data.loginStatus = app.globalData.loginStatus;
-        console.log(this.data);
         if (this.data.loginStatus) {
             this.getPageParams();
         }

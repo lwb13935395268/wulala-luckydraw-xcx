@@ -1,10 +1,11 @@
 /* pages/mine/feedback/index.wxss */
-.main{
+.main {
     background-color: #f5f5f5;
     height: calc(100vh - 120rpx);
     overflow: scroll;
 }
-.tips{
+
+.tips {
     background-color: #fdf7e7;
     padding: 40rpx;
     border-radius: 15rpx;
@@ -13,15 +14,18 @@
     font-size: 30rpx;
     line-height: 50rpx;
 }
-.proposal{
+
+.proposal {
     background-color: white;
     border-radius: 15rpx;
     padding: 40rpx;
 }
-.textarea{
+
+.textarea {
     height: 180rpx;
 }
-.camera{
+
+.camera {
     background-color: #eee;
     width: 250rpx;
     height: 250rpx;
@@ -32,22 +36,35 @@
     flex-direction: column;
     font-size: 30rpx;
 }
-.camera image{
+
+.camera image {
     width: 70rpx;
     height: 70rpx;
     filter: invert(100%)
 }
-.type .text{
+
+.type .text {
     color: #aaa;
     padding: 30rpx 0;
 }
-.type checkbox-group{
+/* .type .radio {
+    padding: 0rpx 0;
+} */
+
+.type radio-group {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 15rpx;
 }
-.type label{
+.radio-type {
+    margin: 10rpx 14rpx;
+    border: 1rpx solid rgb(211, 210, 210);
+    padding: 20rpx;
+    border-radius: 5%;
+}
+
+.type label {
     background-color: #fff;
     padding: 30rpx 10rpx;
     font-size: 25rpx;
@@ -55,14 +72,16 @@
     border-radius: 10rpx;
     width: 205rpx;
 }
-.contact{
+
+.contact {
     background-color: #fff;
     border-radius: 15rpx;
     padding: 30rpx;
     display: flex;
     gap: 20rpx;
 }
-.submit-btn{
+
+.submit-btn {
     background-color: #fff;
     height: 120rpx;
     position: fixed;
@@ -70,20 +89,25 @@
     width: 100vw;
     z-index: 2000;
 }
-.submit-btn button{
+
+.submit-btn button {
     background-color: #dc3a38;
     color: white;
 }
-.feedback-img{
+
+.feedback-img {
     position: relative;
 }
-.feedback-img image{
+
+.feedback-img image {
     width: 620rpx;
 }
-.close .error{
+
+.close .error {
     width: 35rpx;
     height: 35rpx;
     position: absolute;
     top: -25rpx;
     right: -25rpx;
 }
+

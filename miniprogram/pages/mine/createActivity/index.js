@@ -253,7 +253,7 @@ Page({
             });
         }
         })
-    },
+    },                                         
     // 添加图片
     addImgs:function(e){
         let _this = this;

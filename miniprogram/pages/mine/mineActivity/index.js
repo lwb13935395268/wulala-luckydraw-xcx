@@ -33,6 +33,7 @@ Page({
                 overActivityList: res.data
             })
         }
+        return res
     },
     onMyEvent(e) {
         // e.detail//下标
@@ -48,11 +49,19 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
+    async onLoad(options) {
         this.setTitle();
-        // this.getMineActivitys();
+        wx.showLoading({
+            title: '加载中..',
+          })
+       await this.getMineActivitys();
+        wx.hideLoading()
     },
-
+    toCommodityDetails(e){
+        wx.navigateTo({
+          url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
