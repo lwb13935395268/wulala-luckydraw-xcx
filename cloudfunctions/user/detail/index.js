@@ -29,8 +29,8 @@ exports.main = async (event, context) => {
         } else {
             res.status = 200;
             res.msg = "新用户";
-            let addRes = await addUser.main(event, context);
-            res.data = addRes.data
+            // let addRes = await addUser.main(event, context);
+            // res.data = addRes.data
         }
         return res;
     } catch {

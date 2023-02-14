@@ -1,5 +1,13 @@
 // pages/home/goodDetail/index.js
 Page({
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad(options) {
+        this.setTitle();
+        this.data.prizeId = options.id;
+        this.loadGoodsDetail()
+    },
     navgatorTabBar(path) {
         wx.switchTab({
             url: '../../' + path,
@@ -86,13 +94,6 @@ Page({
             })
         }
     },
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        currentIndex: 0, //默认是活动项
-        prizeInfo: {},
-    },
     // 切换swiper-item触发bindchange事件
     pagechange: function (e) {
         // 通过touch判断，改变tab的下标值
@@ -132,12 +133,7 @@ Page({
         }
         return res
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    async onLoad(options) {
-        this.setTitle();
-        this.data.prizeId = options.id;
+    async loadGoodsDetail(){
         wx.showLoading({
             title: '加载中..',
             mask: true
@@ -150,6 +146,13 @@ Page({
         }
         await this.getPrizeDetail();
         wx.hideLoading()
+    },
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        currentIndex: 0, //默认是活动项
+        prizeInfo: {},
     },
 
     /**

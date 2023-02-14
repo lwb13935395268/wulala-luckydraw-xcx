@@ -7,7 +7,7 @@
             <view>
                 昵称
             </view>
-            <view class="fc-gray3 fs-28 align-center ptb-30" bindtap="showInput">
+            <view class="fc-gray3 fs-28 align-center ptb-30" bindtap="showNameInput">
                 <text class="mr-10">{{userInfo.nickName||'未填写'}}</text>
                 <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
@@ -27,7 +27,7 @@
                 性别
             </view>
             <view class="fc-gray3 fs-28 align-center">
-                <picker class="" bindchange="bindPickerChange" value="{{userInfo.sex}}" range-key="name" range="{{sexList}}" bindchange="sexChange">
+                <picker class="" bindchange="pickerChange" value="{{userInfo.sex}}" range-key="name" range="{{sexList}}" bindchange="sexChange">
                     <view class="picker ptb-30 flex-between align-center">
                         <text class="mr-10">{{sexList[userInfo.sex].name||'未选择'}}</text>
                         <image class="image" src="../../../images/icon-entry.png" mode="" />
@@ -40,7 +40,7 @@
                 生日
             </view>
             <view class="fc-gray3 fs-28 align-center">
-                <picker mode="date" class="" bindchange="bindPickerChange" value="{{userInfo.birthdayDate}}" bindchange="bindDateChange" start="1920-01-01" end="">
+                <picker mode="date" class="" bindchange="pickerChange" value="{{userInfo.birthdayDate}}" bindchange="dateChange" start="1920-01-01" end="2023-02-13">
                     <view class="picker ptb-30 flex-between align-center">
                         <text class="mr-10">{{userInfo.birthdayDate||'未选择'}}</text>
                         <image class="image" src="../../../images/icon-entry.png" mode="" />
@@ -54,7 +54,7 @@
             </view>
 
             <view class="fc-gray3 fs-28 align-center">
-                <picker mode="region" class="" bindchange="bindPickerChange" value="{{userInfo.area}}"  custom-item="{{customItem}}" bindchange="bindRegionChange">
+                <picker mode="region" class="" bindchange="pickerChange" value="{{userInfo.area}}"  custom-item="{{customItem}}" bindchange="regionChange">
                     <view class="picker ptb-30 flex-between align-center">
                         <text class="mr-10">{{(userInfo.area.length&&userInfo.area[0]!='全部')?userInfo.area[0]+'，'+userInfo.area[1]+'，'+userInfo.area[2]:'请选择'}}</text>
                         <image class="image" src="../../../images/icon-entry.png" mode="" />
