@@ -3,7 +3,6 @@
 <!-- <view class="modal" wx:if="{{modalName}}" catchtouchmove="{{catchtouchmove}}"> -->
 <view class="countdown">
     <view class="count">
-        {{countDown}}
     </view>
     <view class="times">
         倒计时：

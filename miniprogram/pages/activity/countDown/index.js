@@ -19,15 +19,12 @@ Page({
         var that = this;
         var time = 0;
         var obj = {};
-        console.log('--------------data---------')
         console.log(that.data.countDown);
-        // console.log("2023-04-12 10:00");
-        let timera = that.data.countDown.replace(/\s/,' ');
+        let timera = that.data.countDown
         console.log(timera)
-        var endTime=(new Date(timera).getTime());
         var currentTime = new Date().getTime();//当前时间时间戳
         // console.log(currentTime);
-        time = (endTime - currentTime) / 1000;
+        time = (timera - currentTime) / 1000;
         console.log(time);
         // 如果活动未结束
         if (time > 0) {
