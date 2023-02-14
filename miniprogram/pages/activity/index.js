@@ -12,14 +12,14 @@ Page({
         newest:[],//最新
     },
     toCommodityDetails:function(e){
-        console.log(e.target.dataset.id);
+        // console.log(e.target.dataset.id);
         wx.navigateTo({
           url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
         })
     },
     //下标
     onMyEvent:function(e){
-        console.log(e.detail);
+        // console.log(e.detail);
         wx.showLoading({
             title: '加载中',
             mask: true,
@@ -53,7 +53,7 @@ Page({
                 wholeActivity:true
             },
             success(res){
-                console.log(res);
+                // console.log(res);
                 _this.setData({
                     activityList:res.result.data,
                 })
@@ -72,7 +72,7 @@ Page({
                 type:'recommend',
             },
             success(res){
-                console.log(res);
+                // console.log(res);
                 _this.setData({
                     recommend:res.result.data
                 });
@@ -91,7 +91,7 @@ Page({
                 type:'newest'
             },
             success(res){
-                console.log(res);
+                // console.log(res);
                 _this.setData({
                     newest:res.result.data
                 });
@@ -110,7 +110,7 @@ Page({
                 type:'myParticipateActivity'
             },
             success(res){
-                console.log(res.result.data);
+                // console.log(res.result.data);
                 _this.setData({
                     participateActivity:res.result.data
                 });

@@ -39,8 +39,9 @@ Page({
     bindFormSubmit: function(e) {
         this.setData({
             activityTitle:e.detail.value,
-        })
+        });
     },
+    // 奖品名称
     bindFormSubmitPrize:function(e){
         let i=e.currentTarget.dataset.index;
         let text = 'prizeNums['+i+'].prizeName';
@@ -55,26 +56,26 @@ Page({
     },
     // 时间选择
     bindTimeChange: function(e) {//开始
-      console.log('picker发送选择改变，携带值为', e.detail.value)
+    //   console.log('picker发送选择改变，携带值为', e.detail.value)
       this.setData({
         startTime: e.detail.value
       })
     },
     endTimeChange:function(e){
-        console.log('picker发送选择改变，携带值为', e.detail.value)
+        // console.log('picker发送选择改变，携带值为', e.detail.value)
         this.setData({
             endTime: e.detail.value
         })
     },
     // 日期选择器
     bindDateChange: function(e) {//开始
-      console.log('picker发送选择改变，携带值为', e.detail.value)
+    //   console.log('picker发送选择改变，携带值为', e.detail.value)
       this.setData({
         startDate: e.detail.value
       })
     },
     endDateChange:function(e){//结束
-      console.log('picker发送选择改变，携带值为', e.detail.value)
+    //   console.log('picker发送选择改变，携带值为', e.detail.value)
       this.setData({
         endDate: e.detail.value
       })
@@ -126,12 +127,12 @@ Page({
             fileList: [this.data.imgFileId]
         }).then(res => {
             // handle success
-            console.log("删除成功")
+            // console.log("删除成功")
+            this.setData({
+                imgFileId:'',
+            })
         }).catch(error => {
             // handle error
-        })
-        this.setData({
-            imgFileId:'',
         })
     },
     // 文本btn
@@ -148,15 +149,15 @@ Page({
           title: '添加奖品介绍',
           success: (res) => {
               if(res.confirm){
-                    console.log(this.data);
+                    // console.log(this.data);
                     let i=e.currentTarget.dataset.index;
                     let text = 'prizeNums['+i+'].addText';
                     _this.setData({
                         [text]:res.content           
                     });
-                    console.log('确定');
+                    // console.log('确定');
               } else if(res.cancel){
-                  console.log('取消');
+        //           console.log('取消');
               }
           },
           fail: (res) => {},
@@ -165,7 +166,7 @@ Page({
     },
     // 选中
     checkboxChange(e) {
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+        // console.log('checkbox发生change事件，携带value值为：', e.detail.value)
         this.setData({
             signUpSet:e.detail.value
         })
@@ -220,7 +221,7 @@ Page({
             cloudPath: "img/"+timestamp+".jpg", // 上传至云端的路径
             filePath: filePath, // 小程序临时文件路径
             success: res => {
-                console.log('[上传文件] 成功：', res)
+                // console.log('[上传文件] 成功：', res)
                 _this.setData({
                     imgFileId:res.fileID,
                 });
@@ -233,7 +234,7 @@ Page({
                 })
             },
             fail: e => {
-                console.error('[上传文件] 失败：', e)
+                // console.error('[上传文件] 失败：', e)
                 wx.showToast({
                     icon: 'none',
                     title: '上传失败',
@@ -246,7 +247,7 @@ Page({
 
         },
         fail: e => {
-            console.log(e)
+            // console.log(e)
             this.setData({
                 imgFileId:'',
             });
@@ -274,13 +275,13 @@ Page({
             cloudPath: "img/"+timestamp+".jpg", // 上传至云端的路径
             filePath: filePath, // 小程序临时文件路径
             success: res => {
-                console.log('[上传文件] 成功：', res);
+                // console.log('[上传文件] 成功：', res);
                 let i=e.currentTarget.dataset.index;
                 let image = "prizeNums["+i+"].addImg";
                 _this.setData({
                     [image]:res.fileID
                 });
-                console.log(_this.data.datas);
+                // console.log(_this.data.datas);
                 app.globalData.fileID = res.fileID
                 app.globalData.cloudPath = cloudPath
                 app.globalData.imagePath = filePath
@@ -290,7 +291,7 @@ Page({
                 })
             },
             fail: e => {
-                console.error('[上传文件] 失败：', e)
+                // console.error('[上传文件] 失败：', e)
                 wx.showToast({
                     icon: 'none',
                     title: '上传失败',
@@ -303,7 +304,7 @@ Page({
                              
         },
         fail: e => {
-            console.log(e)
+            // console.log(e)
         }
         })
     },
@@ -313,7 +314,7 @@ Page({
             fileList: [this.data.addImg]
         }).then(res => {
             // handle success
-            console.log("删除成功")
+            // console.log("删除成功")
         }).catch(error => {
             // handle error
         })
@@ -389,7 +390,7 @@ Page({
                 })
             }
         })
-        console.log(this.data.isActivity);
+        // console.log(this.data.isActivity);
         switch (this.data.isActivity) {
             case false:
                 break;
