@@ -26,42 +26,18 @@ Page({
         })
         switch (e.detail) {
             case 0:
-                this.wholeActivity();//全部
+                this.newest();//最新
                 break;
             case 1:
                 this.recommend();//推荐
                 break;
             case 2:
-                this.newest();//最新
                 break;
             case 3:
-                this.participateActivity();//已参与
-                break;
-            case 4:
                 break;
             default:
                 break;
         }
-    },
-    // 全部
-    wholeActivity:function(){
-        let _this = this
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'queryMyActivityList',
-                wholeActivity:true
-            },
-            success(res){
-                // console.log(res);
-                _this.setData({
-                    activityList:res.result.data,
-                })
-                setTimeout(function () {
-                    wx.hideLoading()
-                }, 500)
-            }
-        })
     },
     //推荐
     recommend:function(){
@@ -101,25 +77,6 @@ Page({
             }
         })
     },
-    // 已参与
-    participateActivity:function(){
-        let _this = this;
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'myParticipateActivity'
-            },
-            success(res){
-                // console.log(res.result.data);
-                _this.setData({
-                    participateActivity:res.result.data
-                });
-                setTimeout(function () {
-                    wx.hideLoading();
-                }, 500)
-            }
-        })
-    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -139,7 +96,7 @@ Page({
               timingFunc: 'easeIn'
             }
         })
-        this.wholeActivity();
+        this.newest();
     },
 
     /**
@@ -178,7 +135,7 @@ Page({
             title: '加载中',
             mask: true,
         });
-        this.wholeActivity();
+        this.newest();
     },
 
     /**
