@@ -3,10 +3,10 @@
 <view class="mine">
     <view class="nav wrap mt-40">
         <view class="header flex-between align-center">
-            <view class="userinfo flex" bindtap="{{loginStatus?'navgator':'getUserInfo'}}" data-path="mine/mineInfo/index">
+            <view class="userinfo flex" bindtap="{{loginStatus?'navgator':'login'}}" data-path="mine/mineInfo/index">
                 <image class="avatar" src="{{loginStatus?userInfo.avatarUrl:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240'}}" mode="" />
                 <text class="ml-20" wx:if="{{loginStatus}}">{{userInfo.nickName}}</text>
-                <text class="ml-20" wx:else>微信授权</text>
+                <text class="ml-20" wx:else>登录</text>
             </view>
             <view class="num align-center" bindtap="navgator" data-path="home/integralRecords/index">
                 <view>积分

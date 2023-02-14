@@ -1,8 +1,8 @@
 <!--pages/home/index.wxml-->
 <view class="home">
-    <view class="modal" wx:if="{{modalName}}" catchtouchmove="{{catchtouchmove}}">
+    <view class="modal" wx:if="{{ruleMask}}">
           <view class="box">
-            <image bindtap="setModal" src="../../images/icon-close.png" mode="" />
+            <image bindtap="setRuleMask" src="../../images/icon-close.png" mode="" />
             <view class="title">
                 活动规则
             </view>
@@ -10,24 +10,14 @@
                 <scroll-view scroll-y="true" style="height: 100%;" enhanced="{{enhanced}}" show-scrollbar="{{scrollbar}}">
                     <view class="list">
                         <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                            1，这是活动规则1
                         </view>
                         <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                            1，这是活动规则2
                         </view>
                         <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                            1，这是活动规则3
                         </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-
                     </view>
                 </scroll-view>
             </view>
@@ -45,7 +35,7 @@
                 </view>
             </view>
             <view class="rule">
-                <view class="" bindtap="setModal">
+                <view class="" bindtap="setRuleMask">
                     活动规则
                 </view>
                 <view class="flex-center" bindtap="navgator" data-path="exchangeRecord/index" data-power="{{true}}">
