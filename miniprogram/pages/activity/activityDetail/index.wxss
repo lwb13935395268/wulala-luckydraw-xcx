@@ -25,10 +25,11 @@
 .setting-main {
     margin: 20rpx 0;
     font-size: 28rpx;
-    color: #797979;
-    text-align: center;
+    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .setting-main image {
@@ -310,5 +311,4 @@
     width: 80rpx !important;
     font-weight: 400;
     padding: 0;
-    background-color: transparent !important;
 }

@@ -1,6 +1,19 @@
 // pages/mine/mineActivity/index.js
 Page({
-
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    async onLoad(options) {
+        this.setTitle();
+        this.firstLoadActivity()
+    },
+    async firstLoadActivity(){
+        wx.showLoading({
+            title: '加载中..',
+          })
+       await this.getMineActivitys();
+        wx.hideLoading()
+    },
     navgator(e) {
         let path = e.currentTarget.dataset.path;
         let app = getApp();
@@ -39,28 +52,16 @@ Page({
         // e.detail//下标
         this.getMineActivitys()
     },
+    toCommodityDetails(e){
+        wx.navigateTo({
+          url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
+        })
+    },
     /**
      * 页面的初始数据
      */
     data: {
         titleList: ['正在进行', '已结束']
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    async onLoad(options) {
-        this.setTitle();
-        wx.showLoading({
-            title: '加载中..',
-          })
-       await this.getMineActivitys();
-        wx.hideLoading()
-    },
-    toCommodityDetails(e){
-        wx.navigateTo({
-          url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
-        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

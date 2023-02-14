@@ -1,5 +1,12 @@
 // pages/home/IntegralRecord/index.js
 Page({
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad(options) {
+        this.setTitle();
+        this.getIntegralRecord()
+    },
     async getIntegralRecord() {
 
         wx.showLoading({
@@ -39,13 +46,6 @@ Page({
         recordList: []
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-        this.setTitle();
-        this.getIntegralRecord()
-    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成

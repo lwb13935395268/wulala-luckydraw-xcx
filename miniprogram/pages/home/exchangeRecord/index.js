@@ -1,6 +1,25 @@
 // pages/home/exchangeRecord/index.js
 Page({
-    
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad(options) {
+        this.setTitle()
+        this.getPrizeRecord()
+    },
+    setTitle(){
+        wx.setNavigationBarTitle({
+            title: '兑换记录'
+          })
+          wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#e04540',
+            animation: {
+              duration: 400,
+              timingFunc: 'easeIn'
+            }
+          })
+    },
     async getPrizeRecord(){
         wx.showLoading({
           title: '加载中',
@@ -22,27 +41,6 @@ Page({
      */
     data: {
         prizeList:[]
-    },
-    setTitle(){
-        
-        wx.setNavigationBarTitle({
-            title: '兑换记录'
-          })
-          wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#e04540',
-            animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
-            }
-          })
-    },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-        this.setTitle()
-        this.getPrizeRecord()
     },
 
     /**

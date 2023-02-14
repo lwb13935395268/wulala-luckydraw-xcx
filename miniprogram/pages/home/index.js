@@ -1,20 +1,53 @@
 // pages/home/index.js
 Page({
-    setModal() {
-        this.setData({
-            modalName: !this.data.modalName
+    async getPrizeList() {
+        let {
+            getPrizeList
+        } = getApp();
+        wx.showLoading({
+            title: '加载中..',
+        })
+        try {
+            let res = await getPrizeList();
+            this.setData({
+                prizeList: res.data,
+                hotPrizeList: res.data.filter(e => {
+                    return e.prizeType == 1
+                }),
+                disPrizeList: res.data.filter(e => {
+                    return e.prizeType == 2
+                }),
+                burstPrizeList: res.data.filter(e => {
+                    return e.prizeType == 3
+                })
+            });
+            wx.hideLoading();
+        } catch {
+            wx.hideLoading();
+            wx.showToast({
+                icon: 'error',
+                title: '获取奖品失败',
+            })
+        }
+    },
+    setTitle() {
+        wx.setNavigationBarTitle({
+            title: '首页'
+        })
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#e04540',
+            animation: {
+                duration: 400,
+                timingFunc: 'easeIn'
+            }
         })
     },
-    switch () {
+    setRuleMask() {
         this.setData({
-            catchtouchmove: !this.data.catchtouchmove
+            ruleMask: !this.data.ruleMask
         })
     },
-    //   modal(){
-    //     this.setData({
-    //       modalName:!this.data.modalName
-    //     })
-    //   },
     toLogin() {
         let app = getApp();
         app.globalData.callLogin = true;
@@ -50,33 +83,6 @@ Page({
             this.to(path, parmas)
         }
     },
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        position: 'center',
-        catchtouchmove: true,
-        modalName: false,
-        scrollbar: false,
-        enhanced: true,
-        scroll: true,
-        loginStatus: false,
-        prizeList: [],
-    },
-
-    setTitle() {
-        wx.setNavigationBarTitle({
-            title: '首页'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#e04540',
-            animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }
-        })
-    },
     getPageParams() {
         let app = getApp()
         this.setData({
@@ -85,35 +91,17 @@ Page({
             loginStatus: app.globalData.loginStatus,
         })
     },
-    async getPrizeList() {
-        let {
-            getPrizeList
-        } = getApp();
-        wx.showLoading({
-            title: '加载中..',
-        })
-        try {
-            let res = await getPrizeList();
-            this.setData({
-                prizeList: res.data,
-                hotPrizeList: res.data.filter(e => {
-                    return e.prizeType == 1
-                }),
-                disPrizeList: res.data.filter(e => {
-                    return e.prizeType == 2
-                }),
-                burstPrizeList: res.data.filter(e => {
-                    return e.prizeType == 3
-                })
-            });
-            wx.hideLoading();
-        } catch {
-            wx.hideLoading();
-            wx.showToast({
-                icon: 'error',
-                title: '获取奖品失败',
-            })
-        }
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        position: 'center',
+        ruleMask: false,
+        scrollbar: false,
+        enhanced: true,
+        scroll: true,
+        loginStatus: false,
+        prizeList: [],
     },
     /**
      * 生命周期函数--监听页面加载
@@ -179,7 +167,6 @@ Page({
 
         }
         wx.stopPullDownRefresh();
-        wx.hideLoading();
         wx.hideNavigationBarLoading();
     },
     /**
