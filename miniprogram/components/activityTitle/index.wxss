@@ -9,12 +9,6 @@
     height: 50rpx;
     width: 10rpx;
 }
-.activity-thememap .spot{
-    background-color: black;
-    width: 10rpx;
-    height: 10rpx;
-    border-radius: 50%;
-}
 .activity-thememap .name{
     font-size: 30rpx;
 }

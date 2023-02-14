@@ -217,6 +217,13 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "pages/mine/createActivity/index",
+                    "pathName": "pages/mine/createActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
