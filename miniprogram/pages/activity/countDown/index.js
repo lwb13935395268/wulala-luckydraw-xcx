@@ -31,8 +31,9 @@ Page({
         console.log(time);
         // 如果活动未结束
         if (time > 0) {
-            var day = parseInt(time / (1000 * 3600 * 24));
-            var hou = parseInt(time / (60 * 60));
+            var day = parseInt(time / (3600 * 24));
+            console.log(day);
+            var hou = parseInt(time / (60 * 60*60));
             var min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
             var sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
             obj = {
@@ -41,9 +42,10 @@ Page({
                 min: that.timeFormat(min),
                 sec: that.timeFormat(sec)
             }
+            console.log(obj);
         } else { //活动已结束
             obj = {
-                day: "0",
+                day: "00",
                 hou: "00",
                 min: "00",
                 sec: "00"
