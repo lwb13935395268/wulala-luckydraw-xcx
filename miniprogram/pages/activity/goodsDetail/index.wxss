@@ -1,0 +1,106 @@
+/* pages/activity/goodsDetail/index.wxss */
+.good-detail {
+    height: 100vh;
+    background-color: #f6f6f6;
+}
+
+.swiperBox {
+    /* 底部内容样式 */
+    background-color: #f6f6f6;
+    height: 600rpx;
+}
+
+.swiperTtemBox image {
+    width: 100%;
+    height: 100%;
+}
+
+.obtain {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    height: 120rpx;
+    background: linear-gradient(to right, #fd773a, #ff422c);
+    color: white;
+    font-size: 34rpx;
+}
+
+
+.good-img {
+    position: relative;
+}
+
+.page-label {
+    font-size: 28rpx;
+    position: absolute;
+    right: 20rpx;
+    bottom: 20rpx;
+    opacity: .5;
+    background-color: black;
+    border-radius: 500rpx;
+    color: white;
+    padding: 2rpx 10rpx;
+}
+
+.good-price {
+    /* background: linear-gradient(to right, #ff595d, #fe9055); */
+    background-color: white;
+    padding: 40rpx 0;
+    /* color: white; */
+    font-size: 32rpx;
+}
+
+.price {
+    color: #f16906;
+}
+
+.good-price .num {
+    font-size: 38rpx;
+    color: #f16906;
+}
+
+.good-price .tip {
+    font-size: 24rpx;
+    color: #cdcdcd;
+}
+
+
+.content {
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.content .top {
+    border-bottom: 2rpx solid #f1f1f1;
+    padding: 20rpx 0;
+}
+
+.content .title {
+    font-weight: normal;
+    font-size: 32rpx;
+    font-weight: bold;
+    border-left:10rpx solid #fe442b;
+    padding-left: 10rpx;
+    box-sizing: border-box;
+}
+
+.content .text {
+    font-size: 28rpx;
+    padding: 20rpx 0;
+    line-height: 60rpx;
+    /* color: #6c6c6c; */
+}
+
+.name {
+    padding: 20rpx 0;
+    font-weight: bold;
+    font-size: 36rpx;
+}
+
+.title {
+    font-size: 34rpx;
+    font-weight: bold;
+}

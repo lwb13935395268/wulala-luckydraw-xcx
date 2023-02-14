@@ -7,6 +7,7 @@
     "pages/activity/index",
     "pages/activity/countDown/index",
     "pages/activity/activityDetail/index",
+    "pages/activity/goodsDetail/index",
     "pages/mine/index",
     "pages/mine/uploading/index",
     "pages/mine/createActivity/index",
