@@ -10,7 +10,7 @@ Component({
         },
         spotColor:{
             type:String,
-            value:'block'
+            value:'red'
         }
     },
 

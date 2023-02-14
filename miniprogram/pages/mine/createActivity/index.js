@@ -7,24 +7,17 @@ Page({
     data: {
         inputStartValue: '',//开始时间 start time 结束时间  end time
         inputEndValue: '',
-        startTime: '10:00',//时间选择器
+        startTime: '08:00',//时间选择器
         startDate: '2016-09-01',
-        endTime: '10:00',//时间选择器
+        endTime: '18:00',//时间选择器
         endDate: '2016-00-01',
-        items: [//选中
-            {value: '姓名', name: '姓名',checked:'true'},
-            {value: '手机号', name: '手机号', checked: 'true'},
-            {value: '性别', name: '性别'},
-            {value: '年龄', name: '年龄'},
-        ],
         isScroll:false,//解决input
-        imgFileId:'',//上传图片的路径
+        imgFileId:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/prize-banner.png?sign=ae6f5267357a4dfa2564895f3d62c7d0&t=1676359770',//上传图片的路径
         activityTitle:'',//活动标题
-        signUpSet:[],//选中
         datas:{
             prizeName:'',//奖品名称
-            prizeNum:0,//奖品数量
-            conditionsMet:'',//奖品满足条件
+            prizeNum:1,//奖品数量
+            conditionsMet:100,//奖品满足条件
             addText:"",//添加文本
             addImg:'',//添加图片
         },
@@ -34,6 +27,29 @@ Page({
         afterTime:'',//之后时间
         modifyInfo:[],//修改信息
         activityId:'',//我的活动id
+        basic:'1. 活动期间，用户可每天参与本活动领取积分，可领取积分，可累计兑换相应的商品 2. 满足从未关注过此公众号、未通过任何渠道参与本活动的用户视为新用户，其余属于老用户，也可通过邀请新用户进行关注获得积分奖励 3.老用户可以通过邀请新用户关注来获取邀请积分。 ',//规则
+        rule:'',
+    },
+    // 满足条件
+    reducwe:function(e){
+        let i=e.currentTarget.dataset.index;
+        let value = e.currentTarget.dataset.value-1;
+        let image = "prizeNums["+i+"].conditionsMet";
+        if (value <= 1) {
+            return;
+        }else{
+            this.setData({
+                [image]:value
+            });
+        }
+    },
+    add:function(e){
+        let i=e.currentTarget.dataset.index;
+        let value = e.currentTarget.dataset.value + 1;
+        let image = "prizeNums["+i+"].conditionsMet";
+            this.setData({
+                [image]:value
+            });
     },
     //活动标题
     bindFormSubmit: function(e) {
@@ -82,58 +98,25 @@ Page({
     },
     // 奖品数量
     prizeNum:function(e){
-        switch (/^[0-9]*$/.test(e.detail.value)) {
-            case true:
-                let i=e.currentTarget.dataset.index;
-                let image = "prizeNums["+i+"].prizeNum";
-                this.setData({
-                    [image]:e.detail.value
-                });
-                break;
-            case false:
-                wx.showToast({
-                  title: '奖品只能输入数字',
-                  icon:'none',
-                })
-                break;
-            default:
-                break;
-        }
+        let i=e.currentTarget.dataset.index;
+        let image = "prizeNums["+i+"].prizeNum";
+        this.setData({
+            [image]:e.detail.value
+        });
     },
     // 奖品满足条件
     conditionsMet:function(e){
-        switch (/^[0-9]*$/.test(e.detail.value)) {
-            case true:
-                let i=e.currentTarget.dataset.index;
-                let image = "prizeNums["+i+"].conditionsMet";
-                this.setData({
-                    [image]:e.detail.value
-                });
-                break;
-            case false:
-                wx.showToast({
-                    title: '满足条件只能输入数字',
-                    icon:'none',
-                  })
-                break;
-            default:
-                break;
-        }
-        
-    },
-    // 删除上传图片
-    close:function(){
-        wx.cloud.deleteFile({
-            fileList: [this.data.imgFileId]
-        }).then(res => {
-            // handle success
-            // console.log("删除成功")
+        let i=e.currentTarget.dataset.index;
+        console.log(e.detail.value);
+        if (e.detail.value <= 1) {
             this.setData({
-                imgFileId:'',
-            })
-        }).catch(error => {
-            // handle error
-        })
+                ["prizeNums["+i+"].conditionsMet"]:1
+            });
+        }else{
+            this.setData({
+                ["prizeNums["+i+"].conditionsMet"]:e.detail.value
+            });
+        }
     },
     // 文本btn
     addText:function(e){
@@ -164,29 +147,6 @@ Page({
           complete: (res) => {},
         })
     },
-    // 选中
-    checkboxChange(e) {
-        // console.log('checkbox发生change事件，携带value值为：', e.detail.value)
-        this.setData({
-            signUpSet:e.detail.value
-        })
-        const items = this.data.items
-        const values = e.detail.value
-        for (let i = 0, lenI = items.length; i < lenI; ++i) {
-          items[i].checked = false
-    
-          for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
-            if (items[i].value === values[j]) {
-              items[i].checked = true
-              break
-            }
-          }
-        }
-    
-        this.setData({
-          items
-        })
-    },
     // 获取焦点事件
     bindfocus(e){
         this.setData({  
@@ -201,6 +161,14 @@ Page({
     },
       // 上传图片
     doUpload: function () {
+        // 删除图片
+        wx.cloud.deleteFile({
+            fileList: [this.data.imgFileId]
+        }).then(res => {
+            this.setData({
+                imgFileId:'',
+            })
+        }).catch(error => {})
         let _this = this;
         // 选择图片
         wx.chooseMedia({
@@ -435,7 +403,7 @@ Page({
         }
     },
     // 新建奖项
-    newBuilt:function(){
+    createdPrize:function(){
         let prizeNum = this.data.prizeNums;
         prizeNum.push(this.data.datas);
         this.setData({
@@ -521,8 +489,12 @@ Page({
         let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
         //获取当日日期 
         let D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-        let time = Y+'-'+M+'-'+D;
-        let afterTime = (Y+30) +'-'+M+'-'+D
+        let H = date.getHours();
+        let time = Y+'-'+M+'-'+(D+1);
+        if (H <= 7) {
+            time = Y+'-'+M+'-'+D;
+        }
+        let afterTime = (Y+30) +'-'+M+'-'+D;
         this.setData({
             currentTime:time,
             startDate:time,
@@ -531,7 +503,6 @@ Page({
             afterTime:afterTime,
             endDate:time,
         })
-       
         switch (options.id) { 
             case undefined:
                 break;
@@ -555,19 +526,19 @@ Page({
                                     }else{
                                         return
                                     }
-                                })
-                                console.log(_this.data.modifyInfo);
+                                });
                                 _this.setData({
                                     imgFileId:_this.data.modifyInfo.imgFileId,
                                     activityTitle:_this.data.modifyInfo.activityTitle,
                                     startDate:_this.data.modifyInfo.startDate.substring(0,10),
                                     endDate:_this.data.modifyInfo.endDate.substring(0,10),
                                     prizeNums:_this.data.modifyInfo.prizeNums,
+                                    rule:_this.data.basic + _this.data.rule
                                 })
                                 break;
                             case 0:
                                 wx.showToast({
-                                    title: '暂无活动，去创建吧!',
+                                    title: '创建失败请稍后在试!',
                                     icon:'none',
                                 })
                                 break;

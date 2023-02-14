@@ -1,7 +1,7 @@
 <!--components/activityTitle/index.wxml-->
 <view class="activity-thememap">
     <view class="bar"></view>
-    <view class="spot" style="background-color:{{spotColor}};"></view>
+    <view class="spot" style="color:{{spotColor}};">*</view>
     <view class="name" style="color:{{color}}">
         <slot></slot>
     </view>

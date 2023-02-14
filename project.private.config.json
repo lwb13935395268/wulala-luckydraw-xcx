@@ -219,8 +219,8 @@
                     "scene": null
                 },
                 {
-                    "name": "倒计时",
-                    "pathName": "pages/activity/countDown/index",
+                    "name": "pages/mine/createActivity/index",
+                    "pathName": "pages/mine/createActivity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
