@@ -22,7 +22,7 @@ Page({
         console.log(this.data._id);
         wx.cloud.callFunction({
             name:'activity',
-            data:{
+            data:{      
                 type:'participateActivity',
                 activityId: this.data._id
             },

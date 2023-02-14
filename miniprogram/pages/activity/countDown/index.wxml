@@ -1,0 +1,20 @@
+<!--pages/activity/countDown/index.wxml-->
+<!-- <view wx:for="{{activityDetail}}" wx:key="index"> -->
+<!-- <view class="modal" wx:if="{{modalName}}" catchtouchmove="{{catchtouchmove}}"> -->
+<view class="countdown">
+    <view class="count">
+        {{countDown}}
+    </view>
+    <view class="times">
+        倒计时：
+        <view class="txt-time">{{txtTime.day}}</view>:
+        <view class="txt-time">{{txtTime.hou}}</view>:
+        <view class="txt-time">{{txtTime.min}}</view>:
+        <view class="txt-time">{{txtTime.sec}}</view>
+    </view>
+    <!-- <view class="sum">2</view>天
+<view class="sum">16</view>时
+<view class="sum">23</view>分
+<view class="sum">23</view>秒 -->
+</view>
+
