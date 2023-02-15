@@ -1,6 +1,9 @@
 {
     "usingComponents": {
-        "tab":"/components/tab/tab"
+        "tab": "/components/tab/tab"
     },
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#e04540"
 }

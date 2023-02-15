@@ -15,11 +15,11 @@ Page({
         lists:'',
         activityId:'',
         headcount:'',
-        totals:''
+        totals:'',
+        rule:'',
+        str:'',
     },
     help(){
-        // console.log('11111');
-        console.log(this.data._id);
         wx.cloud.callFunction({
             name:'activity',
             data:{      
@@ -27,7 +27,6 @@ Page({
                 activityId: this.data._id
             },
             success(res){
-                console.log(res);
                 if(res.result.status == 0){
                     wx.showToast({
                         title: '已参加过活动',
@@ -72,13 +71,24 @@ Page({
                 wholeActivity : true
             }
         })
+        console.log(res.result.data);
         res.result.data.forEach(el => {
+            
             if(_this.data.activityId == el._id){
                 let maxObj;
                 let arr = [];
                 arr.push(el);
-                let startDates = el.startDate.slice(5,10);
-                let endDates = el.endDate.slice(5,10);
+                console.log(el.startDate);
+                console.log(el.rule);
+                let strRule = el.rule.replace(/(\d+\D)/g,"###");
+                _this.setData({
+                    str:strRule,
+                })
+                console.log(strRule);
+                let startDateAll = this.timestampToTime(el.startDate);
+                let endDateAll = this.timestampToTime(el.endDate);
+                let startDates = this.timestampToTime(el.startDate).slice(5,10);
+                let endDates = this.timestampToTime(el.endDate).slice(5,10);
                 let str = startDates;
                 let strr = endDates;
                 let strs = str.replace('-','.');
@@ -92,8 +102,14 @@ Page({
                     startDate: strs,
                     endDate: strrs,
                     lists: el.prizeNums,
-                    headcount: barNum
+                    headcount: barNum,
+                    countDown: el.endDate,
+                    rule: strRule,
+                    startDateAll:startDateAll,
+                    endDateAll: endDateAll
+
                 })
+                console.log(_this.data.rule);
             }
         });
         let result=await wx.cloud.callFunction({
@@ -115,7 +131,56 @@ Page({
             menus:['shareAppMessage','shareTimeline']
         })
 
-        
+        this.singleCountDown(); //页面加载时就启动定时器
+    },
+    //时间显示小于10的格式化函数
+    timeFormat(param) {
+        return param < 10 ? '0' + param : param;
+    },
+    //倒计时
+    singleCountDown: function () {
+        var that = this;
+        var time = 0;
+        var obj = {};
+        let timera = that.data.countDown
+        var currentTime = new Date().getTime();//当前时间时间戳
+        time = (timera - currentTime) / 1000;
+        // 如果活动未结束
+        if (time > 0) {
+            var day = parseInt(time / (3600 * 24));
+            var hou = parseInt(time / (60 * 60*60));
+            var min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
+            var sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
+            obj = {
+                day: that.timeFormat(day),
+                hou: that.timeFormat(hou),
+                min: that.timeFormat(min),
+                sec: that.timeFormat(sec)
+            }
+        } else { //活动已结束
+            obj = {
+                day: "00",
+                hou: "00",
+                min: "00",
+                sec: "00"
+            }
+            clearTimeout(that.data.timeIntervalSingle); //清除定时器
+        }
+        var timeIntervalSingle = setTimeout(this.singleCountDown, 1000);
+        that.setData({
+            timeIntervalSingle,
+            txtTime: obj,
+        })
+    },
+    timestampToTime:function(timestamp) {
+        let date = new Date(Number(timestamp));//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        let Y = date.getFullYear() + "-";
+        let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        let D = date.getDate() + ' ';
+        let h = date.getHours() + ':';
+        let m = date.getMinutes() + ':';
+        let s = date.getSeconds();
+        return Y+M+D+h+m+s;
     },
     help(){
         wx.cloud.callFunction({

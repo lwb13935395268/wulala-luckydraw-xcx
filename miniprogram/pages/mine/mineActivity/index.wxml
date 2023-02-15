@@ -1,5 +1,5 @@
 <!--pages/mine/mineActivity/index.wxml-->
-<tab titleList="{{titleList}}" bind:myevent="onMyEvent">
+<tab titleList="{{titleList}}" bind:myevent="getMineActivitys">
     <view wx:if="{{activityList.length}}" slot='正在进行' class="wrap gap-tb-20">
         <activity bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}" wx:for="{{activityList}}" wx:key="_id" status=""></activity>
     </view>
