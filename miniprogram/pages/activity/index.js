@@ -42,6 +42,7 @@ Page({
         })
     },
     loadImg:function(){
+        console.log(1);
         this.setData({
             isShow:'none',
         });
