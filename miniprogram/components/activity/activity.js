@@ -49,7 +49,7 @@ Component({
      */
     methods: {
         loadImg() {
-            this.triggerEvent('loadImg', myEventDetail, myEventOption);
+            this.triggerEvent('loadImg', {});
         },
         navgator() {
             wx.navigateTo({

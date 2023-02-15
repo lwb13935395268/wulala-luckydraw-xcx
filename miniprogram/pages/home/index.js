@@ -68,7 +68,7 @@ Page({
     async getUserInfo() {
         //登录 关闭
         getApp().globalData.loginFlag = false;
-        getApp().globalData.getInfoFlag = false;
+        getApp().globalData.getHomeFlag = false;
         let {
             getUserInfo
         } = getApp();

@@ -33,7 +33,7 @@ Page({
         })
         //登录 关闭
         getApp().globalData.loginFlag = false;
-        getApp().globalData.getInfoFlag = false;
+        getApp().globalData.getMineFlag = false;
         let {
             getUserInfo
         } = getApp();
