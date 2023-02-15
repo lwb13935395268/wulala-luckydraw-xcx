@@ -24,15 +24,15 @@ Page({
         console.log(timera)
         var currentTime = new Date().getTime();//当前时间时间戳
         // console.log(currentTime);
-        time = (timera - currentTime) / 1000;
-        console.log(time);
+        time = parseInt(timera - currentTime) / 1000;
+        // console.log(time);
         // 如果活动未结束
         if (time > 0) {
             var day = parseInt(time / (3600 * 24));
-            console.log(day);
-            var hou = parseInt(time / (60 * 60*60));
-            var min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
-            var sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
+            // console.log(day);
+            var hou = parseInt(time/60 /60%24);
+            var min = parseInt(time/60%60);
+            var sec = parseInt(time % 60);
             obj = {
                 day: that.timeFormat(day),
                 hou: that.timeFormat(hou),

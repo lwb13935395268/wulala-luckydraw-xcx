@@ -1,0 +1,7 @@
+<!--components/loading/index.wxml-->
+<view class="main" style="display: {{isShow}};">
+    <view class="content">
+        <image src="../../images/R-C (4).gif" mode=""/>
+        <view class="text">加载中......</view>
+    </view>
+</view>
