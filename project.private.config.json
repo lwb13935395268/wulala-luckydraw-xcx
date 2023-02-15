@@ -193,7 +193,7 @@
                 {
                     "name": "",
                     "pathName": "pages/home/goodDetail/index",
-                    "query": "",
+                    "query": "id=4f1d421c63e2035201f188df08b11666",
                     "launchMode": "default",
                     "scene": null
                 },
@@ -240,8 +240,8 @@
                     "scene": null
                 },
                 {
-                    "name": "倒计时",
-                    "pathName": "pages/activity/countDown/index",
+                    "name": "活动中心",
+                    "pathName": "pages/activity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

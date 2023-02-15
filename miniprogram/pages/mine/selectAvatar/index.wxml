@@ -1,0 +1,13 @@
+<!--pages/mine/selectAvatar/index.wxml-->
+<view class="page">
+    <view class="avatar">
+        <view class="{{selectImgIndex==index?'active':''}} item" wx:for="{{avatarList}}" wx:key="index" data-index="{{index}}" bindtap="select">
+            <image src="{{item.avatarUrl}}" mode="" />
+        </view>
+    </view>
+    <view class="flex-center mt-40">    
+        <view class="btn" bindtap="use">
+            使用
+        </view>
+    </view>
+</view>

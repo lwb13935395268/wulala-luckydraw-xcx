@@ -24,13 +24,19 @@
         </view>
     </view>
     <view class="header">
-        <view class="wrap flex-between">
-            <view class="mine">
+        <view class="head-content wrap flex-between">
+            <view wx:if="{{loginStatus}}" class="mine">
                 <view class="">
                     我的积分
                 </view>
-                <view class="num mt-20"  bindtap="navgator" data-path="integralRecords/index" data-power='{{true}}'>
+                <view class="num mt-20" bindtap="navgator" data-path="integralRecords/index" data-power='{{true}}'>
                     <text>{{userInfo.integral||0}}</text>
+                    <image src="../../images/icon-entry_white.png" mode="" />
+                </view>
+            </view>
+            <view class="login-tip" wx:else bindtap="login">
+                <view class="align-center">
+                    <text>未登录</text>
                     <image src="../../images/icon-entry_white.png" mode="" />
                 </view>
             </view>
@@ -51,8 +57,8 @@
             积分兑换
         </view>
         <tab id="tab" titleList="{{['全部商品','热门兑换','特惠专享','爆款商品']}}" scroll="{{scroll}}">
-            <view class="wrap" slot='全部商品' style="height: 100%;">
-                <view wx:if="{{prizeList.length}}"  class="shops ptb-20">
+            <view class="wrap" slot='全部商品' style="height: 100vh;">
+                <view wx:if="{{prizeList.length}}" class="shops ptb-20">
                     <view class="item" bindtap="navgator" data-path="goodDetail/index" wx:for="{{prizeList}}" wx:key="index" data-id="{{item._id}}">
                         <image src="{{item.imageUrl}}" mode="" />
                         <view class="title mt-10">
@@ -77,7 +83,7 @@
                     暂无奖品，正在全力补货中...
                 </view>
             </view>
-            <view class="wrap" slot="热门兑换" style="height: 100%;">
+            <view class="wrap" slot="热门兑换" style="height: 100vh;">
                 <view wx:if="{{hoyPrizeList.length}}" class="shops ptb-20">
                     <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
                         <image src="{{item.imageUrl}}" mode="" />
@@ -103,7 +109,7 @@
                     暂无奖品，正在全力补货中...
                 </view>
             </view>
-            <view class="wrap" slot="特惠专享" style="height: 100%;">
+            <view class="wrap" slot="特惠专享" style="height: 100vh;">
                 <view wx:if="{{disPrizeList.length}}" class="shops ptb-20">
                     <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
                         <image src="{{item.imageUrl}}" mode="" />
@@ -129,7 +135,7 @@
                     暂无奖品，正在全力补货中...
                 </view>
             </view>
-            <view class="wrap" slot="爆款商品" style="height: 100%;">
+            <view class="wrap" slot="爆款商品" style="height: 100vh;">
                 <view wx:if="{{burstPrizeList.length}}" class="shops ptb-20">
                     <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
                         <image src="{{item.imageUrl}}" mode="" />

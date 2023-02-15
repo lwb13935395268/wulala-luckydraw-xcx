@@ -14,7 +14,6 @@ function getRecoedType(type) {
 };
 
 function formatTime(dateNum) {
-    console.log(22);
     // if (!dateNum) return ''
     // var date = new Date(dateNum); //时间戳为10位需*1000
     var date = getDate(dateNum);//时间戳为10位需*1000
@@ -23,7 +22,6 @@ function formatTime(dateNum) {
     var D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' ';
     var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
     var m = (date.getMinutes() < 10 ? '0' + date.getMinutes(): date.getMinutes());
-    console.log(887384);
     return Y+M+D+h+m
 };
 

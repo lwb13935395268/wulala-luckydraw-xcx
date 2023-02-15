@@ -4,40 +4,31 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.setTitle();
-        this.getUserInfo()
+        this.getUserInfo();
+        this.getTodayTime();
     },
-    setTitle() {
-        wx.setNavigationBarTitle({
-            title: '个人信息'
-        });
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#ed573c',
-            animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }
+    getTodayTime() {
+        let date = new Date();
+        var Y = date.getFullYear() + '/';
+        var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '/';
+        var D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate());
+        this.setData({
+            today: Y + M + D
         })
     },
     sexChange(e) {
-        console.log(e);
-        let name = 'userInfo.sex';
         this.setData({
-            [name]: Number(e.detail.value)
+            ['userInfo.sex']: Number(e.detail.value)
         })
     },
     dateChange(e) {
-        let name = 'userInfo.birthdayDate';
         this.setData({
-            [name]: e.detail.value
+            ['userInfo.birthdayDate']: e.detail.value
         })
     },
     regionChange: function (e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
-        let name = 'userInfo.area'
         this.setData({
-            [name]: e.detail.value[0]=="全部"?[]: e.detail.value
+            ['userInfo.area']: e.detail.value[0] == "全部" ? [] : e.detail.value
         })
     },
     doUpload: function () {
@@ -57,15 +48,12 @@ Page({
                     cloudPath: "img/" + timestamp + ".jpg", // 上传至云端的路径
                     filePath: filePath, // 小程序临时文件路径
                     success: res => {
-                        console.log('[上传文件] 成功：', res)
-                        let name = 'userInfo.avatarUrl'
                         this.setData({
-                            [name]: res.fileID
+                            ['userInfo.avatarUrl']: res.fileID
                         })
                         wx.hideLoading()
                     },
                     fail: e => {
-                        console.error('[上传文件] 失败：', e)
                         wx.hideLoading()
                         wx.showToast({
                             icon: 'none',
@@ -92,11 +80,11 @@ Page({
             editable: true,
             placeholderText: '输入昵称',
             showCancel: true,
+            content:this.data.userInfo.nickName,
             success: (res) => {
                 if (res.confirm) {
-                    let name = 'userInfo.nickName'
                     this.setData({
-                        [name]: res.content.trim()
+                        ['userInfo.nickName']: res.content.trim()
                     })
                 } else if (res.cancel) {}
             },
@@ -105,32 +93,37 @@ Page({
         })
     },
     async save() {
-        console.log(this.data.userInfo);
         wx.showLoading({
             title: '更新中..',
         })
         let {
             updateUserInfo
         } = getApp();
-        let res = await updateUserInfo(this.data.userInfo);
+        let updateInfoRes = await updateUserInfo(this.data.userInfo);
         wx.hideLoading();
-        console.log(res);
-        if (res.status == 200) {
+        if (updateInfoRes.status == 200) {
+            getApp().globalData.getInfoFlag=true;
             wx.showToast({
                 title: '修改成功',
             })
-            setTimeout(()=>{
+            setTimeout(() => {
                 wx.switchTab({
                     url: '../index',
-                  })
-            },1000)
-            
+                })
+            }, 500)
+
         } else {
             wx.showToast({
                 title: '修改失败',
                 icon: 'error'
             })
         }
+    },
+    nav(e){
+        getApp().globalData.selectImg=this.data.userInfo.avatarUrl;
+        wx.navigateTo({
+            url: '../selectAvatar/index',
+        })
     },
     async getUserInfo() {
         wx.showLoading({
@@ -139,14 +132,24 @@ Page({
         let {
             getUserInfo
         } = getApp();
-        let res = await getUserInfo();
-        if (res.status == 200) {
-            delete res.data._id;
-            delete res.data.openId
+        let userInfoRes = await getUserInfo();
+        if (userInfoRes.status == 200) {
+            let {
+                nickName,
+                avatarUrl,
+                sex,
+                birthdayDate,
+                area
+            } = userInfoRes.data;
             wx.hideLoading();
-            console.log(res.data);
             this.setData({
-                userInfo: res.data
+                userInfo: {
+                    nickName,
+                    avatarUrl,
+                    sex,
+                    birthdayDate,
+                    area
+                }
             })
         } else {
             wx.hideLoading()
@@ -186,7 +189,12 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        console.log('show');
+        if(getApp().globalData.selectImg){
+            this.setData({
+                ['userInfo.avatarUrl']:getApp().globalData.selectImg
+            })
+        }
     },
 
     /**
@@ -216,11 +224,4 @@ Page({
     onReachBottom() {
 
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    }
 })

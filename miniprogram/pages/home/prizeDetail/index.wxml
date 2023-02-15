@@ -1,0 +1,46 @@
+<!--pages/home/prizeDetail/index.wxml-->
+<view class="content">
+    <view class="event-details">
+        <view class="event-details_top">
+            <view class="collection-box">
+                <image src="../../../images/icon-collection.png" mode="" class="icon-collection icon" />
+                <text class="collection-font">收藏兑奖券</text>
+            </view>
+            <image src="../../../images/icon-wrong.png" mode="" class="icon-wrong icon" />
+        </view>
+        <view class="event-details_middle">
+            <view class="middle-font_big">饿了么外卖随机红包(最高66元)</view>
+            <view class="middle-font_small">
+                兑换码：GVSBCVUIOHUGBHJUK
+            </view>
+            <view class="commodity-border">
+                <view class="middle-font_small"> 兑换商品:</view>
+                <image src="../../../images/icon-activity_bj.png" mode="" class="icon-commodity" />
+            </view>
+            <view class="middle-font_small change-color">跳转到饿了么官方小程序领取</view>
+            <view class="border"></view>
+            <view class="left-round"></view>
+            <view class="right-round"></view>
+        </view>
+        <view class="event-details_bottom">
+            <view class="middle-font_middle">兑奖券详情</view>
+            <view class="middle-font_small">
+                兑奖期限：2023.02.15 00:00至2023.05.15 23.59
+            </view>
+            <view class="middle-font_small">           
+                可用时段: 周一至周日
+            </view>
+            <view class="border"></view>
+            <view class="bottom-end">
+                <view class="middle-font_middle">兑换地址</view>
+                <view class="middle-font_small">
+                    圣诞节女从上发挥是菜鸟是考机动车闭口色我接电话是农村的
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="end">
+        <image src="../../../images/icon-complaints.png" mode="" class="icon icon-complaints" />
+        <view class="end-font_small">投诉</view>
+    </view>
+</view>
