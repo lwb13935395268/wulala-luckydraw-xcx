@@ -4,6 +4,7 @@
     "pages/home/integralRecords/index",
     "pages/home/goodDetail/index",
     "pages/home/exchangeRecord/index",
+    "pages/home/prizeDetail/index",
     "pages/activity/index",
     "pages/activity/countDown/index",
     "pages/activity/activityDetail/index",

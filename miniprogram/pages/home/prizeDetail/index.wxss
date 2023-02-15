@@ -1,0 +1,149 @@
+/* pages/home/prizeDetail/index.wxss */
+.content {
+    width: 100vw;
+    height: 100vh;
+    background-color: #a34a66;
+}
+
+.icon {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.event-details {
+    width: 88%;
+    margin: 20rpx auto 0rpx auto;
+    border: 1rpx solid #ffffff;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    padding: 20rpx;
+}
+
+.event-details_top {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.collection-box {
+    display: flex;
+    align-items: center;
+    border: 1rpx solid #fff1f6;
+    background-color: #fff1f6;
+    padding: 20rpx;
+    border-radius: 40rpx;
+}
+
+.collection-font {
+    font-size: 32rpx;
+    letter-spacing: 4rpx;
+    color: #ff78a9;
+}
+
+.icon-wrong {
+    width: 60rpx;
+    height: 60rpx;
+    margin-top: 12rpx;
+}
+
+.event-details_middle {
+    margin: 20rpx;
+    position: relative;
+
+}
+
+.middle-font_small {
+    font-size: 32rpx;
+    margin-top: 26rpx;
+    text-align: center;
+    color: #494949;
+}
+
+.icon-commodity {
+    width: 220rpx;
+    height: 220rpx;
+    margin: 20rpx 200rpx;
+}
+
+.middle-font_big {
+    font-size: 40rpx;
+    margin-top: 50rpx;
+    text-align: center;
+}
+
+.event-details_middle .change-color {
+    color: #adadad;
+    letter-spacing: 2rpx;
+}
+
+.border {
+    border: 0.3rpx dotted;
+    border-top: none;
+    color: #a1a1a1;
+    margin-top: 40rpx;
+}
+
+.left-round {
+    width: 30rpx;
+    height: 30rpx;
+    border: 1rpx solid #a34a66;
+    background-color: #a34a66;
+    border-radius: 50%;
+    position: absolute;
+    left: -52rpx;
+    bottom: -14rpx;
+}
+
+.right-round {
+    width: 30rpx;
+    height: 30rpx;
+    border: 1rpx solid #a34a66;
+    background-color: #a34a66;
+    border-radius: 50%;
+    position: absolute;
+    right: -52rpx;
+    bottom: -12rpx;
+}
+
+.event-details_bottom {
+    margin-top: 30rpx;
+    margin-left: 20rpx;
+}
+
+.middle-font_middle {
+    font-size: 32rpx;
+    letter-spacing: 4rpx;
+    color: black;
+}
+
+.event-details_bottom .middle-font_small {
+    text-align: left;
+    font-size: 28rpx;
+    margin-top: 30rpx;
+}
+
+.bottom-end {
+    margin-top: 26rpx;
+}
+
+.bottom-end .middle-font_small {
+    margin-top: 20rpx;
+    padding-right:14rpx;
+}
+
+.end {
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.end .icon-complaints {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.end .end-font_small {
+    margin-left: 10rpx;
+    color: #ffffff;
+}
