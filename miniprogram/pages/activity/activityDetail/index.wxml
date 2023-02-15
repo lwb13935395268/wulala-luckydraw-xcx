@@ -16,7 +16,9 @@
                             <view class="rule-title">二、活动结束时间</view>
                             <view class="rule-content">{{endDateAll}}</view>
                             <view class="rule-title">三、活动规则</view>
-                            <view class="rule-content">{{str}}</view>
+                            <view class="rule-content">
+                                <text>{{str}}</text>
+                            </view>
                         </view>
                     </view>
                 </scroll-view>
@@ -81,7 +83,7 @@
             </view>
 
             <view class="prople-button">
-                <view class="button" bindtap="help">参加活动</view>
+                <view class="button" bindtap="hhh">参加活动</view>
             </view>
         </view>
     </view>
@@ -94,21 +96,21 @@
         助力按钮  参加活动                  v
         活动时间 改完详细时间               v
         生成二维码进去  微信文档生成 
-        活动详情页面 title
+        活动详情页面 title                  v
         id语义化 activityId                 v
         活动ID 查 对应的活动详情
         true false 失去灵活性  0 1 2 3 4  5 去查 
         重新渲染当前活动详情 参与助力后
-        助力按钮要加 防抖 节流
+        助力按钮要加 防抖 节流              v
         扫码进来未登录的逻辑
-        奖品的定位 和 数量 
+        奖品的定位 和 数量                  v
         积分兑换 图标 换成 小房子           v
-        活动规则 接口 渲染 动态换行 用到正则表达式
-        玩法功能 通过key
+        活动规则 接口 渲染 动态换行 用到正则表达式  v
+        玩法功能 通过key                    v
         提测的时候页面不能有log             v
         活动规则 命名 改命名                v
         代码规范 方法放到下面               v
-        时间转成时间戳
+        时间转成时间戳                     v
         res的命名                           v
 
 

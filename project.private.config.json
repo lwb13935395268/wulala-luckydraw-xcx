@@ -240,8 +240,8 @@
                     "scene": null
                 },
                 {
-                    "name": "倒计时",
-                    "pathName": "pages/activity/countDown/index",
+                    "name": "活动中心",
+                    "pathName": "pages/activity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

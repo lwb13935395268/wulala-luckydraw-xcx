@@ -11,6 +11,7 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     event.activityInfo.OPENID = wxContext.OPENID;
     event.activityInfo.activityType = 0;
+    event.activityInfo.type = 0;//是否是推荐活动
     event.activityInfo.startDate = Date.parse(event.activityInfo.startDate+":00");
     event.activityInfo.endDate = Date.parse(event.activityInfo.endDate+":00");
     let createActivity = await db.collection('activity').add({
