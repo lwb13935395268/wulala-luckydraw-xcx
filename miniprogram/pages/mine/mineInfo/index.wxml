@@ -1,13 +1,11 @@
 <!--pages/mine/mineInfo/index.wxml-->
 <view class="mine-info">
-    <!-- <view class="section"> -->
-    <!-- </view> -->
     <view class="ul mt-40">
         <view class="li">
             <view>
                 昵称
             </view>
-            <view class="fc-gray3 fs-28 align-center ptb-30" bindtap="showNameInput">
+            <view class="fc-gray3 fs-28 align-center py-30" bindtap="showNameInput">
                 <text class="mr-10">{{userInfo.nickName||'未填写'}}</text>
                 <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
@@ -16,7 +14,7 @@
             <view>
                 头像
             </view>
-            <view bindtap="doUpload" class="fc-gray3 fs-28 align-center ptb-20">
+            <view bindtap="nav" data-path="/pages/mine/selectAvatar" class="fc-gray3 fs-28 align-center py-30">
                 <!-- <text class="mr-10">{{userInfo.avataUrl||}}</text> -->
                 <image class="avatarImg mr-10" src="{{userInfo.avatarUrl}}" mode="" />
                 <image class="image" src="../../../images/icon-entry.png" mode="" />
@@ -28,7 +26,7 @@
             </view>
             <view class="fc-gray3 fs-28 align-center">
                 <picker class="" bindchange="pickerChange" value="{{userInfo.sex}}" range-key="name" range="{{sexList}}" bindchange="sexChange">
-                    <view class="picker ptb-30 flex-between align-center">
+                    <view class="picker py-30 flex-between align-center">
                         <text class="mr-10">{{sexList[userInfo.sex].name||'未选择'}}</text>
                         <image class="image" src="../../../images/icon-entry.png" mode="" />
                     </view>
@@ -40,8 +38,8 @@
                 生日
             </view>
             <view class="fc-gray3 fs-28 align-center">
-                <picker mode="date" class="" bindchange="pickerChange" value="{{userInfo.birthdayDate}}" bindchange="dateChange" start="1920-01-01" end="2023-02-13">
-                    <view class="picker ptb-30 flex-between align-center">
+                <picker mode="date" class="" bindchange="pickerChange" value="{{userInfo.birthdayDate}}" bindchange="dateChange" start="1920-01-01" end="{{today}}">
+                    <view class="picker py-30 flex-between align-center">
                         <text class="mr-10">{{userInfo.birthdayDate||'未选择'}}</text>
                         <image class="image" src="../../../images/icon-entry.png" mode="" />
                     </view>
@@ -52,10 +50,9 @@
             <view>
                 地区
             </view>
-
             <view class="fc-gray3 fs-28 align-center">
                 <picker mode="region" class="" bindchange="pickerChange" value="{{userInfo.area}}"  custom-item="{{customItem}}" bindchange="regionChange">
-                    <view class="picker ptb-30 flex-between align-center">
+                    <view class="picker py-30 flex-between align-center">
                         <text class="mr-10">{{(userInfo.area.length&&userInfo.area[0]!='全部')?userInfo.area[0]+'，'+userInfo.area[1]+'，'+userInfo.area[2]:'请选择'}}</text>
                         <image class="image" src="../../../images/icon-entry.png" mode="" />
                     </view>

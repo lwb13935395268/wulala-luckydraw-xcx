@@ -28,7 +28,7 @@
     background-color: #f5f3fb;
 }
 .btn{
-    background-color: #3f43ee;
+    background-color:#eb524c;
     color: white;
     font-size: 26rpx;
     padding: 15rpx 25rpx;

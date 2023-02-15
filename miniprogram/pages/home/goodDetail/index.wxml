@@ -39,6 +39,20 @@
             </view>
         </view>
     </view>
+    <view class="good-desc mt-20">
+        <view class="content">
+            <view class="top">
+                <view class="title wrap">
+                    取货地址
+                </view>
+            </view>
+            <view class="bottom">
+                <view class="text wrap">
+                    山西省，临汾市，洪洞县，大槐树门口（联系17835909602）
+                </view>
+            </view>
+        </view>
+    </view>
     <view class="h-120">
 
     </view>

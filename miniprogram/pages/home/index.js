@@ -30,19 +30,6 @@ Page({
             })
         }
     },
-    setTitle() {
-        wx.setNavigationBarTitle({
-            title: '首页'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#e04540',
-            animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }
-        })
-    },
     setRuleMask() {
         this.setData({
             ruleMask: !this.data.ruleMask
@@ -69,15 +56,7 @@ Page({
             parmas = '?id=' + id
         }
         if (powerFlag && !this.data.loginStatus) {
-            wx.showModal({
-                content: '您还没有登录，是否前往登录？',
-                confirmText: '去登录',
-                success: res => {
-                    if (res.confirm) {
-                        this.toLogin();
-                    }
-                }
-            })
+            this.login()
             return
         } else {
             this.to(path, parmas)
@@ -90,6 +69,53 @@ Page({
             userId: app.globalData.userId,
             loginStatus: app.globalData.loginStatus,
         })
+    },
+    async getUserInfo() {
+        getApp().globalData.getInfoFlag=false;
+        let {
+            getUserInfo
+        } = getApp();
+        let userInfoRes = await getUserInfo();
+        console.log(userInfoRes);
+        if (userInfoRes.status == 200 && !Array.isArray(userInfoRes.data)) {
+            this.setData({
+                loginStatus:true,
+                userInfo:userInfoRes.data
+            })
+            getApp().globalData.loginStatus = true;
+            getApp().globalData.userInfo = userInfoRes.data;
+            console.log(this.data);
+        }
+    },
+    async login(){
+        let {
+            login,
+            addUser
+        } = getApp();
+        await login('登录');
+        console.log('同意了');
+        wx.showLoading({
+            title: '正在授权..',
+        })
+        let addResult = await addUser();
+        console.log(addResult);
+        wx.hideLoading()
+        if (addResult.status == 200) {
+            wx.showToast({
+                title: '授权登录',
+            })
+            this.setData({
+                userInfo:addResult.data,
+                loginStatus:true
+            })
+            getApp().globalData.loginStatus=true;
+            getApp().globalData.userInfo=addResult.data;
+        } else {
+            wx.showToast({
+                icon: 'error',
+                title: '授权失败',
+            })
+        }
     },
     /**
      * 页面的初始数据
@@ -107,7 +133,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
-        this.setTitle();
+        this.getUserInfo();
     },
 
     /**
@@ -120,11 +146,9 @@ Page({
      */
     onShow() {
         this.getPrizeList();
-        let app = getApp();
-        this.data.loginStatus = app.globalData.loginStatus;
-        if (this.data.loginStatus) {
-            this.getPageParams();
-        }
+        // if(getApp().globalData.getInfoFlag){
+            this.getUserInfo();
+        // }
     },
 
     /**

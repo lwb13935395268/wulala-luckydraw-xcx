@@ -4,7 +4,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.setTitle();
         this.getIntegralRecord()
     },
     async getIntegralRecord() {
@@ -25,19 +24,6 @@ Page({
             })
         })
         wx.hideLoading()
-    },
-    setTitle() {
-        wx.setNavigationBarTitle({
-            title: '积分记录'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#e04540',
-            animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }
-        })
     },
     /**
      * 页面的初始数据
@@ -88,11 +74,4 @@ Page({
     onReachBottom() {
 
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    }
 })

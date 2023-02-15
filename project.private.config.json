@@ -193,7 +193,7 @@
                 {
                     "name": "",
                     "pathName": "pages/home/goodDetail/index",
-                    "query": "",
+                    "query": "id=4f1d421c63e2035201f188df08b11666",
                     "launchMode": "default",
                     "scene": null
                 },
@@ -214,6 +214,13 @@
                 {
                     "name": "pages/mine/feedback/index",
                     "pathName": "pages/mine/feedback/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/selectAvatar/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
