@@ -30,6 +30,10 @@ Page({
         basic:'1. 活动期间，用户可每天参与本活动领取积分，可领取积分，可累计兑换相应的商品 2. 满足从未关注过此公众号、未通过任何渠道参与本活动的用户视为新用户，其余属于老用户，也可通过邀请新用户进行关注获得积分奖励 3.老用户可以通过邀请新用户关注来获取邀请积分。 ',//规则
         rule:'',
     },
+    //banner加载完成
+    onload:function(e){
+        console.log(e);
+    },
     // 满足条件
     reducwe:function(e){
         let i=e.currentTarget.dataset.index;

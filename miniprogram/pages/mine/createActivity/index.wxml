@@ -1,5 +1,6 @@
 <!--pages/mine/createActivity/index.wxml-->
 <!-- <view class="ns">创建活动</view> -->
+<loading></loading>
 <scroll-view scroll-y="{{isScroll}}" scroll-with-animation="true" style="height: 100vh;">
 <view class="main">
     <!-- 活动设置 -->
@@ -10,7 +11,7 @@
             <view class="content" bindtap="doUpload">
                 <view class="name">更换奖品图片</view>
             </view>
-            <image class="image-file" src="{{imgFileId}}" mode=""/>
+            <image class="image-file" src="{{imgFileId}}" bindload="onload" mode=""/>
         </view>
         <view class="hr"></view>
         <activityTitle class="mt-50">活动标题</activityTitle>
