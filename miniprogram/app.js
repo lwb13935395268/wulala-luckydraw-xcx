@@ -20,6 +20,8 @@ App({
             callLogin: false,
             loginFlag:true,//是否登录
             getInfoFlag:false,//是否获取信息
+            getMineFlag:false,//是否获取wode信息
+            getHomeFlag:false,//是否获取home信息
             homeLogin:false,//HOME页面
             mineLogin:false//MINE页面
         };

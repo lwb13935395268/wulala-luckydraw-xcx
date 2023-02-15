@@ -68,6 +68,7 @@ Page({
     async getUserInfo() {
         //登录 关闭
         getApp().globalData.loginFlag = false;
+        getApp().globalData.getInfoFlag = false;
         let {
             getUserInfo
         } = getApp();
@@ -150,7 +151,7 @@ Page({
         let {
             userInfo,
             loginFlag,
-            getInfoFlag,
+            getHomeFlag,
             loginStatus,
             homeLogin,
             mineLogin
@@ -162,7 +163,7 @@ Page({
         if (!homeLogin&&mineLogin) {
             await this.getUserInfo()
             console.log(2);
-        }else if (getInfoFlag) {
+        }else if (getHomeFlag) {
             await this.getUserInfo()
         }
         await this.getPrizeList();

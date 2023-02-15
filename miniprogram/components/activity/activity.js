@@ -1,5 +1,3 @@
-
-
 // components/activity/activity.js
 Component({
     /**
@@ -22,22 +20,22 @@ Component({
             type: String,
             value: '结束日期'
         },
-        status:{
-            type:Number,
-            value:0
+        status: {
+            type: Number,
+            value: 0
             //0,正常；1已参与，2结束
         },
-        imageUrl:{
-            type:String,
-            value:'../../images/icon-activity_1.png'
+        imageUrl: {
+            type: String,
+            value: '../../images/icon-activity_1.png'
         },
-        isSet:{
-            type:Boolean,
-            value:false
+        isSet: {
+            type: Boolean,
+            value: false
         },
-        toSetRouter:{
-            type:String,
-            value:''
+        toSetRouter: {
+            type: String,
+            value: ''
         }
     },
     /**
@@ -46,14 +44,15 @@ Component({
     data: {
 
     },
-    loadImg(){
-        this.triggerEvent('loadImg', myEventDetail, myEventOption);
-    },
     /**
      * 组件的方法列表
      */
     methods: {
-        navgator(){
+        loadImg() {
+            console.log(111);
+            this.triggerEvent('loadImg', myEventDetail, myEventOption);
+        },
+        navgator() {
             wx.navigateTo({
                 url: this.properties.toSetRouter,
             })

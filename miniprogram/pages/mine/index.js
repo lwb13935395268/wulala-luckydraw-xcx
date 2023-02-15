@@ -12,7 +12,7 @@ Page({
     async onShow() {
         let {
             loginFlag,
-            getInfoFlag,
+            getMineFlag,
             userInfo,
             loginStatus,
             homeLogin,
@@ -22,7 +22,7 @@ Page({
         this.data.userInfo=userInfo;
         if (homeLogin&&!mineLogin) {
             await this.getUserInfo()
-        }else if(getInfoFlag){
+        }else if(getMineFlag){
             await this.getUserInfo()
         }
         console.log(3);
@@ -33,6 +33,7 @@ Page({
         })
         //登录 关闭
         getApp().globalData.loginFlag = false;
+        getApp().globalData.getInfoFlag = false;
         let {
             getUserInfo
         } = getApp();
