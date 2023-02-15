@@ -165,14 +165,6 @@ Page({
     },
       // 上传图片
     doUpload: function () {
-        // 删除图片
-        wx.cloud.deleteFile({
-            fileList: [this.data.imgFileId]
-        }).then(res => {
-            this.setData({
-                imgFileId:'',
-            })
-        }).catch(error => {})
         let _this = this;
         // 选择图片
         wx.chooseMedia({
@@ -182,6 +174,14 @@ Page({
         sourceType: ['album', 'camera'],
         success: function (res) {
             // console.log(res)
+            // 删除原来的图片
+            wx.cloud.deleteFile({
+                fileList: [this.data.imgFileId]
+            }).then(res => {
+                this.setData({
+                    imgFileId:'',
+                })
+            }).catch(error => {})
             wx.showLoading({
                 title: '上传中',
             })
@@ -218,12 +218,7 @@ Page({
             })
 
         },
-        fail: e => {
-            // console.log(e)
-            this.setData({
-                imgFileId:'',
-            });
-        }
+        fail: e => {}
         })
     },                                         
     // 添加图片
@@ -378,6 +373,7 @@ Page({
                             endDate:this.data.endDate +' '+ this.data.endTime,//结束时间
                             signUpSet:this.data.signUpSet,//选中
                             prizeNums:this.data.prizeNums,//奖品信息
+                            rule:_this.data.basic + _this.data.rule
                         }
                     },
                     success(res){
@@ -473,17 +469,6 @@ Page({
         this.setData({
             prizeNums:[datas]
         });
-        wx.setNavigationBarTitle({
-            title: '创建活动'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#eb524c',
-            animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
-            }
-        })
         
         let timestamp = Date.parse(new Date());
         let date = new Date(timestamp);
@@ -506,7 +491,18 @@ Page({
         this.setData({
             afterTime:afterTime,
             endDate:time,
-        })
+        });
+        wx.setNavigationBarTitle({
+            title: '创建活动'
+        });
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#eb524c',
+            animation: {
+              duration: 400,
+              timingFunc: 'easeIn'
+            }
+        });
         switch (options.id) { 
             case undefined:
                 break;
@@ -522,10 +518,21 @@ Page({
                     success(res){
                         switch (res.result.status) {
                             case 200:
-                                res.result.data.data.forEach(item => {
+                                res.result.data.forEach(item => {
                                     if (item._id == options.id) {
+                                        let endDate = new Date(Number(item.endDate)).toLocaleDateString();
+                                        let startDate = new Date(Number(item.startDate)).toLocaleDateString();
+                                        let start = startDate.replace(/\//g,'-');
+                                        let end = endDate.replace(/\//g,'-');
                                         _this.setData({
                                             modifyInfo:item
+                                        });
+                                        _this.setData({
+                                            ['modifyInfo.startDate']:start,
+                                            ['modifyInfo.endDate']:end
+                                        })
+                                        wx.setNavigationBarTitle({
+                                            title: '编辑活动'
                                         });
                                     }else{
                                         return
@@ -537,8 +544,7 @@ Page({
                                     startDate:_this.data.modifyInfo.startDate.substring(0,10),
                                     endDate:_this.data.modifyInfo.endDate.substring(0,10),
                                     prizeNums:_this.data.modifyInfo.prizeNums,
-                                    rule:_this.data.basic + _this.data.rule
-                                })
+                                });
                                 break;
                             case 0:
                                 wx.showToast({

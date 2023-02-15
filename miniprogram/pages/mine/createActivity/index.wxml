@@ -1,6 +1,6 @@
 <!--pages/mine/createActivity/index.wxml-->
 <!-- <view class="ns">创建活动</view> -->
-<loading></loading>
+<loading isShow="none"></loading>
 <scroll-view scroll-y="{{isScroll}}" scroll-with-animation="true" style="height: 100vh;">
 <view class="main">
     <!-- 活动设置 -->
@@ -75,7 +75,7 @@
                 </view>
             </view>
             <view class="{{item.addImg != '' ? 'upload-img' : ''}}">
-                <view wx:if="{{item.addImg != ''}}">
+                <view wx:if="{{item.addImg != ''}}" class="prize-img">
                     <image class="prize-icon" src="{{item.addImg}}" mode=""/>
                     <view class="close" bindtap="closeImg" data-index="{{index}}">
                         <image src="../../../images/icon-error.png" mode=""/>
