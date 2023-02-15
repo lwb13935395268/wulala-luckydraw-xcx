@@ -1,3 +1,7 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "loading": "/components/loading/index"},
+        "navigationBarTitleText": "选择头像",
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#eb524c"
 }

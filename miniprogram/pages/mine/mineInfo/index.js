@@ -4,6 +4,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.setData({
+            show:true
+        })
         this.getUserInfo();
         this.getTodayTime();
     },
@@ -71,6 +74,12 @@ Page({
             }
         })
     },
+    //加载图片
+    loadImg(){
+        this.setData({
+            show:false
+        })
+    },
     showNameInput() {
         wx.showModal({
             cancelColor: '#000000',
@@ -126,9 +135,6 @@ Page({
         })
     },
     async getUserInfo() {
-        wx.showLoading({
-            title: '获取中..',
-        })
         let {
             getUserInfo
         } = getApp();
@@ -141,7 +147,6 @@ Page({
                 birthdayDate,
                 area
             } = userInfoRes.data;
-            wx.hideLoading();
             this.setData({
                 userInfo: {
                     nickName,
@@ -152,7 +157,6 @@ Page({
                 }
             })
         } else {
-            wx.hideLoading()
             wx.showToast({
                 title: '获取失败',
                 icon: 'error'
@@ -175,7 +179,8 @@ Page({
         date: '',
         region: [],
         customItem: '全部',
-        userInfo: {}
+        userInfo: {},
+        show:false
     },
 
     /**
@@ -189,7 +194,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        console.log('show');
         if(getApp().globalData.selectImg){
             this.setData({
                 ['userInfo.avatarUrl']:getApp().globalData.selectImg
@@ -201,14 +205,13 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide() {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload() {
-
+        getApp().globalData.selectImg=''
     },
 
     /**

@@ -1,7 +1,7 @@
 <!--components/loading/index.wxml-->
 <view class="main" style="display: {{isShow}};">
     <view class="content">
-        <image src="../../images/R-C (4).gif" mode=""/>
+        <image class="image" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/R-C%20(4).gif?sign=f04b0665dc3f9248732d3277241d29a4&t=1676465708" mode=""/>
         <view class="text">加载中......</view>
     </view>
 </view>
