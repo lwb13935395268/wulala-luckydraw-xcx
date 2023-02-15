@@ -98,10 +98,13 @@ Page({
                             let res2 = await getUserInfo();
                             if (!Array.isArray(res2.data)) {
                                 app.globalData.userInfo = res2.data;
+                                this.setData({
+                                    userInfo:res2.data
+                                })
                             }
                             wx.hideLoading()
-                            this.getPrizeDetail();
-                            this.getUserIntegral()
+                            await this.getPrizeDetail();
+                            await this.getUserIntegral()
                             
                             getApp().globalData.getHomeFlag = true;
                             getApp().globalData.getMineFlag = true;

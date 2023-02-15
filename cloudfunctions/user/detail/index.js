@@ -9,7 +9,7 @@ const db = cloud.database();
 
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
-    const OPENID =await wxContext.OPENID;
+    const OPENID =wxContext.OPENID;
     console.log(OPENID);
     let result = await db.collection('userInfo').where({
         openId: OPENID
