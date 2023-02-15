@@ -7,11 +7,11 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 const db = cloud.database();
 const _ = db.command
 exports.main = async (event, context) => {
+    let nowTime = new Date().getTime();
     let changeTyp1 = () => {
-        let nowTime = new Date().getTime();
     return new Promise((resolve, reject) => {
       db.collection('activity').where({
-        startDate: _.lt(nowTime)
+        startDate: _.gt(nowTime)
       }).update({
         data: {
           activityType: 0
@@ -25,11 +25,9 @@ exports.main = async (event, context) => {
   }
 
   let changeType2 = ()=>{
-    let nowTime = new Date().getTime();
-
     return new Promise((resolve,reject)=>{
       db.collection('activity').where({
-        startDate: _.gt(nowTime)
+        startDate: _.lt(nowTime)
       }).update({
         data: {
           activityType: 1,
@@ -43,11 +41,9 @@ exports.main = async (event, context) => {
   }
 
   let changeType3 = ()=>{
-    let nowTime = new Date().getTime();
-
     return new Promise((resolve,reject)=>{
       db.collection('activity').where({
-        endDate: _.gt(nowTime)
+        endDate: _.lt(nowTime)
       }).update({
         data: {
           activityType: 2

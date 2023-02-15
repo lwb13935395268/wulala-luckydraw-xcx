@@ -1,6 +1,7 @@
 {
     "usingComponents": {
         "tab":"/components/tab/tab",
-        "activity":"/components/activity/activity"
+        "activity":"/components/activity/activity",
+        "loading":"/components/loading/index"
     }
 }
