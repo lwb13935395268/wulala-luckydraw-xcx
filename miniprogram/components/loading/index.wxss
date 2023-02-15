@@ -2,7 +2,9 @@
 .main{
     background-color: #fff;
     height: 100vh;
-    position: relative;
+    position: fixed;
+    z-index: 200;
+    width: 100vw;
     overflow: hidden;
 }
 .main image{
