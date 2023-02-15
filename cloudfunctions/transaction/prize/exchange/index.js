@@ -38,10 +38,6 @@ exports.main = async (event, context) => {
                 integral: userData.integral-prizeData.price
             }
         });
-        console.log('兑换');
-        event.exchangeCode = code;//兑换码
-        event.endDate = Date.parse(endTime),
-        event.startDate = Date.parse(todayTime)
         await integralChange.main({
             type:3,
             num: prizeData.price, //改变数量
