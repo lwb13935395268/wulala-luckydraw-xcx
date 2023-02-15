@@ -30,15 +30,8 @@
             </view>
         </radio-group>
     </view>
-    <!-- 联系方式 -->
-    <view class="contact mt-20 mb-40">
-        <!-- 联系方式 :
-        <input placeholder="请输入您的手机号" bindinput="getPhoneNumber" maxlength="11" type="text" /> -->
-        <form action="" method="post">
-            <textarea name="description" placeholder="请输入您的反馈"></textarea>
-        </form>
-
-    </view>
+ 
+   
 </view>
 <!-- 提交按钮 -->
 <view class="submit-btn" bindtap="submit">

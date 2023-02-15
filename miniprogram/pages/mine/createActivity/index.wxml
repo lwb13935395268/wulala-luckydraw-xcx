@@ -1,5 +1,6 @@
 <!--pages/mine/createActivity/index.wxml-->
 <!-- <view class="ns">创建活动</view> -->
+<loading isShow="none"></loading>
 <scroll-view scroll-y="{{isScroll}}" scroll-with-animation="true" style="height: 100vh;">
 <view class="main">
     <!-- 活动设置 -->
@@ -7,20 +8,14 @@
         <title class="center">活动设置</title>
         <activityTitle class="mt-50">活动主题图</activityTitle>
         <view class="upload-img">
-            <view wx:if="{{imgFileId == ''}}" class="content" bindtap="doUpload">
-                <image src="../../../images/icon-plus.png" class="plus" mode=""/>
-                <view class="name">点击可自定义主题图，小于1Mjpg/png图片，建议尺寸750*600(宽高比 5:4)</view>
+            <view class="content" bindtap="doUpload">
+                <view class="name">更换奖品图片</view>
             </view>
-            <view wx:else>
-                <image class="image-file" src="{{imgFileId}}" mode=""/>
-                <view class="close" bindtap="close">
-                    <image class="error" src="../../../images/icon-error.png" mode=""/>
-                </view>
-            </view>
+            <image class="image-file" src="{{imgFileId}}" bindload="onload" mode=""/>
         </view>
         <view class="hr"></view>
         <activityTitle class="mt-50">活动标题</activityTitle>
-        <textarea placeholder="请输入您的活动标题(30字以内)" bindinput="bindFormSubmit" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;" value="{{activityTitle}}" name="textarea"/>
+        <textarea placeholder="例如 : 参加活动赢好礼(30字以内)" bindinput="bindFormSubmit" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;" value="{{activityTitle}}" name="textarea"/>
         <activityTitle class="mt-50">活动时间</activityTitle>
         <view class="activity-timer">
             <picker mode="date" value="{{startDate}}" start="{{currentTime}}" end="{{afterTime}}" bindchange="bindDateChange">
@@ -29,12 +24,12 @@
                     <text class="start-time">{{startDate}}</text>
                 </view>
             </picker>
-            <picker mode="time" value="{{startTime}}" start="00:00" end="" bindchange="bindTimeChange">
+            <!-- <picker mode="time" value="{{startTime}}" start="08:00" end="16:00" bindchange="bindTimeChange"> -->
                 <view class="picker">
                     开始时间: 
                     <text class="start-time">{{startTime}}</text>
                 </view>
-            </picker>
+            <!-- </picker> -->
         </view>
         <view class="activity-timer">
             <picker mode="date" value="{{endDate}}" start="{{currentTime}}" end="{{afterTime}}" bindchange="endDateChange">
@@ -43,12 +38,12 @@
                     <text class="start-time">{{endDate}}</text>
                 </view>
             </picker>
-            <picker mode="time" value="{{endTime}}" start="00:00" end="" bindchange="endTimeChange">
+            <!-- <picker mode="time" value="{{endTime}}" start="08:00" end="16:00" bindchange="endTimeChange"> -->
                 <view class="picker">
                     结束时间: 
                     <text class="start-time">{{endTime}}</text>
                 </view>
-            </picker>
+            <!-- </picker> -->
         </view>
     </view>
     <!-- 奖品详情 -->
@@ -62,11 +57,15 @@
             <textarea placeholder="请输入您的奖品名称(30字以内)" bindinput="bindFormSubmitPrize" value="{{item.prizeName}}" data-index="{{index}}" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;"name="textarea"/>
             <activityTitle class="mt-50">奖品数量</activityTitle>
             <view class="prize">
-                <input placeholder="奖品数量" bindinput="prizeNum" data-index="{{index}}" value="{{item.prizeNum}}" bindfocus="bindfocus" bindblur="closeblur" maxlength="10" type="text"/>
+                <input placeholder="奖品数量" bindinput="prizeNum" data-index="{{index}}" value="{{item.prizeNum}}" bindfocus="bindfocus" bindblur="closeblur" maxlength="10" type="number"/>
                 <text>个</text>
             </view>
-            <activityTitle class="mt-50">满足条件</activityTitle>
-            <input class="conditions-met" value="{{item.conditionsMet}}" placeholder="点赞多少人(必填)" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" data-index="{{index}}" maxlength="10" type="text"/>
+            <activityTitle class="mt-50">满足条件(助力多少人)</activityTitle>
+            <view class="prize">
+                <view class="reducwe" bindtap="reducwe" data-index="{{index}}" data-value="{{item.conditionsMet}}">-</view>
+                <input class="conditions-met" value="{{item.conditionsMet}}" placeholder="点赞" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" data-index="{{index}}" maxlength="10" type="number"/>
+                <view class="add" bindtap="add" data-index="{{index}}" data-value="{{item.conditionsMet}}">+</view>
+            </view>
             <activityTitle class="mt-50">奖品介绍</activityTitle>
             <view class="" wx:if="{{item.addText!=[]}}" >
                 <view class="{{item.addText != '' ? 'activity-rule' : ''}}">
@@ -76,7 +75,7 @@
                 </view>
             </view>
             <view class="{{item.addImg != '' ? 'upload-img' : ''}}">
-                <view wx:if="{{item.addImg != ''}}">
+                <view wx:if="{{item.addImg != ''}}" class="prize-img">
                     <image class="prize-icon" src="{{item.addImg}}" mode=""/>
                     <view class="close" bindtap="closeImg" data-index="{{index}}">
                         <image src="../../../images/icon-error.png" mode=""/>
@@ -92,7 +91,7 @@
                 </button>
             </view>
         </view>
-        <button type="primary" class="addPrize mb-20" bindtap="newBuilt">
+        <button type="primary" class="addPrize mb-20" bindtap="createdPrize">
             +新建奖项
         </button>
     </view>
@@ -101,24 +100,21 @@
         <title class="center">其他设置</title>
         <activityTitle class="mt-50">活动规则</activityTitle>
         <view class="activity-rule">
+            <view class="activity-time">
+                活动时间 : {{startDate}} {{startTime}} 至 {{endDate}} {{endTime}}
+            </view>
             <view class="one">
-                1.点击我的点击->查看个人信息,填写姓名和手机号!
+                1. 活动期间，用户可每天参与本活动领取积分，可领取积分，可累计兑换相应的商品。 
             </view>
-            <view class="two">
-                2.参加成功后完成要求即可
+            <view class="t">
+                2. 满足从未关注过此公众号、未通过任何渠道参与本活动的用户视为新用户，其余属于老用户，也可通过邀请新用户进行关注获得积分奖励。 
             </view>
-            <view class="three">
-                3.活动开始后必须在规定时间内完成,否则,不退费!
+            <view class="s">
+                3.老用户可以通过邀请新用户关注来获取邀请积分。 
             </view>
-        </view>
-        <activityTitle class="mt-50">报名设置</activityTitle>
-        <view class="sign-up">
-            <checkbox-group bindchange="checkboxChange" class="df">
-                <label class="df" wx:for="{{items}}" wx:key="index">
-                    <checkbox color="#fd7541" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
-                </label>
-            </checkbox-group>
-            <view class="tips mt-20">最多可选三项,选择的字段为客户参加活动时必填的内容</view>
+            <view class="df">
+                4.<textarea placeholder="请输入补充规则" value="{{rule}}" class="rule" placeholder-style="font-size:30rpx;color:#ccc;"/>
+            </view>
         </view>
     </view>
     <!-- 机构介绍 判断有没有上传合格证,上传是否通过 -->

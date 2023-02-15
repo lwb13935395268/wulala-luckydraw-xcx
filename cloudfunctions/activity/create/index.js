@@ -11,7 +11,8 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     event.activityInfo.OPENID = wxContext.OPENID;
     event.activityInfo.activityType = 0;
-    console.log(event.activityInfo);
+    event.activityInfo.startDate = Date.parse(event.activityInfo.startDate+":00");
+    event.activityInfo.endDate = Date.parse(event.activityInfo.endDate+":00");
     let createActivity = await db.collection('activity').add({
         data:  event.activityInfo
     });

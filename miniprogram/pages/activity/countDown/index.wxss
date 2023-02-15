@@ -1,0 +1,23 @@
+/* pages/activity/countDown/index.wxss */
+.countdown .times {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200rpx;
+    width: 90%;
+    margin: 0 5%;
+    border-bottom: 2rpx solid #eee;
+   }
+   
+   .countdown .times .txt-time {
+    background-color: #6EBEC7;
+    color: #fff;
+    border-radius: 10rpx;
+    font-size: 28rpx;
+    margin: 0 4rpx;
+    font-weight: bold;
+    height: 42rpx;
+    width: 66rpx;
+    line-height: 42rpx;
+    text-align: center;
+   }

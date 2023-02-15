@@ -1,16 +1,12 @@
-// components/activityTitle/index.js
+// components/loading/index.js
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        color:{
+        isShow:{
             type:String,
-            value:'black'
-        },
-        spotColor:{
-            type:String,
-            value:'red'
+            value:'block'
         }
     },
 

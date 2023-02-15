@@ -11,24 +11,13 @@
                 <scroll-view scroll-y="true" style="height: 580rpx;" enhanced="{{enhanced}}" show-scrollbar="{{scrollbar}}">
                     <view class="list">
                         <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                            <view class="rule-title">一、活动开始时间</view>
+                            <view class="rule-content">{{startDateAll}}</view>
+                            <view class="rule-title">二、活动结束时间</view>
+                            <view class="rule-content">{{endDateAll}}</view>
+                            <view class="rule-title">三、活动规则</view>
+                            <view class="rule-content">{{str}}</view>
                         </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-
                     </view>
                 </scroll-view>
             </view>
@@ -36,17 +25,15 @@
     </view>
     <view class="header">
         <view class="convert">
-            <image src="../../../images/iocn-convert.png" bindtap="nextHome"></image>
+            <image src="../../../images/icon-homes.png" bindtap="nextHome"></image>
             <view class="setting">
                 <view class="setting-main" bindtap="setModal">
                     <image src="../../../images/icon-rule.png"></image>
                     <text>规则</text>
                 </view>
-                <button class="style-clear" type="default" open-type="share">
-                    <view class="setting-main">
-                        <image src="../../../images/icon-share.png"></image>
-                        <text>分享</text>
-                    </view>
+                <button class="style-clear setting-main" type="mini" open-type="share">
+                    <image src="../../../images/icon-share.png"></image>
+                    <text>分享</text>
                 </button>
             </view>
         </view>
@@ -57,16 +44,15 @@
     <view class="time">
         <text>距离结束</text>
         <view class="times">
-            <view class="sum">2</view>天
-            <view class="sum">16</view>时
-            <view class="sum">23</view>分
-            <view class="sum">23</view>秒
+            <view class="sum">{{txtTime.hou}}</view>时
+            <view class="sum">{{txtTime.min}}</view>分
+            <view class="sum">{{txtTime.sec}}</view>秒
         </view>
     </view>
 
     <view class="main">
         <view class="main-shop">
-            <view class="shop" wx:for="{{lists}}" wx:key="index">
+            <view class="shop" bindtap="skip" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">
                 <view class="shopimage">
                     <image src="{{item.addImg}}"></image>
                 </view>
@@ -84,21 +70,107 @@
                 <!-- <view class="progressBar">
                 </view> -->
                 <view class="progress">
-                    <progress percent="{{total}}" active stroke-width="9" border-radius="15" />
+                    <progress percent="{{totals}}" active stroke-width="9" border-radius="15" color="#fa2121"/>
                 </view>
                 <view class="box-post{{index+1}}" wx:for="{{lists}}" wx:key="index">
                     <view class="box-img">
-                        <image class="icon-jp" src="../../../images/icon-people.png" mode="" />
+                        <image class="icon-jp" src="../../../images/icon-prizes.png" mode="" />
                     </view>
                     <text>{{item.conditionsMet}}人</text>
                 </view>
             </view>
 
             <view class="prople-button">
-                <view class="button" bindtap="help">助力</view>
+                <view class="button" bindtap="help">参加活动</view>
             </view>
         </view>
     </view>
+    <!-- 
+        
+        规则和分享按钮  颜色                v
+        活动参加的类型 章 
+        目标人数 图片 low 
+        奖品详细                           v
+        助力按钮  参加活动                  v
+        活动时间 改完详细时间               v
+        生成二维码进去  微信文档生成 
+        活动详情页面 title
+        id语义化 activityId                 v
+        活动ID 查 对应的活动详情
+        true false 失去灵活性  0 1 2 3 4  5 去查 
+        重新渲染当前活动详情 参与助力后
+        助力按钮要加 防抖 节流
+        扫码进来未登录的逻辑
+        奖品的定位 和 数量 
+        积分兑换 图标 换成 小房子           v
+        活动规则 接口 渲染 动态换行 用到正则表达式
+        玩法功能 通过key
+        提测的时候页面不能有log             v
+        活动规则 命名 改命名                v
+        代码规范 方法放到下面               v
+        时间转成时间戳
+        res的命名                           v
+
+
+        活动类型选择页面 
+        黑点换成红色的星号 
+        点击上传可以修改图片 让用户去少配置一些东西 
+        活动标题 加个 例如：
+        活动日期 至少改成明天
+        活动时间 暂不支持修改 早八到晚六
+        奖品数量默认是 1
+        input框只支持number  不支持其他
+        满足条件改成 可以输入 也可以点按钮加减
+        上传图片加个图片的大小限制 100k
+        新建奖项 出来的东西 做一个复显 点赞人数复现 其他的可以不
+        活动规则 改为 富文本规则框
+        没有报名设置  中奖之后才让用户添加姓名和手机号
+        取消发布 做个弹层 提示用户是否要保存这个模板
+        修改 改为编辑 样式也改了
+        修改活动上面的 创建活动 改为 修改活动
+        datas 命名 afterTime 改注释 
+        活动标题  的命名 
+        input框用一个变量去绑定 
+        传item  不能传i
+        不能用if eles  true 和 false
+        addImgs 命名 258
+        活动里面的已参与 改 为 进行中 
+        tab切换的下划线不能和div的下边框挨着
+        分页十条十条拿 默认展示的是最近新增的
+        推荐活动是管理员设置推荐的
+        全部和最新是一个概念  不要最新
+        影响性能 131 activity index.js
+        加载成功直接放里面
+        下标传给后端 
+        下面活动的图 改一个礼品盒 
+        意见反馈 单选  参与失败 和 功能无法理解 去了  不要联系方式 
+
+
+
+        登录提示  不要模态框 点击直接出登录的那个 模态框变成授权框
+        进来查看数据库 没有的话 再走那个流程
+        跳个人信息的时候 不要闪屏加载的那个
+        ptb-30 py-30 y轴  px-30 x轴
+        key
+        上传失败改问 网络i错误 失败
+        头像 只能使用固定的图片 压缩成最小的 目前是选择 不能自定义
+        昵称 点击修改 所有功能都要做个复现
+        积分记录点一下 跳转积分详情页面
+        去充值  蓝色按钮改了
+        我的页面里面把分享页面禁用掉
+        51 onMyEvent 事件名 改了 
+        10  firstLoadActivity 命名 一个方法实现一个功能 维度 优化 
+        每个页面跳屏现象 不能出现
+        登录逻辑缺失
+        class  命名 BM命名 不要驼峰
+        js 命名 是驼峰命名
+        缺少判断 goodDetail 74
+        
+
+
+
+
+     -->
 
 
 </view>

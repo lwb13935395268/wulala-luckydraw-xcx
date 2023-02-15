@@ -1,0 +1,11 @@
+
+<view class="countdown">
+    <view class="times">
+        倒计时：
+        <view class="txt-time">{{txtTime.day}}</view>天:
+        <view class="txt-time">{{txtTime.hou}}</view>时:
+        <view class="txt-time">{{txtTime.min}}</view>分:
+        <view class="txt-time">{{txtTime.sec}}</view>秒
+    </view>
+</view>
+

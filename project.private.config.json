@@ -219,8 +219,29 @@
                     "scene": null
                 },
                 {
+                    "name": "pages/mine/mineCreatedActivity/index",
+                    "pathName": "pages/mine/mineCreatedActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
                     "name": "",
-                    "pathName": "pages/mine/selectAvatar/index",
+                    "pathName": "pages/activity/countDown/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/activity/countDown/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "倒计时",
+                    "pathName": "pages/activity/countDown/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

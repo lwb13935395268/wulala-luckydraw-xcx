@@ -1,0 +1,29 @@
+<!--pages/activity/goodsDetail/index.wxml-->
+<view class="good-detail">
+    <view class="good-img">
+                <image src="{{list.addImg}}" mode="" />
+    </view>
+    <view class="good-price">
+        <view class="wrap">
+        <view class="title mt-20">
+            {{list.prizeName||"商品名称"}}
+        </view>
+        </view>
+    </view>
+    <view class="good-desc mt-20">
+        <view class="content">
+            <view class="top">
+                <view class="title wrap">
+                    商品详情
+                </view>
+            </view>
+            <view class="bottom">
+                <view class="text wrap">
+                    {{list.addText}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="h-120">
+    </view>
+</view>
