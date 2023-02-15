@@ -19,11 +19,7 @@ Page({
     },
     //下标
     onMyEvent:function(e){
-        // console.log(e.detail);
-        wx.showLoading({
-            title: '加载中',
-            mask: true,
-        })
+        // console.log(e.detail)
         switch (e.detail) {
             case 0:
                 this.newest();//最新
@@ -48,13 +44,9 @@ Page({
                 type:'recommend',
             },
             success(res){
-                // console.log(res);
                 _this.setData({
                     recommend:res.result.data
                 });
-                setTimeout(function () {
-                    wx.hideLoading()
-                }, 500)
             }
         })
     },
@@ -67,13 +59,9 @@ Page({
                 type:'newest'
             },
             success(res){
-                // console.log(res);
                 _this.setData({
                     newest:res.result.data
                 });
-                setTimeout(function () {
-                    wx.hideLoading()
-                }, 500)
             }
         })
     },
@@ -81,10 +69,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        wx.showLoading({
-            title: '加载中',
-            mask: true,
-        })
         wx.setNavigationBarTitle({
             title: '活动中心'
         })
@@ -97,6 +81,16 @@ Page({
             }
         })
         this.newest();
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'listType',
+                listType:1,
+            },
+            success(res){
+                console.log(res.result.data);
+            }
+        })
     },
 
     /**
