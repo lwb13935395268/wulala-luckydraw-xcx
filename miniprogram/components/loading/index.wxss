@@ -7,7 +7,7 @@
     width: 100vw;
     overflow: hidden;
 }
-.main image{
+.main .image{
     width: 400rpx;
     height: 400rpx;
 }

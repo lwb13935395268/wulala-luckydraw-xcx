@@ -4,43 +4,55 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.getUserInfo()
+        // this.getUserInfo()
     },
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow() {
-        if(getApp().globalData.getInfoFlag){
-            this.getUserInfo();
+    async onShow() {
+        let {
+            loginFlag,
+            getInfoFlag,
+            userInfo,
+            loginStatus,
+            homeLogin,
+            mineLogin
+        } = getApp().globalData;
+        this.data.loginStatus=loginStatus
+        this.data.userInfo=userInfo;
+        if (homeLogin&&!mineLogin) {
+            await this.getUserInfo()
+        }else if(getInfoFlag){
+            await this.getUserInfo()
         }
-    },
-    async showLoad(fun) {
-        wx.showLoading({
-            title: '加载中',
-        });
-        let res = await fun();
-        wx.hideLoading();
-        wx.showToast({
-            title: '加载成功',
-        })
-        return res
+        console.log(3);
     },
     async getUserInfo() {
-        getApp().globalData.getInfoFlag=false;
+        this.setData({
+            show:true
+        })
+        //登录 关闭
+        getApp().globalData.loginFlag = false;
         let {
             getUserInfo
         } = getApp();
-        let userInfoRes = await this.showLoad(getUserInfo);
-        console.log(userInfoRes);
+        let userInfoRes = await getUserInfo();
+        console.log(userInfoRes.data);
         if(!Array.isArray(userInfoRes.data)){
             this.setData({
-                userInfo:userInfoRes.data
+                userInfo:userInfoRes.data,
+                loginStatus:true
             })
-            this.getMineActivitys();
-            this.getMineCreatedActivity();
+           await this.getMineActivitys();
+           await this.getMineCreatedActivity();
             getApp().globalData.loginStatus=true;
             getApp().globalData.userInfo=userInfoRes.data;
+            getApp().globalData.mineLogin=true;
         }
+        this.setData({
+            show:false
+        })
+
     },
     navgatorTabBar(e) {
         let path = e.currentTarget.dataset.path;
@@ -65,7 +77,6 @@ Page({
             addUser
         } = getApp();
         await login('登录');
-        console.log('同意了');
         wx.showLoading({
             title: '正在授权..',
         })
@@ -77,9 +88,11 @@ Page({
                 title: '授权登录',
             })
             this.setData({
-                userInfo:addResult.data
+                userInfo:addResult.data,
+                loginStatus:true
             })
             getApp().globalData.loginStatus=true;
+            getApp().globalData.userInfo=addResult.data;
         } else {
             wx.showToast({
                 icon: 'error',
@@ -125,6 +138,7 @@ Page({
                 mineActivityNum: res.data.length
             })
         }
+        return res
     },
     async getMineCreatedActivity() {
         let {
@@ -136,6 +150,7 @@ Page({
                 mineCreatedActivityNum: res.data.length
             })
         }
+        return res
     },
     getPageParams() {
         let app = getApp()
@@ -158,7 +173,8 @@ Page({
      */
     data: {
         mineCreatedActivityNum: 0,
-        mineActivityNum: 0
+        mineActivityNum: 0,
+        show:false
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

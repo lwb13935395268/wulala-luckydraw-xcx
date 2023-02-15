@@ -1,5 +1,6 @@
 <!--pages/home/index.wxml-->
 <view class="home">
+<loading isShow="{{show?'block':'none'}}"></loading>
     <view class="modal" wx:if="{{ruleMask}}">
           <view class="box">
             <image bindtap="setRuleMask" src="../../images/icon-close.png" mode="" />

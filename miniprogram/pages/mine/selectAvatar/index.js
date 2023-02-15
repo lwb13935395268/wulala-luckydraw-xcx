@@ -8,8 +8,7 @@ Page({
         });
     },
     use(){
-        getApp().globalData.selectImg=this.data.selectImg;  
-        console.log(getApp().globalData);
+        getApp().globalData.selectImg=this.data.selectImg;
         getApp().back()
     },
     /**
@@ -17,7 +16,9 @@ Page({
      */
     data: {
         selectImgIndex: 0,
-        avatarList: []
+        avatarList: [],
+        num:0,
+        // show:true/
     },
 
     /**
@@ -25,6 +26,18 @@ Page({
      */
     onLoad(options) {
         this.getAvatarList();
+        this.setData({
+            show:true
+        })
+    },
+    loadImg(){
+        this.data.num++;
+        console.log(this.data.num);
+        if(this.data.avatarList.length==this.data.num){
+            this.setData({
+                show:false
+            })
+        }
     },
     async getAvatarList() {
         let {
@@ -32,7 +45,6 @@ Page({
         } = getApp();
         let res = await getAvatarList();
         if (res.status == 200) {
-            console.log(getApp().globalData);
             let seleceIndex = res.data.findIndex(val => {
                 return val.avatarUrl === getApp().globalData.userInfo.avatarUrl
             });

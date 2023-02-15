@@ -18,8 +18,9 @@ Page({
         totals:'',
         rule:'',
         str:'',
+        timer:null,
     },
-    help(){
+    helps(){
         wx.cloud.callFunction({
             name:'activity',
             data:{      
@@ -42,6 +43,22 @@ Page({
                 }
             }
         })
+        
+    },
+
+    hhh:function(){
+        this.throttle(this.helps)();
+    },
+    throttle(fn) {
+        let flag = true;
+        return function () {
+            if (!flag) return;
+            flag = false;
+            setTimeout(() => {
+                fn();
+                flag = true;
+            }, 1000)
+        }
     },
     setModal() {
         this.setData({
@@ -53,7 +70,6 @@ Page({
             catchtouchmove: !this.data.catchtouchmove
         })
     },
-
 
     /**
      * 生命周期函数--监听页面加载
@@ -71,20 +87,16 @@ Page({
                 wholeActivity : true
             }
         })
-        console.log(res.result.data);
         res.result.data.forEach(el => {
             
             if(_this.data.activityId == el._id){
                 let maxObj;
                 let arr = [];
                 arr.push(el);
-                console.log(el.startDate);
-                console.log(el.rule);
-                let strRule = el.rule.replace(/(\d+\D)/g,"###");
+                let strRule = el.rule.replace(/\s/g,'\n');
                 _this.setData({
                     str:strRule,
                 })
-                console.log(strRule);
                 let startDateAll = this.timestampToTime(el.startDate);
                 let endDateAll = this.timestampToTime(el.endDate);
                 let startDates = this.timestampToTime(el.startDate).slice(5,10);
@@ -107,9 +119,7 @@ Page({
                     rule: strRule,
                     startDateAll:startDateAll,
                     endDateAll: endDateAll
-
                 })
-                console.log(_this.data.rule);
             }
         });
         let result=await wx.cloud.callFunction({
@@ -148,7 +158,7 @@ Page({
         // 如果活动未结束
         if (time > 0) {
             var day = parseInt(time / (3600 * 24));
-            var hou = parseInt(time / (60 * 60*60));
+            var hou = parseInt(time/60 /60 % 24);
             var min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
             var sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
             obj = {

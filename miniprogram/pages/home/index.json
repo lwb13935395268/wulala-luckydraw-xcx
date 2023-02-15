@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-        "tab": "/components/tab/tab"
+        "tab": "/components/tab/tab",
+        "loading": "/components/loading/index"
     },
     "enablePullDownRefresh": true,
     "navigationBarTitleText": "首页",

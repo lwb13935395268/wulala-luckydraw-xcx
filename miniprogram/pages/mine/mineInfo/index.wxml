@@ -1,5 +1,6 @@
 <!--pages/mine/mineInfo/index.wxml-->
 <view class="mine-info">
+    <loading isShow="{{show?'block':'none'}}"></loading>
     <view class="ul mt-40">
         <view class="li">
             <view>
@@ -15,8 +16,7 @@
                 头像
             </view>
             <view bindtap="nav" data-path="/pages/mine/selectAvatar" class="fc-gray3 fs-28 align-center py-30">
-                <!-- <text class="mr-10">{{userInfo.avataUrl||}}</text> -->
-                <image class="avatarImg mr-10" src="{{userInfo.avatarUrl}}" mode="" />
+                <image onload="loadImg" class="avatarImg mr-10" src="{{userInfo.avatarUrl}}" mode="" />
                 <image class="image" src="../../../images/icon-entry.png" mode="" />
             </view>
         </view>
@@ -51,7 +51,7 @@
                 地区
             </view>
             <view class="fc-gray3 fs-28 align-center">
-                <picker mode="region" class="" bindchange="pickerChange" value="{{userInfo.area}}"  custom-item="{{customItem}}" bindchange="regionChange">
+                <picker mode="region" class="" bindchange="pickerChange" value="{{userInfo.area}}" custom-item="{{customItem}}" bindchange="regionChange">
                     <view class="picker py-30 flex-between align-center">
                         <text class="mr-10">{{(userInfo.area.length&&userInfo.area[0]!='全部')?userInfo.area[0]+'，'+userInfo.area[1]+'，'+userInfo.area[2]:'请选择'}}</text>
                         <image class="image" src="../../../images/icon-entry.png" mode="" />

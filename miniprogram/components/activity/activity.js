@@ -46,7 +46,9 @@ Component({
     data: {
 
     },
-
+    loadImg(){
+        this.triggerEvent('loadImg', myEventDetail, myEventOption);
+    },
     /**
      * 组件的方法列表
      */
