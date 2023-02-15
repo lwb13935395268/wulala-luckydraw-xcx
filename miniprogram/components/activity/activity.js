@@ -49,7 +49,6 @@ Component({
      */
     methods: {
         loadImg() {
-            console.log(111);
             this.triggerEvent('loadImg', myEventDetail, myEventOption);
         },
         navgator() {
