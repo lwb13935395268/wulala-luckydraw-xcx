@@ -39,6 +39,9 @@ exports.main = async (event, context) => {
             }
         });
         console.log('兑换');
+        event.exchangeCode = code;//兑换码
+        event.endDate = Date.parse(endTime),
+        event.startDate = Date.parse(todayTime)
         await integralChange.main({
             type:3,
             num: prizeData.price, //改变数量
@@ -48,6 +51,7 @@ exports.main = async (event, context) => {
             title:prizeData.prizeName,
             num: prizeData.price, //消耗积分
             imageUrl:prizeData.imageUrl,
+            address:prizeData.address,//地址
         },context);
         res.status = 200;
         res.msg = '兑换成功';

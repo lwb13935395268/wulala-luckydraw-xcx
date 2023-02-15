@@ -29,7 +29,6 @@ Page({
             success:(res)=>{
                 this.setData({
                     activityList:res.result.data.data,
-                    isShow:'none'
                 });
                 this.data.activityList.forEach((item,index)=>{
                     let startDate = "activityList["+index+"].startDate";
@@ -41,6 +40,11 @@ Page({
                 })
             }
         })
+    },
+    loadImg:function(){
+        this.setData({
+            isShow:'none',
+        });
     },
     /**
      * 生命周期函数--监听页面加载
