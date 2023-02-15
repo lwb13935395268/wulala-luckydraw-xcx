@@ -3,5 +3,8 @@
         "tab":"/components/tab/tab",
         "activity":"/components/activity/activity"
     },
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "我的活动",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#eb524c"
 }

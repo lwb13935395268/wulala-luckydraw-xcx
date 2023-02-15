@@ -1,3 +1,6 @@
 {
-    "usingComponents": {}
+    "usingComponents": {},
+    "navigationBarTitleText": "积分记录",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#eb524c"
 }

@@ -34,6 +34,10 @@ page {
 /*
     正阳的公共样式
 */
+.align-end{
+    display: flex;
+    align-items: flex-end;
+}
 .justify-between {
     display: flex;
     justify-content: space-between;
@@ -61,7 +65,7 @@ page {
 .pd-20{
     padding: 20rpx;
 }
-.ptb-30{
+.py-30{
     padding: 30rpx 0;
 }
 .mb-40{

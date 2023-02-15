@@ -186,3 +186,23 @@
     align-items: center;
     justify-content: center;
 }
+.close{
+    width: 35rpx;
+    height: 35rpx;
+    position: absolute;
+    right: -10rpx;
+    top: -10rpx;
+}
+.prize-img{
+    width: 600rpx;
+    height: 300rpx;
+    position: relative;
+}
+.prize-img image{
+    width: auto;
+    height: 100%;
+}
+.close image{
+    width: 35rpx;
+    height: 35rpx;
+}

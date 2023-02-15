@@ -4,33 +4,43 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.setTitle();
-        this.getUserInfo();
-        // this.showLoad(this.get)
+        this.getUserInfo()
     },
     /**
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        this.getUserParams()
+        if(getApp().globalData.getInfoFlag){
+            this.getUserInfo();
+        }
     },
-    async showLoad(fun){
+    async showLoad(fun) {
         wx.showLoading({
-          title: '加载中',
+            title: '加载中',
         });
-        let res= await fun();
+        let res = await fun();
         wx.hideLoading();
         wx.showToast({
-          title: '加载成功',
+            title: '加载成功',
         })
         return res
     },
     async getUserInfo() {
+        getApp().globalData.getInfoFlag=false;
         let {
             getUserInfo
         } = getApp();
-        let userInfo =await this.showLoad(getUserInfo);
-        console.log(userInfo);
+        let userInfoRes = await this.showLoad(getUserInfo);
+        console.log(userInfoRes);
+        if(!Array.isArray(userInfoRes.data)){
+            this.setData({
+                userInfo:userInfoRes.data
+            })
+            this.getMineActivitys();
+            this.getMineCreatedActivity();
+            getApp().globalData.loginStatus=true;
+            getApp().globalData.userInfo=userInfoRes.data;
+        }
     },
     navgatorTabBar(e) {
         let path = e.currentTarget.dataset.path;
@@ -39,29 +49,42 @@ Page({
         })
     },
     navgator(e) {
-        if (this.data.loginStatus) {
+        if (getApp().globalData.loginStatus) {
             let path = e.currentTarget.dataset.path;
             wx.navigateTo({
                 url: '/pages/' + path,
             })
         } else {
-            wx.showModal({
-                content: '登录后可查看',
-                confirmText: '登录',
-                success: res => {
-                    if (res.confirm) {
-                        this.login();
-                    }
-                }
-            })
+
+            this.login()
         }
     },
     async login() {
-        let {login} =getApp();
-        let res=await login('登录');
-        console.log(res);
-        if(res){
-            console.log('同意');
+        let {
+            login,
+            addUser
+        } = getApp();
+        await login('登录');
+        console.log('同意了');
+        wx.showLoading({
+            title: '正在授权..',
+        })
+        let addResult = await addUser();
+        console.log(addResult);
+        wx.hideLoading()
+        if (addResult.status == 200) {
+            wx.showToast({
+                title: '授权登录',
+            })
+            this.setData({
+                userInfo:addResult.data
+            })
+            getApp().globalData.loginStatus=true;
+        } else {
+            wx.showToast({
+                icon: 'error',
+                title: '授权失败',
+            })
         }
         // wx.showLoading({
         //     title: '登录中',
@@ -113,19 +136,6 @@ Page({
                 mineCreatedActivityNum: res.data.length
             })
         }
-    },
-    setTitle() {
-        wx.setNavigationBarTitle({
-            title: '我的'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#eb524c',
-            animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }
-        })
     },
     getPageParams() {
         let app = getApp()
@@ -184,11 +194,4 @@ Page({
     onReachBottom() {
 
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    }
 })

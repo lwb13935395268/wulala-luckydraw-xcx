@@ -13,7 +13,23 @@
     box-sizing: border-box;
     background-color: #e04540;
     color: white;
-    padding: 40rpx 0;
+    display: flex;
+    align-items: center;
+    /* padding: 40rpx 0; */
+}
+.header .head-content{
+    height: 134rpx;
+}
+.header .login-tip{
+    display: flex;
+    /* align-items: flex-end; */
+    font-size: 50rpx;
+    /* padding-bottom: 20rpx; */
+}
+.login-tip image{
+    display: block;
+    width: 38rpx;
+    height: 38rpx;
 }
 .header .rule{
     font-size: 24rpx;

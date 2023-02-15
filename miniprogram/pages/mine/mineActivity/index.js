@@ -4,15 +4,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
-        this.setTitle();
-        this.firstLoadActivity()
-    },
-    async firstLoadActivity(){
-        wx.showLoading({
-            title: '加载中..',
-          })
-       await this.getMineActivitys();
-        wx.hideLoading()
+        this.getMineActivitys()
     },
     navgator(e) {
         let path = e.currentTarget.dataset.path;
@@ -36,10 +28,15 @@ Page({
         })
     },
     async getMineActivitys() {
+        wx.showLoading({
+            title: '加载中..',
+          })
         let {
             getMineActivity
         } = getApp();
         let res = await getMineActivity();
+        
+        wx.hideLoading()
         if (res.status == 200) {
             this.setData({
                 activityList: res.data,
@@ -47,10 +44,6 @@ Page({
             })
         }
         return res
-    },
-    onMyEvent(e) {
-        // e.detail//下标
-        this.getMineActivitys()
     },
     toCommodityDetails(e){
         wx.navigateTo({
@@ -99,13 +92,6 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
 
     },
     onPullDownRefresh() {

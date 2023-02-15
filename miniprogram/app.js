@@ -17,8 +17,21 @@ App({
             userId: '',
             userInfo: {},
             loginStatus: false,
-            callLogin: false
+            callLogin: false,
+            getInfoFlag:true
         };
+    },
+    //获取头像列表
+    getAvatarList (){
+        return wx.cloud.callFunction({
+            name: 'user',
+            data: {
+                type: 'getAvatar',
+            }
+        }).then(res => {
+            console.log(res);
+            return res.result
+        })
     },
     //修改用户信息
     updateUserInfo(userInfo) {
@@ -146,6 +159,17 @@ App({
     back: function () {
         wx.navigateBack({
             delta: 1
+        })
+    },
+    //新增用户
+    addUser(){
+        return wx.cloud.callFunction({
+            name: 'user',
+            data: {
+                type: 'add',
+            }
+        }).then(res => {
+            return res.result
         })
     },
     //wx登录

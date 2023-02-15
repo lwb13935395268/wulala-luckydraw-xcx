@@ -26,7 +26,8 @@
     "pages/mine/feedback/index",
     "pages/mine/rechargeRecord/index",
     "pages/mine/rechargeRecord/buyPoints/index",
-    "pages/mine/activityAudit/index"
+    "pages/mine/activityAudit/index",
+    "pages/mine/selectAvatar/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

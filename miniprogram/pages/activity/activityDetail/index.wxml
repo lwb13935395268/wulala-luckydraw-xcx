@@ -11,22 +11,12 @@
                 <scroll-view scroll-y="true" style="height: 580rpx;" enhanced="{{enhanced}}" show-scrollbar="{{scrollbar}}">
                     <view class="list">
                         <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
-                        </view>
-                        <view class="text">
-                            1，活动哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈
+                            <view class="rule-title">一、活动开始时间</view>
+                            <view class="rule-content">{{startDateAll}}</view>
+                            <view class="rule-title">二、活动结束时间</view>
+                            <view class="rule-content">{{endDateAll}}</view>
+                            <view class="rule-title">三、活动规则</view>
+                            <view class="rule-content">{{str}}</view>
                         </view>
                     </view>
                 </scroll-view>
@@ -54,10 +44,9 @@
     <view class="time">
         <text>距离结束</text>
         <view class="times">
-            <view class="sum">2</view>天
-            <view class="sum">16</view>时
-            <view class="sum">23</view>分
-            <view class="sum">23</view>秒
+            <view class="sum">{{txtTime.hou}}</view>时
+            <view class="sum">{{txtTime.min}}</view>分
+            <view class="sum">{{txtTime.sec}}</view>秒
         </view>
     </view>
 

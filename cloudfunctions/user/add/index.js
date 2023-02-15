@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
         area:'',
         birthdayDate:'',
         nickName:'新用户'+OPENID.slice(0,4),
-        avatarUrl:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240'
+        avatarUrl:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/avatarImgs/img-avatar6.png?sign=59ee8ac9594b674bb0b55fd44c599899&t=1676443669'
     }
     let result = await db.collection('userInfo').add({
         // data 字段表示需新增的 JSON 数据

@@ -1,0 +1,42 @@
+/* pages/mine/selectAvatar/index.wxss */
+.page{
+    padding: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.avatar {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    box-sizing: border-box;
+    width: calc(100vw - 70rpx);
+    height: calc(100vw - 70rpx);
+    place-content: space-between;
+}
+
+.avatar .item {
+    border: 15rpx solid #79b4eb;
+    background-color: #80bffc;
+    height: 200rpx;
+    width: 200rpx;
+    box-sizing: border-box;
+}
+.active{
+    border: 15rpx solid #ed573c!important;
+}
+
+.avatar .item image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.btn{
+    display: inline-block;
+    background-color: #ed573c;
+    margin: 0 auto;
+    padding: 20rpx 140rpx;
+    border-radius: 20rpx;
+    font-size: 28rpx;
+    color: white;
+}
