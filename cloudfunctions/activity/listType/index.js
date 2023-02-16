@@ -34,7 +34,6 @@ exports.main = async (event, context) => {
         default:
             break;
     };
-    console.log(queryMyActivityList);
     let res = {
         status:0,
         msg:"查询失败,请重新在试",

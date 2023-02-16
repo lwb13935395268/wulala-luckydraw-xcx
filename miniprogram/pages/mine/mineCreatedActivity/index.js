@@ -12,55 +12,61 @@ Page({
      */
     data: {
         myActicityList:[],//我创建的活动
+        isShow:'block'
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
-        wx.setNavigationBarTitle({
-            title: '发布的活动'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#eb524c',
-            animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }
+        this.onMyEvent(0);
+    },
+    // 图片加载完成
+    loadImg:function(){
+        this.setData({
+            isShow:'none'
         })
     },
-
+    // tab下标
+    onMyEvent:function(e){
+        this.setData({
+            isShow:'block'
+        })
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'myReleaseActivityType',
+                activityType:e.detail==undefined?e:e.detail
+            },
+            success:(res)=>{
+                if (res.result.status == 200) {
+                    this.setData({
+                        myActicityList:res.result.data,
+                    });
+                }else{
+                    wx.showToast({
+                        title: '暂无活动，去创建吧!',
+                        icon:'none',
+                    });
+                }
+                if (res.result.data.length==0) {
+                    this.setData({
+                        isShow:'none'
+                    })
+                }
+            },
+        })
+    },
+    toCommodityDetails:function(e){
+        wx.navigateTo({
+          url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-        let _this = this;
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'queryMyActivityList',
-            },
-            success(res){
-                switch (res.result.status) {
-                    case 200:
-                        _this.setData({
-                            myActicityList:res.result.data
-                        })
-                        break;
-                    case 0:
-                        wx.showToast({
-                            title: '暂无活动，去创建吧!',
-                            icon:'none',
-                        })
-                        break;
-                    default:
-                        break;
-                }
-                console.log(res.result);
-            },
-        })
+    
     },
 
     /**
@@ -101,7 +107,7 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage() {
+    // onShareAppMessage() {
 
-    }
+    // }
 })
