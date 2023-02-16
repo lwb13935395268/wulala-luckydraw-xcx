@@ -43,6 +43,14 @@ Page({
                     this.setData({
                         myActicityList:res.result.data,
                     });
+                    this.data.myActicityList.forEach((item,index)=>{
+                        let startDate = "myActicityList["+index+"].startDate";
+                        let endDate = "myActicityList["+index+"].endDate";
+                        this.setData({
+                            [startDate]:new Date(item.startDate).toLocaleString().replace(/\//g,'-'),
+                            [endDate]:new Date(item.endDate).toLocaleString().replace(/\//g,'-')
+                        })
+                    })
                 }else{
                     wx.showToast({
                         title: '暂无活动，去创建吧!',

@@ -259,6 +259,13 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "发起活动",
+                    "pathName": "pages/mine/selectActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

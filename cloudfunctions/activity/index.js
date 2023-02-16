@@ -5,8 +5,6 @@ const merchantPrizeList = require("./merchantPrizeList/index");//商户创建的
 const myParticipateActivity = require("./myParticipateActivity/index");//我参加的活动列表
 const participateActivity = require("./participateActivity/index");//参与活动接口
 const getActivityCount = require("./getActivityCount/index");//获取当前活动参与的人数
-const recommend = require("./recommend/index");//推荐活动
-const newest = require("./newest/index");//最新活动
 const queryActivity = require("./queryActivity/index");//查询活动
 const listType = require("./listType/index");//活动中心列表类型
 const activityTemplate = require("./activityTemplate/index");//活动模板
@@ -28,10 +26,6 @@ exports.main = async (event, context) => {
         return await participateActivity.main(event, context);
     case 'getActivityCount':
         return await getActivityCount.main(event, context);
-    case 'recommend':
-        return await recommend.main(event, context);
-    case 'newest':
-        return await newest.main(event, context);
     case 'queryActivity':
         return await queryActivity.main(event, context);
     case 'listType':
