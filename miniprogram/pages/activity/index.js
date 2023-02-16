@@ -29,6 +29,7 @@ Page({
             success:(res)=>{
                 this.setData({
                     activityList:res.result.data.data,
+                    isShow:'none',
                 });
                 this.data.activityList.forEach((item,index)=>{
                     let startDate = "activityList["+index+"].startDate";
@@ -42,7 +43,6 @@ Page({
         })
     },
     loadImg:function(){
-        console.log(1);
         this.setData({
             isShow:'none',
         });
@@ -71,7 +71,6 @@ Page({
             success:(res)=>{
                 this.setData({
                     activityList:res.result.data.data,
-                    isShow:'none'
                 });
                 this.data.activityList.forEach((item,index)=>{
                     let startDate = "activityList["+index+"].startDate";

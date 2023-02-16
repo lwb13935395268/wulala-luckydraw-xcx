@@ -9,6 +9,7 @@ const recommend = require("./recommend/index");//推荐活动
 const newest = require("./newest/index");//最新活动
 const queryActivity = require("./queryActivity/index");//查询活动
 const listType = require("./listType/index");//活动中心列表类型
+const activityTemplate = require("./activityTemplate/index");//活动模板
 // 云函数入口函数
 exports.main = async (event, context) => {
   switch (event.type) {
@@ -34,5 +35,7 @@ exports.main = async (event, context) => {
         return await queryActivity.main(event, context);
     case 'listType':
         return await listType.main(event, context);
+    case 'activityTemplate':
+        return await activityTemplate.main(event, context);
   }
 };

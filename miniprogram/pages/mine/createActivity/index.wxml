@@ -1,137 +1,137 @@
-<!--pages/mine/createActivity/index.wxml-->
-<!-- <view class="ns">创建活动</view> -->
-<loading isShow="none"></loading>
+<loading isShow="{{isShow}}" wx:if="{{!activityId}}"></loading>
+<loading isShow="{{isShowModfiy}}" wx:else></loading>
 <scroll-view scroll-y="{{isScroll}}" scroll-with-animation="true" style="height: 100vh;">
-<view class="main">
-    <!-- 活动设置 -->
-    <view class="activity-set mt-30 mb-30 wrap">
-        <title class="center">活动设置</title>
-        <activityTitle class="mt-50">活动主题图</activityTitle>
-        <view class="upload-img">
-            <view class="content" bindtap="doUpload">
-                <view class="name">更换奖品图片</view>
-            </view>
-            <image class="image-file" src="{{imgFileId}}" bindload="onload" mode=""/>
-        </view>
-        <view class="hr"></view>
-        <activityTitle class="mt-50">活动标题</activityTitle>
-        <textarea placeholder="例如 : 参加活动赢好礼(30字以内)" bindinput="bindFormSubmit" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;" value="{{activityTitle}}" name="textarea"/>
-        <activityTitle class="mt-50">活动时间</activityTitle>
-        <view class="activity-timer">
-            <picker mode="date" value="{{startDate}}" start="{{currentTime}}" end="{{afterTime}}" bindchange="bindDateChange">
-                <view class="picker">
-                    开始日期: 
-                    <text class="start-time">{{startDate}}</text>
+    <view class="main">
+        <!-- 活动设置 -->
+        <view class="activity-set mt-30 mb-30 wrap">
+            <title class="center">活动设置</title>
+            <activityTitle class="mt-50">活动主题图</activityTitle>
+            <view class="upload-img">
+                <view class="content" bindtap="doUpload">
+                    <view class="name">更换奖品图片</view>
                 </view>
-            </picker>
-            <!-- <picker mode="time" value="{{startTime}}" start="08:00" end="16:00" bindchange="bindTimeChange"> -->
+                <image wx:if="{{!imgFileId}}" class="image-file" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/prize-banner.png?sign=ae6f5267357a4dfa2564895f3d62c7d0&t=1676359770" mode="" />
+                <image wx:else class="image-file" src="{{imgFileId}}" bindload="onloads" mode="" />
+            </view>
+            <view class="hr"></view>
+            <activityTitle class="mt-50">活动标题</activityTitle>
+            <textarea placeholder="例如 : 参加活动赢好礼(30字以内)" bindinput="actviityTitle" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;" value="{{activityTitle}}" name="textarea" />
+            <activityTitle class="mt-50">活动时间</activityTitle>
+            <view class="activity-timer">
+                <picker mode="date" value="{{startDate}}" start="{{currentTime}}" end="{{afterTime}}" bindchange="startDate">
+                    <view class="picker">
+                        开始日期:
+                        <text class="start-time">{{startDate}}</text>
+                    </view>
+                </picker>
+                <!-- <picker mode="time" value="{{startTime}}" start="08:00" end="16:00" bindchange="bindTimeChange"> -->
                 <view class="picker">
-                    开始时间: 
+                    开始时间:
                     <text class="start-time">{{startTime}}</text>
                 </view>
-            <!-- </picker> -->
-        </view>
-        <view class="activity-timer">
-            <picker mode="date" value="{{endDate}}" start="{{currentTime}}" end="{{afterTime}}" bindchange="endDateChange">
+                <!-- </picker> -->
+            </view>
+            <view class="activity-timer">
+                <picker mode="date" value="{{endDate}}" start="{{currentTime}}" end="{{afterTime}}" bindchange="endDate">
+                    <view class="picker">
+                        结束日期:
+                        <text class="start-time">{{endDate}}</text>
+                    </view>
+                </picker>
+                <!-- <picker mode="time" value="{{endTime}}" start="08:00" end="16:00" bindchange="endTimeChange"> -->
                 <view class="picker">
-                    结束日期: 
-                    <text class="start-time">{{endDate}}</text>
-                </view>
-            </picker>
-            <!-- <picker mode="time" value="{{endTime}}" start="08:00" end="16:00" bindchange="endTimeChange"> -->
-                <view class="picker">
-                    结束时间: 
+                    结束时间:
                     <text class="start-time">{{endTime}}</text>
                 </view>
-            <!-- </picker> -->
+                <!-- </picker> -->
+            </view>
         </view>
-    </view>
-    <!-- 奖品详情 -->
-    <view class="activity-set mt-30 mb-30 wrap">
-        <title class="center">奖品详情</title>
-        <view class="prize-info" wx:for="{{prizeNums}}" wx:key="index">
-            <view wx:if="{{prizeNums.length > 1}}" class="activity-delete" bindtap="deletePrize" data-index="{{index}}">
-                <image src="../../../images/icon-reduce.png" mode=""/>
-            </view>
-            <activityTitle class="mt-50">奖品名称</activityTitle>
-            <textarea placeholder="请输入您的奖品名称(30字以内)" bindinput="bindFormSubmitPrize" value="{{item.prizeName}}" data-index="{{index}}" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;"name="textarea"/>
-            <activityTitle class="mt-50">奖品数量</activityTitle>
-            <view class="prize">
-                <input placeholder="奖品数量" bindinput="prizeNum" data-index="{{index}}" value="{{item.prizeNum}}" bindfocus="bindfocus" bindblur="closeblur" maxlength="10" type="number"/>
-                <text>个</text>
-            </view>
-            <activityTitle class="mt-50">满足条件(助力多少人)</activityTitle>
-            <view class="prize">
-                <view class="reducwe" bindtap="reducwe" data-index="{{index}}" data-value="{{item.conditionsMet}}">-</view>
-                <input class="conditions-met" value="{{item.conditionsMet}}" placeholder="点赞" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" data-index="{{index}}" maxlength="10" type="number"/>
-                <view class="add" bindtap="add" data-index="{{index}}" data-value="{{item.conditionsMet}}">+</view>
-            </view>
-            <activityTitle class="mt-50">奖品介绍</activityTitle>
-            <view class="" wx:if="{{item.addText!=[]}}" >
-                <view class="{{item.addText != '' ? 'activity-rule' : ''}}">
-                    <view class="one">
-                        {{item.addText}}
+        <!-- 奖品详情 -->
+        <view class="activity-set mt-30 mb-30 wrap">
+            <title class="center">奖品详情</title>
+            <view class="prize-info" wx:for="{{prizeNums}}" wx:key="index">
+                <view wx:if="{{prizeNums.length > 1}}" class="activity-delete" bindtap="deletePrize" data-index="{{index}}">
+                    <image src="../../../images/icon-reduce.png" mode="" />
+                </view>
+                <activityTitle class="mt-50">奖品名称</activityTitle>
+                <textarea placeholder="请输入您的奖品名称(30字以内)" bindinput="prizeName" value="{{item.prizeName}}" data-index="{{index}}" class="textarea" maxlength="30" placeholder-style="font-size:30rpx;color:#ccc;" name="textarea" />
+                <activityTitle class="mt-50">奖品数量</activityTitle>
+                <view class="prize">
+                    <input placeholder="奖品数量" bindinput="prizeNum" data-index="{{index}}" value="{{item.prizeNum}}" bindfocus="bindfocus" bindblur="closeblur" maxlength="10" type="number" />
+                    <text>个</text>
+                </view>
+                <activityTitle class="mt-50">满足条件(助力多少人)</activityTitle>
+                <view class="prize">
+                    <view class="reducwe" bindtap="reducwe" data-index="{{index}}" data-value="{{item.conditionsMet}}">-</view>
+                    <input class="conditions-met" value="{{item.conditionsMet}}" placeholder="点赞" bindfocus="bindfocus" bindblur="closeblur" bindinput="conditionsMet" data-index="{{index}}" maxlength="10" type="number" />
+                    <view class="add" bindtap="add" data-index="{{index}}" data-value="{{item.conditionsMet}}">+</view>
+                </view>
+                <activityTitle class="mt-50">奖品介绍</activityTitle>
+                <view class="" wx:if="{{item.addText!=[]}}">
+                    <view class="{{item.addText != '' ? 'activity-rule' : ''}}">
+                        <view class="one">
+                            {{item.addText}}
+                        </view>
                     </view>
                 </view>
-            </view>
-            <view class="{{item.addImg != '' ? 'upload-img' : ''}}">
-                <view wx:if="{{item.addImg != ''}}" class="prize-img">
-                    <image class="prize-icon" src="{{item.addImg}}" mode=""/>
-                    <view class="close" bindtap="closeImg" data-index="{{index}}">
-                        <image src="../../../images/icon-error.png" mode=""/>
+                <view class="{{item.addImg != '' ? 'upload-img_prize' : ''}}">
+                    <view wx:if="{{item.addImg != ''}}" class="prize-img">
+                        <image class="prize-icon" src="{{item.addImg}}" mode="widthFix" mode="heightFix" mode="" />
+                        <view class="close" bindtap="closeImg" data-index="{{index}}">
+                            <image src="../../../images/icon-error.png" mode="" />
+                        </view>
                     </view>
                 </view>
+                <view class="activity-details">
+                    <button type="primary" class="activity-details_btn" bindtap="addText" data-index="{{index}}">
+                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-text.png?sign=468c4b15cf7e2491340cdf0bc50264e4&t=1675383115" mode="" />添加文本
+                    </button>
+                    <button type="primary" class="activity-details_btn" bindtap="addImgs" data-index="{{index}}">
+                        <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-photo.png?sign=a234427a224692e9c29ea2dec5aa7157&t=1675383148" mode="" />添加图片
+                    </button>
+                </view>
             </view>
-            <view class="activity-details">
-                <button type="primary" class="activity-details_btn" bindtap="addText" data-index="{{index}}">
-                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-text.png?sign=468c4b15cf7e2491340cdf0bc50264e4&t=1675383115" mode=""/>添加文本
-                </button>
-                <button type="primary" class="activity-details_btn" bindtap="addImgs" data-index="{{index}}">
-                    <image src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-photo.png?sign=a234427a224692e9c29ea2dec5aa7157&t=1675383148" mode=""  />添加图片
-                </button>
+            <button type="primary" class="addPrize mb-20" bindtap="createdPrize">
+                +新建奖项
+            </button>
+        </view>
+        <!-- 其他设置 -->
+        <view class="activity-set mt-30 mb-30 wrap">
+            <title class="center">其他设置</title>
+            <activityTitle class="mt-50">活动规则</activityTitle>
+            <view class="activity-rule">
+                <view class="activity-time">
+                    活动时间 : {{startDate}} {{startTime}} 至 {{endDate}} {{endTime}}
+                </view>
+                <view class="one">
+                    1. 活动期间，用户可每天参与本活动领取积分，可领取积分，可累计兑换相应的商品。
+                </view>
+                <view class="t">
+                    2. 满足从未关注过此公众号、未通过任何渠道参与本活动的用户视为新用户，其余属于老用户，也可通过邀请新用户进行关注获得积分奖励。
+                </view>
+                <view class="s">
+                    3.老用户可以通过邀请新用户关注来获取邀请积分。
+                </view>
+                <view class="df">
+                    4.<textarea placeholder="请输入补充规则" value="{{rule}}" class="rule" placeholder-style="font-size:30rpx;color:#ccc;" />
+                </view>
             </view>
         </view>
-        <button type="primary" class="addPrize mb-20" bindtap="createdPrize">
-            +新建奖项
-        </button>
-    </view>
-    <!-- 其他设置 -->
-    <view class="activity-set mt-30 mb-30 wrap">
-        <title class="center">其他设置</title>
-        <activityTitle class="mt-50">活动规则</activityTitle>
-        <view class="activity-rule">
-            <view class="activity-time">
-                活动时间 : {{startDate}} {{startTime}} 至 {{endDate}} {{endTime}}
+        <!-- 机构介绍 判断有没有上传合格证,上传是否通过 -->
+        <view class="activity-set mt-30 mb-30 wrap">
+            <title class="center">机构介绍</title>
+            <view class="introduce">
+                请先进行合格认证,在去我的页面完善我的个人信息,发布活动前编辑,活动发布前可修改活动内容,开始之后就不可以了!
             </view>
-            <view class="one">
-                1. 活动期间，用户可每天参与本活动领取积分，可领取积分，可累计兑换相应的商品。 
-            </view>
-            <view class="t">
-                2. 满足从未关注过此公众号、未通过任何渠道参与本活动的用户视为新用户，其余属于老用户，也可通过邀请新用户进行关注获得积分奖励。 
-            </view>
-            <view class="s">
-                3.老用户可以通过邀请新用户关注来获取邀请积分。 
-            </view>
-            <view class="df">
-                4.<textarea placeholder="请输入补充规则" value="{{rule}}" class="rule" placeholder-style="font-size:30rpx;color:#ccc;"/>
-            </view>
+            <button type="primary" class="activity-details_btn mb-50">去认证</button>
+        </view>
+        <view class="df" wx:if="{{modifyInfo == ''}}">
+            <button type="primary" class="activity-details_btn mb-50" bindtap="cancelModify">取消发布</button>
+            <button type="primary" class="activity-details_btn mb-50" bindtap="immediatelyRelease">立即发布</button>
+        </view>
+        <view class="df" wx:else>
+            <button type="primary" class="activity-details_btn mb-50" bindtap="cancelRelease">取消修改</button>
+            <button type="primary" class="activity-details_btn mb-50" bindtap="immediatelyModify">立即修改</button>
         </view>
     </view>
-    <!-- 机构介绍 判断有没有上传合格证,上传是否通过 -->
-    <view class="activity-set mt-30 mb-30 wrap">
-        <title class="center">机构介绍</title>
-        <view class="introduce">
-            请先进行合格认证,在去我的页面完善我的个人信息,发布活动前编辑,活动发布前可修改活动内容,开始之后就不可以了!
-        </view>
-        <button type="primary" class="activity-details_btn mb-50">去认证</button>
-    </view>
-    <view class="df" wx:if="{{modifyInfo == ''}}">
-        <button type="primary" class="activity-details_btn mb-50" bindtap="cancelRelease">取消发布</button>
-        <button type="primary" class="activity-details_btn mb-50" bindtap="immediatelyRelease">立即发布</button>
-    </view>
-    <view class="df" wx:else>
-        <button type="primary" class="activity-details_btn mb-50" bindtap="cancelRelease">取消修改</button>
-        <button type="primary" class="activity-details_btn mb-50" bindtap="immediatelyModify">立即修改</button>
-    </view>
-</view>
 </scroll-view>
