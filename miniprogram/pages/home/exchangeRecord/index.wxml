@@ -1,15 +1,17 @@
 <!--pages/home/exchangeRecord/index.wxml-->
 <wxs module="fun" src="../../../filter/index.wxs"></wxs>
 <view class="record-page">
+    <loading isShow="{{shhow?'block':'none'}}"></loading>
     <view class="wrap">
         <view wx:for="{{prizeList}}" wx:key="index" class="record mt-40">
-            <view class="title flex aline-center">
+            <view class="title flex aline-center" bindtap="toPrizeDetail" data-id="{{item._id}}">
                 <image src="{{item.imageUrl}}" mode="" />
                 <view>
                     {{item.title}}
                 </view>
             </view>
             <view class="desc flex-between">
+            
                 <view class="date">
                     {{ fun.getDate(item.date)}}
                 </view>

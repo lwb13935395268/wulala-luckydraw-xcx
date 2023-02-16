@@ -1,7 +1,7 @@
 /* pages/home/prizeDetail/index.wxss */
 .content {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #a34a66;
 }
 
@@ -106,20 +106,17 @@
 }
 
 .event-details_bottom {
-    margin-top: 30rpx;
-    margin-left: 20rpx;
 }
 
 .middle-font_middle {
     font-size: 32rpx;
-    letter-spacing: 4rpx;
     color: black;
 }
 
 .event-details_bottom .middle-font_small {
     text-align: left;
     font-size: 28rpx;
-    margin-top: 30rpx;
+    margin: 30rpx 0;
 }
 
 .bottom-end {
@@ -132,7 +129,7 @@
 }
 
 .end {
-    margin-top: 30rpx;
+    margin: 30rpx 0;
     display: flex;
     align-items: center;
     justify-content: center;

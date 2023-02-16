@@ -102,15 +102,21 @@ Page({
                                     userInfo:res2.data
                                 })
                             }
-                            wx.hideLoading()
                             await this.getPrizeDetail();
                             await this.getUserIntegral()
                             
                             getApp().globalData.getHomeFlag = true;
                             getApp().globalData.getMineFlag = true;
+                            wx.hideLoading()
                             wx.showToast({
                                 title: '兑换成功',
+                                mask:true
                             });
+                            setTimeout(()=>{
+                                wx.navigateTo({
+                                  url: '../prizeDetail/index?prizeId='+res.data._id,
+                                })
+                            },500)
                         } else {
                             wx.hideLoading()
                             wx.showToast({

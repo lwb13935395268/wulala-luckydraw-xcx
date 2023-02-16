@@ -5,16 +5,38 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        prizeInfo: {},
+        show: true
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        console.log(options);
+        this.getprizeInfo(options.prizeId);
     },
-
+    async getprizeInfo(prizeId) {
+        let {
+            getMinePrizeDetail
+        } = getApp();
+        let res = await getMinePrizeDetail(prizeId);
+        if (res.status == 200) {
+            this.setData({
+                prizeInfo: {
+                    title: res.data[0].title,
+                    address: res.data[0].address,
+                    exchangeCode: res.data[0].exchangeCode,
+                    imageUrl: res.data[0].imageUrl,
+                    start: new Date(res.data[0].startDate).toLocaleDateString(),
+                    endDate: new Date(res.data[0].endDate).toLocaleDateString()
+                }
+            })
+        }
+        this.setData({
+            show: false
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

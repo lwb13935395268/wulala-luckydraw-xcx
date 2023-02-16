@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
     let result = await db.collection('prizeRecord').where({
         _id:event.prizeId,
     }).get();
-    
+    console.log(event.prizeId);
     let res = {
         status:0,
         msg:"查询错误",
