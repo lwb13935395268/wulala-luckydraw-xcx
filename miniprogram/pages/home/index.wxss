@@ -74,7 +74,7 @@
 .shops{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28rpx;
+    /* gap: 28rpx; */
 }
 .shops .item{
     overflow: hidden;

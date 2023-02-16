@@ -46,19 +46,18 @@ exports.main = async (event, context) => {
                 imageUrl: event.imageUrl,
                 openId: OPENID,
                 endDate: Date.parse(endTime),
-                start: Date.parse(todayTime),
+                startDate: Date.parse(todayTime),
                 address: event.address, //地址
                 exchangeCode: code, //兑换码
             }
         });
-        console.log(result);
         res.status = 200;
         res.msg = "兑奖记录添加成功";
+        res.data=result;
         console.log(res);
         return res
     } catch {
         console.log('catch');
-        console.log(res);
         return res
     }
 }

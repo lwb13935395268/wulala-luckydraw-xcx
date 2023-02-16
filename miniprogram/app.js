@@ -26,6 +26,22 @@ App({
             mineLogin:false//MINE页面
         };
     },
+    //获取奖品详情
+    getMinePrizeDetail(prizeId){
+        console.log(prizeId);
+        console.log(prizeId);
+        console.log(prizeId);
+        console.log(prizeId);
+        return wx.cloud.callFunction({
+            name: 'transaction',
+            data: {
+                type: 'query',
+                prizeId
+            }
+        }).then(res => {
+            return res.result
+        })
+    },
     //获取头像列表
     getAvatarList (){
         return wx.cloud.callFunction({
