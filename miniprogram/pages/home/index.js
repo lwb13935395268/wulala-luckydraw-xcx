@@ -1,27 +1,41 @@
 // pages/home/index.js
 Page({
     async getPrizeList() {
+        this.setData({
+            prizeLoad: true
+        })
         let {
             getPrizeList
         } = getApp();
         try {
             let res = await getPrizeList();
+            console.log(res);
+            let perizeListArr = res.data.sort((m, n) => {
+                return n.remainderNum - m.remainderNum
+            })
+            console.log(perizeListArr);
             this.setData({
-                prizeList: res.data,
-                hotPrizeList: res.data.filter(e => {
+                prizeList: perizeListArr,
+                hotPrizeList: perizeListArr.filter(e => {
                     return e.prizeType == 1
                 }),
-                disPrizeList: res.data.filter(e => {
+                disPrizeList: perizeListArr.filter(e => {
                     return e.prizeType == 2
                 }),
-                burstPrizeList: res.data.filter(e => {
+                burstPrizeList: perizeListArr.filter(e => {
                     return e.prizeType == 3
                 })
             });
+            this.setData({
+                prizeLoad: false
+            })
         } catch {
             wx.showToast({
                 icon: 'error',
                 title: '获取失败',
+            })
+            this.setData({
+                prizeLoad: false
             })
         }
     },
@@ -66,25 +80,33 @@ Page({
         })
     },
     async getUserInfo() {
-        //登录 关闭
-        getApp().globalData.loginFlag = false;
-        getApp().globalData.getHomeFlag = false;
-        let {
-            getUserInfo
-        } = getApp();
-        let userInfoRes = await getUserInfo();
-        console.log(userInfoRes);
-        if (userInfoRes.status == 200 && !Array.isArray(userInfoRes.data)) {
+        this.setData({
+            infoLoad: true
+        })
+        setTimeout(async () => {
+            //登录 关闭
+            getApp().globalData.loginFlag = false;
+            getApp().globalData.getHomeFlag = false;
+            let {
+                getUserInfo
+            } = getApp();
+            let userInfoRes = await getUserInfo();
+            console.log(userInfoRes);
+            if (userInfoRes.status == 200 && !Array.isArray(userInfoRes.data)) {
+                this.setData({
+                    loginStatus: true,
+                    userInfo: userInfoRes.data
+                })
+                getApp().globalData.loginStatus = true;
+                getApp().globalData.userInfo = userInfoRes.data;
+                getApp().globalData.homeLogin = true;
+            } else {
+                console.log('查无此人');
+            }
             this.setData({
-                loginStatus: true,
-                userInfo: userInfoRes.data
+                infoLoad: false
             })
-            getApp().globalData.loginStatus = true;
-            getApp().globalData.userInfo = userInfoRes.data;
-            getApp().globalData.homeLogin = true;
-        }else{
-            console.log('查无此人');
-        }
+        })
     },
     async login() {
         let {
@@ -108,12 +130,17 @@ Page({
             })
             getApp().globalData.loginStatus = true;
             getApp().globalData.userInfo = addResult.data;
+            getApp().globalData.homeLogin = true;
         } else {
             wx.showToast({
                 icon: 'error',
                 title: '授权失败',
             })
         }
+    },
+    //图片的加载
+    imgLoad(){
+        console.log('加载');
     },
     /**
      * 页面的初始数据
@@ -127,7 +154,9 @@ Page({
         loginStatus: false,
         prizeList: [],
         isShowList: false,
-        isShowLogin: false
+        isShowLogin: false,
+        prizeLoad: true,
+        infoLoad: true
     },
     /**
      * 生命周期函数--监听页面加载
@@ -157,13 +186,13 @@ Page({
             mineLogin
         } = getApp().globalData;
         this.setData({
-            loginStatus:loginStatus,
-            userInfo:userInfo
+            loginStatus: loginStatus,
+            userInfo: userInfo
         })
-        if (!homeLogin&&mineLogin) {
+        if (!homeLogin && mineLogin) {
             await this.getUserInfo()
             console.log(2);
-        }else if (getHomeFlag) {
+        } else if (getHomeFlag) {
             await this.getUserInfo()
         }
         await this.getPrizeList();

@@ -2,36 +2,49 @@
 <view class="content">
     <loading isShow="{{show?'block':'none'}}"></loading>
     <view class="event-details">
-        <view class="event-details_top">
+        <view class="event-details_top mt-20">
             <view class="collection-box">
                 <image src="../../../images/icon-collection.png" mode="" class="icon-collection icon" />
-                <text class="collection-font">收藏兑奖券</text>
+                <text class="collection-font ml-10">收藏兑奖券</text>
             </view>
             <image src="../../../images/icon-wrong.png" mode="" class="icon-wrong icon" />
         </view>
         <view class="event-details_middle">
             <view class="middle-font_big">{{prizeInfo.title}}</view>
-            <view class="middle-font_small">
+            <view class="middle-font_small text-center mt-10">
                 兑换码：{{prizeInfo.exchangeCode}}
             </view>
             <view class="commodity-border">
                 <image src="{{prizeInfo.imageUrl}}" mode="" class="icon-commodity" />
             </view>
-            <view class="border"></view>
+        </view>
+        <view class="border">
             <view class="left-round"></view>
             <view class="right-round"></view>
         </view>
         <view class="event-details_bottom">
             <view class="middle-font_middle">兑奖期限：</view>
-            <view class="middle-font_small">
-                {{prizeInfo.start}}至{{prizeInfo.endDate}} 8:00 - 16:00
+            <view class="middle-font_small mt-20">
+                {{prizeInfo.startDate}}<text class="py-10">至</text>{{prizeInfo.endDate}} <text class="ml-10">每日 8:00 - 16:00</text>
             </view>
-            <view class="border"></view>
-            <view class="bottom-end">
-                <view class="middle-font_middle">兑换地址</view>
-                <view class="middle-font_small">
-                    {{prizeInfo.address}}
-                </view>
+        </view>
+        <view class="border">
+        </view>
+        <view class="event-details_bottom">
+            <view class="middle-font_middle">兑换地址</view>
+            <view class="middle-font_small mt-20">
+                    {{prizeInfo.type==0?'虚拟奖品将在15天以内充值到您的账户':prizeInfo.address}}
+            </view>
+        </view>
+        <view class="border">
+        </view>
+        <view class="event-details_bottom">
+            <view class="middle-font_middle">联系方式</view>
+            <view class="middle-font_small mt-20">
+                    QQ：1174869258
+            </view>
+            <view class="middle-font_small mt-20">
+                    电话：15263524178
             </view>
         </view>
     </view>

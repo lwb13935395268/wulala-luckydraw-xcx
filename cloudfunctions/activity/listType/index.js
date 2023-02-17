@@ -8,28 +8,29 @@ const db = cloud.database();
 
 // 创建集合云函数入口函数
 exports.main = async (event, context) => {
-    let queryMyActivityList
+    let queryMyActivityList;
+    let { pageSize = 10, pageNum = 1 } = event;
     switch (event.listType) {
         case 0:
             queryMyActivityList = await db.collection('activity').aggregate().sort({
                 startDate:1
-            }).end();
+            }).skip(pageSize*(pageNum - 1)).limit(pageSize).end();
             queryMyActivityList.data = queryMyActivityList.list;
             break;
         case 1:
             queryMyActivityList = await db.collection('activity').where({
                 type:1
-            }).get();
+            }).skip(pageSize*(pageNum - 1)).limit(pageSize).get();
             break;
         case 2:
             queryMyActivityList = await db.collection('activity').where({
                 activityType:1
-            }).get();
+            }).skip(pageSize*(pageNum - 1)).limit(pageSize).get();
             break;
         case 3:
             queryMyActivityList = await db.collection('activity').where({
                 activityType:2
-            }).get();
+            }).skip(pageSize*(pageNum - 1)).limit(pageSize).get();
             break;
         default:
             break;

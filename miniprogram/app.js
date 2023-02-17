@@ -199,9 +199,6 @@ App({
         })
     },
     // 下拉刷新
-    onPullDownRefresh:function(){
-        this.onRefresh();
-      },
     onRefresh:function(){
         //导航条加载动画
         wx.showNavigationBarLoading();

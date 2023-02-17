@@ -49,6 +49,7 @@ exports.main = async (event, context) => {
                 startDate: Date.parse(todayTime),
                 address: event.address, //地址
                 exchangeCode: code, //兑换码
+                type:event.type
             }
         });
         res.status = 200;
