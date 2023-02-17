@@ -34,13 +34,11 @@ exports.main = async (event, context) => {
             }
             break;
         case 1:
-            console.log('已参加');
-            res.status = 0;
+            res.status = 1;
             res.msg="已参加过此活动";
             break;
         default:
-            console.log('已参加');
-            res.status = 0;
+            res.status = 1;
             res.msg="已参加过此活动";
             break;
     }
