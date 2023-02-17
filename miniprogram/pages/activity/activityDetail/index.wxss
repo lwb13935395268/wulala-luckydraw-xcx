@@ -115,6 +115,7 @@
     width: 250rpx;
     flex-direction: column;
     justify-content: space-between;
+    margin: 0 -20rpx;
 }
 
 .shopdetail text {

@@ -1,6 +1,5 @@
 // pages/activityDetail/index.js
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -9,7 +8,6 @@ Page({
         scrollbar: false,
         enhanced: true,
         catchtouchmove: true,
-        activityDetail:'',
         startDate:'',
         endDate:'',
         lists:'',
@@ -19,50 +17,8 @@ Page({
         rule:'',
         str:'',
         timer:null,
+        flag:true
     },
-    //参加活动按钮加节流
-    hhh:function(){
-        this.throttle(this.helps)();
-    },
-    //节流
-    throttle(fn) {
-        let flag = true;
-        return function () {
-            if (!flag) return;
-            flag = false;
-            setTimeout(() => {
-                fn();
-                flag = true;
-            }, 1000)
-        }
-    },
-    //参加活动
-    helps(){
-        console.log('222222');
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{      
-                type:'participateActivity',
-                activityId: this.data.activityId
-            },
-            success(res){
-                if(res.result.status == 0){
-                    wx.showToast({
-                        title: '已参加过活动',
-                        icon: 'error',
-                        // duration: 1500
-                      })
-                } else {
-                    wx.showToast({
-                        title: '已参加',
-                        icon: 'success',
-                        // duration: 1500
-                      })
-                }
-            }
-        })
-    },
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -75,16 +31,12 @@ Page({
       let res= await wx.cloud.callFunction({
             name:'activity',
             data:{
-                type:'queryMyActivityList',
-                wholeActivity : true
+                type:'queryActivity',
+                activityId: _this.data.activityId,
             }
         })
         res.result.data.forEach(el => {
-            
-            if(_this.data.activityId == el._id){
                 let maxObj;
-                let arr = [];
-                arr.push(el);
                 let strRule = el.rule.replace(/\s/g,'\n');
                 _this.setData({
                     str:strRule,
@@ -102,7 +54,6 @@ Page({
                 })[0];
                 let barNum = maxObj.conditionsMet;
                 _this.setData({
-                    activityDetail: arr,
                     startDate: strs,
                     endDate: strrs,
                     lists: el.prizeNums,
@@ -112,7 +63,6 @@ Page({
                     startDateAll:startDateAll,
                     endDateAll: endDateAll
                 })
-            }
         });
         let result=await wx.cloud.callFunction({
             name:'activity',
@@ -121,7 +71,6 @@ Page({
                 activityId:_this.data.activityId
             }
         })
-        
         let total = result.result.data.total;
         let people = _this.data.headcount;
         let bar = total / people * 100;
@@ -132,35 +81,54 @@ Page({
             withShareTicket: true,
             menus:['shareAppMessage','shareTimeline']
         })
-
         this.singleCountDown(); //页面加载时就启动定时器
     },
-    help(){
-        console.log('22222');
+    //参加活动
+    helps(){
         wx.cloud.callFunction({
             name:'activity',
-            data:{
+            data:{      
                 type:'participateActivity',
                 activityId: this.data.activityId
             },
             success(res){
+                console.log(res);
                 if(res.result.status == 0){
                     wx.showToast({
-                        title: '活动已参加',
+                        title: '已参加过活动',
                         icon: 'error',
-                        duration: 1500
                       })
                 } else {
                     wx.showToast({
-                        title: '参加成功',
+                        title: '已参加',
                         icon: 'success',
-                        duration: 1500
                       })
                 }
             }
         })
     },
-    //关闭规则弹层的模态框  chatGPT
+    //参加活动按钮加节流
+    hhh:function(){
+        this.throttle(this.helps)();
+    },
+    //节流
+    throttle(fn) {
+        let _this = this;
+        return function () {
+            if (!_this.data.flag) return;
+            _this.setData({
+                flag: false
+            })
+            fn();
+            let timer = setTimeout(()=>{
+                _this.setData({
+                    flag: true
+                })
+                clearTimeout(timer)
+            },1000)
+        }
+    },
+    //关闭规则弹层的模态框
     setModal() {
         this.setData({
             modalName: !this.data.modalName
@@ -205,8 +173,9 @@ Page({
             txtTime: obj,
         })
     },
+    //把服务端传过来的时间戳转为正常日期格式
     timestampToTime:function(timestamp) {
-        let date = new Date(Number(timestamp));//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        let date = new Date(Number(timestamp));
         let Y = date.getFullYear() + "-";
         let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
         let D = date.getDate() + ' ';
@@ -215,22 +184,19 @@ Page({
         let s = date.getSeconds();
         return Y+M+D+h+m+s;
     },
-    setModal() {
-        this.setData({
-            modalName: !this.data.modalName
-        })
-    },
+    //关闭规则弹层的模态框
     switch () {
         this.setData({
             catchtouchmove: !this.data.catchtouchmove
         })
     },
-
+    //跳转主页
     nextHome:function () {
         wx.switchTab({
           url: '/pages/home/index',
         })
       },
+      //跳转奖品的详情页面
       skip: function(rows){
           wx.navigateTo({
             url: `/pages/activity/goodsDetail/index`,
