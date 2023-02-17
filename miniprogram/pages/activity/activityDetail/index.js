@@ -20,35 +20,11 @@ Page({
         str:'',
         timer:null,
     },
-    helps(){
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{      
-                type:'participateActivity',
-                activityId: this.data._id
-            },
-            success(res){
-                if(res.result.status == 0){
-                    wx.showToast({
-                        title: '已参加过活动',
-                        icon: 'error',
-                        duration: 1500
-                      })
-                } else {
-                    wx.showToast({
-                        title: '已参加',
-                        icon: 'success',
-                        duration: 1500
-                      })
-                }
-            }
-        })
-        
-    },
-
+    //参加活动按钮加节流
     hhh:function(){
         this.throttle(this.helps)();
     },
+    //节流
     throttle(fn) {
         let flag = true;
         return function () {
@@ -60,14 +36,30 @@ Page({
             }, 1000)
         }
     },
-    setModal() {
-        this.setData({
-            modalName: !this.data.modalName
-        })
-    },
-    switch () {
-        this.setData({
-            catchtouchmove: !this.data.catchtouchmove
+    //参加活动
+    helps(){
+        console.log('222222');
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{      
+                type:'participateActivity',
+                activityId: this.data.activityId
+            },
+            success(res){
+                if(res.result.status == 0){
+                    wx.showToast({
+                        title: '已参加过活动',
+                        icon: 'error',
+                        // duration: 1500
+                      })
+                } else {
+                    wx.showToast({
+                        title: '已参加',
+                        icon: 'success',
+                        // duration: 1500
+                      })
+                }
+            }
         })
     },
 
@@ -143,6 +135,37 @@ Page({
 
         this.singleCountDown(); //页面加载时就启动定时器
     },
+    help(){
+        console.log('22222');
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'participateActivity',
+                activityId: this.data.activityId
+            },
+            success(res){
+                if(res.result.status == 0){
+                    wx.showToast({
+                        title: '活动已参加',
+                        icon: 'error',
+                        duration: 1500
+                      })
+                } else {
+                    wx.showToast({
+                        title: '参加成功',
+                        icon: 'success',
+                        duration: 1500
+                      })
+                }
+            }
+        })
+    },
+    //关闭规则弹层的模态框  chatGPT
+    setModal() {
+        this.setData({
+            modalName: !this.data.modalName
+        })
+    },
     //时间显示小于10的格式化函数
     timeFormat(param) {
         return param < 10 ? '0' + param : param;
@@ -191,30 +214,6 @@ Page({
         let m = date.getMinutes() + ':';
         let s = date.getSeconds();
         return Y+M+D+h+m+s;
-    },
-    help(){
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'participateActivity',
-                activityId: this.data.activityId
-            },
-            success(res){
-                if(res.result.status == 0){
-                    wx.showToast({
-                        title: '活动已参加',
-                        icon: 'error',
-                        duration: 1500
-                      })
-                } else {
-                    wx.showToast({
-                        title: '参加成功',
-                        icon: 'success',
-                        duration: 1500
-                      })
-                }
-            }
-        })
     },
     setModal() {
         this.setData({
