@@ -14,8 +14,11 @@
 .content{
     width: 400rpx;
     height: 400rpx;
-    margin: 30rpx auto;
-    position: relative;
+    margin: 0 auto;
+    position: absolute; 
+    left: 50%; 
+    top:30%; 
+    transform: translate(-50%,-30%);
 }
 .content .text{
     color: rgb(231, 116, 93);

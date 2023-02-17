@@ -8,13 +8,12 @@ const db = cloud.database();
 
 // 创建集合云函数入口函数
 exports.main = async (event, context) => {
+    let { pageSize = 10, pageNum = 1 } = event
     const wxContext = cloud.getWXContext();
     let queryMyActivityList = await db.collection('activity').where({
         OPENID:wxContext.OPENID,
         activityType:event.activityType
-    }).get();
-       
-    console.log(queryMyActivityList);
+    }).skip(pageSize*(pageNum - 1)).limit(pageSize).get();
     let res = {
         status:0,
         msg:"查询失败,请重新在试",
