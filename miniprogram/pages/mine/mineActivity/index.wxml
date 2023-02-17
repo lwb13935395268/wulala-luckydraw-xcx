@@ -1,19 +1,19 @@
 <!--pages/mine/mineActivity/index.wxml-->
-<tab titleList="{{titleList}}" bind:myevent="getMineActivitys">
-    <view wx:if="{{activityList.length}}" slot='正在进行' class="wrap gap-tb-20">
-        <activity bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}" wx:for="{{activityList}}" wx:key="_id" status=""></activity>
-    </view>
-    <view wx:else  slot='正在进行'>
-        <view class="void-tip">
+<tab showLoading="{{show}}" titleList="{{titleList}}" bind:myevent="getMineActivitys">
+    <view slot='正在进行' class="">
+        <view wx:if="{{activityList.length}}" class="wrap gap-tb-20">
+        <activity class="" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}" wx:for="{{activityList}}" wx:key="_id" status=""></activity>
+        </view>
+        <view wx:else  class="void-tip">
             暂无活动 , 去参加一个吧
         </view>
     </view>
-    <view wx:if="{{overActivityList.length}}" slot='已结束' class="wrap gap-tb-20">
-        <activity bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}" wx:for="{{overActivityList}}" wx:key="_id" status=""></activity>
-    </view>
-    <view wx:else slot='已结束'>
-        <view class="void-tip">
-            暂无活动
+    <view slot='已结束' class="">
+        <view wx:if="{{overActivityList.length}}" class="wrap gap-tb-20">
+            <activity bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}" wx:for="{{overActivityList}}" wx:key="_id" status=""></activity>
+        </view>
+        <view wx:else  class="void-tip">
+            暂无活动 , 去参加一个吧
         </view>
     </view>
 </tab>

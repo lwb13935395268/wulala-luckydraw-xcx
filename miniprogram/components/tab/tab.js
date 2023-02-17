@@ -17,6 +17,10 @@ Component({
         },
         tabFun:{
             type:Function
+        },
+        showLoading:{
+            type:Boolean,
+            value:false
         }
     },
     lifetimes: {

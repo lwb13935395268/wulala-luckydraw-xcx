@@ -78,7 +78,8 @@ App({
         })
     },
     //获取用户信息接口
-    getUserInfo() {
+    async getUserInfo() {
+        await this.getOpenid()
         return wx.cloud.callFunction({
             name: 'user',
             data: {
@@ -87,19 +88,6 @@ App({
             }
         }).then(res => {
             return res.result
-        })
-    },
-    //添加新用户接口
-    addUser() {
-        return wx.cloud.callFunction({
-            name: 'user',
-            data: {
-                type: 'add',
-                openId: this.globalData.openId,
-                data: this.globalData.userInfo
-            }
-        }).then(res => {
-            return res
         })
     },
     //获取奖品列表接口

@@ -6,6 +6,7 @@
             <hr class="{{index == currentIndex ? 'lineBox' : 'notLineBox'}}" />
         </view>
     </view>
+    <loading isShow="{{showLoading?'block':'none'}}"></loading>
     <swiper class="swiperBox {{fixedHead?'scroll':''}}" bindchange='pagechange' current='{{currentIndex}}'>
         <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox' data-params="{{item}}">
             <scroll-view scroll-y="{{scroll}}" style="height: 100%;">
