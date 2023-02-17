@@ -1,6 +1,6 @@
 // app.js
 App({
-    async onLaunch() {
+    onLaunch: function () {
         if (!wx.cloud) {
             console.error('请使用 2.2.3 或以上的基础库以使用云能力');
         } else {
@@ -16,16 +16,15 @@ App({
         this.globalData = {
             userId: '',
             userInfo: {},
-            loginStatus: false, //登录状态
+            loginStatus: false,//登录状态
             callLogin: false,
-            loginFlag: true, //是否登录
-            getInfoFlag: false, //是否获取信息
-            getMineFlag: false, //是否获取wode信息
-            getHomeFlag: false, //是否获取home信息
-            homeLogin: false, //HOME页面
-            mineLogin: false //MINE页面
+            loginFlag:true,//是否登录
+            getInfoFlag:false,//是否获取信息
+            getMineFlag:false,//是否获取wode信息
+            getHomeFlag:false,//是否获取home信息
+            homeLogin:false,//HOME页面
+            mineLogin:false//MINE页面
         };
-        console.log(1);
     },
     //获取用户openId
     async getOpenid() {
@@ -40,7 +39,11 @@ App({
         })
     },
     //获取奖品详情
-    getMinePrizeDetail(prizeId) {
+    getMinePrizeDetail(prizeId){
+        console.log(prizeId);
+        console.log(prizeId);
+        console.log(prizeId);
+        console.log(prizeId);
         return wx.cloud.callFunction({
             name: 'transaction',
             data: {
@@ -52,7 +55,7 @@ App({
         })
     },
     //获取头像列表
-    getAvatarList() {
+    getAvatarList (){
         return wx.cloud.callFunction({
             name: 'user',
             data: {
@@ -75,13 +78,12 @@ App({
         })
     },
     //获取用户信息接口
-    async getUserInfo() {
-        let openId= await this.getOpenid();
+    getUserInfo() {
         return wx.cloud.callFunction({
             name: 'user',
             data: {
                 type: 'detail',
-                openId
+                openId: this.globalData.openId
             }
         }).then(res => {
             return res.result
@@ -189,7 +191,7 @@ App({
         })
     },
     //新增用户
-    addUser() {
+    addUser(){
         return wx.cloud.callFunction({
             name: 'user',
             data: {
@@ -211,16 +213,13 @@ App({
         })
     },
     // 下拉刷新
-    onPullDownRefresh: function () {
-        this.onRefresh();
-    },
-    onRefresh: function () {
+    onRefresh:function(){
         //导航条加载动画
         wx.showNavigationBarLoading();
         setTimeout(function () {
-            wx.hideNavigationBarLoading();
-            //停止下拉刷新
-            wx.stopPullDownRefresh();
+          wx.hideNavigationBarLoading();
+          //停止下拉刷新
+          wx.stopPullDownRefresh();
         }, 500);
     },
 });

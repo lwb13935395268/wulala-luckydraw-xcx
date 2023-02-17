@@ -1,5 +1,5 @@
 <!--pages/activityDetail/index.wxml-->
-<view class="wraps" wx:for="{{activityDetail}}" wx:key="index">
+<view class="wraps">
 
     <view class="modal" wx:if="{{modalName}}" catchtouchmove="{{catchtouchmove}}">
           <view class="box">

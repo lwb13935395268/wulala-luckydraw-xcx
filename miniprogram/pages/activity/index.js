@@ -26,6 +26,7 @@ Page({
                 listType:e.detail == undefined ? e : e.detail,
             },
             success:(res)=>{
+                console.log(res);
                 this.setData({
                     activityList:res.result.data.data,
                     isShow:'none',
@@ -85,10 +86,9 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
-        this.setData({
-            isShow:'block'
-        });
-        this.onLoad();
+        // this.onMyEvent(0);
+        // this.onPullDownRefresh();
+        getApp().onRefresh();
     },
 
     /**
