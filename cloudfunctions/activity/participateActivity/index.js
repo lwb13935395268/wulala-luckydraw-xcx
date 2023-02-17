@@ -47,7 +47,7 @@ exports.main = async (event, context) => {
         res.status = 0;
         res.msg="activityId不能为空";
     }else if (isParticipate.total == 1) {
-        res.status = 0;
+        res.status = 1;
         res.msg="已参加过此活动";
     }
     return res;

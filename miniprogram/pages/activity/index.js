@@ -26,6 +26,7 @@ Page({
                 listType:e.detail == undefined ? e : e.detail,
             },
             success:(res)=>{
+                console.log(res);
                 this.setData({
                     activityList:res.result.data.data,
                     isShow:'none',
