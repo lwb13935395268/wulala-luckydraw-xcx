@@ -247,9 +247,23 @@
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/home/prizeDetail/index",
-                    "query": "prizeId=987a453763ed8b75008236721a559bb5",
+                    "name": "我的创建活动",
+                    "pathName": "pages/mine/createActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "我的发布的活动",
+                    "pathName": "pages/mine/mineCreatedActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "发起活动",
+                    "pathName": "pages/mine/selectActivity/index",
+                    "query": "",
                     "launchMode": "default",
                     "scene": null
                 }

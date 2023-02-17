@@ -3,7 +3,7 @@
     <view class="integralo mt-20" bindtap="toCreateActivity">
         <view class="content">
             <view class="content-title">
-                集积分抽奖
+                助力抽奖
             </view>
             <view class="introduce">
                 适合商家，发起，维护新老用户
@@ -12,16 +12,6 @@
         <view class="img">
             <image class="icon-introduce" src="../../../images/icon-introduce.png" mode=""/>
             <image class="icon-entry" src="../../../images/icon-entry.png" mode=""/>
-        </view>
-    </view>
-    <view class="tips mt-20">
-        <view class="partake-luck_draw" bindtap="toParticipateIn">
-            <image class="participate-in" src="../../../images/icon-participate_in.png" mode=""/>
-            <view class="text">参与抽奖</view>
-        </view>
-        <view class="partake-luck_draw" bindtap="toAuthentication">
-            <image src="../../../images/icon-authentication.png" mode=""/>
-            <view class="text">商家认证</view>
         </view>
     </view>
 </view>

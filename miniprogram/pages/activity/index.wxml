@@ -3,7 +3,7 @@
     <tab titleList="{{['全部','推荐','进行中','已结束']}}" bind:myevent="onMyEvent">
         <view slot="推荐" class="wrap">
             <view class="gap-tb-20" wx:if="{{activityList != ''}}">
-                <activity  wx:for="{{activityList}}" wx:key="index" status="0" bind:loadImg="loadImg" data-id="{{item._id}}"  title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+                <activity  wx:for="{{activityList}}" wx:key="index" status="0" bindtap="toCommodityDetails" data-id="{{item._id}}" bind:loadImg="loadImg" data-id="{{item._id}}"  title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
             <view class="tips" wx:else>
                 暂无推荐活动哦亲
@@ -12,7 +12,7 @@
         </view>
         <view slot="全部" class="wrap">
             <view class="gap-tb-20" wx:if="{{activityList!=''}}">
-                <activity  wx:for="{{activityList}}" wx:key="index" status="0" bind:loadImg="loadImg" data-id="{{item._id}}"  title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+                <activity  wx:for="{{activityList}}" wx:key="index" status="0" bind:loadImg="loadImg" data-id="{{item._id}}" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
             <view class="tips" wx:else>
                 暂无最新活动哦亲
@@ -21,7 +21,7 @@
         </view>
         <view slot="进行中" class="wrap">
             <view class="gap-tb-20" wx:if="{{activityList != ''}}">
-                <activity  wx:for="{{activityList}}" wx:key="index" status="0" data-id="{{item._id}}" bind:loadImg="loadImg" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+                <activity  wx:for="{{activityList}}" wx:key="index" status="0" data-id="{{item._id}}" bind:loadImg="loadImg" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
             <view class="tips" wx:else>
                 暂无进行中活动哦亲
@@ -30,7 +30,7 @@
         </view>
         <view slot="已结束" class="wrap gap-tb-20">
             <view class="gap-tb-20" wx:if="{{activityList != ''}}">
-                <activity  wx:for="{{activityList}}" wx:key="index" status="2" data-id="{{item._id}}"  bind:loadImg="loadImg" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+                <activity  wx:for="{{activityList}}" wx:key="index" status="2" data-id="{{item._id}}"  bind:loadImg="loadImg" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
             <view class="tips" wx:else>
                 暂无已结束活动哦亲

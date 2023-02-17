@@ -12,31 +12,11 @@ Page({
           url: '/pages/mine/createActivity/index',
         })
     },
-    toParticipateIn:function(){
-        wx.switchTab({
-          url: '/pages/activity/index',
-        })
-    },
-    toAuthentication:function(){
-        wx.navigateTo({
-          url: '/pages/mine/uploading/index',
-        })
-    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        wx.setNavigationBarTitle({
-            title: '发起活动'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#eb524c',
-            animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
-            }
-        })
+        
     },
 
     /**
@@ -84,7 +64,7 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage() {
+    // onShareAppMessage() {
 
-    }
+    // }
 })

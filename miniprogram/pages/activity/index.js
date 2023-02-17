@@ -10,7 +10,6 @@ Page({
         isShow:'',//loading
     },
     toCommodityDetails:function(e){
-        // console.log(e.target.dataset.id);
         wx.navigateTo({
           url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
         })
@@ -24,11 +23,12 @@ Page({
             name:'activity',
             data:{
                 type:'listType',
-                listType:e.detail,
+                listType:e.detail == undefined ? e : e.detail,
             },
             success:(res)=>{
                 this.setData({
                     activityList:res.result.data.data,
+                    isShow:'none',
                 });
                 this.data.activityList.forEach((item,index)=>{
                     let startDate = "activityList["+index+"].startDate";
@@ -42,7 +42,6 @@ Page({
         })
     },
     loadImg:function(){
-        console.log(1);
         this.setData({
             isShow:'none',
         });
@@ -51,38 +50,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        wx.setNavigationBarTitle({
-            title: '活动中心'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#eb524c',
-            animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
-            }
-        })
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'listType',
-                listType:0,
-            },
-            success:(res)=>{
-                this.setData({
-                    activityList:res.result.data.data,
-                    isShow:'none'
-                });
-                this.data.activityList.forEach((item,index)=>{
-                    let startDate = "activityList["+index+"].startDate";
-                    let endDate = "activityList["+index+"].endDate";
-                    this.setData({
-                        [startDate]:new Date(item.startDate).toLocaleString().replace(/\//g,'-'),
-                        [endDate]:new Date(item.endDate).toLocaleString().replace(/\//g,'-')
-                    })
-                })
-            }
-        })
+        this.onMyEvent(0);
     },
 
     /**
