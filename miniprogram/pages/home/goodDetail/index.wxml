@@ -1,5 +1,6 @@
 <!--pages/home/goodDetail/index.wxml-->
 <view class="good-detail">
+    <loading isShow="{{show?'block':'none'}}"></loading>
     <view class="good-img">
         <swiper class='swiper-box' bindchange='pagechange' current='{{currentIndex}}'>
             <swiper-item wx:for="{{prizeInfo.imageArr}}" wx:key="index" class='swiper-item_box'>

@@ -26,6 +26,18 @@ App({
             mineLogin:false//MINE页面
         };
     },
+    //获取用户openId
+    async getOpenid() {
+        return wx.cloud.callFunction({
+            name: 'quickstartFunctions',
+            data: {
+                type: 'getOpenId',
+            }
+        }).then(res => {
+            this.globalData.openId=res.result.userInfo.openId
+            return res.result.userInfo.openId
+        })
+    },
     //获取奖品详情
     getMinePrizeDetail(prizeId){
         console.log(prizeId);
@@ -66,7 +78,8 @@ App({
         })
     },
     //获取用户信息接口
-    getUserInfo() {
+    async getUserInfo() {
+        await this.getOpenid()
         return wx.cloud.callFunction({
             name: 'user',
             data: {
@@ -75,19 +88,6 @@ App({
             }
         }).then(res => {
             return res.result
-        })
-    },
-    //添加新用户接口
-    addUser() {
-        return wx.cloud.callFunction({
-            name: 'user',
-            data: {
-                type: 'add',
-                openId: this.globalData.openId,
-                data: this.globalData.userInfo
-            }
-        }).then(res => {
-            return res
         })
     },
     //获取奖品列表接口
@@ -120,6 +120,7 @@ App({
             data: {
                 type: 'prizeExchange',
                 prizeId,
+                openId:this.globalData.openId
             }
         }).then(res => {
             return res.result
@@ -131,6 +132,7 @@ App({
             name: 'transaction',
             data: {
                 type: 'intergralRecord',
+                openId:this.globalData.openId
             }
         }).then(res => {
             return res.result
