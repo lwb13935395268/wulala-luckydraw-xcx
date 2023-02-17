@@ -93,15 +93,20 @@ Page({
             },
             success(res){
                 console.log(res);
-                if(res.result.status == 0){
+                if(res.result.status == 200){
                     wx.showToast({
-                        title: '已参加过活动',
+                        title: '参加成功',
+                        icon: 'success',
+                      })
+                } else if(res.result.status == 1){
+                    wx.showToast({
+                        title: '活动已参加',
                         icon: 'error',
                       })
-                } else {
+                } else if(res.result.status == 0){
                     wx.showToast({
-                        title: '已参加',
-                        icon: 'success',
+                        title: '参加失败',
+                        icon: 'error',
                       })
                 }
             }
