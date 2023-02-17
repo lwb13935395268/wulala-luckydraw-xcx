@@ -1,6 +1,11 @@
 {
     "usingComponents": {
         "tab":"/components/tab/tab",
-        "activity":"/components/activity/activity"
-    }
+        "activity":"/components/activity/activity",
+        "loading":"/components/loading/index"
+    },
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "活动中心",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#eb524c"
 }

@@ -65,7 +65,6 @@
 .prize-icon{
     display: block;
     width: 600rpx;
-    height: 450rpx;
 }
 .upload-img .content .name{
     font-size: 25rpx;
@@ -194,15 +193,17 @@
     top: -10rpx;
 }
 .prize-img{
-    width: 600rpx;
-    height: 300rpx;
     position: relative;
 }
-.prize-img image{
-    width: auto;
-    height: 100%;
-}
+
 .close image{
     width: 35rpx;
     height: 35rpx;
+}
+.upload-img_prize{
+    border: 1rpx dashed #ccc;
+    width: 600rpx;
+    margin: 0 auto;
+    margin-top: 30rpx;
+    position: relative;
 }

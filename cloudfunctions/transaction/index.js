@@ -7,6 +7,7 @@ const exchange = require('./prize/exchange/index')
 const list = require('./prize/list/index')
 const prizeChange = require('./prize/change/index')
 const prizeRecord = require('./prize/record/index')
+const query = require("./prize/query/index")
 cloud.init({
     env: cloud.DYNAMIC_CURRENT_ENV
 }) // 使用当前云环境
@@ -32,5 +33,7 @@ exports.main = async (event, context) => {
             return await prizeChange.main(event, context);
         case 'prizeRecord':
             return await prizeRecord.main(event, context);
+        case 'query':
+            return await query.main(event, context);
     }
 }

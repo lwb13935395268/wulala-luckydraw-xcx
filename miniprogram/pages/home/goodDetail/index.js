@@ -45,6 +45,7 @@ Page({
             })
             getApp().globalData.loginStatus = true;
             getApp().globalData.userInfo = addResult.data;
+            getApp().globalData.getInfoFlag = true;
         } else {
             wx.showToast({
                 icon: 'error',
@@ -96,14 +97,26 @@ Page({
                         if (res.status == 200) {
                             let res2 = await getUserInfo();
                             if (!Array.isArray(res2.data)) {
-                                app.globalData.userInfo = res2.data
+                                app.globalData.userInfo = res2.data;
+                                this.setData({
+                                    userInfo:res2.data
+                                })
                             }
+                            await this.getPrizeDetail();
+                            await this.getUserIntegral()
+                            
+                            getApp().globalData.getHomeFlag = true;
+                            getApp().globalData.getMineFlag = true;
                             wx.hideLoading()
-                            this.getPrizeDetail();
-                            this.getUserIntegral()
                             wx.showToast({
                                 title: '兑换成功',
+                                mask:true
                             });
+                            setTimeout(()=>{
+                                wx.navigateTo({
+                                  url: '../prizeDetail/index?prizeId='+res.data._id,
+                                })
+                            },500)
                         } else {
                             wx.hideLoading()
                             wx.showToast({

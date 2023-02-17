@@ -35,22 +35,24 @@ exports.main = async (event, context) => {
         });
         await db.collection('userInfo').doc(userData._id).update({
             data: {
-                integral: userData.integral-prizeData.price
+                integral: userData.integral - prizeData.price
             }
         });
-        console.log('兑换');
         await integralChange.main({
-            type:3,
+            type: 3,
             num: prizeData.price, //改变数量
-            balance: userData.integral-prizeData.price, //余额
-        },context);
-        await prizeChange.main({
-            title:prizeData.prizeName,
+            balance: userData.integral - prizeData.price, //余额
+        }, context);
+        let prizeRecordData = await prizeChange.main({
+            title: prizeData.prizeName,
             num: prizeData.price, //消耗积分
-            imageUrl:prizeData.imageUrl,
-        },context);
+            imageUrl: prizeData.imageUrl,
+            address: prizeData.address, //地址
+        }, context);
+        console.log(prizeRecordData);
         res.status = 200;
         res.msg = '兑换成功';
+        res.data = prizeRecordData.data;
     } else if (prizeData.remainderNum <= 0) {
         res.msg = '奖品已兑完'
     } else if (userData.integral < prizeData.price) {

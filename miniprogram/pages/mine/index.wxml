@@ -1,11 +1,12 @@
 <!--pages/mine/index.wxml-->
 <!-- <text>pages/mine/index.wxml</text> -->
 <view class="mine">
+<loading isShow="{{show?'block':'none'}}"></loading>
     <view class="nav wrap mt-40">
         <view class="header flex-between align-center">
-            <view class="userinfo flex" bindtap="{{userInfo?'navgator':'login'}}" data-path="mine/mineInfo/index">
-                <image class="avatar" src="{{userInfo?userInfo.avatarUrl:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-avatar.png?sign=48f44df8705eafcefb5d630d716402fe&t=1675215240'}}" mode="" />
-                <text class="ml-20" wx:if="{{userInfo}}">{{userInfo.nickName}}</text>
+            <view class="userinfo flex" bindtap="{{loginStatus?'navgator':'login'}}" data-path="mine/mineInfo/index">
+                <image class="avatar" src="{{userInfo?userInfo.avatarUrl:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/avatarImgs/img-avatar5.png?sign=f5fb850d019e80a37aad4933d9919a7b&t=1676465901'}}" mode="" />
+                <text class="ml-20" wx:if="{{loginStatus}}">{{userInfo.nickName}}</text>
                 <text class="ml-20" wx:else>授权登录</text>
             </view>
             <view class="num align-center" bindtap="navgator" data-path="home/integralRecords/index">

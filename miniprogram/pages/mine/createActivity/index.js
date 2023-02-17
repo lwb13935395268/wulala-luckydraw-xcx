@@ -12,7 +12,7 @@ Page({
         endTime: '18:00',//时间选择器
         endDate: '2016-00-01',
         isScroll:false,//解决input
-        imgFileId:'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/prize-banner.png?sign=ae6f5267357a4dfa2564895f3d62c7d0&t=1676359770',//上传图片的路径
+        imgFileId:'',//上传图片的路径
         activityTitle:'',//活动标题
         datas:{
             prizeName:'',//奖品名称
@@ -29,12 +29,19 @@ Page({
         activityId:'',//我的活动id
         basic:'1. 活动期间，用户可每天参与本活动领取积分，可领取积分，可累计兑换相应的商品 2. 满足从未关注过此公众号、未通过任何渠道参与本活动的用户视为新用户，其余属于老用户，也可通过邀请新用户进行关注获得积分奖励 3.老用户可以通过邀请新用户关注来获取邀请积分。 ',//规则
         rule:'',
+        isShow:'block',//显示loading
+        isShowModfiy:'block',
     },
     //banner加载完成
-    onload:function(e){
-        console.log(e);
+    onloads(e){
+        if (this.data.activityId != '') {
+            this.setData({
+                isShowModfiy:'none',
+            })
+        }
+        
     },
-    // 满足条件
+    // -
     reducwe:function(e){
         let i=e.currentTarget.dataset.index;
         let value = e.currentTarget.dataset.value-1;
@@ -47,6 +54,7 @@ Page({
             });
         }
     },
+    // +
     add:function(e){
         let i=e.currentTarget.dataset.index;
         let value = e.currentTarget.dataset.value + 1;
@@ -56,45 +64,28 @@ Page({
             });
     },
     //活动标题
-    bindFormSubmit: function(e) {
+    actviityTitle: function(e) {
         this.setData({
             activityTitle:e.detail.value,
         });
     },
     // 奖品名称
-    bindFormSubmitPrize:function(e){
+    prizeName:function(e){
         let i=e.currentTarget.dataset.index;
         let text = 'prizeNums['+i+'].prizeName';
         this.setData({
             [text]:e.detail.value           
         });
     },
-    bindKeyInput: function (e) {
-      this.setData({
-        inputStartValue: e.detail.value
-      })
-    },
-    // 时间选择
-    bindTimeChange: function(e) {//开始
-    //   console.log('picker发送选择改变，携带值为', e.detail.value)
-      this.setData({
-        startTime: e.detail.value
-      })
-    },
-    endTimeChange:function(e){
-        // console.log('picker发送选择改变，携带值为', e.detail.value)
-        this.setData({
-            endTime: e.detail.value
-        })
-    },
+
     // 日期选择器
-    bindDateChange: function(e) {//开始
+    startDate: function(e) {//开始
     //   console.log('picker发送选择改变，携带值为', e.detail.value)
       this.setData({
         startDate: e.detail.value
       })
     },
-    endDateChange:function(e){//结束
+    endDate:function(e){//结束
     //   console.log('picker发送选择改变，携带值为', e.detail.value)
       this.setData({
         endDate: e.detail.value
@@ -187,13 +178,11 @@ Page({
             })
 
             const filePath = res.tempFiles[0].tempFilePath;
-            // console.log(res.tempFiles[0].tempFilePath);
             var timestamp = (new Date()).valueOf();//新建日期对象并变成时间戳
             wx.cloud.uploadFile({
             cloudPath: "img/"+timestamp+".jpg", // 上传至云端的路径
             filePath: filePath, // 小程序临时文件路径
             success: res => {
-                // console.log('[上传文件] 成功：', res)
                 _this.setData({
                     imgFileId:res.fileID,
                 });
@@ -206,7 +195,6 @@ Page({
                 })
             },
             fail: e => {
-                // console.error('[上传文件] 失败：', e)
                 wx.showToast({
                     icon: 'none',
                     title: '上传失败',
@@ -306,12 +294,7 @@ Page({
     // 立即发布
     immediatelyRelease:function(){
         this.data.prizeNums.forEach((item,index) => {
-            if (this.data.imgFileId == '') {
-                wx.showToast({
-                    title: '请上传活动主图',
-                    icon:'none',
-                })
-            }else if (this.data.activityTitle == '') {
+            if (this.data.activityTitle == '') {
                 wx.showToast({
                     title: '请输入活动标题',
                     icon:'none',
@@ -357,7 +340,6 @@ Page({
                 })
             }
         })
-        // console.log(this.data.isActivity);
         switch (this.data.isActivity) {
             case false:
                 break;
@@ -367,7 +349,7 @@ Page({
                     data:{
                         type:'create',
                         activityInfo:{
-                            imgFileId:this.data.imgFileId,//banner
+                            imgFileId:this.data.imgFileId == ''?'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/prize-banner.png?sign=ae6f5267357a4dfa2564895f3d62c7d0&t=1676359770':this.data.imgFileId,//banner
                             activityTitle:this.data.activityTitle,//活动标题
                             startDate:this.data.startDate +' '+ this.data.startTime,//开始时间
                             endDate:this.data.endDate +' '+ this.data.endTime,//结束时间
@@ -434,7 +416,6 @@ Page({
                         activityId:_this.data.activityId,
                     },
                     success(res){
-                        console.log(res.result);
                         switch (res.result.status) {
                             case 200:
                                 wx.showToast({
@@ -455,8 +436,50 @@ Page({
                     }
                 });
               } else if (res.cancel) {
-                console.log('用户点击取消')
+                // console.log('用户点击取消')
               }
+            }
+        })
+    },
+    // 取消修改
+    cancelModify:function(){
+        wx.showModal({
+            title: '提示',
+            content: '要保存此模板吗?',
+            success: (res)=> {
+            if (res.confirm) {
+                wx.cloud.callFunction({
+                    name:'activity',
+                    data:{
+                        type:'activityTemplate',
+                        activityInfo:{
+                            imgFileId:this.data.imgFileId,//banner
+                            activityTitle:this.data.activityTitle,//活动标题
+                            startDate:this.data.startDate +' '+ this.data.startTime,//开始时间
+                            endDate:this.data.endDate +' '+ this.data.endTime,//结束时间
+                            signUpSet:this.data.signUpSet,//选中
+                            prizeNums:this.data.prizeNums,//奖品信息
+                            rule:this.data.basic + this.data.rule
+                        }
+                    },
+                    success:res=>{
+                        if (res.result.status==200) {
+                            wx.showToast({
+                                title: '修改成功',
+                                icon:'none',
+                            });
+                            wx.navigateBack({});
+                        }else{
+                            wx.showToast({
+                                title: '修改失败，请重新在试',
+                                icon:'none',
+                            });
+                        }
+                    }
+                })
+            } else if (res.cancel) {
+                wx.navigateBack({});//跳转到前一个页面
+            }
             }
         })
     },
@@ -466,8 +489,15 @@ Page({
     onLoad(options) {
         let _this = this;
         let datas=JSON.parse(JSON.stringify(this.data.datas));
+        if(options.id){
+            this.setData({
+            activityId:options.id
+            })
+        }
         this.setData({
-            prizeNums:[datas]
+            prizeNums:[datas],
+            isShowModfiy:'block',
+            isShow:'none'
         });
         
         let timestamp = Date.parse(new Date());
@@ -491,17 +521,6 @@ Page({
         this.setData({
             afterTime:afterTime,
             endDate:time,
-        });
-        wx.setNavigationBarTitle({
-            title: '创建活动'
-        });
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#eb524c',
-            animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
-            }
         });
         switch (options.id) { 
             case undefined:

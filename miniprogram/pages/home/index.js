@@ -4,9 +4,6 @@ Page({
         let {
             getPrizeList
         } = getApp();
-        wx.showLoading({
-            title: '加载中..',
-        })
         try {
             let res = await getPrizeList();
             this.setData({
@@ -21,12 +18,10 @@ Page({
                     return e.prizeType == 3
                 })
             });
-            wx.hideLoading();
         } catch {
-            wx.hideLoading();
             wx.showToast({
                 icon: 'error',
-                title: '获取奖品失败',
+                title: '获取失败',
             })
         }
     },
@@ -71,7 +66,9 @@ Page({
         })
     },
     async getUserInfo() {
-        getApp().globalData.getInfoFlag=false;
+        //登录 关闭
+        getApp().globalData.loginFlag = false;
+        getApp().globalData.getHomeFlag = false;
         let {
             getUserInfo
         } = getApp();
@@ -79,37 +76,38 @@ Page({
         console.log(userInfoRes);
         if (userInfoRes.status == 200 && !Array.isArray(userInfoRes.data)) {
             this.setData({
-                loginStatus:true,
-                userInfo:userInfoRes.data
+                loginStatus: true,
+                userInfo: userInfoRes.data
             })
             getApp().globalData.loginStatus = true;
             getApp().globalData.userInfo = userInfoRes.data;
-            console.log(this.data);
+            getApp().globalData.homeLogin = true;
+        }else{
+            console.log('查无此人');
         }
     },
-    async login(){
+    async login() {
         let {
             login,
             addUser
         } = getApp();
         await login('登录');
-        console.log('同意了');
         wx.showLoading({
-            title: '正在授权..',
+            title: '登录中..',
+            mask: true
         })
         let addResult = await addUser();
-        console.log(addResult);
         wx.hideLoading()
         if (addResult.status == 200) {
             wx.showToast({
-                title: '授权登录',
+                title: '登录成功',
             })
             this.setData({
-                userInfo:addResult.data,
-                loginStatus:true
+                userInfo: addResult.data,
+                loginStatus: true
             })
-            getApp().globalData.loginStatus=true;
-            getApp().globalData.userInfo=addResult.data;
+            getApp().globalData.loginStatus = true;
+            getApp().globalData.userInfo = addResult.data;
         } else {
             wx.showToast({
                 icon: 'error',
@@ -128,12 +126,14 @@ Page({
         scroll: true,
         loginStatus: false,
         prizeList: [],
+        isShowList: false,
+        isShowLogin: false
     },
     /**
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
-        this.getUserInfo();
+        this.getUserInfo(options.prizeId)
     },
 
     /**
@@ -144,11 +144,32 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow() {
-        this.getPrizeList();
-        // if(getApp().globalData.getInfoFlag){
-            this.getUserInfo();
-        // }
+    async onShow() {
+        this.setData({
+            show: true
+        })
+        let {
+            userInfo,
+            loginFlag,
+            getHomeFlag,
+            loginStatus,
+            homeLogin,
+            mineLogin
+        } = getApp().globalData;
+        this.setData({
+            loginStatus:loginStatus,
+            userInfo:userInfo
+        })
+        if (!homeLogin&&mineLogin) {
+            await this.getUserInfo()
+            console.log(2);
+        }else if (getHomeFlag) {
+            await this.getUserInfo()
+        }
+        await this.getPrizeList();
+        this.setData({
+            show: false
+        })
     },
 
     /**
@@ -176,20 +197,21 @@ Page({
         wx.showNavigationBarLoading()
         //loading 提示框
         wx.showLoading({
-            title: '刷新中...',
+            title: '刷新中..',
+            mask: true
         })
         try {
             let res = await this.getPrizeList();
-            wx.hideLoading();
-
         } catch {
-            wx.hideLoading();
+            wx.hideLoading()
+            this.data.isShowList = false;
+            this.data.isShowLogin = false;
             wx.showToast({
                 icon: 'error',
                 title: '刷新失败',
             })
-
         }
+        wx.hideLoading()
         wx.stopPullDownRefresh();
         wx.hideNavigationBarLoading();
     },

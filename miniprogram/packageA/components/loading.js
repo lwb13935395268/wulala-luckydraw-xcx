@@ -1,4 +1,4 @@
-// pages/mine/selectActivity/index.js
+// packageA/components/loading.js
 Page({
 
     /**
@@ -7,16 +7,12 @@ Page({
     data: {
 
     },
-    toCreateActivity:function(){
-        wx.navigateTo({
-          url: '/pages/mine/createActivity/index',
-        })
-    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        
+
     },
 
     /**
@@ -64,7 +60,7 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    // onShareAppMessage() {
+    onShareAppMessage() {
 
-    // }
+    }
 })

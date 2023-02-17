@@ -7,6 +7,11 @@ Page({
         this.setTitle()
         this.getPrizeRecord()
     },
+    toPrizeDetail(e){
+        wx.navigateTo({
+          url: '../prizeDetail/index?prizeId='+e.currentTarget.dataset.id,
+        })
+    },
     setTitle(){
         wx.setNavigationBarTitle({
             title: '兑换记录'

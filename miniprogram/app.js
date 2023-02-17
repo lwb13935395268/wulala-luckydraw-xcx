@@ -16,10 +16,31 @@ App({
         this.globalData = {
             userId: '',
             userInfo: {},
-            loginStatus: false,
+            loginStatus: false,//登录状态
             callLogin: false,
-            getInfoFlag:true
+            loginFlag:true,//是否登录
+            getInfoFlag:false,//是否获取信息
+            getMineFlag:false,//是否获取wode信息
+            getHomeFlag:false,//是否获取home信息
+            homeLogin:false,//HOME页面
+            mineLogin:false//MINE页面
         };
+    },
+    //获取奖品详情
+    getMinePrizeDetail(prizeId){
+        console.log(prizeId);
+        console.log(prizeId);
+        console.log(prizeId);
+        console.log(prizeId);
+        return wx.cloud.callFunction({
+            name: 'transaction',
+            data: {
+                type: 'query',
+                prizeId
+            }
+        }).then(res => {
+            return res.result
+        })
     },
     //获取头像列表
     getAvatarList (){
@@ -29,7 +50,6 @@ App({
                 type: 'getAvatar',
             }
         }).then(res => {
-            console.log(res);
             return res.result
         })
     },
@@ -47,7 +67,6 @@ App({
     },
     //获取用户信息接口
     getUserInfo() {
-        console.log('userinfo');
         return wx.cloud.callFunction({
             name: 'user',
             data: {
@@ -79,7 +98,6 @@ App({
                 type: 'prizeList'
             }
         }).then(res => {
-            // console.log(res);
             return res.result
         })
     },
@@ -115,7 +133,6 @@ App({
                 type: 'intergralRecord',
             }
         }).then(res => {
-            console.log(res);
             return res.result
         })
     },
@@ -138,7 +155,6 @@ App({
                 type: 'myParticipateActivity',
             }
         }).then(res => {
-            console.log(res);
             return res.result
         })
     },
@@ -151,7 +167,6 @@ App({
                 // wholeActivity: false
             }
         }).then(res => {
-            console.log(res);
             return res.result
         })
     },

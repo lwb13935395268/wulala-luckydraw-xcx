@@ -14,6 +14,7 @@ exports.main = async (event, context) => {
             queryMyActivityList = await db.collection('activity').aggregate().sort({
                 startDate:1
             }).end();
+            queryMyActivityList.data = queryMyActivityList.list;
             break;
         case 1:
             queryMyActivityList = await db.collection('activity').where({
@@ -21,13 +22,18 @@ exports.main = async (event, context) => {
             }).get();
             break;
         case 2:
+            queryMyActivityList = await db.collection('activity').where({
+                activityType:1
+            }).get();
             break;
         case 3:
+            queryMyActivityList = await db.collection('activity').where({
+                activityType:2
+            }).get();
             break;
         default:
             break;
     };
-    console.log(queryMyActivityList);
     let res = {
         status:0,
         msg:"查询失败,请重新在试",

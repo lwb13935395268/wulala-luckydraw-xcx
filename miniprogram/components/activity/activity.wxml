@@ -1,6 +1,6 @@
 <!--components/activity/activity.wxml-->
 <view class="activity {{(status==2)?'opct':''}}">
-    <image class="image" src="{{imageUrl}}" mode="" />
+    <image class="image" onload="loadImg" src="{{imageUrl}}" mode="" />
     <view class="activity-content flex-between align-center">
     <view class="content-left {{isSet?'width-70':'text-ellipsis'}}">
         <view class="activity-content_title">{{title}}</view>
@@ -8,7 +8,7 @@
     </view>
     <view wx:if="{{isSet}}" class="content-right">
     <view class="btn" bindtap="navgator">
-        修改
+        编辑活动
     </view>
     </view>
     </view>
