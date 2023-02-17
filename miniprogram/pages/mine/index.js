@@ -38,7 +38,6 @@ Page({
             getUserInfo
         } = getApp();
         let userInfoRes = await getUserInfo();
-        console.log(userInfoRes.data);
         if(!Array.isArray(userInfoRes.data)){
             this.setData({
                 userInfo:userInfoRes.data,
@@ -94,40 +93,13 @@ Page({
             })
             getApp().globalData.loginStatus=true;
             getApp().globalData.userInfo=addResult.data;
+            getApp().globalData.mineLogin=true;
         } else {
             wx.showToast({
                 icon: 'error',
                 title: '授权失败',
             })
         }
-        // wx.showLoading({
-        //     title: '登录中',
-        // })
-        // let app = getApp();
-        // app.globalData.callLogin = false;
-        // let {
-        //     getUserInfo,
-        // } = getApp();
-        // let res = await getUserInfo();
-        // if (res.status == 200) {
-        //     this.setData({
-        //         loginStatus: true,
-        //         userInfo: res.data
-        //     })
-        //     app.globalData.loginStatus = true;
-        //     app.globalData.userInfo = res.data;
-        //     this.getMineActivitys();
-        //     this.getMineCreatedActivity();
-        //     wx.hideLoading();
-        //     wx.showToast({
-        //         title: '登录成功',
-        //     })
-        // } else {
-        //     wx.showToast({
-        //         title: '登录失败',
-        //         icon: 'error'
-        //     })
-        // }
     },
     async getMineActivitys() {
         let {

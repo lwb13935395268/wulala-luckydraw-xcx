@@ -77,7 +77,10 @@
     border-bottom: 2rpx solid #f1f1f1;
     padding: 20rpx 0;
 }
-
+.content .bottom{
+    padding: 20rpx 0;
+    
+}
 .content .title {
     font-weight: normal;
     font-size: 32rpx;
@@ -89,8 +92,8 @@
 
 .content .text {
     font-size: 28rpx;
-    padding: 20rpx 0;
     line-height: 60rpx;
+    padding: 0 40rpx;
     /* color: #6c6c6c; */
 }
 

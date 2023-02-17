@@ -249,7 +249,7 @@
                 {
                     "name": "",
                     "pathName": "pages/home/prizeDetail/index",
-                    "query": "",
+                    "query": "prizeId=987a453763ed8b75008236721a559bb5",
                     "launchMode": "default",
                     "scene": null
                 }

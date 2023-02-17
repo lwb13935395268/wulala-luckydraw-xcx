@@ -112,6 +112,7 @@ Page({
         wx.hideLoading();
         if (updateInfoRes.status == 200) {
             getApp().globalData.getInfoFlag=true;
+            getApp().globalData.getMineFlag=true;
             wx.showToast({
                 title: '修改成功',
             })

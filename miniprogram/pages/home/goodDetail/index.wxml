@@ -33,7 +33,7 @@
                 </view>
             </view>
             <view class="bottom">
-                <view class="text wrap">
+                <view class="text">
                     {{prizeInfo.prizeDes}}
                 </view>
             </view>
@@ -47,8 +47,25 @@
                 </view>
             </view>
             <view class="bottom">
-                <view class="text wrap">
-                    {{prizeInfo.address||'商品地址'}}
+                <view class="text">
+                    {{prizeInfo.type==0?'虚拟商品兑换成功后将在10个月以内充值到您的账号':(prizeInfo.address||'商品地址')}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="good-desc mt-20">
+        <view class="content">
+            <view class="top">
+                <view class="title wrap">
+                    联系方式
+                </view>
+            </view>
+            <view class="bottom">
+                <view class="text">
+                    电话：15263524178
+                </view>
+                <view class="text">
+                    QQ：117486921458
                 </view>
             </view>
         </view>

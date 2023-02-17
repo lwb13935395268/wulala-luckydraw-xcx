@@ -34,6 +34,15 @@ page {
 /*
     正阳的公共样式
 */
+.py-10{
+    padding: 0 10rpx;
+}
+.ml-5{
+    margin-left: 5rpx;
+}
+.ml-10{
+    margin-left: 10rpx;
+}
 .align-end{
     display: flex;
     align-items: flex-end;

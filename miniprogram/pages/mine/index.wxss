@@ -18,9 +18,12 @@
 .header .userinfo{
     font-size: 30rpx;
     font-weight: bold;
-    width: 70%;
+    width: 60%;
 }
 .header .num{
+    display: flex;
+    justify-content: flex-end;
+    width: 34%;
     font-size: 26rpx;
     color: #7f5b35;
     padding: 20rpx 0;

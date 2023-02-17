@@ -12,6 +12,7 @@ cloud.init({
 // 云函数入口函数
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
+    console.log(wxContext);
     // const openId = await getOpenid.main();
     // console.log(openId);
     switch (event.type) {

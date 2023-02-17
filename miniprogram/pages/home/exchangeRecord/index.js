@@ -26,26 +26,28 @@ Page({
           })
     },
     async getPrizeRecord(){
-        wx.showLoading({
-          title: '加载中',
-          mask:true
+        console.log('加载');
+        this.setData({
+            show:true
         })
         let {
             getPrizeRecord
         } = getApp();
         let res = await getPrizeRecord();
+        console.log(res);
         this.setData({
             prizeList:res.data.sort((m,n)=>{
               return n.date-m.date
-            })
+            }),
+            show:false
         })
-        wx.hideLoading()
     },
     /**
      * 页面的初始数据
      */
     data: {
-        prizeList:[]
+        prizeList:[],
+        show:true
     },
 
     /**

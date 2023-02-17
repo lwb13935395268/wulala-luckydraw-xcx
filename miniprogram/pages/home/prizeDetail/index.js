@@ -21,6 +21,7 @@ Page({
             getMinePrizeDetail
         } = getApp();
         let res = await getMinePrizeDetail(prizeId);
+        console.log(res);
         if (res.status == 200) {
             this.setData({
                 prizeInfo: {
@@ -28,14 +29,24 @@ Page({
                     address: res.data[0].address,
                     exchangeCode: res.data[0].exchangeCode,
                     imageUrl: res.data[0].imageUrl,
-                    start: new Date(res.data[0].startDate).toLocaleDateString(),
-                    endDate: new Date(res.data[0].endDate).toLocaleDateString()
+                    startDate: this.getDate(res.data[0].startDate),
+                    endDate: this.getDate(res.data[0].endDate),
+                    type:res.data[0].type
                 }
             })
+            this.setData({
+                show: false
+            })
+        }else{
+
+            this.setData({
+                show: false
+            })
+            wx.showToast({
+              title: '查询失败',
+              icon:'error'
+            })
         }
-        this.setData({
-            show: false
-        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -43,7 +54,13 @@ Page({
     onReady() {
 
     },
-
+    getDate(date){
+		var time = new Date(date);
+		var y = time.getFullYear();
+		var m = time.getMonth() + 1;
+		var d = time.getDate();
+        return y+'/'+m+'/'+d
+    },
     /**
      * 生命周期函数--监听页面显示
      */
@@ -62,13 +79,6 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
 
     },
 
