@@ -239,20 +239,20 @@ Page({
         //导航条加载动画
         wx.showNavigationBarLoading()
         //loading 提示框
-        wx.showLoading({
-            title: '刷新中..',
-            mask: true
-        })
+        // wx.showLoading({
+        //     title: '刷新中..',
+        //     mask: true
+        // })
         try {
             let res = await this.getPrizeList();
         } catch {
-            wx.hideLoading()
+            // wx.hideLoading()
             this.data.isShowList = false;
             this.data.isShowLogin = false;
-            wx.showToast({
-                icon: 'error',
-                title: '刷新失败',
-            })
+            // wx.showToast({
+            //     icon: 'error',
+            //     title: '刷新失败',
+            // })
         }
         wx.hideLoading()
         wx.stopPullDownRefresh();
