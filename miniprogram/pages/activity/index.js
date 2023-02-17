@@ -17,7 +17,7 @@ Page({
     //下标
     onMyEvent:function(e){
         this.setData({
-            isShow:'block'
+            isShow:true
         });
         wx.cloud.callFunction({
             name:'activity',
@@ -26,10 +26,9 @@ Page({
                 listType:e.detail == undefined ? e : e.detail,
             },
             success:(res)=>{
-                console.log(res);
                 this.setData({
                     activityList:res.result.data.data,
-                    isShow:'none',
+                    isShow:false
                 });
                 this.data.activityList.forEach((item,index)=>{
                     let startDate = "activityList["+index+"].startDate";
@@ -44,7 +43,7 @@ Page({
     },
     loadImg:function(){
         this.setData({
-            isShow:'none',
+            isShow:false,
         });
     },
     /**
@@ -86,8 +85,6 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
-        // this.onMyEvent(0);
-        // this.onPullDownRefresh();
         getApp().onRefresh();
     },
 
@@ -95,7 +92,14 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-
+        console.log(1);
+        wx.showLoading({
+            title: '数据正在加载中...',
+            mask:true
+        });
+        setTimeout(()=>{
+            wx.hideLoading()
+        },2000)
     },
 
     /**
