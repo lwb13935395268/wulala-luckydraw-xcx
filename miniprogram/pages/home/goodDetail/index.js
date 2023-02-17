@@ -120,7 +120,7 @@ Page({
                         } else {
                             wx.hideLoading()
                             wx.showToast({
-                                title: res.msg,
+                                title: '网络错误',
                                 icon: 'error',
                             })
                         }

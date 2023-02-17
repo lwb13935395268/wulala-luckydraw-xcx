@@ -7,20 +7,21 @@ const db = cloud.database();
 
 
 exports.main = async (event, context) => {
-    const wxContext = cloud.getWXContext();
-    const OPENID = wxContext.OPENID;
-    console.log(wxContext.OPENID);
-    let result = await db.collection('userInfo').where({
-        openId: wxContext.OPENID
-    }).get();
-    console.log(result);
+    const wxContext = await cloud.getWXContext();
+    // const OPENID = wxContext.OPENID;
+    // console.log(wxContext);
+    // console.log(wxContext.OPENID);
+    // console.log(result);
     let res = {
         status: 0,
         msg: "查询错误",
         data: []
     }
     try {
-
+        console.log(event);
+        let result = await db.collection('userInfo').where({
+            openId: event.openId
+        }).get();
         if (result.data.length) {
             res.status = 200;
             res.msg = "查询成功";
@@ -32,6 +33,5 @@ exports.main = async (event, context) => {
         return res;
     } catch {
         return res;
-
     }
 }

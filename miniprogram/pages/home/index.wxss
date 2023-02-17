@@ -73,8 +73,10 @@
 }
 .shops{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2,calc(680rpx / 2));
+    grid-gap:20rpx;
     /* gap: 28rpx; */
+    place-content: space-between;
 }
 .shops .item{
     overflow: hidden;
@@ -97,7 +99,7 @@
 .item image{
     width: 100%;
     display: block;
-    height: 300rpx;
+    height: calc(680rpx / 2);
 }
 .item .content{
     box-sizing: border-box;
@@ -121,6 +123,15 @@
 .item .btn{
     text-align: center;
     background-color: #e04540;
+    font-size: 24rpx;
+    border-radius: 10rpx;
+    padding: 8rpx 80rpx;
+    color: white;
+}
+.item .btn-no{
+    text-align: center;
+    background-color: #787878c7;
+    /* border: 2rpx solid #b7b6b9; */
     font-size: 24rpx;
     border-radius: 10rpx;
     padding: 8rpx 80rpx;
@@ -186,7 +197,7 @@
   }
   .void-tip{
       width: 100%;
-      height: 100%;
+      height: calc(100vh - 108rpx);
       display: flex;
       justify-content: center;
       align-items: center;
