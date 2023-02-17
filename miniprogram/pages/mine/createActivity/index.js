@@ -102,7 +102,6 @@ Page({
     // 奖品满足条件
     conditionsMet:function(e){
         let i=e.currentTarget.dataset.index;
-        console.log(e.detail.value);
         if (e.detail.value <= 1) {
             this.setData({
                 ["prizeNums["+i+"].conditionsMet"]:1
@@ -355,7 +354,7 @@ Page({
                             endDate:this.data.endDate +' '+ this.data.endTime,//结束时间
                             signUpSet:this.data.signUpSet,//选中
                             prizeNums:this.data.prizeNums,//奖品信息
-                            rule:_this.data.basic + _this.data.rule
+                            rule:this.data.basic + this.data.rule
                         }
                     },
                     success(res){
