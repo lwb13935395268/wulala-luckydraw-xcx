@@ -7,10 +7,11 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     const OPENID = wxContext.OPENID;
+    const newIntegral=9000;
     const newUser = {
         area: [],
         birthdayDate: "",
-        integral: 600,
+        integral: newIntegral,
         money: 0,
         openId: OPENID,
         sex: 0,
@@ -29,6 +30,16 @@ exports.main = async (event, context) => {
             // data 字段表示需新增的 JSON 数据
             data: newUser
         })
+
+        await db.collection('integralRecord').add({
+            data: {
+                date: new Date().valueOf(),
+                type: 0, //0新用户奖励，1抽奖获得，2，充值获得，3积分兑换奖品消耗，4,兑换现金
+                num: newIntegral, //改变数量
+                balance: newIntegral, //余额
+                openId: OPENID
+            }
+        });
         res.status = 200;
         res.msg = "添加成功"
         res.data = newUser

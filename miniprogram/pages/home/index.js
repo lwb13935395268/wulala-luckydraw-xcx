@@ -10,7 +10,9 @@ Page({
         try {
             let res = await getPrizeList();
             console.log(res);
-            let perizeListArr = res.data.sort((m, n) => {
+            let perizeListArr = res.data.sort((a,b)=>{
+                return b.price-a.price
+            }).sort((m, n) => {
                 return n.remainderNum - m.remainderNum
             })
             console.log(perizeListArr);
@@ -119,6 +121,7 @@ Page({
             mask: true
         })
         let addResult = await addUser();
+        console.log(addResult);
         wx.hideLoading()
         if (addResult.status == 200) {
             wx.showToast({

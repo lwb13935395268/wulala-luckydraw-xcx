@@ -1,5 +1,9 @@
 {
     "usingComponents": {
         "loading": "/components/loading/index"
-    }
+    },
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "兑换记录",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#e04540"
 }

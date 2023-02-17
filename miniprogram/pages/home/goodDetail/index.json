@@ -1,6 +1,11 @@
 {
     "usingComponents": {
         "tab":"/components/tab/tab",
-        "activityTitle":"/components/activityTitle/index"
-    }
+        "activityTitle":"/components/activityTitle/index",
+        "loading": "/components/loading/index"
+    },
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "奖品详情",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#e04540"
 }

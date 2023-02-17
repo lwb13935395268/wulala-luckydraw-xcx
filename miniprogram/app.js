@@ -35,6 +35,7 @@ App({
                 type: 'getOpenId',
             }
         }).then(res => {
+            this.globalData.openId=res.result.userInfo.openId
             return res.result.userInfo.openId
         })
     },
@@ -129,6 +130,7 @@ App({
             data: {
                 type: 'prizeExchange',
                 prizeId,
+                openId:this.globalData.openId
             }
         }).then(res => {
             return res.result
@@ -140,6 +142,7 @@ App({
             name: 'transaction',
             data: {
                 type: 'intergralRecord',
+                openId:this.globalData.openId
             }
         }).then(res => {
             return res.result
