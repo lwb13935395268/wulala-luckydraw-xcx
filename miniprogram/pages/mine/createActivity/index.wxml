@@ -76,7 +76,7 @@
                 </view>
                 <view class="{{item.addImg != '' ? 'upload-img_prize' : ''}}">
                     <view wx:if="{{item.addImg != ''}}" class="prize-img">
-                        <image class="prize-icon" src="{{item.addImg}}" mode="widthFix" mode="heightFix" mode="" />
+                        <image class="prize-icon" onload="onloads" src="{{item.addImg}}" mode="widthFix" mode="heightFix" mode="" />
                         <view class="close" bindtap="closeImg" data-index="{{index}}">
                             <image src="../../../images/icon-error.png" mode="" />
                         </view>

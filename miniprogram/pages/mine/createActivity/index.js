@@ -343,6 +343,11 @@ Page({
             case false:
                 break;
             case true:
+                let startDate = this.data.startDate +' '+ this.data.startTime;
+                let endDate = this.data.endDate +' '+ this.data.endTime;
+                let start = new Date(startDate).getTime();
+                let end = new Date(endDate).getTime();
+                // console.log(startDate.replace(/\-/g,'/'));
                 wx.cloud.callFunction({
                     name:'activity',
                     data:{
@@ -350,8 +355,8 @@ Page({
                         activityInfo:{
                             imgFileId:this.data.imgFileId == ''?'https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/prize-banner.png?sign=ae6f5267357a4dfa2564895f3d62c7d0&t=1676359770':this.data.imgFileId,//banner
                             activityTitle:this.data.activityTitle,//活动标题
-                            startDate:this.data.startDate +' '+ this.data.startTime,//开始时间
-                            endDate:this.data.endDate +' '+ this.data.endTime,//结束时间
+                            startDate:start,//开始时间
+                            endDate:end,//结束时间
                             signUpSet:this.data.signUpSet,//选中
                             prizeNums:this.data.prizeNums,//奖品信息
                             rule:this.data.basic + this.data.rule
@@ -374,6 +379,10 @@ Page({
                                 })
                                 break
                             default:
+                                wx.showToast({
+                                    title: '创建失败',
+                                    icon:'none',
+                                })
                                 break;
                         }
                     },
