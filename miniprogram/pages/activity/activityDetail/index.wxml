@@ -74,7 +74,7 @@
                 <view class="progress">
                     <progress percent="{{totals}}" active stroke-width="9" border-radius="15" color="#fa2121"/>
                 </view>
-                <view class="box-post{{index+1}}" wx:for="{{lists}}" wx:key="index">
+                <view class="{{index==lists.length-1?'end':''}} box-post{{index+1}}" wx:for="{{lists}}" wx:key="index">
                     <view class="box-img">
                         <image class="icon-jp" src="../../../images/icon-prizes.png" mode="" />
                     </view>
