@@ -83,7 +83,7 @@
             </view>
 
             <view class="prople-button">
-                <view class="button" bindtap="hhh">参加活动</view>
+                <view class="button" bindtap="hhh">{{state}}</view>
             </view>
         </view>
     </view>
@@ -91,14 +91,14 @@
         
         规则和分享按钮  颜色                v
         活动参加的类型 章 
-        目标人数 图片 low 
+        目标人数 图片 low                   v
         奖品详细                           v
         助力按钮  参加活动                  v
         活动时间 改完详细时间               v
-        生成二维码进去  微信文档生成 
+        生成二维码进去  微信文档生成        v
         活动详情页面 title                  v
         id语义化 activityId                 v
-        活动ID 查 对应的活动详情
+        活动ID 查 对应的活动详情               v
         true false 失去灵活性  0 1 2 3 4  5 去查 
         重新渲染当前活动详情 参与助力后
         助力按钮要加 防抖 节流              v

@@ -127,7 +127,7 @@
         </view>
         <view class="df" wx:if="{{modifyInfo == ''}}">
             <button type="primary" class="activity-details_btn mb-50" bindtap="cancelModify">取消发布</button>
-            <button type="primary" class="activity-details_btn mb-50" bindtap="immediatelyRelease">立即发布</button>
+            <button type="primary" class="activity-details_btn mb-50" bindtap="release">立即发布</button>
         </view>
         <view class="df" wx:else>
             <button type="primary" class="activity-details_btn mb-50" bindtap="cancelRelease">取消修改</button>

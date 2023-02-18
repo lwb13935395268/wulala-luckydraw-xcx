@@ -31,6 +31,24 @@ Page({
         rule:'',
         isShow:'block',//显示loading
         isShowModfiy:'block',
+        flag:'true',//节流 
+    },
+    // 节流
+    throttle(fn) {
+        let _this = this;
+        return function () {
+            if (!_this.data.flag) return;
+            _this.setData({
+              flag: false
+            })
+            fn();
+            let timer = setTimeout(() => {
+                _this.setData({
+                  flag: true
+                })
+                clearTimeout(timer);
+            }, 4000);
+        }
     },
     //banner加载完成
     onloads(e){
@@ -290,8 +308,16 @@ Page({
     cancelRelease:function(){
         wx.navigateBack({});//跳转到前一个页面
     },
+    // 发布
     // 立即发布
+    release:function(){
+       let fn = this.throttle(
+            this.immediatelyRelease
+        );
+        fn();
+    },
     immediatelyRelease:function(){
+        console.log(1);
         this.data.prizeNums.forEach((item,index) => {
             if (this.data.activityTitle == '') {
                 wx.showToast({
