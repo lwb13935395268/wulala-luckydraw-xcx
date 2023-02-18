@@ -1,8 +1,8 @@
 <!--components/emptyStatus/index.wxml-->
 <view class="body" style="background-color:{{emptyType == 0 ? '#fff':'rgb(250 ,251 ,255)'}} ;">
     <view class="{{emptyType == 0 ? 'content' : 'empty-content'}}">
-        <image wx:if="{{emptyType == 0}}" class="empty" src="../../images/empty.png" mode=""/>
-        <image wx:if="{{emptyType == 1}}" class="error" src="../../images/network-error.png" mode=""/>
+        <image wx:if="{{emptyType == 0}}" class="empty" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/empty.png?sign=f52b74a77216c6c87ddc21e62c86e803&t=1676689311" mode=""/>
+        <image wx:if="{{emptyType == 1}}" class="error" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/network-error.png?sign=c63d5e024f710feaa3037cde70e9a32e&t=1676689372" mode=""/>
         <view class="{{emptyType == 0 ? 'text' : 'empty-text'}}">{{emptyType == 0 ? text : '网络错误!'}}</view>
     </view>
 </view>
