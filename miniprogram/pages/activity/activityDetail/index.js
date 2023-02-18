@@ -17,7 +17,8 @@ Page({
         rule:'',
         str:'',
         timer:null,
-        flag:true
+        flag:true,
+        state:''
     },
     /**
      * 生命周期函数--监听页面加载
@@ -27,7 +28,7 @@ Page({
             activityId: options.id
         })
         let _this = this;
-        
+        //渲染活动详情
       let res= await wx.cloud.callFunction({
             name:'activity',
             data:{
@@ -36,6 +37,19 @@ Page({
             }
         })
         res.result.data.forEach(el => {
+                if(el.activityType == 1){
+                    this.setData({
+                        state: '参加活动'
+                    })
+                } else if(el.activityType == 0){
+                    this.setData({
+                        state: '活动未开始'
+                    })
+                } else if(el.activityType == 2){
+                    this.setData({
+                        state: '活动已结束'
+                    })
+                }
                 let maxObj;
                 let strRule = el.rule.replace(/\s/g,'\n');
                 _this.setData({
@@ -64,12 +78,13 @@ Page({
                     endDateAll: endDateAll
                 })
         });
+        //查询这个活动参加了多少人
         let result=await wx.cloud.callFunction({
             name:'activity',
             data:{
                 type:'getActivityCount',
                 activityId:_this.data.activityId
-            }
+            },
         })
         let total = result.result.data.total;
         let people = _this.data.headcount;
@@ -77,27 +92,35 @@ Page({
         this.setData({
             totals: bar
         })
+        //分享功能
         wx.showShareMenu({
             withShareTicket: true,
-            menus:['shareAppMessage','shareTimeline']
+            menus:['shareAppMessage','shareTimeline'] //分享好友 和 分享朋友圈
         })
         this.singleCountDown(); //页面加载时就启动定时器
     },
     //参加活动
     helps(){
-        wx.cloud.callFunction({
+        if(this.data.state == '活动未开始'){
+            wx.showToast({
+                title: '活动未开始',
+                icon: 'error',
+             })
+        } else if(this.data.state == '参加活动'){
+            wx.cloud.callFunction({
             name:'activity',
             data:{      
                 type:'participateActivity',
                 activityId: this.data.activityId
             },
             success(res){
-                console.log(res);
                 if(res.result.status == 200){
                     wx.showToast({
                         title: '参加成功',
                         icon: 'success',
                       })
+                    //   let _this = this;
+                      
                 } else if(res.result.status == 1){
                     wx.showToast({
                         title: '活动已参加',
@@ -111,6 +134,12 @@ Page({
                 }
             }
         })
+        } else if(this.data.state == '活动已结束'){
+            wx.showToast({
+                title: '活动已结束',
+                icon: 'error',
+             })
+        }
     },
     //参加活动按钮加节流
     hhh:function(){
