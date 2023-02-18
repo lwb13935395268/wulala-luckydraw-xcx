@@ -8,16 +8,22 @@ const db = cloud.database();
 
 exports.main = async (event, context) => {
     let result = await db.collection('prize').where({}).get();
-    
+    let total = result.data.length;
+    let pageNum = event.pageNum || 1; //1
+    let pageSize = event.pageSize || total; //3
+    let resArr = result.data.slice((pageNum - 1) * pageSize, pageNum * pageSize);
     let res = {
-        status:0,
-        msg:"查询错误",
-        data:[]
+        status: 0,
+        msg: "查询错误",
+        data: []
     }
     if (result.data) {
         res.status = 200;
         res.msg = "查询成功";
-        res.data=result.data;
+        res.data = {
+            total,
+            resArr
+        };
     }
     return res
 }

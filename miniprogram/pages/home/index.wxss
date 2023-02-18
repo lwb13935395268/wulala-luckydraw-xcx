@@ -1,14 +1,16 @@
 /* pages/home/index.wxss */
-.home{
+.home {
     height: 100vh;
     background-color: #e04540;
 
 }
-.img-4{
+
+.img-4 {
     width: 140rpx;
     height: 140rpx;
 }
-.header{
+
+.header {
     height: 220rpx;
     box-sizing: border-box;
     background-color: #e04540;
@@ -17,21 +19,25 @@
     align-items: center;
     /* padding: 40rpx 0; */
 }
-.header .head-content{
+
+.header .head-content {
     height: 134rpx;
 }
-.header .login-tip{
+
+.header .login-tip {
     display: flex;
     /* align-items: flex-end; */
     font-size: 50rpx;
     /* padding-bottom: 20rpx; */
 }
-.login-tip image{
+
+.login-tip image {
     display: block;
     width: 38rpx;
     height: 38rpx;
 }
-.header .rule{
+
+.header .rule {
     font-size: 24rpx;
     display: flex;
     flex-direction: column;
@@ -39,46 +45,55 @@
     justify-content: space-between;
     align-items: flex-end;
 }
-.header .rule image{
+
+.header .rule image {
     width: 32rpx;
     height: 32rpx;
 }
-.header .mine{
+
+.header .mine {
     height: 100%;
     font-size: 28rpx;
-} 
-.header .num{
+}
+
+.header .num {
     /* color: #f8e8c4; */
     font-size: 28px;
 }
-.header .num image{
+
+.header .num image {
     width: 34rpx;
     height: 34rpx;
 }
-.home{
+
+.home {
     height: 100vh;
 }
-.body{
+
+.body {
     background-color: white;
     min-height: calc(100vh - 220rpx);
     box-sizing: border-box;
     /* padding: 20rpx 0; */
 }
-.shop-title{
+
+.shop-title {
     border-radius: 20rpx;
     font-size: 36rpx;
     padding-top: 20rpx;
     font-weight: bold;
     color: black;
 }
-.shops{
+
+.shops {
     display: grid;
-    grid-template-columns: repeat(2,calc(680rpx / 2));
-    grid-gap:20rpx;
+    grid-template-columns: repeat(2, calc(680rpx / 2));
+    grid-gap: 20rpx;
     /* gap: 28rpx; */
     place-content: space-between;
 }
-.shops .item{
+
+.shops .item {
     overflow: hidden;
     background-color: white;
     display: flex;
@@ -87,40 +102,47 @@
     padding-bottom: 20rpx;
     box-sizing: border-box;
 }
-.item .title{
-    word-break:break-all;
+
+.item .title {
+    word-break: break-all;
     font-weight: bold;
-    padding: 0 20rpx;  
+    padding: 0 20rpx;
     font-size: 30rpx;
     white-space: nowrap;
-	overflow: hidden;				
-	text-overflow: ellipsis;		
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.item image{
+
+.item image {
     width: 100%;
     display: block;
     height: calc(680rpx / 2);
 }
-.item .content{
+
+.item .content {
     box-sizing: border-box;
     padding: 0 20rpx;
     width: 100%;
     font-weight: bold;
 }
-.content .info{
+
+.content .info {
     display: flex;
     justify-content: space-between;
 
 }
-.info .price{
+
+.info .price {
     font-size: 26rpx;
     color: #e04540;
 }
-.info .num{
+
+.info .num {
     font-size: 22rpx;
     color: #b7b6b9;
 }
-.item .btn{
+
+.item .btn {
     text-align: center;
     background-color: #e04540;
     font-size: 24rpx;
@@ -128,7 +150,8 @@
     padding: 8rpx 80rpx;
     color: white;
 }
-.item .btn-no{
+
+.item .btn-no {
     text-align: center;
     background-color: #787878c7;
     /* border: 2rpx solid #b7b6b9; */
@@ -137,7 +160,8 @@
     padding: 8rpx 80rpx;
     color: white;
 }
-.modal{
+
+.modal {
     width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.6);
@@ -148,8 +172,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .modal .box{
+}
+
+.modal .box {
     width: 75%;
     height: 690rpx;
     overflow-y: scroll;
@@ -157,51 +182,58 @@
     border-radius: 20rpx;
     position: relative;
     box-sizing: border-box;
-    padding:0 30rpx;
+    padding: 0 30rpx;
     padding-bottom: 30rpx;
-  }
-  .modal image{
-      position: absolute;
-      width: 45rpx;
-      height: 45rpx;
-      right: 14rpx;
-      top: 14rpx;
-  }
-  .box .title{
-      display: flex;
-      align-items: center;
-      justify-content: center;
+}
+
+.modal image {
+    position: absolute;
+    width: 45rpx;
+    height: 45rpx;
+    right: 14rpx;
+    top: 14rpx;
+}
+
+.box .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 80rpx;
     background-color: white;
     border-radius: 20rpx;
     font-size: 30rpx;
-  }
-  .rule>view{
-      padding: 2rpx;
-  }
-  .box .content{
+}
+
+.rule>view {
+    padding: 2rpx;
+}
+
+.box .content {
     height: calc(100% - 80rpx);
     box-sizing: border-box;
     font-size: 28rpx;
     color: #5c5c5c;
-  }
-  .box .list{
+}
+
+.box .list {
     display: flex;
     flex-direction: column;
-    gap:40rpx 0;
+    gap: 40rpx 0;
     padding: 20rpx 0;
 
-  }
-  .box .text{
-      padding: 0 20rpx;
-  }
-  .void-tip{
-      width: 100%;
-      height: calc(100vh - 108rpx);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #aaa;
-      font-weight: bold;
-      font-size: 32rpx;
-  }
+}
+
+.box .text {
+    padding: 0 20rpx;
+}
+
+.void-tip {
+    width: 100%;
+    height: calc(100vh - 108rpx);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaa;
+    font-weight: bold;
+    font-size: 32rpx;
+}
