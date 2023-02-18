@@ -15,7 +15,7 @@ Component({
         },
         emptyType:{
             type:String,
-            value:'1'
+            value:'0'
         }
     },
 

@@ -6,7 +6,10 @@ Page({
      */
     data: {
         currentIndex: 0, //tab下标
-        activityList:[],//活动列表
+        activityList:[],//活动列表0
+        recommend:[],//推荐1
+        conduct:[],//进行中2
+        end:[],//结束3
         isShow:'',//loading
     },
     toCommodityDetails:function(e){
@@ -16,6 +19,8 @@ Page({
     },
     //下标
     onMyEvent:function(e){
+        console.log(e);
+        let index = e.detail == undefined ? e : e.detail
         this.setData({
             isShow:true
         });
@@ -23,13 +28,30 @@ Page({
             name:'activity',
             data:{
                 type:'listType',
-                listType:e.detail == undefined ? e : e.detail,
+                listType:index,
             },
             success:(res)=>{
-                this.setData({
-                    activityList:res.result.data.data,
-                    isShow:false
-                });
+                if (index == 0) {
+                    this.setData({
+                        activityList:res.result.data.data,
+                        isShow:false
+                    });
+                }else if (index == 1) {
+                    this.setData({
+                        recommend:res.result.data.data,
+                        isShow:false
+                    });
+                }else if (index==2) {
+                    this.setData({
+                        conduct:res.result.data.data,
+                        isShow:false
+                    });
+                }else if (index==3) {
+                    this.setData({
+                        end:res.result.data.data,
+                        isShow:false
+                    });
+                }
                 this.data.activityList.forEach((item,index)=>{
                     let startDate = "activityList["+index+"].startDate";
                     let endDate = "activityList["+index+"].endDate";
@@ -42,6 +64,7 @@ Page({
         })
     },
     loadImg:function(){
+        console.log(1);
         this.setData({
             isShow:false,
         });
