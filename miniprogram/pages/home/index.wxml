@@ -1,6 +1,6 @@
 <!--pages/home/index.wxml-->
 <view class="home">
-<loading isShow="{{(!infoLoad&&!prizeLoad)?'none':'block'}}"></loading>
+    <loading isShow="{{(!infoLoad&&!prizeLoad)?'none':'block'}}"></loading>
     <view class="modal" wx:if="{{ruleMask}}">
           <view class="box">
             <image bindtap="setRuleMask" src="../../images/icon-close.png" mode="" />
@@ -57,32 +57,35 @@
         <view class="wrap shop-title">
             积分兑换
         </view>
-        <tab id="tab" titleList="{{['全部商品','热门兑换','特惠专享','爆款商品']}}" scroll="{{scroll}}">
-            <view class="wrap" slot='全部商品' style="">
-                <view wx:if="{{prizeList.length}}" class="shops ptb-20">
-                    <view class="item" bindtap="navgator" data-path="goodDetail/index" wx:for="{{prizeList}}" wx:key="index" data-id="{{item._id}}">
-                        <image onload="imgLoad" src="{{item.imageUrl}}" mode="" />
-                        <view class="title mt-10">
-                            {{item.prizeName}}
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    {{item.price}}积分
-                                </view>
-                                <view class="num">
-                                    限量{{item.limitNum}}
-                                </view>
+        <tab loading="{{loading}}" loaded="{{loaded}}" bind:scroll="scroll" id="tab" titleList="{{['全部商品','热门兑换','特惠专享','爆款商品']}}" scroll="{{scroll}}">
+            <view class="wrap content" slot='全部商品' style="">
+                <view wx:if="{{prizeList.length}}">
+                    <view class="shops ptb-20">
+                        <view class="item" bindtap="navgator" data-path="goodDetail/index" wx:for="{{prizeList}}" wx:key="index" data-id="{{item._id}}">
+                            <image onload="imgLoad" src="{{item.imageUrl}}" mode="" />
+                            <view class="title mt-10">
+                                {{item.prizeName}}
                             </view>
-                            <view wx:if="{{item.remainderNum}}" class="btn mt-20">
-                                去兑换
-                            </view>
-                            <view wx:else class="btn-no mt-20">
-                                已兑完
+                            <view class="content mt-10">
+                                <view class="info">
+                                    <view class="price">
+                                        {{item.price}}积分
+                                    </view>
+                                    <view class="num">
+                                        限量{{item.limitNum}}
+                                    </view>
+                                </view>
+                                <view wx:if="{{item.remainderNum}}" class="btn mt-20">
+                                    去兑换
+                                </view>
+                                <view wx:else class="btn-no mt-20">
+                                    已兑完
+                                </view>
                             </view>
                         </view>
                     </view>
                 </view>
+
                 <view wx:else class="void-tip">
                     暂无奖品，正在全力补货中...
                 </view>

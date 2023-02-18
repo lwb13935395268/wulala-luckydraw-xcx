@@ -91,11 +91,13 @@ App({
         })
     },
     //获取奖品列表接口
-    getPrizeList() {
+    getPrizeList(pageNum,pageSize) {
         return wx.cloud.callFunction({
             name: 'transaction',
             data: {
-                type: 'prizeList'
+                type: 'prizeList',
+                pageNum,
+                pageSize
             }
         }).then(res => {
             return res.result
