@@ -21,6 +21,14 @@ Component({
         showLoading:{
             type:Boolean,
             value:false
+        },
+        loaded:{
+            type:Boolean,
+            value:false
+        },
+        loading:{
+            type:Boolean,
+            value:false
         }
     },
     lifetimes: {
@@ -41,6 +49,11 @@ Component({
      * 组件的方法列表
      */
     methods: {
+        //滚动时触发
+        scroll(){
+            console.log(111);
+            this.triggerEvent('scroll', {});
+        },
         // 切换swiper-item触发bindchange事件
         pagechange: function (e) {
             var myEventDetail = e.detail.current // detail对象，提供给事件监听函数

@@ -1,4 +1,5 @@
 const cloud = require('wx-server-sdk');
+const findUser=require('../detail/index')
 cloud.init({
     env: cloud.DYNAMIC_CURRENT_ENV
 });
@@ -26,6 +27,14 @@ exports.main = async (event, context) => {
         data: []
     }
     try {
+        let userRes= await findUser.main(event, context);
+        if(userRes.status==200&&!Array.isArray(userRes.result.data)){
+            console.log('有这个人');
+            res.mag="已有该用户"
+            return res
+        }else if(user.status==0){
+            return res
+        }
         let result = await db.collection('userInfo').add({
             // data 字段表示需新增的 JSON 数据
             data: newUser

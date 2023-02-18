@@ -90,22 +90,16 @@ Page({
     },
 
     async onRefresh() {
-        //导航条加载动画
-        wx.showNavigationBarLoading()
-        //loading 提示框
-        wx.showLoading({
-            title: '刷新中...',
-        })
         try {
             let res = await this.getMineActivitys();
         } catch {
+            this.setData({
+                show:false
+            })
             wx.showToast({
                 icon: 'error',
                 title: '刷新失败',
             })
         }
-        wx.stopPullDownRefresh();
-        wx.hideLoading();
-        wx.hideNavigationBarLoading();
     }
 })
