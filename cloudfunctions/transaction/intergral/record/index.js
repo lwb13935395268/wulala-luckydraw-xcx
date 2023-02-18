@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
     console.log(OPENID);
     try {
         let result = await db.collection('integralRecord').where({
-            openId: OPENID
+            openId: event.openId
         }).get();
         console.log(result);
         if (result.data) {

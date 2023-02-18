@@ -1,8 +1,8 @@
 <!--pages/mine/mineCreatedActivity/index.wxml-->
 <loading isShow="{{isShow}}"></loading>
 <tab titleList="{{['未开始','正在进行','已结束']}}" bind:myevent="onMyEvent">
-    <view slot='未开始' class="wrap ptb-20">
-        <view class="" wx:if="{{myActicityList!=''}}">
+    <view slot='未开始' class="wrap">
+        <view class="gap-tb-20" wx:if="{{myActicityList!=''}}">
             <activity wx:for="{{myActicityList}}" bind:loadImg="loadImg" bindtap="toCommodityDetails" data-id="{{item._id}}" wx:key="index" status="0" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}" isSet="{{true}}" toSetRouter='/pages/mine/createActivity/index?id={{item._id}}'>
             </activity>
         </view>
@@ -11,11 +11,11 @@
             <image src="../../../images/nothing-info.png" mode=""/>
         </view>
     </view>
-    <view slot='正在进行' class="wrap gap-tb-20">
+    <view slot='正在进行' class="wrap">
         <view class="create-btn" bindtap="navgator" data-path="selectActivity/index">
             去创建一个活动
         </view>
-        <view class="" wx:if="{{myActicityList!=''}}">
+        <view class="gap-tb-20" wx:if="{{myActicityList!=''}}">
           <activity wx:for="{{myActicityList}}" wx:key="index" bindtap="toCommodityDetails" data-id="{{item._id}}"  bind:loadImg="loadImg" status="0" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}">
           </activity>
         </view>
@@ -25,7 +25,7 @@
         </view>
     </view>
     <view slot='已结束' class="wrap ptb-20">
-        <view class="" wx:if="{{myActicityList!=''}}">
+        <view class="gap-tb-20" wx:if="{{myActicityList!=''}}">
           <activity wx:for="{{myActicityList}}" wx:key="index" bind:loadImg="loadImg" status="2" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}">
           </activity>
         </view>

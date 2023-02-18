@@ -14,35 +14,24 @@ Page({
             url: '/pages/mine/' + path,
         })
     },
-    setTitle() {
-        wx.setNavigationBarTitle({
-            title: '我的活动'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#eb524c',
-            animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }
-        })
-    },
     async getMineActivitys() {
-        wx.showLoading({
-            title: '加载中..',
-          })
+        this.setData({
+            show:true
+        })
         let {
             getMineActivity
         } = getApp();
         let res = await getMineActivity();
         
-        wx.hideLoading()
         if (res.status == 200) {
             this.setData({
                 activityList: res.data,
                 overActivityList: res.data
             })
         }
+        this.setData({
+            show:false
+        })
         return res
     },
     toCommodityDetails(e){
@@ -54,7 +43,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        titleList: ['正在进行', '已结束']
+        titleList: ['正在进行', '已结束'],
+        show:true,
+        show2:false
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

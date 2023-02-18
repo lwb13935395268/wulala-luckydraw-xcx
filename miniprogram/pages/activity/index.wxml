@@ -1,109 +1,28 @@
-<loading isShow="{{isShow}}"></loading>
 <view class="main">
-    <tab titleList="{{['全部','推荐','进行中','已结束']}}" bind:myevent="onMyEvent">
-        <view slot="推荐" class="wrap">
+    <tab titleList="{{['全部','推荐','进行中','已结束']}}" bind:myevent="onMyEvent" showLoading="{{isShow}}">
+        <view slot="推荐" class="{{activityList != ''?'wrap':''}}">
             <view class="gap-tb-20" wx:if="{{activityList != ''}}">
                 <activity  wx:for="{{activityList}}" wx:key="index" status="0" bindtap="toCommodityDetails" data-id="{{item._id}}" bind:loadImg="loadImg" data-id="{{item._id}}"  title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
-            <view class="tips" wx:else>
-                暂无推荐活动哦亲
-                <image src="../../images/nothing-info.png" mode=""/>
-            </view>
+            <empty wx:else></empty>
         </view>
-        <view slot="全部" class="wrap">
+        <view slot="全部" class="{{activityList != '' ? 'wrap':''}}">
             <view class="gap-tb-20" wx:if="{{activityList!=''}}">
                 <activity  wx:for="{{activityList}}" wx:key="index" status="0" bind:loadImg="loadImg" data-id="{{item._id}}" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
-            <view class="tips" wx:else>
-                暂无最新活动哦亲
-                <image src="../../images/nothing-info.png" mode=""/>
-            </view>
+            <empty wx:else></empty>
         </view>
-        <view slot="进行中" class="wrap">
+        <view slot="进行中" class="{{activityList != ''?'wrap':''}}">
             <view class="gap-tb-20" wx:if="{{activityList != ''}}">
                 <activity  wx:for="{{activityList}}" wx:key="index" status="0" data-id="{{item._id}}" bind:loadImg="loadImg" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
-            <view class="tips" wx:else>
-                暂无进行中活动哦亲
-                <image src="../../images/nothing-info.png" mode=""/>
-            </view>
+            <empty wx:else></empty>
         </view>
-        <view slot="已结束" class="wrap gap-tb-20">
+        <view slot="已结束" class="{{activityList != ''?'wrap':''}}">
             <view class="gap-tb-20" wx:if="{{activityList != ''}}">
                 <activity  wx:for="{{activityList}}" wx:key="index" status="2" data-id="{{item._id}}"  bind:loadImg="loadImg" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
-            <view class="tips" wx:else>
-                暂无已结束活动哦亲
-                <image src="../../images/nothing-info.png" mode=""/>
-            </view>
+            <empty wx:else></empty>
         </view>
     </tab>
-    
-    <!-- <view>
-        <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
-            <swiper-item class='swiperTtemBox'>
-                <view class="activity wrap">
-                    <image src="../../images/icon-activity_1.png" mode=""/>
-                    <view class="activity-content">
-                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
-                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
-                    </view>
-                </view>
-                <view class="activity wrap">
-                    <image src="../../images/icon-activity_1.png" mode=""/>
-                    <view class="activity-content">
-                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
-                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
-                    </view>
-                </view>
-                <view class="activity wrap">
-                    <image src="../../images/icon-activity_1.png" mode=""/>
-                    <view class="activity-content">
-                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
-                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
-                    </view>
-                </view>
-                <view class="activity wrap">
-                    <image src="../../images/icon-activity_1.png" mode=""/>
-                    <view class="activity-content">
-                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
-                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
-                    </view>
-                </view>
-                <view class="activity wrap">
-                    <image src="../../images/icon-activity_1.png" mode=""/>
-                    <view class="activity-content">
-                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
-                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
-                    </view>
-                </view>
-            </swiper-item>
-            <swiper-item class='swiperTtemBox'>
-                <view>1</view>
-            </swiper-item>
-            <swiper-item class='swiperTtemBox'>
-                <view>2</view>
-            </swiper-item>
-            <swiper-item class='swiperTtemBox'>
-                <view class="activity wrap">
-                    <image src="../../images/icon-activity_1.png" mode=""/>
-                    <view class="activity-content">
-                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
-                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
-                    </view>
-                    <image class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-participated.png?sign=2b91147819789efd6f82d12ebcc8889e&t=1675173206" mode=""/>
-                </view>
-            </swiper-item>
-            <swiper-item class='swiperTtemBox'>
-                <view class="activity opct wrap">
-                    <image src="../../images/icon-activity_1.png" mode=""/>
-                    <view class="activity-content">
-                        <view class="activity-content_title">理财夏利营，9888元红包等你拿!</view>
-                        <view class="activity-content_timer pt-15">2015-07-22至2016-08-21</view>
-                    </view>
-                    <image class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-closed.png?sign=514c42b3d0ff28fbed5360053fafe8be&t=1675173275" mode=""/>
-                </view>
-            </swiper-item>
-        </swiper>
-    </view> -->
 </view>

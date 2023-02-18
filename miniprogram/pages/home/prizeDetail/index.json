@@ -1,5 +1,8 @@
 {
     "usingComponents": {
         "loading": "/components/loading/index"
-    }
+    },
+    "navigationBarTitleText": "我的奖品",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#eb524c"
 }

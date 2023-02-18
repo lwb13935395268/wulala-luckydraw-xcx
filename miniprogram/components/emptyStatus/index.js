@@ -1,20 +1,24 @@
-// components/tab/item/item.js
+
+// components/emptyStatus/index.js
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        name:{
+        empty:{
             type:String,
-            value:'sf'
+            value:'block'
+        },
+        text:{
+            type:String,
+            value:'空空如也~'
+        },
+        emptyType:{
+            type:String,
+            value:'1'
         }
     },
 
-    lifetimes: {
-        attached(){
-            // console.log(name);
-        }
-    },
     /**
      * 组件的初始数据
      */

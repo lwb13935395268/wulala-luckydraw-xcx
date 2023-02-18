@@ -4,9 +4,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.setTitle();
         this.data.prizeId = options.id;
-        this.loadGoodsDetail()
     },
     navgatorTabBar(path) {
         wx.switchTab({
@@ -93,18 +91,9 @@ Page({
                             title: '兑换中..',
                             mask: true
                         })
+                        //兑换接口
                         let res = await exchangePrize(this.data.prizeId);
                         if (res.status == 200) {
-                            let res2 = await getUserInfo();
-                            if (!Array.isArray(res2.data)) {
-                                app.globalData.userInfo = res2.data;
-                                this.setData({
-                                    userInfo:res2.data
-                                })
-                            }
-                            await this.getPrizeDetail();
-                            await this.getUserIntegral()
-                            
                             getApp().globalData.getHomeFlag = true;
                             getApp().globalData.getMineFlag = true;
                             wx.hideLoading()
@@ -144,19 +133,6 @@ Page({
         })
         // }
     },
-    setTitle() {
-        wx.setNavigationBarTitle({
-            title: '奖品详情'
-        })
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#e04540',
-            animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }
-        })
-    },
     async getPrizeDetail() {
         let id = this.data.prizeId
         let {
@@ -171,10 +147,11 @@ Page({
         return res
     },
     async loadGoodsDetail() {
-        wx.showLoading({
-            title: '加载中..',
-            mask: true
+        this.setData({
+            show:true
         })
+        let res=await getApp().getUserInfo();
+        getApp().globalData.userInfo.integral=res.data.integral;
         let app = getApp();
         if (app.globalData.loginStatus) {
             this.setData({
@@ -182,6 +159,9 @@ Page({
             })
         }
         await this.getPrizeDetail();
+        this.setData({
+            show:false
+        })
         wx.hideLoading()
     },
     /**
@@ -190,6 +170,7 @@ Page({
     data: {
         currentIndex: 0, //默认是活动项
         prizeInfo: {},
+        show:true
     },
 
     /**
@@ -202,7 +183,9 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow() {},
+    onShow() {
+        this.loadGoodsDetail();
+    },
 
     /**
      * 生命周期函数--监听页面隐藏

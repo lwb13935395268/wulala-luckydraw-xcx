@@ -1,0 +1,8 @@
+<!--components/emptyStatus/index.wxml-->
+<view class="body" style="background-color:{{emptyType == 0 ? '#fff':'rgb(250 ,251 ,255)'}} ;">
+    <view class="{{emptyType == 0 ? 'content' : 'empty-content'}}">
+        <image wx:if="{{emptyType == 0}}" class="empty" src="../../images/empty.png" mode=""/>
+        <image wx:if="{{emptyType == 1}}" class="error" src="../../images/network-error.png" mode=""/>
+        <view class="{{emptyType == 0 ? 'text' : 'empty-text'}}">{{emptyType == 0 ? text : '网络错误!'}}</view>
+    </view>
+</view>
