@@ -2,7 +2,8 @@
     "usingComponents": {
         "tab":"/components/tab/tab",
         "activity":"/components/activity/activity",
-        "loading":"/components/loading/index"
+        "loading":"/components/loading/index",
+        "empty":"/components/emptyStatus/index"
     },
     "enablePullDownRefresh": true,
     "navigationBarTitleText": "发布的活动",

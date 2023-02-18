@@ -11,6 +11,24 @@ Page({
         conduct:[],//进行中2
         end:[],//结束3
         isShow:'',//loading
+        navList:[
+            {
+                index:0,
+                title:'全部'
+            },
+            {
+                index:1,
+                title:'推荐'
+            },
+            {
+                index:2,
+                title:'进行中'
+            },
+            {
+                index:3,
+                title:'已结束'
+            }
+        ]
     },
     toCommodityDetails:function(e){
         wx.navigateTo({
@@ -19,7 +37,6 @@ Page({
     },
     //下标
     onMyEvent:function(e){
-        console.log(e);
         let index = e.detail == undefined ? e : e.detail
         this.setData({
             isShow:true
@@ -31,27 +48,10 @@ Page({
                 listType:index,
             },
             success:(res)=>{
-                if (index == 0) {
-                    this.setData({
-                        activityList:res.result.data.data,
-                        isShow:false
-                    });
-                }else if (index == 1) {
-                    this.setData({
-                        recommend:res.result.data.data,
-                        isShow:false
-                    });
-                }else if (index==2) {
-                    this.setData({
-                        conduct:res.result.data.data,
-                        isShow:false
-                    });
-                }else if (index==3) {
-                    this.setData({
-                        end:res.result.data.data,
-                        isShow:false
-                    });
-                }
+                this.setData({
+                    activityList:res.result.data.data,
+                    isShow:false
+                });
                 this.data.activityList.forEach((item,index)=>{
                     let startDate = "activityList["+index+"].startDate";
                     let endDate = "activityList["+index+"].endDate";
@@ -64,7 +64,6 @@ Page({
         })
     },
     loadImg:function(){
-        console.log(1);
         this.setData({
             isShow:false,
         });
@@ -108,6 +107,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
+        this.onMyEvent(0);
         getApp().onRefresh();
     },
 
@@ -115,14 +115,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-        console.log(1);
-        wx.showLoading({
-            title: '数据正在加载中...',
-            mask:true
-        });
-        setTimeout(()=>{
-            wx.hideLoading()
-        },2000)
+        
     },
 
     /**

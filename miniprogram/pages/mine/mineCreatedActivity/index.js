@@ -12,7 +12,19 @@ Page({
      */
     data: {
         myActicityList:[],//我创建的活动
-        isShow:'block'
+        isShow:true,
+        navList:[
+            {
+                index:0,
+                title:'正在进行'
+            },{
+                index:1,
+                title:'未开始'
+            },{
+                index:2,
+                title:'已结束'
+            }
+        ]
     },
 
     /**
@@ -24,24 +36,26 @@ Page({
     // 图片加载完成
     loadImg:function(){
         this.setData({
-            isShow:'none'
+            isShow:false
         })
     },
     // tab下标
     onMyEvent:function(e){
+        let index = e.detail == undefined ? e : e.detail;
         this.setData({
-            isShow:'block'
+            isShow:true
         })
         wx.cloud.callFunction({
             name:'activity',
             data:{
                 type:'myReleaseActivityType',
-                activityType:e.detail==undefined?e:e.detail
+                activityType:index
             },
             success:(res)=>{
                 if (res.result.status == 200) {
                     this.setData({
                         myActicityList:res.result.data,
+                        isShow:false
                     });
                     this.data.myActicityList.forEach((item,index)=>{
                         let startDate = "myActicityList["+index+"].startDate";
@@ -54,12 +68,12 @@ Page({
                 }else{
                     wx.showToast({
                         title: '暂无活动，去创建吧!',
-                        icon:'none',
+                        icon:false,
                     });
                 }
                 if (res.result.data.length==0) {
                     this.setData({
-                        isShow:'none'
+                        isShow:false
                     })
                 }
             },
@@ -102,7 +116,8 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
-
+        this.onMyEvent(0);
+        getApp().onRefresh();
     },
 
     /**
