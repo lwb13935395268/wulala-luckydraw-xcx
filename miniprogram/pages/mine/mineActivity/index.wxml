@@ -10,7 +10,7 @@
     </view>
     <view slot='已结束' class="">
         <view wx:if="{{overActivityList.length}}" class="wrap gap-tb-20">
-            <activity bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}" wx:for="{{overActivityList}}" wx:key="_id" status=""></activity>
+            <activity bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}" wx:for="{{overActivityList}}" wx:key="_id" status="2"></activity>
         </view>
         <view wx:else  class="void-tip">
             暂无活动 , 去参加一个吧

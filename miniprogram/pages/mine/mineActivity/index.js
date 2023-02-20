@@ -22,11 +22,15 @@ Page({
             getMineActivity
         } = getApp();
         let res = await getMineActivity();
-        
+        console.log(res);
         if (res.status == 200) {
             this.setData({
-                activityList: res.data,
-                overActivityList: res.data
+                activityList: res.data.filter(e=>{
+                    return e.activityType!=1
+                 }),
+                overActivityList: res.data.filter(e=>{
+                   return e.activityType==1
+                })
             })
         }
         this.setData({
