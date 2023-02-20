@@ -1,6 +1,9 @@
 <!--pages/home/index.wxml-->
-<view class="home">
+<view class="home" >
     <loading isShow="{{(!infoLoad&&!prizeLoad)?'none':'block'}}"></loading>
+    <view style="display:{{(!infoLoad&&!prizeLoad)?'block':'none'}} ;">
+    <scroll-view scroll-y="{{true}}" style="height: 100vh;"  bindscroll="listenPageScroll" bindscrolltolower="listenPageBottom" lower-threshold="1">
+        
     <view class="modal" wx:if="{{ruleMask}}">
           <view class="box">
             <image bindtap="setRuleMask" src="../../images/icon-close.png" mode="" />
@@ -57,7 +60,7 @@
         <view class="wrap shop-title">
             积分兑换
         </view>
-        <tab loading="{{loading}}" loaded="{{loaded}}" bind:scroll="scroll" id="tab" titleList="{{['全部商品','热门兑换','特惠专享','爆款商品']}}" scroll="{{scroll}}">
+        <tab scrollMove="scrollMove" tipLoad="{{tipLoad}}" bind:myevent="tabChange" isPullLoading="{{true}}" loading="{{loading}}" loaded="{{loaded}}" bind:scroll="scroll" id="tab" titleList="{{['全部商品','热门兑换','特惠专享','爆款商品']}}" scroll="{{scroll}}">
             <view class="wrap content" slot='全部商品' style="">
                 <view wx:if="{{prizeList.length}}">
                     <view class="shops ptb-20">
@@ -84,32 +87,43 @@
                             </view>
                         </view>
                     </view>
+                    <view class="bomTxt">
+                        <view class="bottom-tip" style="display: {{tipLoad1?'block':'none'}};">上拉加载</view>
+                        <view class="bottom-tip" style="display: {{loading1?'block':'none'}};">正在加载...</view>
+                        <view class="bottom-tip" style="display: {{loaded1?'block':'none'}};">已加载全部</view>
+                    </view>
                 </view>
-
                 <view wx:else class="void-tip">
                     暂无奖品，正在全力补货中...
                 </view>
             </view>
             <view class="wrap" slot="热门兑换" style="">
-                <view wx:if="{{hotPrizeList.length}}" class="shops ptb-20">
-                    <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
-                        <image src="{{item.imageUrl}}" mode="" />
-                        <view class="title mt-10">
-                            {{item.prizeName}}
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    {{item.price}}积分
+                <view wx:if="{{hotPrizeList.length}}">
+                    <view class="shops ptb-20">
+                        <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
+                            <image src="{{item.imageUrl}}" mode="" />
+                            <view class="title mt-10">
+                                {{item.prizeName}}
+                            </view>
+                            <view class="content mt-10">
+                                <view class="info">
+                                    <view class="price">
+                                        {{item.price}}积分
+                                    </view>
+                                    <view class="num">
+                                        限量{{item.limitNum}}
+                                    </view>
                                 </view>
-                                <view class="num">
-                                    限量{{item.limitNum}}
+                                <view class="btn mt-20">
+                                    兑换
                                 </view>
                             </view>
-                            <view class="btn mt-20">
-                                兑换
-                            </view>
                         </view>
+                    </view>
+                    <view class="bomTxt">
+                        <view class="bottom-tip" style="display: {{tipLoad2?'block':'none'}};">上拉加载</view>
+                        <view class="bottom-tip" style="display: {{loading2?'block':'none'}};">正在加载...</view>
+                        <view class="bottom-tip" style="display: {{loaded2?'block':'none'}};">已加载全部</view>
                     </view>
                 </view>
                 <view wx:else class="void-tip">
@@ -117,25 +131,32 @@
                 </view>
             </view>
             <view class="wrap" slot="特惠专享" style="">
-                <view wx:if="{{disPrizeList.length}}" class="shops ptb-20">
-                    <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
-                        <image src="{{item.imageUrl}}" mode="" />
-                        <view class="title mt-10">
-                            {{item.prizeName}}
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    {{item.price}}积分
+                <view wx:if="{{disPrizeList.length}}">
+                    <view class="shops ptb-20">
+                        <view class="item" bindtap="navgator" wx:for="{{disPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
+                            <image src="{{item.imageUrl}}" mode="" />
+                            <view class="title mt-10">
+                                {{item.prizeName}}
+                            </view>
+                            <view class="content mt-10">
+                                <view class="info">
+                                    <view class="price">
+                                        {{item.price}}积分
+                                    </view>
+                                    <view class="num">
+                                        限量{{item.limitNum}}
+                                    </view>
                                 </view>
-                                <view class="num">
-                                    限量{{item.limitNum}}
+                                <view class="btn mt-20">
+                                    兑换
                                 </view>
                             </view>
-                            <view class="btn mt-20">
-                                兑换
-                            </view>
                         </view>
+                    </view>
+                    <view class="bomTxt">
+                        <view class="bottom-tip" style="display: {{tipLoad3?'block':'none'}};">上拉加载</view>
+                        <view class="bottom-tip" style="display: {{loading3?'block':'none'}};">正在加载...</view>
+                        <view class="bottom-tip" style="display: {{loaded3?'block':'none'}};">已加载全部</view>
                     </view>
                 </view>
                 <view wx:else class="void-tip">
@@ -143,25 +164,32 @@
                 </view>
             </view>
             <view class="wrap" slot="爆款商品" style="">
-                <view wx:if="{{burstPrizeList.length}}" class="shops ptb-20">
-                    <view class="item" bindtap="navgator" wx:for="{{hotPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
-                        <image src="{{item.imageUrl}}" mode="" />
-                        <view class="title mt-10">
-                            {{item.prizeName}}
-                        </view>
-                        <view class="content mt-10">
-                            <view class="info">
-                                <view class="price">
-                                    {{item.price}}积分
+                <view wx:if="{{burstPrizeList.length}}">
+                    <view class="shops ptb-20">
+                        <view class="item" bindtap="navgator" wx:for="{{burstPrizeList}}" wx:key="index" data-path="goodDetail/index" data-id="{{item._id}}">
+                            <image src="{{item.imageUrl}}" mode="" />
+                            <view class="title mt-10">
+                                {{item.prizeName}}
+                            </view>
+                            <view class="content mt-10">
+                                <view class="info">
+                                    <view class="price">
+                                        {{item.price}}积分
+                                    </view>
+                                    <view class="num">
+                                        限量{{item.limitNum}}
+                                    </view>
                                 </view>
-                                <view class="num">
-                                    限量{{item.limitNum}}
+                                <view class="btn mt-20">
+                                    兑换
                                 </view>
                             </view>
-                            <view class="btn mt-20">
-                                兑换
-                            </view>
                         </view>
+                    </view>
+                    <view class="bomTxt">
+                        <view class="bottom-tip" style="display: {{tipLoad4?'block':'none'}};">上拉加载</view>
+                        <view class="bottom-tip" style="display: {{loading4?'block':'none'}};">正在加载...</view>
+                        <view class="bottom-tip" style="display: {{loaded4?'block':'none'}};">已加载全部</view>
                     </view>
                 </view>
                 <view wx:else class="void-tip">
@@ -169,5 +197,7 @@
                 </view>
             </view>
         </tab>
+    </view>
+    </scroll-view>
     </view>
 </view>

@@ -40,10 +40,6 @@ App({
     },
     //获取奖品详情
     getMinePrizeDetail(prizeId){
-        console.log(prizeId);
-        console.log(prizeId);
-        console.log(prizeId);
-        console.log(prizeId);
         return wx.cloud.callFunction({
             name: 'transaction',
             data: {
@@ -91,13 +87,14 @@ App({
         })
     },
     //获取奖品列表接口
-    getPrizeList(pageNum,pageSize) {
+    getPrizeList(pageNum,pageSize,prizeType) {
         return wx.cloud.callFunction({
             name: 'transaction',
             data: {
                 type: 'prizeList',
                 pageNum,
-                pageSize
+                pageSize,
+                prizeType
             }
         }).then(res => {
             return res.result
@@ -186,6 +183,7 @@ App({
             name: 'user',
             data: {
                 type: 'add',
+                openId: this.globalData.openId
             }
         }).then(res => {
             return res.result

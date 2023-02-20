@@ -1,39 +1,174 @@
 // pages/home/index.js
 Page({
+    async setLoad(){
+        let tipLoad = 'tipLoad' + (this.data.currentIndex + 1);
+        let loading = 'loading' + (this.data.currentIndex + 1);
+        let loaded = 'loaded' + (this.data.currentIndex + 1);
+        let pageNum = 'pageNum' + (this.data.currentIndex + 1);
+        let pageSize = 'pageSize' + (this.data.currentIndex + 1);
+        let prizeType = (this.data.currentIndex == 0) ? "" : this.data.currentIndex;
+        let dataList;
+        switch (this.data.currentIndex) {
+            case 0:
+                dataList = 'prizeList';
+                break;
+            case 1:
+                dataList = 'hotPrizeList';
+                break;
+            case 2:
+                dataList = 'disPrizeList';
+                break;
+            case 3:
+                dataList = 'burstPrizeList';
+                break;
+            default:
+                dataList = 'prizeList';
+                break;
+        };
+        if (!this.data[loaded]) {
+            this.setData({
+                [tipLoad]: false,
+                [loading]: true
+            })
+            let {
+                getPrizeList
+            } = getApp();
+            let res = await getPrizeList(this.data[pageNum], this.data[pageSize], prizeType);
+            //获取到数据
+            if (res.status == 200) {
+                this.setData({
+                    [dataList]: this.data[dataList].concat(res.data.resArr),
+                    [loading]: false,
+                })
+                //
+                if (res.data.total <= this.data[dataList].length) {
+                    this.setData({
+                        [loaded]: true
+                    })
+                } else {
+                    this.setData({
+                        [tipLoad]: true,
+                        [pageNum]: this.data[pageNum] + 1
+                    })
+                }
+            } else {
+                wx.showToast({
+                    title: '刷新错误',
+                    icon: "error"
+                })
+                this.setData({
+                    [tipLoad]: true,
+                    [loading]: false
+                })
+            }
+        }
+    },
+    scroll() {
+        this.setData({
+            scrollBottom:true
+        })
+        if(this.data.scrollBottom&&this.data.pageBottomFlag){
+            this.setLoad()
+        }
+        console.log('scroll到底');
+    },
+    scrollMove(){
+        this.setData({
+            scrollBottom:false
+        })
+    },
+    listenPageScroll(){
+        console.log('页面滚动');
+        this.setData({
+            pageBottomFlag:false
+        })
+    },
+    listenPageBottom(){
+        console.log('页面到底');
+        this.setData({
+            pageBottomFlag:true
+        })
+        if(this.data.scrollBottom&&this.data.pageBottomFlag){
+            this.setLoad()
+        }
+    },
     async getPrizeList() {
         this.setData({
-            prizeLoad: true
+            prizeLoad: true,
         })
         let {
             getPrizeList
         } = getApp();
         try {
-            let res = await getPrizeList(this.data.pageNum, this.data.pageSize);
-            console.log(res);
-            if (res.status == 200) {
-                this.setData({
-                    prizeList: res.data.resArr,
-                })
-            }
-            // let perizeListArr = res.data.sort((a, b) => {
-            //     return b.price - a.price
-            // }).sort((m, n) => {
-            //     return n.remainderNum - m.remainderNum
-            // })
-            // console.log(perizeListArr);
+            let res1 = await getPrizeList(this.data.pageNum1, this.data.pageSize1);
+            let res2 = await getPrizeList(this.data.pageNum2, this.data.pageSize2, 1);
+            let res3 = await getPrizeList(this.data.pageNum3, this.data.pageSize3, 2);
+            let res4 = await getPrizeList(this.data.pageNum4, this.data.pageSize4, 3);
+            
 
-            // this.setData({
-            //     prizeList: perizeListArr,
-            //     hotPrizeList: perizeListArr.filter(e => {
-            //         return e.prizeType == 1
-            //     }),
-            //     disPrizeList: perizeListArr.filter(e => {
-            //         return e.prizeType == 2
-            //     }),
-            //     burstPrizeList: perizeListArr.filter(e => {
-            //         return e.prizeType == 3
-            //     })
-            // });
+            if (res1.status == 200) {
+                this.setData({
+                    prizeList: res1.data.resArr
+                })
+                if (res1.data.total > this.data.prizeList.length) {
+                    this.setData({
+                        pageNum1: this.data.pageNum1 + 1
+                    })
+                } else {
+                    this.setData({
+                        loaded1: true,
+                        tipLoad1: false,
+
+                    })
+                }
+            }
+            if (res2.status == 200) {
+                this.setData({
+                    hotPrizeList: res2.data.resArr,
+                })
+
+                if (res2.data.total > this.data.hotPrizeList.length) {
+                    
+                    this.setData({
+                        pageNum2: this.data.pageNum2 + 1
+                    })
+                } else {
+                    this.setData({
+                        loaded2: true,
+                        tipLoad2: false,
+                    })
+                }
+            }
+            if (res3.status == 200) {
+                this.setData({
+                    disPrizeList: res3.data.resArr,
+                })
+                if (res3.data.total > this.data.disPrizeList.length) {
+                    this.setData({
+                        pageNum3: this.data.pageNum3 + 1
+                    })
+                } else {
+                    this.setData({
+                        loaded3: true,
+                        tipLoad3: false,
+                    })
+                }
+            }
+            if (res4.status == 200) {
+                this.setData({
+                    burstPrizeList: res4.data.resArr,
+                })
+                if (res4.data.total > this.data.burstPrizeList.length) {
+                    this.setData({
+                        pageNum4: this.data.pageNum4 + 1
+                    })
+                } else {
+                    this.setData({
+                        loaded4: true,
+                        tipLoad4: false,
+                    })
+                }
+            }
             this.setData({
                 prizeLoad: false
             })
@@ -99,7 +234,6 @@ Page({
                 getUserInfo
             } = getApp();
             let userInfoRes = await getUserInfo();
-            console.log(userInfoRes);
             if (userInfoRes.status == 200 && !Array.isArray(userInfoRes.data)) {
                 this.setData({
                     loginStatus: true,
@@ -114,6 +248,7 @@ Page({
             this.setData({
                 infoLoad: false
             })
+            return userInfoRes
         })
     },
     async login() {
@@ -143,7 +278,6 @@ Page({
             })
         } else {
             let addResult = await addUser();
-            console.log(addResult);
             wx.hideLoading()
             if (addResult.status == 200) {
                 wx.showToast({
@@ -172,8 +306,16 @@ Page({
      * 页面的初始数据
      */
     data: {
-        pageNum: 1,
-        pageSize: 2,
+        scrollBottom:false,
+        pageBottomFlag:false,
+        pageNum1: 1,
+        pageSize1: 6,
+        pageNum2: 1,
+        pageSize2: 6,
+        pageNum3: 1,
+        pageSize3: 6,
+        pageNum4: 1,
+        pageSize4: 6,
         position: 'center',
         ruleMask: false,
         scrollbar: false,
@@ -185,30 +327,26 @@ Page({
         isShowLogin: false,
         prizeLoad: true,
         infoLoad: true,
-        loading: false, //是否展示 “正在加载” 字样
-        loaded: false //是否展示 “已加载全部” 字样
+        loading1: false, //是否展示 “正在加载” 字样
+        loaded1: false, //是否展示 “已加载全部” 字样
+        tipLoad1: true,
+        loading2: false, //是否展示 “正在加载” 字样
+        loaded2: false, //是否展示 “已加载全部” 字样
+        tipLoad2: true,
+        loading3: false, //是否展示 “正在加载” 字样
+        loaded3: false, //是否展示 “已加载全部” 字样
+        tipLoad3: true,
+        loading4: false, //是否展示 “正在加载” 字样
+        loaded4: false, //是否展示 “已加载全部” 字样
+        tipLoad4: true,
+        currentIndex: 0
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    async onLoad(options) {
-        this.getUserInfo(options.prizeId);
+    async onLoad() {
+        this.getUserInfo();
         await this.getPrizeList();
-        setTimeout(() => {
-            let query = wx.createSelectorQuery();
-            // query.select('.content').boundingClientRect(rect => {
-            //     let height = rect.height;
-            //     console.log(height);
-            // }).exec();
-            // let query = wx.createSelectorQuery();
-            query.select('.content').boundingClientRect(rect => {
-                let clientHeight = rect.height;
-                let clientWidth = rect.width;
-                let ratio = 298 / clientWidth;
-                let height = clientHeight * ratio;
-                console.log(height);
-            }).exec();
-        }, 300)
     },
 
     /**
@@ -222,7 +360,6 @@ Page({
     async onShow() {
         let {
             userInfo,
-            loginFlag,
             getHomeFlag,
             loginStatus,
             homeLogin,
@@ -234,7 +371,6 @@ Page({
         })
         if (!homeLogin && mineLogin) {
             await this.getUserInfo()
-            console.log(2);
         } else if (getHomeFlag) {
             await this.getUserInfo()
         }
@@ -262,52 +398,61 @@ Page({
     },
     async onRefresh() {
         //导航条加载动画
-        wx.showNavigationBarLoading()
-        try {
-            let res = await this.getPrizeList();
-        } catch {
-            // wx.hideLoading()
-            this.data.isShowList = false;
-            this.data.isShowLogin = false;
-            // wx.showToast({
-            //     icon: 'error',
-            //     title: '刷新失败',
-            // })
-        }
-        wx.hideLoading()
+        wx.showNavigationBarLoading();
+        this.setData({
+            pageNum1: 1,
+            pageNum2: 1,
+            pageNum3: 1,
+            pageNum4: 1,
+            pageSize1: 6,
+            pageSize2: 6,
+            pageSize3: 6,
+            pageSize4: 6,
+            prizeList: [],
+            burstPrizeList: [],
+            disPrizeList: [],
+            hotPrizeList: [],
+            loading1: false, //是否展示 “正在加载” 字样
+            loaded1: false, //是否展示 “已加载全部” 字样
+            tipLoad1: true,
+            loading2: false, //是否展示 “正在加载” 字样
+            loaded2: false, //是否展示 “已加载全部” 字样
+            tipLoad2: true,
+            loading3: false, //是否展示 “正在加载” 字样
+            loaded3: false, //是否展示 “已加载全部” 字样
+            tipLoad3: true,
+            loading4: false, //是否展示 “正在加载” 字样
+            loaded4: false, //是否展示 “已加载全部” 字样
+            tipLoad4: true,
+        })
+        await this.getUserInfo();
+        await this.getPrizeList();
         wx.stopPullDownRefresh();
         wx.hideNavigationBarLoading();
+    },
+    tabChange(e) {
+        this.setData({
+            currentIndex: e.detail
+        })
     },
     /**
      * 页面上拉触底事件的处理函数
      */
     async onReachBottom() {
-        // console.log(11);
+        console.log('到底');
+    },
+    touchStart(e){
+        console.log('滚起来', e);
         // this.setData({
-        //     loading: true,
-        // });
-        // let {
-        //     getPrizeList
-        // } = getApp();
-        // let res=await getPrizeList(this.data.pageNum,this.data.pageSize);
-        // if(res.status==200){
-        //     this.setData({
-        //         prizeList: this.data.prizeList.concat(res.data.resArr)
-        //     })
-        //     this.setData({
-        //         loading: false,
-        //     });
-        // }
-    },
-    scroll() {
-        console.log('到底了');
-        wx.showLoading({
-            title: 'hahah ',
-        })
-        this.setData({
-            loading: true
-        })
-    },
+        //   scrollStop: false
+        // })
+      },
+      touchEnd(e){
+       console.log('停下来', e);
+        // this.setData({
+        //   scrollStop: true
+        // })
+      },
     /**
      * 用户点击右上角分享
      */

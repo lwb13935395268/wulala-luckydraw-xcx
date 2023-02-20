@@ -71,5 +71,5 @@
     padding: 0rpx 0rpx 20rpx 0rpx;
 }
 .bottom-tip{
-    padding-bottom:20rpx ;
+    padding-bottom:10rpx ;
 }
