@@ -5,15 +5,3 @@
     background-color: #e04540;
     color: white;
 }
-.tips{
-    font-size: 30rpx;
-    color: #aaa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: calc(100vh - 30vh);
-}
-.tips image{
-    width: 100rpx;
-    height: 100rpx;
-}

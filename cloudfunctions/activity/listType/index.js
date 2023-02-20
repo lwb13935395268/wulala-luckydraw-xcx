@@ -10,6 +10,7 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     let queryMyActivityList;
     let { pageSize = 10, pageNum = 1 } = event;
+    console.log(event.listType);
     switch (event.listType) {
         case 0:
             queryMyActivityList = await db.collection('activity').aggregate().sort({
@@ -35,6 +36,7 @@ exports.main = async (event, context) => {
         default:
             break;
     };
+    console.log(queryMyActivityList);
     let res = {
         status:0,
         msg:"查询失败,请重新在试",

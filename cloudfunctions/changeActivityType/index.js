@@ -27,7 +27,8 @@ exports.main = async (event, context) => {
   let changeType2 = ()=>{
     return new Promise((resolve,reject)=>{
       db.collection('activity').where({
-        startDate: _.lt(nowTime)
+        startDate: _.lt(nowTime),
+        activityType:_.neq(2),
       }).update({
         data: {
           activityType: 1,
