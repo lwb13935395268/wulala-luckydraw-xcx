@@ -1,16 +1,14 @@
 // pages/mine/mineActivity/index.js
 Page({
-    
-    getDate(date){
-		var time = new Date(date);
+
+    getDate(date) {
+        var time = new Date(date);
         var y = time.getFullYear();
-        console.log(time.getMonth());
-        console.log(time.getMonth()+1);
-		var m = ((time.getMonth() + 1)<10?'0'+(time.getMonth() + 1):time.getMonth() + 1);
-		var d = time.getDate();
+        var m = ((time.getMonth() + 1) < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1);
+        var d = time.getDate();
         var h = (time.getHours() < 10 ? '0' + time.getHours() : time.getHours());
-        var mine = (time.getMinutes() < 10 ? '0' + time.getMinutes(): time.getMinutes());
-        return y+'/'+m+'/'+d+' '+h+':'+mine
+        var mine = (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
+        return y + '/' + m + '/' + d + ' ' + h + ':' + mine
     },
     /**
      * 生命周期函数--监听页面加载
@@ -26,10 +24,43 @@ Page({
             url: '/pages/mine/' + path,
         })
     },
-    async getMineActivitys() {
+    loadImg1() {
+        console.log('加载图片1');
         this.setData({
-            show:true
+            imgNum1: this.data.imgNum1 + 1
         })
+        console.log(this.data);
+        if (this.data.imgMaxLength1 == this.data.imgNum1) {
+            this.setData({
+                show: false
+            })
+        }
+    },
+    loadImg2() {
+        console.log('加载图片2');
+        this.setData({
+            imgNum2: this.data.imgNum2 + 1
+        })
+        if (this.data.imgMaxLength2 == this.data.imgNum2) {
+            this.setData({
+                show: false
+            })
+        }
+
+    },
+    async getMineActivitys(e) {
+        this.setData({
+            show: true,
+            imgNum1:0,
+            imgMaxLength1:0,
+            imgNum2:0,
+            imgMaxLength2:0
+        })
+        if (e) {
+            this.setData({
+                tabIndex: e.detail
+            })
+        }
         let {
             getMineActivity
         } = getApp();
@@ -37,38 +68,51 @@ Page({
         console.log(res);
         if (res.status == 200) {
             this.setData({
-                activityList: res.data.filter(e=>{
-                    return e.activityType!=2
-                 }).map(item=>{
-                     return {
-                        _id:item._id,
-                        activityTitle:item.activityTitle,
-                        startDate:this.getDate(item.startDate),
-                        endDate:this.getDate(item.endDate),
-                        imgFileId:item.imgFileId
-                     }
-                 }),
-                overActivityList: res.data.filter(e=>{
-                   return e.activityType==2
-                }).map(item=>{
+                activityList: res.data.filter(e => {
+                    return e.activityType != 2
+                }).map(item => {
                     return {
-                       _id:item._id,
-                       activityTitle:item.activityTitle,
-                       startDate:this.getDate(item.startDate),
-                       endDate:this.getDate(item.endDate),
-                       imgFileId:item.imgFileId
+                        _id: item._id,
+                        activityTitle: item.activityTitle,
+                        startDate: this.getDate(item.startDate),
+                        endDate: this.getDate(item.endDate),
+                        imgFileId: item.imgFileId
                     }
-                })
+                }),
+                imgMaxLength1: res.data.filter(e => {
+                    return e.activityType != 2
+                }).length,
+                overActivityList: res.data.filter(e => {
+                    return e.activityType == 2
+                }).map(item => {
+                    return {
+                        _id: item._id,
+                        activityTitle: item.activityTitle,
+                        startDate: this.getDate(item.startDate),
+                        endDate: this.getDate(item.endDate),
+                        imgFileId: item.imgFileId
+                    }
+                }),
+                imgMaxLength2: res.data.filter(e => {
+                    return e.activityType == 2
+                }).length,
+            })
+            console.log(this.data);
+        }
+        if (this.data.tabIndex == 0&&this.data.imgMaxLength1==0) {
+            this.setData({
+                show:false
+            })
+        } else if(this.data.tabIndex==1&&this.data.imgMaxLength2==0) {
+            this.setData({
+                show:false
             })
         }
-        this.setData({
-            show:false
-        })
         return res
     },
-    toCommodityDetails(e){
+    toCommodityDetails(e) {
         wx.navigateTo({
-          url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
+            url: '/pages/activity/activityDetail/index?id=' + e.target.dataset.id,
         })
     },
     /**
@@ -76,8 +120,13 @@ Page({
      */
     data: {
         titleList: ['正在进行', '已结束'],
-        show:true,
-        show2:false
+        show: true,
+        show2: false,
+        imgMaxLength1: 0,
+        imgNum1: 0,
+        imgMaxLength2: 0,
+        imgNum2: 0,
+        tabIndex: 0
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -126,7 +175,7 @@ Page({
             let res = await this.getMineActivitys();
         } catch {
             this.setData({
-                show:false
+                show: false
             })
             wx.showToast({
                 icon: 'error',
