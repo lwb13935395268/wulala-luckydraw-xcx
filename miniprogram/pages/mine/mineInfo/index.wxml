@@ -61,7 +61,7 @@
         </view>
     </view>
     <view class="mt-40 flex-center">
-        <view class="btn" bindtap="save">
+        <view class="btn" bindtap="saveInfo">
             保存信息
         </view>
     </view>

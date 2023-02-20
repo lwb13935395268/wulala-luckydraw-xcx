@@ -1,5 +1,5 @@
 const cloud = require('wx-server-sdk');
-const findUser=require('../detail/index')
+const findUser = require('../detail/index')
 cloud.init({
     env: cloud.DYNAMIC_CURRENT_ENV
 });
@@ -8,7 +8,7 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     const OPENID = wxContext.OPENID;
-    const newIntegral=9000;
+    const newIntegral = 9000;
     const newUser = {
         area: [],
         birthdayDate: "",
@@ -26,13 +26,14 @@ exports.main = async (event, context) => {
         msg: "添加失败",
         data: []
     }
-    try {
-        let userRes= await findUser.main(event, context);
-        if(userRes.status==200&&!Array.isArray(userRes.result.data)){
+    // try {
+        let userRes = await findUser.main(event, context);
+        console.log(userRes);
+        if (userRes.status == 200 && !Array.isArray(userRes.data)) {
             console.log('有这个人');
-            res.mag="已有该用户"
+            res.mag = "已有该用户"
             return res
-        }else if(user.status==0){
+        } else if (userRes.status == 0) {
             return res
         }
         let result = await db.collection('userInfo').add({
@@ -53,7 +54,7 @@ exports.main = async (event, context) => {
         res.msg = "添加成功"
         res.data = newUser
         return res;
-    } catch {
+    // } catch {
         return res;
-    }
+    // }
 }

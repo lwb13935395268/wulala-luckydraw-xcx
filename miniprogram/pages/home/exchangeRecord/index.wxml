@@ -5,7 +5,7 @@
     <view class="wrap">
         <view wx:for="{{prizeList}}" wx:key="index" class="record mt-40">
             <view class="title flex aline-center" bindtap="toPrizeDetail" data-id="{{item._id}}">
-                <image src="{{item.imageUrl}}" mode="" />
+                <image onload="loadImg" src="{{item.imageUrl}}" mode="" />
                 <view>
                     {{item.title}}
                 </view>

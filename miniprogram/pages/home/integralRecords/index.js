@@ -6,29 +6,33 @@ Page({
     onLoad(options) {
     },
     async getIntegralRecord() {
-
-        wx.showLoading({
-            title: '加载中..',
-            mask: true
+        this.setData({
+            show:true
         })
         let {
             getIntegralRecord
         } = getApp();
         let app = getApp();
-        let res = await getIntegralRecord();
+        let integralRecordRes = await getIntegralRecord();
+        if(integralRecordRes.status==200){
         this.setData({
             integral :app.globalData.userInfo.integral,
-            recordList: res.data.sort((m, n) => {
+            recordList: integralRecordRes.data.sort((m, n) => {
                 return n.date - m.date
             })
         })
-        wx.hideLoading()
+        }
+        this.setData({
+            show:false
+        })
+        return res
     },
     /**
      * 页面的初始数据
      */
     data: {
-        recordList: []
+        recordList: [],
+        show:false
     },
 
 
@@ -64,8 +68,12 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh() {
-
+    async onPullDownRefresh() {
+        console.log(1);
+        wx.showNavigationBarLoading();
+        await this.getIntegralRecord();
+        wx.stopPullDownRefresh();
+        wx.hideNavigationBarLoading();
     },
 
     /**

@@ -18,18 +18,18 @@ Page({
             homeLogin,
             mineLogin
         } = getApp().globalData;
-        this.data.loginStatus=loginStatus
-        this.data.userInfo=userInfo;
-        if (homeLogin&&!mineLogin) {
+        this.data.loginStatus = loginStatus
+        this.data.userInfo = userInfo;
+        if (homeLogin && !mineLogin) {
             await this.getUserInfo()
-        }else if(getMineFlag){
+        } else if (getMineFlag) {
             await this.getUserInfo()
         }
         console.log(3);
     },
     async getUserInfo() {
         this.setData({
-            show:true
+            show: true
         })
         //登录 关闭
         getApp().globalData.loginFlag = false;
@@ -38,20 +38,21 @@ Page({
             getUserInfo
         } = getApp();
         let userInfoRes = await getUserInfo();
-        if(!Array.isArray(userInfoRes.data)){
+        if (!Array.isArray(userInfoRes.data)) {
             this.setData({
-                userInfo:userInfoRes.data,
-                loginStatus:true
+                userInfo: userInfoRes.data,
+                loginStatus: true
             })
-           await this.getMineActivitys();
-           await this.getMineCreatedActivity();
-            getApp().globalData.loginStatus=true;
-            getApp().globalData.userInfo=userInfoRes.data;
-            getApp().globalData.mineLogin=true;
+            await this.getMineActivitys();
+            await this.getMineCreatedActivity();
+            getApp().globalData.loginStatus = true;
+            getApp().globalData.userInfo = userInfoRes.data;
+            getApp().globalData.mineLogin = true;
         }
         this.setData({
-            show:false
+            show: false
         })
+        return userInfoRes
 
     },
     navgatorTabBar(e) {
@@ -77,29 +78,36 @@ Page({
             addUser
         } = getApp();
         await login('登录');
-        wx.showLoading({
-            title: '正在授权..',
-        })
-        let addResult = await addUser();
-        console.log(addResult);
-        wx.hideLoading()
-        if (addResult.status == 200) {
-            wx.showToast({
-                title: '授权登录',
+        // let user = await this.getUserInfo();
+        // console.log(user);
+        // if (Array.isArray(user.data)) {
+        //     console.log('jinlao');
+        //     console.log(login);
+        //     await login('登录');
+            wx.showLoading({
+                title: '正在授权..',
             })
-            this.setData({
-                userInfo:addResult.data,
-                loginStatus:true
-            })
-            getApp().globalData.loginStatus=true;
-            getApp().globalData.userInfo=addResult.data;
-            getApp().globalData.mineLogin=true;
-        } else {
-            wx.showToast({
-                icon: 'error',
-                title: '授权失败',
-            })
-        }
+            let addResult = await addUser();
+            console.log(addResult);
+            wx.hideLoading()
+            if (addResult.status == 200) {
+                wx.showToast({
+                    title: '授权登录',
+                })
+                this.setData({
+                    userInfo: addResult.data,
+                    loginStatus: true
+                })
+                getApp().globalData.loginStatus = true;
+                getApp().globalData.userInfo = addResult.data;
+                getApp().globalData.mineLogin = true;
+            } else {
+                wx.showToast({
+                    icon: 'error',
+                    title: '授权失败',
+                })
+            }
+        // }
     },
     async getMineActivitys() {
         let {
@@ -147,7 +155,7 @@ Page({
     data: {
         mineCreatedActivityNum: 0,
         mineActivityNum: 0,
-        show:true
+        show: false
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
