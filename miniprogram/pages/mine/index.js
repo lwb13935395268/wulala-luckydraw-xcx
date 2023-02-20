@@ -4,7 +4,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        // this.getUserInfo()
+        wx.showToast({
+          title: '进入onload',
+        })
+        this.getUserInfo()
     },
     /**
      * 生命周期函数--监听页面显示
@@ -155,7 +158,7 @@ Page({
     data: {
         mineCreatedActivityNum: 0,
         mineActivityNum: 0,
-        show: false
+        show: true
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
