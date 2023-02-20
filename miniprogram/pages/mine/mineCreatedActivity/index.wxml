@@ -1,37 +1,12 @@
-<!--pages/mine/mineCreatedActivity/index.wxml-->
-<loading isShow="{{isShow}}"></loading>
-<tab titleList="{{['未开始','正在进行','已结束']}}" bind:myevent="onMyEvent">
-    <view slot='未开始' class="wrap">
-        <view class="gap-tb-20" wx:if="{{myActicityList!=''}}">
-            <activity wx:for="{{myActicityList}}" bind:loadImg="loadImg" bindtap="toCommodityDetails" data-id="{{item._id}}" wx:key="index" status="0" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}" isSet="{{true}}" toSetRouter='/pages/mine/createActivity/index?id={{item._id}}'>
-            </activity>
-        </view>
-        <view class="tips" wx:else>
-            暂无未开始活动哦亲
-            <image src="../../../images/nothing-info.png" mode=""/>
-        </view>
-    </view>
-    <view slot='正在进行' class="wrap">
-        <view class="create-btn" bindtap="navgator" data-path="selectActivity/index">
+<tab titleList="{{['正在进行','未开始','已结束']}}" bind:scroll="scroll" bind:myevent="onMyEvent" showLoading="{{isShow}}">
+    <view wx:for="{{navList}}" wx:for-item="nav" slot='{{nav.title}}' class="{{myActicityList!='' ? 'wrap' : ''}}" wx:key="index">
+        <view wx:if="{{nav.index == 0}}" class="create-btn" bindtap="navgator" data-path="selectActivity/index">
             去创建一个活动
         </view>
-        <view class="gap-tb-20" wx:if="{{myActicityList!=''}}">
-          <activity wx:for="{{myActicityList}}" wx:key="index" bindtap="toCommodityDetails" data-id="{{item._id}}"  bind:loadImg="loadImg" status="0" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}">
+        <view class="gap-tb-20" wx:if="{{activityList!=''}}">
+          <activity wx:for="{{activityList}}" wx:key="index" bindtap="toCommodityDetails" data-id="{{item._id}}"  bind:loadImg="loadImg" status="0" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}">
           </activity>
         </view>
-        <view class="tips" wx:else>
-            暂无进行中的活动哦亲
-            <image src="../../../images/nothing-info.png" mode=""/>
-        </view>
-    </view>
-    <view slot='已结束' class="wrap ptb-20">
-        <view class="gap-tb-20" wx:if="{{myActicityList!=''}}">
-          <activity wx:for="{{myActicityList}}" wx:key="index" bind:loadImg="loadImg" status="2" startDate="{{item.startDate}}" endDate="{{item.endDate}}" title="{{item.activityTitle}}" imageUrl="{{item.imgFileId}}">
-          </activity>
-        </view>
-        <view class="tips" wx:else>
-            暂无结束活动哦亲
-            <image src="../../../images/nothing-info.png" mode=""/>
-        </view>
+        <empty wx:else></empty>
     </view>
 </tab>
