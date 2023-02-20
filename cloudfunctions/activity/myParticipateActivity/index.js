@@ -17,8 +17,6 @@ exports.main = async (event, context) => {
         foreignField: 'activityId',
         as:'row',
     }).end().then(res=>{
-        console.log('----------------具体的活动-------------')
-        console.log(res.list);
         let participate = [];
         res.list.forEach(item=>{
             switch (item.row.length) {

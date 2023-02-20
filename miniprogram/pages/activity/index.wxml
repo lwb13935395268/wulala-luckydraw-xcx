@@ -1,11 +1,11 @@
 <view class="main">
     <tab titleList="{{['全部','推荐','进行中','已结束']}}" bind:scroll="scroll" bind:myevent="onMyEvent" showLoading="{{isShow}}">
-        <view wx:for="{{navList}}" wx:for-item="nav" slot="{{nav.title}}" class="{{activityList != '' ? 'wrap':''}}" wx:key="index">
+        <view wx:for="{{navList}}" wx:for-item="nav" slot="{{nav.title}}" class="{{activityList != '' ? 'wrap oh':''}}" wx:key="index">
             <view class="gap-tb-20" wx:if="{{activityList!=''}}">
-                <activity  wx:for="{{activityList}}" wx:key="index" status="" bind:loadImg="loadImg" data-id="{{item._id}}" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+                <activity  wx:for="{{activityList}}" wx:key="index" status="{{currentIndex==3 ? 2 : ''}}" bind:loadImg="loadImg" data-id="{{item._id}}" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
             <empty wx:else></empty>
-            <view class="upload-text" wx:if="{{isUpLoadText == 1}}">
+            <view class="upload-text mb-20" wx:if="{{isUpLoadText == 1}}">
                 <image wx:if="{{upLoadText != '加载完成'}}" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/R-C.gif?sign=b8edba7938aa867c1198a78308fa8f34&t=1676705305" mode=""/>
                 {{upLoadText}}
             </view>

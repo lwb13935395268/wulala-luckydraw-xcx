@@ -57,3 +57,6 @@ border-radius: 10rpx;
     height: 140rpx !important;
     transform:rotate(-30deg);
 }
+.activity-type_image{
+    width: 300rpx;
+}

@@ -193,6 +193,12 @@ page {
 .pt-15 {
     padding-top: 15rpx;
 }
+.mb-20{
+    margin-bottom: 20rpx;
+}
+.oh{
+    overflow: hidden;
+}
 
 .opct {
     opacity: .5;
