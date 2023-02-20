@@ -5,6 +5,7 @@ Page({
      * 页面的初始数据         
      */
     data: {
+        imgLength:0,//图片数量
         pageSize:10,//多少条数据
         pageNum:1,//页数
         currentIndex: 0, //tab下标
@@ -52,8 +53,17 @@ Page({
     },
     loadImg:function(){
         this.setData({
-            isShow:false,
+            imgLength:this.data.imgLength+1
         });
+        if (this.data.activityList.length*4 == this.data.imgLength) {
+            this.setData({
+                isShow:false,
+            });
+        }else if(this.data.imgLength==''){
+            this.setData({
+                isShow:false,
+            });
+        }
     },
     
     //获取活动列表信息
@@ -87,15 +97,22 @@ Page({
                     upLoadText:'加载中'
                 });
             }
+            if (list.length == 0) {
+                this.setData({
+                    isShow:false,
+                })
+            }
             list.forEach((item,index)=>{
+                let startDate = this.getDate(item.startDate);
+                let endDate = this.getDate(item.endDate);
                 if (Number(item.startDate)) {
-                    item.startDate = new Date(item.startDate).toLocaleString().replace(/\//g,'-');
-                    item.endDate = new Date(item.endDate).toLocaleString().replace(/\//g,'-');
+                    item.startDate = startDate;
+                    item.endDate = endDate;
                 }
             })
             this.setData({
                 activityList:list,
-                isShow:false,
+                imgLength:0,
                 isListLength:list.length
             });
         })
@@ -108,6 +125,15 @@ Page({
             isUpLoadText:1,
         })
         this.getActivityList(this.data.currentIndex)
+    },
+    getDate(date) {
+        var time = new Date(date);
+        var y = time.getFullYear();
+        var m = ((time.getMonth() + 1) < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1);
+        var d = time.getDate();
+        var h = (time.getHours() < 10 ? '0'+ time.getHours() : time.getHours());
+        var mine = (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
+        return y +'/' + m + '/' + d + ' ' + h +':' + mine
     },
     /**
      * 生命周期函数--监听页面加载
