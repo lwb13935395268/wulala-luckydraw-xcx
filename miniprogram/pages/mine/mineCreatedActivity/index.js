@@ -18,10 +18,10 @@ Page({
         navList:[
             {
                 index:0,
-                title:'正在进行'
+                title:'未开始'
             },{
                 index:1,
-                title:'未开始'
+                title:'正在进行'
             },{
                 index:2,
                 title:'已结束'
@@ -54,6 +54,7 @@ Page({
     
     //获取活动列表信息
     getActivityList(index){
+        console.log(index);
         wx.cloud.callFunction({
             name:'activity',
             data:{

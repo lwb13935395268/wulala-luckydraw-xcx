@@ -38,7 +38,7 @@
       }
   ],
   "window": {
-    "backgroundColor": "#eb524c",
+    "backgroundColor": "#fff",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "抽奖",
