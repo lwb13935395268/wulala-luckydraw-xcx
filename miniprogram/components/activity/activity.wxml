@@ -12,6 +12,6 @@
     </view>
     </view>
     </view>
-    <image class="image" wx:if="{{status==2}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/alreadyEnd.png?sign=e6d986567ef70969d31aac3ac29a618a&t=1676856169" mode="" />
-    <image class="image" wx:if="{{status==1}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/alreadyEnd.png?sign=e6d986567ef70969d31aac3ac29a618a&t=1676856169" mode="" />
+    <image class="activity-type_image" wx:if="{{status==2}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/closed.png?sign=5719c3f348425c2a180dc3f505ff47ca&t=1676858406" mode="aspectFit" />
+    <image class="activity-type_image" wx:if="{{status==1}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/participated.png?sign=e623064df7a8fd320b3c3976eda1f2fc&t=1676858440" mode="aspectFit" />
 </view>
