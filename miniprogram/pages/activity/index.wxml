@@ -2,7 +2,7 @@
     <tab titleList="{{['全部','推荐','进行中','已结束']}}" bind:scroll="scroll" bind:myevent="onMyEvent" showLoading="{{isShow}}">
         <view wx:for="{{navList}}" wx:for-item="nav" slot="{{nav.title}}" class="{{activityList != '' ? 'wrap':''}}" wx:key="index">
             <view class="gap-tb-20" wx:if="{{activityList!=''}}">
-                <activity  wx:for="{{activityList}}" wx:key="index" status="0" bind:loadImg="loadImg" data-id="{{item._id}}" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
+                <activity  wx:for="{{activityList}}" wx:key="index" status="" bind:loadImg="loadImg" data-id="{{item._id}}" bindtap="toCommodityDetails" data-id="{{item._id}}" title="{{item.activityTitle}}" startDate="{{item.startDate}}" endDate="{{item.endDate}}" imageUrl="{{item.imgFileId}}"></activity>
             </view>
             <empty wx:else></empty>
             <view class="upload-text" wx:if="{{isUpLoadText == 1}}">

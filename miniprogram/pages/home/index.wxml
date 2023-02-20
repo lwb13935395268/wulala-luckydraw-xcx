@@ -114,8 +114,11 @@
                                         限量{{item.limitNum}}
                                     </view>
                                 </view>
-                                <view class="btn mt-20">
-                                    兑换
+                                <view wx:if="{{item.remainderNum}}" class="btn mt-20">
+                                    去兑换
+                                </view>
+                                <view wx:else class="btn-no mt-20">
+                                    已兑完
                                 </view>
                             </view>
                         </view>
@@ -147,8 +150,11 @@
                                         限量{{item.limitNum}}
                                     </view>
                                 </view>
-                                <view class="btn mt-20">
-                                    兑换
+                                <view wx:if="{{item.remainderNum}}" class="btn mt-20">
+                                    去兑换
+                                </view>
+                                <view wx:else class="btn-no mt-20">
+                                    已兑完
                                 </view>
                             </view>
                         </view>
@@ -180,8 +186,11 @@
                                         限量{{item.limitNum}}
                                     </view>
                                 </view>
-                                <view class="btn mt-20">
-                                    兑换
+                                <view wx:if="{{item.remainderNum}}" class="btn mt-20">
+                                    去兑换
+                                </view>
+                                <view wx:else class="btn-no mt-20">
+                                    已兑完
                                 </view>
                             </view>
                         </view>

@@ -11,12 +11,12 @@ exports.main = async (event, context) => {
     let result
     if (prizeType) {
         console.log(1);
-        result = await db.collection('prize').where({
+        result = await db.collection('prize').orderBy('remainderNum','desc').where({
             prizeType
         }).get();
     } else {
         console.log(2);
-        result = await db.collection('prize').where({}).get();
+        result = await db.collection('prize').orderBy('remainderNum','desc').where({}).get();
     }
     console.log(result);
     let total = result.data.length;
