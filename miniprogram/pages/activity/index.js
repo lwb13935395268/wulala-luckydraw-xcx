@@ -68,11 +68,24 @@ Page({
             }
         }).then(res => {
             let list = this.data.activityList.concat(res.result.data.data);
-            console.log(list.length);
-            if (list.length == this.data.isListLength) {
+            if (this.data.isListLength == list.length) {
                 this.setData({
+                    isUpLoadText:1,
                     upLoadText:'加载完成'
-                })
+                });
+            }else if (list.length < 10) {
+                this.setData({
+                    isUpLoadText:1,
+                    upLoadText:'加载完成'
+                });
+            }else if (list.length > 10) {
+                this.setData({
+                    upLoadText:'加载中'
+                });
+            }else{
+                this.setData({
+                    upLoadText:'加载中'
+                });
             }
             list.forEach((item,index)=>{
                 if (Number(item.startDate)) {
