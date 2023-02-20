@@ -22,14 +22,6 @@ Component({
             type:Boolean,
             value:false
         },
-        loaded:{
-            type:Boolean,
-            value:false
-        },
-        loading:{
-            type:Boolean,
-            value:false
-        }
     },
     lifetimes: {
         attached(){
@@ -41,6 +33,8 @@ Component({
      */
     data: {
         currentIndex: 0, //默认是活动项
+        scrolly:true,
+        aa:100
     },
     options:{
         multipleSlots: true 
@@ -49,9 +43,13 @@ Component({
      * 组件的方法列表
      */
     methods: {
+        scrollMove(e){
+            // console.log(e.detail);
+            // console.log(this.data.aa);
+            this.triggerEvent('scrollMove', {});
+        },
         //滚动时触发
         scroll(){
-            console.log(111);
             this.triggerEvent('scroll', {});
         },
         // 切换swiper-item触发bindchange事件

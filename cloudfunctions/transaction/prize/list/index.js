@@ -7,7 +7,18 @@ const db = cloud.database();
 
 
 exports.main = async (event, context) => {
-    let result = await db.collection('prize').where({}).get();
+    let prizeType = event.prizeType;
+    let result
+    if (prizeType) {
+        console.log(1);
+        result = await db.collection('prize').orderBy('remainderNum','desc').where({
+            prizeType
+        }).get();
+    } else {
+        console.log(2);
+        result = await db.collection('prize').orderBy('remainderNum','desc').where({}).get();
+    }
+    console.log(result);
     let total = result.data.length;
     let pageNum = event.pageNum || 1; //1
     let pageSize = event.pageSize || total; //3

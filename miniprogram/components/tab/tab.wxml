@@ -9,12 +9,8 @@
     <loading isShow="{{showLoading?'block':'none'}}"></loading>
     <swiper class="swiperBox {{fixedHead?'scroll':''}}" bindchange='pagechange' current='{{currentIndex}}'>
         <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox' data-params="{{item}}">
-            <scroll-view class="scroll-view" bindscrolltolower="scroll" lower-threshold="0" scroll-y="{{scroll}}" style="height: 100%;">
+            <scroll-view scroll-top="{{aa}}" enhanced="{{}}" bindscroll="scrollMove" class="scroll-view" bindscrolltolower="scroll" lower-threshold="1" scroll-y="{{scrolly}}" style="height: 100%;">
                 <slot name="{{item}}"></slot>
-                <view class="bomTxt">
-                    <view class="bottom-tip" style="display: {{loading?'block':'none'}};">正在加载...</view>
-                    <view class="bottom-tip" style="display: {{loaded?'block':'none'}};">已加载全部</view>
-                </view>
             </scroll-view>
         </swiper-item>
     </swiper>

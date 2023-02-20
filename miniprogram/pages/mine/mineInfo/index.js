@@ -5,7 +5,7 @@ Page({
      */
     onLoad(options) {
         this.setData({
-            show:true
+            show: true
         })
         this.getUserInfo();
         this.getTodayTime();
@@ -75,9 +75,9 @@ Page({
         })
     },
     //加载图片
-    loadImg(){
+    loadImg() {
         this.setData({
-            show:false
+            show: false
         })
     },
     showNameInput() {
@@ -89,7 +89,7 @@ Page({
             editable: true,
             placeholderText: '输入昵称',
             showCancel: true,
-            content:this.data.userInfo.nickName,
+            content: this.data.userInfo.nickName,
             success: (res) => {
                 if (res.confirm) {
                     this.setData({
@@ -101,6 +101,9 @@ Page({
             complete: (res) => {},
         })
     },
+    saveInfo(){
+        this.throttle(this.save)();
+    },
     async save() {
         wx.showLoading({
             title: '更新中..',
@@ -111,8 +114,8 @@ Page({
         let updateInfoRes = await updateUserInfo(this.data.userInfo);
         wx.hideLoading();
         if (updateInfoRes.status == 200) {
-            getApp().globalData.getInfoFlag=true;
-            getApp().globalData.getMineFlag=true;
+            getApp().globalData.getInfoFlag = true;
+            getApp().globalData.getMineFlag = true;
             wx.showToast({
                 title: '修改成功',
             })
@@ -129,8 +132,25 @@ Page({
             })
         }
     },
-    nav(e){
-        getApp().globalData.selectImg=this.data.userInfo.avatarUrl;
+    //节流
+    throttle(fn) {
+        let _this = this;
+        return function () {
+            if (!_this.data.flag) return;
+            _this.setData({
+                flag: false
+            })
+            fn();
+            let timer = setTimeout(() => {
+                _this.setData({
+                    flag: true
+                })
+                clearTimeout(timer)
+            }, 1000)
+        }
+    },
+    nav(e) {
+        getApp().globalData.selectImg = this.data.userInfo.avatarUrl;
         wx.navigateTo({
             url: '../selectAvatar/index',
         })
@@ -181,7 +201,8 @@ Page({
         region: [],
         customItem: '全部',
         userInfo: {},
-        show:false
+        show: false,
+        flag:true
     },
 
     /**
@@ -195,9 +216,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        if(getApp().globalData.selectImg){
+        if (getApp().globalData.selectImg) {
             this.setData({
-                ['userInfo.avatarUrl']:getApp().globalData.selectImg
+                ['userInfo.avatarUrl']: getApp().globalData.selectImg
             })
         }
     },
@@ -205,14 +226,13 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide() {
-    },
+    onHide() {},
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload() {
-        getApp().globalData.selectImg=''
+        getApp().globalData.selectImg = ''
     },
 
     /**

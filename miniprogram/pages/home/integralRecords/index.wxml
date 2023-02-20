@@ -2,6 +2,7 @@
 <!-- <wxs /> -->
 <wxs module="fun" src="../../../filter/index.wxs"></wxs>
 <view class="page">
+    <loading isShow="{{show?'block':'none'}}"></loading>
     <view class="header">
         <view class="header-box wrap align-center flex-between">
             <view class="left">

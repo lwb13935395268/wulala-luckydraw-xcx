@@ -4,7 +4,7 @@
     <view class="activity-content flex-between align-center">
     <view class="content-left {{isSet?'width-70':'text-ellipsis'}}">
         <view class="activity-content_title">{{title}}</view>
-        <view class="activity-content_timer pt-15">{{startDate}}至{{endDate}}</view>
+        <view class="activity-content_timer pt-15">{{startDate}}<text class="py-10">至</text>{{endDate}}</view>
     </view>
     <view wx:if="{{isSet}}" class="content-right">
     <view class="btn" bindtap="navgator">
@@ -12,6 +12,6 @@
     </view>
     </view>
     </view>
-    <image class="image" wx:if="{{status==1}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-participated.png?sign=2b91147819789efd6f82d12ebcc8889e&t=1675173206" mode="" />
-    <image class="image" wx:if="{{status==2}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/icon-closed.png?sign=514c42b3d0ff28fbed5360053fafe8be&t=1675173275" mode="" />
+    <image class="image" wx:if="{{status==2}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/alreadyEnd.png?sign=e6d986567ef70969d31aac3ac29a618a&t=1676856169" mode="" />
+    <image class="image" wx:if="{{status==1}}" class="closed-img" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/alreadyEnd.png?sign=e6d986567ef70969d31aac3ac29a618a&t=1676856169" mode="" />
 </view>

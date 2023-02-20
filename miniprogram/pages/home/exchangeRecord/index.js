@@ -4,49 +4,46 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.setTitle()
     },
     toPrizeDetail(e){
         wx.navigateTo({
           url: '../prizeDetail/index?prizeId='+e.currentTarget.dataset.id,
         })
     },
-    setTitle(){
-        wx.setNavigationBarTitle({
-            title: '兑换记录'
-          })
-          wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#e04540',
-            animation: {
-              duration: 400,
-              timingFunc: 'easeIn'
-            }
-          })
+    loadImg(){
+        this.setData({
+            imageNum:this.data.imageNum+1
+        });
+        if(this.data.imageNum==this.data.imageMaxNum){
+            this.setData({
+                show:false
+            })
+        }
     },
     async getPrizeRecord(){
-        console.log('加载');
         this.setData({
             show:true
         })
         let {
             getPrizeRecord
         } = getApp();
-        let res = await getPrizeRecord();
-        console.log(res);
+        let prizeRecordRes = await getPrizeRecord();
         this.setData({
-            prizeList:res.data.sort((m,n)=>{
+            prizeList:prizeRecordRes.data.sort((m,n)=>{
               return n.date-m.date
             }),
-            show:false
+            imageMaxNum:prizeRecordRes.data.length
         })
+
     },
     /**
      * 页面的初始数据
      */
     data: {
         prizeList:[],
-        show:true
+        show:true,
+        imageNum:0,
+        imageMaxNum:0
     },
 
     /**
