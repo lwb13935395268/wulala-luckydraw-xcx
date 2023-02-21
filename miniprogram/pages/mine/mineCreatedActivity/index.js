@@ -10,6 +10,7 @@ Page({
      * 页面的初始数据         
      */
     data: {
+        imgLength:0,
         pageSize:10,//多少条数据
         pageNum:1,//页数
         currentIndex: 0, //tab下标
@@ -51,8 +52,17 @@ Page({
     },
     loadImg:function(){
         this.setData({
-            isShow:false,
+            imgLength:this.data.imgLength+1
         });
+        if (this.data.activityList.length*4 == this.data.imgLength) {
+            this.setData({
+                isShow:false,
+            });
+        }else if(this.data.imgLength==''){
+            this.setData({
+                isShow:false,
+            });
+        }
     },
     
     //获取活动列表信息
@@ -95,7 +105,7 @@ Page({
             });
             this.setData({
                 activityList:list,
-                isShow:false,
+                imgLength:0,
                 isListLength:list.length
             });
         })
