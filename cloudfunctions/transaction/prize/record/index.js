@@ -12,12 +12,10 @@ exports.main = async (event, context) => {
         msg: "查询错误",
         data: []
     }
-    console.log(OPENID);
     try {
         let result = await db.collection('prizeRecord').where({
             openId: OPENID
         }).get();
-        console.log(result);
         if (result.data) {
             res.status = 200;
             res.msg = "查询成功";

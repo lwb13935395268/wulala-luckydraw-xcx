@@ -70,7 +70,6 @@ Page({
 
             },
             fail: e => {
-                console.log(e)
             }
         })
     },

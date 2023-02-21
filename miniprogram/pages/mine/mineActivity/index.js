@@ -4,7 +4,7 @@ Page({
     getDate(date) {
         var time = new Date(date);
         var y = time.getFullYear();
-        var m = ((time.getMonth() + 1) < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1);
+        var m = ((time.getMonth() + 1) < 10 ? '0                                                                                                                                 ' + (time.getMonth() + 1) : time.getMonth() + 1);
         var d = time.getDate();
         var h = (time.getHours() < 10 ? '0' + time.getHours() : time.getHours());
         var mine = (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
@@ -25,11 +25,9 @@ Page({
         })
     },
     loadImg1() {
-        console.log('加载图片1');
         this.setData({
             imgNum1: this.data.imgNum1 + 1
         })
-        console.log(this.data);
         if (this.data.imgMaxLength1 == this.data.imgNum1) {
             this.setData({
                 show: false
@@ -37,7 +35,6 @@ Page({
         }
     },
     loadImg2() {
-        console.log('加载图片2');
         this.setData({
             imgNum2: this.data.imgNum2 + 1
         })
@@ -54,7 +51,9 @@ Page({
             imgNum1:0,
             imgMaxLength1:0,
             imgNum2:0,
-            imgMaxLength2:0
+            imgMaxLength2:0,
+            activityList:[],
+            overActivityList:[]
         })
         if (e) {
             this.setData({
@@ -65,7 +64,6 @@ Page({
             getMineActivity
         } = getApp();
         let res = await getMineActivity();
-        console.log(res);
         if (res.status == 200) {
             this.setData({
                 activityList: res.data.filter(e => {
@@ -97,7 +95,6 @@ Page({
                     return e.activityType == 2
                 }).length,
             })
-            console.log(this.data);
         }
         if (this.data.tabIndex == 0&&this.data.imgMaxLength1==0) {
             this.setData({

@@ -32,7 +32,6 @@ Page({
     },
     loadImg(){
         this.data.num++;
-        console.log(this.data.num);
         if(this.data.avatarList.length==this.data.num){
             this.setData({
                 show:false
