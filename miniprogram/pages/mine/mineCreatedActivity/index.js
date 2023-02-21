@@ -15,6 +15,9 @@ Page({
         currentIndex: 0, //tab下标
         activityList:[],//活动列表0
         isShow:'',//loading
+        isUpLoadText:0,//是否显示加载中
+        upLoadText:'加载中',
+        isListLength:'',//数据的长度与
         navList:[
             {
                 index:0,
@@ -65,6 +68,25 @@ Page({
             }
         }).then(res => {
             let list = this.data.activityList.concat(res.result.data);
+            if (this.data.isListLength == list.length) {
+                this.setData({
+                    isUpLoadText:1,
+                    upLoadText:'加载完成'
+                });
+            }else if (list.length < 10) {
+                this.setData({
+                    isUpLoadText:1,
+                    upLoadText:'加载完成'
+                });
+            }else if (list.length > 10) {
+                this.setData({
+                    upLoadText:'加载中'
+                });
+            }else{
+                this.setData({
+                    upLoadText:'加载中'
+                });
+            }
             list.forEach((item,index)=>{
                 if (Number(item.startDate)) {
                     item.startDate = new Date(item.startDate).toLocaleString().replace(/\//g,'-');
@@ -73,7 +95,8 @@ Page({
             });
             this.setData({
                 activityList:list,
-                isShow:false
+                isShow:false,
+                isListLength:list.length
             });
         })
     },
@@ -81,7 +104,8 @@ Page({
     scroll:function(){
         let pageNum = this.data.pageNum+1;
         this.setData({
-            pageNum:pageNum
+            pageNum:pageNum,
+            isUpLoadText:1,
         })
         this.getActivityList(this.data.currentIndex)
     },

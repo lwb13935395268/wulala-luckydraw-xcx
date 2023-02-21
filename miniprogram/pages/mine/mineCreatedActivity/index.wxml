@@ -1,5 +1,5 @@
 <tab titleList="{{['未开始','正在进行','已结束']}}" bind:scroll="scroll" bind:myevent="onMyEvent" showLoading="{{isShow}}">
-    <view wx:for="{{navList}}" wx:for-item="nav" slot='{{nav.title}}' class="{{activityList!='' ? 'wrap' : ''}}" wx:key="index">
+    <view wx:for="{{navList}}" wx:for-item="nav" slot='{{nav.title}}' class="{{activityList!='' ? 'wrap oh' : ''}}" wx:key="index">
         <view wx:if="{{nav.index == 0}}" class="create-btn" bindtap="navgator" data-path="selectActivity/index">
             去创建一个活动
         </view>
@@ -8,5 +8,9 @@
           </activity>
         </view>
         <empty wx:else></empty>
+        <view class="upload-text mb-20" wx:if="{{isUpLoadText == 1}}">
+            <image wx:if="{{upLoadText != '加载完成'}}" src="https://636c-cloud1-6g94u1qn210fa109-1316664325.tcb.qcloud.la/R-C.gif?sign=b8edba7938aa867c1198a78308fa8f34&t=1676705305" mode=""/>
+            {{upLoadText}}
+        </view>
     </view>
 </tab>

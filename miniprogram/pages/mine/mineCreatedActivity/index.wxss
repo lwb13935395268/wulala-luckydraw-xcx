@@ -5,3 +5,13 @@
     background-color: #e04540;
     color: white;
 }
+.upload-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+}
+.upload-text image{
+    width: 50rpx;
+    height: 50rpx;
+}
