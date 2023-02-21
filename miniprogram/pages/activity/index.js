@@ -81,12 +81,12 @@ Page({
             if (this.data.isListLength == list.length) {
                 this.setData({
                     isUpLoadText:1,
-                    upLoadText:'加载完成'
+                    upLoadText:'已经到底了。。'
                 });
             }else if (list.length < 10) {
                 this.setData({
                     isUpLoadText:1,
-                    upLoadText:'加载完成'
+                    upLoadText:'已经到底了。。'
                 });
             }else if (list.length > 10) {
                 this.setData({
