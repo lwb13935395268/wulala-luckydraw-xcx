@@ -26,12 +26,10 @@ Page({
             addUser
         } = getApp();
         await login('登录');
-        console.log('同意了');
         wx.showLoading({
             title: '正在授权..',
         })
         let addResult = await addUser();
-        console.log(addResult);
         wx.hideLoading()
         if (addResult.status == 200) {
             wx.showToast({
@@ -54,7 +52,6 @@ Page({
     toLogin() {
         let app = getApp();
         app.globalData.callLogin = true;
-        console.log('to');
         wx.switchTab({
             url: '../../mine/index',
         })
@@ -70,7 +67,6 @@ Page({
             return
         }
         if (this.data.prizeInfo.price > app.globalData.userInfo.integral) {
-            console.log('进来');
             wx.showToast({
                 title: '积分不足',
                 icon: 'error',
@@ -114,7 +110,6 @@ Page({
                             })
                         }
                     } else if (res.cancel) {
-                        console.log('用户点击取消')
                     }
                 }
             })

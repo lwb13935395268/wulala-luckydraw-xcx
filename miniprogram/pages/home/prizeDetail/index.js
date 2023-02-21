@@ -13,7 +13,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options);
         this.getprizeInfo(options.prizeId);
     },
     async getprizeInfo(prizeId) {
@@ -21,7 +20,6 @@ Page({
             getMinePrizeDetail
         } = getApp();
         let res = await getMinePrizeDetail(prizeId);
-        console.log(res);
         if (res.status == 200) {
             this.setData({
                 prizeInfo: {

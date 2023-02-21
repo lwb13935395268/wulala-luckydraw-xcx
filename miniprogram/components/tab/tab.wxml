@@ -7,9 +7,9 @@
         </view>
     </view>
     <loading isShow="{{showLoading?'block':'none'}}"></loading>
-    <swiper class="swiperBox {{fixedHead?'scroll':''}}" bindchange='pagechange' current='{{currentIndex}}'>
-        <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox' data-params="{{item}}">
-            <scroll-view scroll-top="{{aa}}" enhanced="{{}}" bindscroll="scrollMove" class="scroll-view" bindscrolltolower="scroll" lower-threshold="1" scroll-y="{{scrolly}}" style="height: 100%;">
+    <swiper class="swiperBox {{fixedHead?'scroll':''}} content" bindchange='pagechange' current='{{currentIndex}}'>
+        <swiper-item wx:for="{{titleList}}" wx:key="index" class='swiperTtemBox ' data-params="{{item}}">
+            <scroll-view  bindscroll="scrollMove" class="scroll-view" bindscrolltolower="scroll" lower-threshold="1" scroll-y="{{scrolly}}" style="height: 100%;">
                 <slot name="{{item}}"></slot>
             </scroll-view>
         </swiper-item>

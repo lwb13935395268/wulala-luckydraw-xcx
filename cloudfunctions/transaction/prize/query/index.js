@@ -7,7 +7,6 @@ const db = cloud.database();
 
 
 exports.main = async (event, context) => {
-    console.log(event.prizeId);
     let res = {
         status: 0,
         msg: "查询错误",

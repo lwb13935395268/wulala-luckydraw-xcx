@@ -8,7 +8,6 @@ const db = cloud.database();
 
 
 exports.main = async (event, context) => {
-    console.log('加积分记录内部');
     const wxContext = cloud.getWXContext();
     const OPENID = wxContext.OPENID;
     let res = {
@@ -17,7 +16,6 @@ exports.main = async (event, context) => {
         data: []
     }
     try {
-        console.log(OPENID);
         let result = await db.collection('integralRecord').add({
             data: {
                 date: new Date().valueOf(),
@@ -27,14 +25,10 @@ exports.main = async (event, context) => {
                 openId: OPENID
             }
         });
-        console.log(result);
         res.status = 200;
         res.msg = "积分记录添加成功";
-        console.log(res);
         return res
     } catch {
-        console.log('catch');
-        console.log(res);
         return res
     }
 }

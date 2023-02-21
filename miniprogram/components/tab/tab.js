@@ -4,27 +4,27 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        titleList:{
-            type:[],
+        titleList: {
+            type: [],
         },
-        fixedHead:{
-            type:Boolean,
-            value:true
+        fixedHead: {
+            type: Boolean,
+            value: true
         },
-        scroll:{
-            type:Boolean,
-            value:true
+        scroll: {
+            type: Boolean,
+            value: true
         },
-        tabFun:{
-            type:Function
+        tabFun: {
+            type: Function
         },
-        showLoading:{
-            type:Boolean,
-            value:false
+        showLoading: {
+            type: Boolean,
+            value: false
         },
     },
     lifetimes: {
-        attached(){
+        attached() {
             // console.log(e);
         }
     },
@@ -33,23 +33,24 @@ Component({
      */
     data: {
         currentIndex: 0, //默认是活动项
-        scrolly:true,
-        aa:100
+        scrolly: true,
     },
-    options:{
-        multipleSlots: true 
+    options: {
+        multipleSlots: true
     },
     /**
      * 组件的方法列表
      */
     methods: {
-        scrollMove(e){
-            // console.log(e.detail);
-            // console.log(this.data.aa);
+        scrollMove(e) {
+            let query = wx.createSelectorQuery();
+            query.select('.content').boundingClientRect(rect => {
+                let height = rect.height;
+            }).exec();
             this.triggerEvent('scrollMove', {});
         },
         //滚动时触发
-        scroll(){
+        scroll() {
             this.triggerEvent('scroll', {});
         },
         // 切换swiper-item触发bindchange事件
@@ -64,12 +65,12 @@ Component({
 
         //点击tab时触发
         titleClick: function (e) {
-            if(e.currentTarget.dataset.idx!=this.data.currentIndex){
+            if (e.currentTarget.dataset.idx != this.data.currentIndex) {
 
-            this.setData({
-                currentIndex: e.currentTarget.dataset.idx
-            })
-            return
+                this.setData({
+                    currentIndex: e.currentTarget.dataset.idx
+                })
+                return
             }
         },
     }

@@ -4,7 +4,7 @@ Page({
     getDate(date) {
         var time = new Date(date);
         var y = time.getFullYear();
-        var m = ((time.getMonth() + 1) < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1);
+        var m = ((time.getMonth() + 1) < 10 ? '0                                                                                                                                 ' + (time.getMonth() + 1) : time.getMonth() + 1);
         var d = time.getDate();
         var h = (time.getHours() < 10 ? '0' + time.getHours() : time.getHours());
         var mine = (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
@@ -54,7 +54,9 @@ Page({
             imgNum1:0,
             imgMaxLength1:0,
             imgNum2:0,
-            imgMaxLength2:0
+            imgMaxLength2:0,
+            activityList:[],
+            overActivityList:[]
         })
         if (e) {
             this.setData({

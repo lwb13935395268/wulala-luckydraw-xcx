@@ -28,7 +28,6 @@ exports.main = async (event, context) => {
     let D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
     let todayTime = Y + '-' + M + '-' + D
     let endTime = Y + '-' + Ms + '-' + D;
-    console.log('加记录');
     const wxContext = cloud.getWXContext();
     const OPENID = wxContext.OPENID;
     let res = {
@@ -37,7 +36,6 @@ exports.main = async (event, context) => {
         data: []
     }
     try {
-        console.log(OPENID);
         let result = await db.collection('prizeRecord').add({
             data: {
                 date: new Date().valueOf(),
@@ -55,10 +53,8 @@ exports.main = async (event, context) => {
         res.status = 200;
         res.msg = "兑奖记录添加成功";
         res.data=result;
-        console.log(res);
         return res
     } catch {
-        console.log('catch');
         return res
     }
 }

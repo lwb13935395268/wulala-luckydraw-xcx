@@ -64,6 +64,9 @@ Page({
         }
     },
     scroll() {
+        wx.showToast({
+          title: 'scroll到底',
+        })
         this.setData({
             scrollBottom:true
         })
@@ -84,7 +87,9 @@ Page({
         })
     },
     listenPageBottom(){
-        console.log('页面到底');
+        wx.showToast({
+          title: '页面到底',
+        })
         this.setData({
             pageBottomFlag:true
         })
@@ -243,7 +248,6 @@ Page({
                 getApp().globalData.userInfo = userInfoRes.data;
                 getApp().globalData.homeLogin = true;
             } else {
-                console.log('查无此人');
             }
             this.setData({
                 infoLoad: false
@@ -300,7 +304,6 @@ Page({
     },
     //图片的加载
     imgLoad() {
-        console.log('加载');
     },
     /**
      * 页面的初始数据
@@ -439,16 +442,13 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     async onReachBottom() {
-        console.log('到底');
     },
     touchStart(e){
-        console.log('滚起来', e);
         // this.setData({
         //   scrollStop: false
         // })
       },
       touchEnd(e){
-       console.log('停下来', e);
         // this.setData({
         //   scrollStop: true
         // })

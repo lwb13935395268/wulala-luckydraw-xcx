@@ -69,7 +69,6 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     async onPullDownRefresh() {
-        console.log(1);
         wx.showNavigationBarLoading();
         await this.getIntegralRecord();
         wx.stopPullDownRefresh();

@@ -13,9 +13,7 @@ Page({
             placeholderText:'输入文字',//显示输入框提示信息
             success: res => {              
               if (res.confirm) { //点击了确认
-                console.log(res.content)//用户输入的值
               } else {
-                console.log('用户点击了取消')
               }
             }
           })
