@@ -25,7 +25,7 @@ Page({
         this.setData({
             show:false
         })
-        return res
+        return integralRecordRes
     },
     /**
      * 页面的初始数据

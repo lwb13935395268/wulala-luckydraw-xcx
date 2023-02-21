@@ -43,10 +43,10 @@ Component({
      */
     methods: {
         scrollMove(e) {
-            let query = wx.createSelectorQuery();
-            query.select('.content').boundingClientRect(rect => {
-                let height = rect.height;
-            }).exec();
+            // let query = wx.createSelectorQuery();
+            // query.select('.content').boundingClientRect(rect => {
+            //     let height = rect.height;
+            // }).exec();
             this.triggerEvent('scrollMove', {});
         },
         //滚动时触发
