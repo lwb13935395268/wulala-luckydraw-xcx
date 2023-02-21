@@ -64,16 +64,12 @@ Page({
         }
     },
     scroll() {
-        wx.showToast({
-          title: 'scroll到底',
-        })
         this.setData({
             scrollBottom:true
         })
         if(this.data.scrollBottom&&this.data.pageBottomFlag){
             this.setLoad()
         }
-        console.log('scroll到底');
     },
     scrollMove(){
         this.setData({
@@ -81,15 +77,11 @@ Page({
         })
     },
     listenPageScroll(){
-        console.log('页面滚动');
         this.setData({
             pageBottomFlag:false
         })
     },
     listenPageBottom(){
-        wx.showToast({
-          title: '页面到底',
-        })
         this.setData({
             pageBottomFlag:true
         })

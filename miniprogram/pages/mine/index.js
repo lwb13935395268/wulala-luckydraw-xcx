@@ -25,7 +25,6 @@ Page({
         } else if (getMineFlag) {
             await this.getUserInfo()
         }
-        console.log(3);
     },
     async getUserInfo() {
         this.setData({
@@ -88,7 +87,6 @@ Page({
                 title: '正在授权..',
             })
             let addResult = await addUser();
-            console.log(addResult);
             wx.hideLoading()
             if (addResult.status == 200) {
                 wx.showToast({
